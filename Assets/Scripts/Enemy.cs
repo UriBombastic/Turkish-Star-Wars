@@ -12,11 +12,14 @@ public class Enemy : MonoBehaviour, IDamageable
     public Image healthBar;
     public TextMeshProUGUI nameText;
     private Rigidbody rb;
+    private AudioSource aud;
+    public AudioClip deathSound;
 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        aud = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -35,6 +38,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         health -= damage;
         UpdateHealthBar();
+        PlayDamageSound();
         if (rb != null) rb.AddForce(knockback);
         if (health <= 0) Kill();
     }
@@ -47,7 +51,19 @@ public class Enemy : MonoBehaviour, IDamageable
         healthBar.fillAmount = ratio;
     }
 
-    public void Kill()
+    void PlayDamageSound()
+    {
+        aud.Play();
+    }
+
+    protected void PlayDeathSound()
+    {
+        if (deathSound == null) return;
+        aud.clip = deathSound;
+        aud.Play();
+    }
+
+    public virtual void Kill()
     {
         Debug.Log("Oh no, I am dead.\n" + name);
         Destroy(gameObject);

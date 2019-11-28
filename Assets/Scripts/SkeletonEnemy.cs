@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SkeletonEnemy : Enemy
 {
-
+    public override void Kill()
+    {
+        base.Kill();
+    }
 }
