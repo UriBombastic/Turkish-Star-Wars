@@ -9,10 +9,11 @@ public class Enemy : MonoBehaviour, IDamageable
     public string name = "Enemy";
     public float initialHealth = 100f;
     public float health;
+    public GameObject healthCanvas;
     public Image healthBar;
     public TextMeshProUGUI nameText;
-    private Rigidbody rb;
-    private AudioSource aud;
+    protected Rigidbody rb;
+    protected AudioSource aud;
     public AudioClip deathSound;
 
 

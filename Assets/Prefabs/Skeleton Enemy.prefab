@@ -526,8 +526,10 @@ MonoBehaviour:
   name: Skeleton
   initialHealth: 100
   health: 100
+  healthCanvas: {fileID: 415423116}
   healthBar: {fileID: 2128536341}
   nameText: {fileID: 813747430}
+  deathSound: {fileID: 8300000, guid: aa1fff4ee6a205742bb5766288baf6e6, type: 3}
 --- !u!82 &6421544173124614478
 AudioSource:
   m_ObjectHideFlags: 0

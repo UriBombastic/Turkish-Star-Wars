@@ -6,6 +6,9 @@ public class SkeletonEnemy : Enemy
 {
     public override void Kill()
     {
-        base.Kill();
+        PlayDeathSound();
+        rb.constraints = RigidbodyConstraints.None;
+        Destroy(healthCanvas);
+        Destroy(this);
     }
 }
