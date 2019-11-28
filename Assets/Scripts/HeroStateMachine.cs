@@ -1,18 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class HeroStateMachine : MonoBehaviour
+using System.Linq;
+public class HeroStateMachine : MonoBehaviour, IDamageable
 {
 
     public float WalkForce = 20f;
     public float JumpForce = 500f;
-    public float DashForce = 200f;
+    public float DashForce = 2000f;
     public float DashCoolDown = 1.0f;
     public float BasicAttackStartDelay = 0.0f;
     public float BasicAttackSpeed = 2f; //basic attacks per second
     public float JumpAttackDelay = 1.0f;
     public float DashAttackDelay = 1.0f; //cooldown invoked by Dash Attack
+    public float BasicAttackDamage = 10f;
+    public float BasicAttackRadius = 3.0f;
+    public float BasicAttackForce = 100f;
+    public float JumpAttackDamage = 15f;
+    public float JumpAttackRadius = 4.5f;
+    public float JumpAttackForce = 400f;
+    public float DashAttackDamage = 15f;
+    public float DashAttackRadius = 4.0f;
+    public float DashAttackForce = 1000f;
+    public Transform BasicAttackTransform;
+    public Transform JumpAttackTransform;
     private Rigidbody rb;
     [SerializeField]
     private float h, v;
@@ -85,6 +96,7 @@ public class HeroStateMachine : MonoBehaviour
                 break;
 
             case State.ATTACKING:
+                CheckForMove();
                 break;
 
             case State.JUMPATTACK:
@@ -187,7 +199,7 @@ public class HeroStateMachine : MonoBehaviour
 
     void BasicAttack()
     {
-        //Something more elaborate here
+        FundamentalAttack(BasicAttackDamage, BasicAttackRadius, BasicAttackForce, BasicAttackTransform);
         Debug.Log("Attack!");
     }
 
@@ -202,10 +214,9 @@ public class HeroStateMachine : MonoBehaviour
 
     void JumpAttack()
     {
+        FundamentalAttack(JumpAttackDamage, JumpAttackRadius, JumpAttackForce, JumpAttackTransform);
         Debug.Log("JumpAttack");
     }
-
-
 
     IEnumerator DashAttackTiming()
     {
@@ -218,9 +229,38 @@ public class HeroStateMachine : MonoBehaviour
 
     void DashAttack()
     {
+        FundamentalAttack(DashAttackDamage, DashAttackRadius, DashAttackForce, BasicAttackTransform);
         Debug.Log("DashAttack");
     }
 
-  
+  void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>(); 
+        for(int i = 0; i < enemies.Length; i++)
+        {
+            Transform enemyTransform = enemies[i].transform;
+            if(Vector3.Distance(t.position, enemyTransform.position)<= radius)
+            {
+                Debug.Log(enemies[i].name);
+                Vector3 attackVector = enemyTransform.position - transform.position;
+                attackVector.Normalize();
+                enemies[i].Damage(damageToDo, attackVector * attackForce);
+            }
 
+        }
+
+    }
+
+
+    //IDamageable requirements. We don't want to be invincible now
+    public void Damage(float damageToDo, Vector3 knockbackToDo)
+    {
+
+    }
+
+    public void Kill()
+    {
+
+    }
 }
+

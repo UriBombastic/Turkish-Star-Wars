@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &885408809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 885408810}
+  m_Layer: 0
+  m_Name: JumpAttack Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &885408810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885408809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.658, z: 0.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1700784485506943664}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1351875627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1351875628}
+  m_Layer: 0
+  m_Name: BasicAttack Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1351875628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351875627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.241, z: 0.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1700784485506943664}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1700784483871186092
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +221,8 @@ Transform:
   m_Children:
   - {fileID: 1700784483871186095}
   - {fileID: 5972004779929493261}
+  - {fileID: 1351875628}
+  - {fileID: 885408810}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,9 +315,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkForce: 20
-  JumpForce: 500
+  JumpForce: 350
+  DashForce: 1000
+  DashCoolDown: 1
   BasicAttackStartDelay: 0
   BasicAttackSpeed: 2
+  JumpAttackDelay: 1
+  DashAttackDelay: 1
+  BasicAttackDamage: 10
+  BasicAttackRadius: 3
+  BasicAttackForce: 350
+  JumpAttackDamage: 15
+  JumpAttackRadius: 4
+  JumpAttackForce: 750
+  DashAttackDamage: 15
+  DashAttackRadius: 3.5
+  DashAttackForce: 1000
+  BasicAttackTransform: {fileID: 1351875628}
+  JumpAttackTransform: {fileID: 885408810}
+  h: 0
+  v: 0
   state_: 0
 --- !u!114 &1700784485506943667
 MonoBehaviour:
@@ -346,17 +425,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a9fd2f1dd1c4f5040baeec3917c0771b,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a9fd2f1dd1c4f5040baeec3917c0771b,
+        type: 3}
       propertyPath: m_LocalScale.y
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a9fd2f1dd1c4f5040baeec3917c0771b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: a9fd2f1dd1c4f5040baeec3917c0771b,
-        type: 3}
-      propertyPath: m_LocalScale.x
       value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []

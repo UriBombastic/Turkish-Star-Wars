@@ -55,10 +55,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\HeroState.cs" />
      <Compile Include="Assets\Scripts\HeroStateMachine.cs" />
+     <Compile Include="Assets\Scripts\IDamageable.cs" />
      <Compile Include="Assets\Scripts\LookDirectionController.cs" />
-     <None Include="Assets\Credits.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/Documents/Unity Projects/Turkish Star Wars/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
