@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\IDamageable.cs" />
      <Compile Include="Assets\Scripts\LookDirectionController.cs" />
      <Compile Include="Assets\Scripts\SkeletonEnemy.cs" />
+     <Compile Include="Assets\Scripts\YetiEnemy.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

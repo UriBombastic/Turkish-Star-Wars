@@ -103,6 +103,7 @@ public class HeroController : MonoBehaviour, IDamageable
 
             case State.ATTACKING:
                 CheckForMove();
+                CheckForJump();
                 break;
 
             case State.JUMPATTACK:
