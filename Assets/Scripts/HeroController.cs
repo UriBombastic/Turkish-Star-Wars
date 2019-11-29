@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
+using TMPro;
+
 public class HeroController : MonoBehaviour, IDamageable
 {
-
+    public float maxHealth = 100f;
+    public float health = 100f;
     public float WalkForce = 20f;
     public float JumpForce = 500f;
     public float DashForce = 2000f;
@@ -25,8 +29,18 @@ public class HeroController : MonoBehaviour, IDamageable
     public Transform BasicAttackTransform;
     public Transform JumpAttackTransform;
 
-   // public AudioClip attackSound;
-    //public AudioClip jumpSound;
+    //Shielding
+    public Image shieldImage;
+    public float maxOpacity = 0.5f;
+    public float ShieldPower = 0f;
+    public float maxShieldTime = 0.25f;
+    public float shieldDegradeFactor = 60f;
+    public float ShieldCoolDown = 0.25f;
+    private bool canShield = true;
+
+    //Health
+    public Image HealthBar;
+    public TextMeshProUGUI HealthText;
 
     private Rigidbody rb;
     private AudioSource aud;
@@ -41,6 +55,7 @@ public class HeroController : MonoBehaviour, IDamageable
         ATTACKING,
         JUMPATTACK,
         DASHATTACK,
+        BLOCKING,
         GRABBING
     };
     
@@ -55,6 +70,8 @@ public class HeroController : MonoBehaviour, IDamageable
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        HealthText.text = health + " / " + maxHealth;
+        HealthBar.fillAmount = health / maxHealth;
     }
 
     void Update()
@@ -76,7 +93,7 @@ public class HeroController : MonoBehaviour, IDamageable
 
                 CheckForJump();
                 CheckForAttack();
-
+                CheckForBlock();
                 break;
 
             case State.WALKING:
@@ -88,6 +105,7 @@ public class HeroController : MonoBehaviour, IDamageable
                 CheckForJump();
                 CheckForDash();
                 CheckForAttack();
+                CheckForBlock();
                 break;
 
             case State.JUMPING:
@@ -95,6 +113,7 @@ public class HeroController : MonoBehaviour, IDamageable
                 CheckForMove();
                 CheckForDash();
                 CheckForJumpAttack();
+                CheckForBlock();
                 break;
 
             case State.DASHING:
@@ -113,6 +132,13 @@ public class HeroController : MonoBehaviour, IDamageable
             case State.DASHATTACK:
                 break;
 
+            case State.BLOCKING:
+                if (!Input.GetKey(KeyCode.Mouse1))
+                    BreakShield();
+                if (CheckForAttack() || CheckForJump())
+                    BreakShield();
+                break;
+
             case State.GRABBING:
                 break;
         }
@@ -129,10 +155,14 @@ public class HeroController : MonoBehaviour, IDamageable
         return false;
     }
 
-    void CheckForJump()
+    bool CheckForJump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             Jump();
+            return true;
+        }
+        return false;
     }
 
    void CheckForDash()
@@ -142,12 +172,14 @@ public class HeroController : MonoBehaviour, IDamageable
             StartCoroutine(DashTiming(v));
     }
 
-    void CheckForAttack()
+    bool CheckForAttack()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             StartCoroutine(BasicAttackTiming());
+            return true;
         }
+        return false;
     }
 
     void CheckForJumpAttack()
@@ -163,6 +195,15 @@ public class HeroController : MonoBehaviour, IDamageable
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             StartCoroutine(DashAttackTiming());
+        }
+    }
+
+    void CheckForBlock()
+    {
+        if (!canShield) return;
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            StartCoroutine(BlockTiming());
         }
     }
 
@@ -240,6 +281,45 @@ public class HeroController : MonoBehaviour, IDamageable
         FundamentalAttack(DashAttackDamage, DashAttackRadius, DashAttackForce, BasicAttackTransform);
     }
 
+    IEnumerator BlockTiming()
+    {
+        state_ = State.BLOCKING;
+        shieldImage.gameObject.SetActive(true);
+        Color col = shieldImage.color;
+        col.a = maxOpacity;
+        shieldImage.color = col;
+        ShieldPower = 1.0f;
+        shieldImage.transform.localScale = new Vector3(1, 0.5f, 1);
+        yield return new WaitForSeconds(maxShieldTime);
+
+        while(state_ == State.BLOCKING && ShieldPower > 0f)
+        {
+            ShieldPower -= 1 / shieldDegradeFactor;
+            col.a = maxOpacity * ShieldPower;
+            shieldImage.color = col;
+            shieldImage.transform.localScale = new Vector3(ShieldPower, ShieldPower/2, 1);
+            yield return new WaitForSecondsRealtime(1 / 60f); //frame by frame update;
+        }
+
+        BreakShield();
+
+    }
+
+    void BreakShield()
+    {
+        state_ = State.IDLE;
+        shieldImage.gameObject.SetActive(false);
+        ShieldPower = 0;
+        StartCoroutine(BlockCoolDown());
+    }
+
+    IEnumerator BlockCoolDown()
+    {
+        canShield = false;
+        yield return new WaitForSeconds(ShieldCoolDown);
+        canShield = true;
+    }
+
   void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>(); 
@@ -267,12 +347,22 @@ public class HeroController : MonoBehaviour, IDamageable
     //IDamageable requirements. We don't want to be invincible now
     public void Damage(float damageToDo, Vector3 knockbackToDo)
     {
+        health -= damageToDo * (1f-ShieldPower);
+        UpdateHealthBar();
+       // PlayDamageSound();
+        rb.AddForce(knockbackToDo);
+        if (health <= 0) Kill();
+    }
 
+    void UpdateHealthBar()
+    {
+        HealthText.text = health + " / " + maxHealth;
+        HealthBar.fillAmount = health / maxHealth;
     }
 
     public void Kill()
     {
-
+        Debug.Log("You are Dead!");
     }
 }
 
