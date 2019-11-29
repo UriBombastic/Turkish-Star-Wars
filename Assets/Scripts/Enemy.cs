@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected void PlayDeathSound()
     {
         if (deathSound == null) return;
+        aud.volume = 1f;
         aud.clip = deathSound;
         aud.Play();
     }
