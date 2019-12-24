@@ -26,6 +26,8 @@ public class HeroController : MonoBehaviour, IDamageable
     public float DashAttackDamage = 15f;
     public float DashAttackRadius = 4.0f;
     public float DashAttackForce = 1000f;
+    public float CounterRadius = 4.0f;
+    public float CounterForce = 850f;
     public Transform BasicAttackTransform;
     public Transform JumpAttackTransform;
 
@@ -320,6 +322,12 @@ public class HeroController : MonoBehaviour, IDamageable
         canShield = true;
     }
 
+    void Counter()
+    {
+        Debug.Log("Counter!");
+        FundamentalAttack(0, CounterRadius, CounterForce, BasicAttackTransform);
+    }
+
   void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>(); 
@@ -328,7 +336,7 @@ public class HeroController : MonoBehaviour, IDamageable
             Transform enemyTransform = enemies[i].transform;
             if(Vector3.Distance(t.position, enemyTransform.position)<= radius)
             {
-                Debug.Log(enemies[i].name);
+             //   Debug.Log(enemies[i].name);
                 Vector3 attackVector = enemyTransform.position - transform.position;
                 attackVector.Normalize();
                 enemies[i].Damage(damageToDo, attackVector * attackForce);
@@ -348,6 +356,8 @@ public class HeroController : MonoBehaviour, IDamageable
     public void Damage(float damageToDo, Vector3 knockbackToDo)
     {
         health -= damageToDo * (1f-ShieldPower);
+        if (ShieldPower == 1)
+            Counter(); 
         UpdateHealthBar();
        // PlayDamageSound();
         rb.AddForce(knockbackToDo);

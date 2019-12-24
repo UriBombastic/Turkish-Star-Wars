@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public Transform attackTransform;
     public float MoveForce;
+   public float RotateSpeed = 4f;
     public float BasicAttackDamage;
     public float BasicAttackReach;
     public float BasicAttackForce;
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected AudioSource aud;
     protected HeroController player;
     protected Transform playerTransform;
+    protected Animator animator;
     public AudioClip deathSound;
 
     public enum State
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody>();
         aud = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -83,7 +86,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         }
 
-
+       // Debug.Log(Vector3.Angle(transform.position, playerTransform.position));
     }
 
 
@@ -103,12 +106,17 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         Vector3 playerAngle = (playerTransform.position - transform.position);
         playerAngle.Normalize();
-        rb.AddForce(playerAngle * MoveForce); //walk towards player
+        Vector3 lookAngle = new Vector3(playerAngle.x, 0, playerAngle.z);
+        Quaternion lookRotation = Quaternion.LookRotation(lookAngle);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotateSpeed);
+        //rb.AddForce(playerAngle * MoveForce); //walk towards player
+        rb.AddForce(transform.forward * MoveForce);
     }
 
     protected virtual void HandleAggression()
     {
-        StartCoroutine(Attack());
+        if(state_==State.AGGRESSION)//double check
+            StartCoroutine(Attack());
     }
 
     protected virtual IEnumerator Attack()
@@ -146,20 +154,31 @@ public class Enemy : MonoBehaviour, IDamageable
         Damage(damage, Vector3.zero);
     }
 
-    public void Damage(float damage, Vector3 knockback)
+    public virtual void Damage(float damage, Vector3 knockback)
     {
         health -= damage;
         UpdateHealthBar();
         PlayDamageSound();
         if (rb != null) rb.AddForce(knockback);
         if (health <= 0) Kill();
+        StopAllCoroutines();
         StartCoroutine(handleDamage(damage));
     }
 
     protected virtual IEnumerator handleDamage(float damage)
     {
-        state_ = State.DAMAGED;
+        EnterDamage();
         yield return new WaitForSeconds(DamageRecoverTime);
+        ExitDamage();
+    }
+
+    protected virtual void EnterDamage()
+    {
+        state_ = State.DAMAGED;
+    }
+
+    protected virtual void ExitDamage()
+    {
         state_ = State.IDLE;
     }
 
@@ -188,5 +207,13 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         Debug.Log("Oh no, I am dead.\n" + name);
         Destroy(gameObject);
+    }
+    //essentially making it so that not every instance of animating has to do a null check, 
+    //as well as allowing this method to be within the base Enemy class.
+    protected void Animate(string trigger)
+    {
+        if (animator == null) return; //duh
+       animator.SetTrigger(trigger);
+        //animator.Play(trigger);
     }
 }

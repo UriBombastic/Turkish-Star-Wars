@@ -9,6 +9,33 @@ public class YetiEnemy : Enemy
         PlayDeathSound();
         rb.constraints = RigidbodyConstraints.None;
         Destroy(healthCanvas);
+        Animate("Die");
         Destroy(this);
+    }
+
+    protected override void HandlePlayerInView()
+    {
+        base.HandlePlayerInView();
+        Animate("Walk");
+    }
+
+    protected override IEnumerator Attack()
+    {
+        Animate("Attack");
+        yield return base.Attack();
+        Animate("Idle"); //exit attack state and return to idle
+        yield return null;
+    }
+
+    protected override void EnterDamage()
+    {
+        base.EnterDamage();
+        Animate("Damage");
+    }
+
+    protected override void ExitDamage()
+    {
+        base.ExitDamage();
+        Animate("Idle");
     }
 }
