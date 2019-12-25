@@ -6,7 +6,7 @@ using TMPro;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public string name = "Enemy";
+    public string enemyName = "Enemy";
     public float initialHealth = 100f;
     public float health;
     public GameObject healthCanvas;
