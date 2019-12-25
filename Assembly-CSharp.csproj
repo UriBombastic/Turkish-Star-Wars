@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\ExplodingShip.cs" />
      <Compile Include="Assets\Scripts\HeroController.cs" />
      <Compile Include="Assets\Scripts\HeroState.cs" />
      <Compile Include="Assets\Scripts\IDamageable.cs" />
