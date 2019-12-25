@@ -9,8 +9,19 @@ public class YetiEnemy : Enemy
         PlayDeathSound();
         rb.constraints = RigidbodyConstraints.None;
         Destroy(healthCanvas);
-        Animate("Die");
+        //  Animate("Die");
+        Destroy(animator);
         Destroy(this);
+
+    }
+
+    protected override void HandleDistances()
+    {
+        base.HandleDistances();
+        Vector3 playerPosition = playerTransform.position;
+        float distance = Vector3.Distance(transform.position, playerPosition);
+        if (distance > ViewRange && distance > AttackRange)
+            Animate("Idle");
     }
 
     protected override void HandlePlayerInView()

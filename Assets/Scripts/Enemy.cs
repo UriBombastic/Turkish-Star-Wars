@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected HeroController player;
     protected Transform playerTransform;
     protected Animator animator;
+    public string[] AnimationTriggers;
     public AudioClip deathSound;
 
     public enum State
@@ -210,10 +211,17 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     //essentially making it so that not every instance of animating has to do a null check, 
     //as well as allowing this method to be within the base Enemy class.
-    protected void Animate(string trigger)
+    protected void Animate(string trigger, bool doReset = true)
     {
         if (animator == null) return; //duh
+     //   if (doReset) ResetAllAnimations(trigger);
        animator.SetTrigger(trigger);
         //animator.Play(trigger);
+    }
+
+    protected void ResetAllAnimations(string excluded = "")
+    {
+        for (int i = 0; i < AnimationTriggers.Length; i++)
+            if(AnimationTriggers[i] != excluded) animator.ResetTrigger(AnimationTriggers[i]);
     }
 }

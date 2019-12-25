@@ -160,105 +160,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: dc940b0e4c1a9f644a443556980ba27a, type: 3}
---- !u!1001 &234051856
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 913235812}
-    m_Modifications:
-    - target: {fileID: -927199367670048503, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_Name
-      value: Yeti@Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 534a54e3c80c93c4ba4d9e07cf0494c0, type: 2}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8104116013650832364, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 409eb91a892ac564da023209597bda70, type: 2}
-    - target: {fileID: 8104116013650832364, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 409eb91a892ac564da023209597bda70, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f40ff7263bdb8684a8fe053436a603b9, type: 3}
 --- !u!1 &246711055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100010, guid: 510e8b094d51c0c448a1f47f52b71413,
@@ -620,37 +521,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300004, guid: dc940b0e4c1a9f644a443556980ba27a, type: 3}
---- !u!1 &903485963 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6801269289586154031, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9029525781789213593}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &903485967
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903485963}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 534a54e3c80c93c4ba4d9e07cf0494c0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!4 &913235812 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 52140398768856798, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9029525781789213593}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1001,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1700784485506943677, guid: a6e139e5ab5b1c643aec54ae11383cb9,
+        type: 3}
+      propertyPath: maxShieldTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
 --- !u!1001 &7805389608685441296
@@ -1282,15 +1157,6 @@ PrefabInstance:
     - target: {fileID: 52140398768856798, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1039976156443885490, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 887494907, guid: 88c6e2d7bc8be6c449245435cb8743a6, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
