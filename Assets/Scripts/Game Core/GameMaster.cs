@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public static enum Language
+    public enum Language
     {
         EN,
         SP,
@@ -12,5 +12,5 @@ public class GameMaster : MonoBehaviour
         FUK
     }
 
-    public static Language language;
+    public static Language language = Language.EN;
 }

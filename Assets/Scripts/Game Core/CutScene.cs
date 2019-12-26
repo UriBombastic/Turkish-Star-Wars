@@ -31,7 +31,13 @@ public class CutScene : MonoBehaviour
 
     public void InitializeDialogueTexts()
     {
+        
+        string filename = CutsceneName + GameMaster.language;
+        TextAsset fileText = Resources.Load("Dialogue/" + filename) as TextAsset;
+        dialogueTexts = fileText.text.Split('\n');
 
+        for (int i = 0; i < dialogueTexts.Length; i++)
+            Debug.Log(dialogueTexts[i]);
     }
 
     public IEnumerator SectionsSequence()
