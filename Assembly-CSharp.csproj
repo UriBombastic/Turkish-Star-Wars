@@ -55,15 +55,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CutScene.cs" />
-     <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemies\SkeletonEnemy.cs" />
+     <Compile Include="Assets\Scripts\Enemies\YetiEnemy.cs" />
      <Compile Include="Assets\Scripts\ExplodingShip.cs" />
-     <Compile Include="Assets\Scripts\HeroController.cs" />
-     <Compile Include="Assets\Scripts\HeroState.cs" />
-     <Compile Include="Assets\Scripts\IDamageable.cs" />
-     <Compile Include="Assets\Scripts\LookDirectionController.cs" />
-     <Compile Include="Assets\Scripts\SkeletonEnemy.cs" />
-     <Compile Include="Assets\Scripts\YetiEnemy.cs" />
+     <Compile Include="Assets\Scripts\Game Core\CutScene.cs" />
+     <Compile Include="Assets\Scripts\Game Core\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\Game Core\IDamageable.cs" />
+     <Compile Include="Assets\Scripts\Player\HeroController.cs" />
+     <Compile Include="Assets\Scripts\Player\HeroState.cs" />
+     <Compile Include="Assets\Scripts\Player\LookDirectionController.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\GunAim.cs" />
