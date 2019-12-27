@@ -65,7 +65,7 @@ public class CutScene : MonoBehaviour
             if(subsections[i]!=null)subsections[i].SetActive(true); //activate current
             yield return new WaitForSeconds(subsectionDelays[i]);
         }
-        subsections[subsections.Length - 1].SetActive(false); //deactivate last subsection
+      //  subsections[subsections.Length - 1].SetActive(false); //deactivate last subsection
 
     }
 
