@@ -782,8 +782,8 @@ GameObject:
   - component: {fileID: 1700784485506943679}
   - component: {fileID: 1700784485506943676}
   - component: {fileID: 1700784485506943677}
-  - component: {fileID: 1700784485506943667}
   - component: {fileID: 127742735}
+  - component: {fileID: 6442767237173438177}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -918,6 +918,8 @@ MonoBehaviour:
   DashAttackDamage: 15
   DashAttackRadius: 3.5
   DashAttackForce: 1000
+  CounterRadius: 4
+  CounterForce: 850
   BasicAttackTransform: {fileID: 1351875628}
   JumpAttackTransform: {fileID: 885408810}
   shieldImage: {fileID: 1900544756}
@@ -931,26 +933,6 @@ MonoBehaviour:
   h: 0
   v: 0
   state_: 0
---- !u!114 &1700784485506943667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700784485506943674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee354185943618f41a4cabd189d9d06c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 1700784483871186095}
-  XSensitivity: 1
-  YSensitivity: 1
-  clampRotation: 1
-  MinimumX: -80
-  MaximumX: 80
-  MinimumY: -180
-  MaximumY: 180
 --- !u!82 &127742735
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1047,6 +1029,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6442767237173438177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700784485506943674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd8d0c5a5c7071a4c883c68449327a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1700784483871186095}
+  XSensitivity: 1
+  YSensitivity: 1
+  clampRotation: 1
+  MinimumX: -45
+  MaximumX: 45
+  MinimumY: -180
+  MaximumY: 180
 --- !u!1001 &1700784484820481047
 PrefabInstance:
   m_ObjectHideFlags: 0
