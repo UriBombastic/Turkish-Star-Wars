@@ -653,6 +653,11 @@ PrefabInstance:
       propertyPath: enemyName
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 5
@@ -7915,6 +7920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyName
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
@@ -17928,6 +17938,11 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyName
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -47976,6 +47991,11 @@ PrefabInstance:
       propertyPath: enemyName
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -63574,6 +63594,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 127742735, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6442767237173438177, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
       propertyPath: MinimumX
@@ -73384,6 +73408,11 @@ PrefabInstance:
       propertyPath: enemyName
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc, type: 3}
 --- !u!1001 &4526065036562134923
@@ -73944,6 +73973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
