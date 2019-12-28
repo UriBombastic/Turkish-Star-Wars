@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50389ab3bdd7f2c4eac37f9d35a46212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Enemy
+  enemyName: Skeleton
   initialHealth: 100
   health: 100
   healthCanvas: {fileID: 415423116}
@@ -594,7 +594,7 @@ MonoBehaviour:
   nameText: {fileID: 813747430}
   attackTransform: {fileID: 1415866653}
   MoveForce: 5
-  RotateSpeed: 4
+  RotateSpeed: 3.5
   BasicAttackDamage: 5
   BasicAttackReach: 2
   BasicAttackForce: 150
@@ -602,7 +602,7 @@ MonoBehaviour:
   BasicAttackStartup: 0.5
   DamageRecoverTime: 1
   ViewRange: 30
-  AttackRange: 3
+  AttackRange: 2
   AnimationTriggers: []
   deathSound: {fileID: 8300000, guid: aa1fff4ee6a205742bb5766288baf6e6, type: 3}
   state_: 0

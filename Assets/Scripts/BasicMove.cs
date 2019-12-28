@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicRotate : MonoBehaviour
+public class BasicMove : MonoBehaviour
 {
     public Vector3 moveDirection;
     void Update()
     {
-        transform.Rotate(moveDirection);
+        transform.Translate(moveDirection);
     }
 }

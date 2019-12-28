@@ -17,6 +17,14 @@ public class CutScene : MonoBehaviour
     public GameObject [] subsections;
     public float [] subsectionDelays;
     public GameObject[] EndSequenceActivations;
+    public EndMode endMode = EndMode.None;
+    public enum EndMode
+    {
+        None,
+        SelfDestruct,
+        BeginLevel,
+        EndLevel
+    }
     //public List<GameObject[]> subsectionObjects;
     //public List<float[]> subsectionObjectDelays;
 
@@ -65,18 +73,32 @@ public class CutScene : MonoBehaviour
             if (subsections[i] != null)
             {
                 subsections[i].SetActive(true); //activate current
-                if (subsections[i].GetComponent<CutScene>() != null)
+             /*   if (subsections[i].GetComponent<CutScene>() != null)
                 {
                     subsectionDelays[i] = subsections[i].GetComponent<CutScene>().TotalSubsectLength();
                     Debug.Log("Set subsection " + i + " to " + subsectionDelays[i]);
-                }
+                }*/
             }
             yield return new WaitForSeconds(subsectionDelays[i]);
         }
-      //  subsections[subsections.Length - 1].SetActive(false); //deactivate last subsection
-
+        //  subsections[subsections.Length - 1].SetActive(false); //deactivate last subsection
+        End();
     }
 
+    public void End()
+    {
+        switch (endMode)
+        {
+            case EndMode.SelfDestruct:
+                Destroy(this);
+                break;
+            case EndMode.BeginLevel:
+                for (int i = 0; i < EndSequenceActivations.Length; i++)
+                    EndSequenceActivations[i].SetActive(true);
+                gameObject.SetActive(false);
+                break;
+        }
+    }
     public float TotalSubsectLength()
     {
         float total = 0;

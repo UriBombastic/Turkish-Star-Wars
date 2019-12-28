@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour, IDamageable
     void Start()
     {
         health = initialHealth;
-        if (nameText != null) nameText.text = name;
+        if (nameText != null) nameText.text = enemyName;
         player = FindObjectOfType<HeroController>();
         playerTransform = player.transform;
     }
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual IEnumerator Attack()
     {
-        Debug.Log(name + " is Attacking!");
+      //  Debug.Log(name + " is Attacking!");
         state_ = State.ATTACKING;
         yield return new WaitForSeconds(BasicAttackStartup);
         if (state_ != State.DAMAGED)
