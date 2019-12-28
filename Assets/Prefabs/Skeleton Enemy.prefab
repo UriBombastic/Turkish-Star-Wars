@@ -533,7 +533,7 @@ Transform:
   m_GameObject: {fileID: 2266363295403325670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2663879, y: 0.00000023841858, z: -2.3052368}
-  m_LocalScale: {x: 1.2, y: 0.8, z: 1.2}
+  m_LocalScale: {x: 1.5, y: 0.8, z: 1.2}
   m_Children:
   - {fileID: 7715301544899434674}
   - {fileID: 3858516773405848392}
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50389ab3bdd7f2c4eac37f9d35a46212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Skeleton
+  enemyName: Enemy
   initialHealth: 100
   health: 100
   healthCanvas: {fileID: 415423116}
@@ -594,6 +594,7 @@ MonoBehaviour:
   nameText: {fileID: 813747430}
   attackTransform: {fileID: 1415866653}
   MoveForce: 5
+  RotateSpeed: 4
   BasicAttackDamage: 5
   BasicAttackReach: 2
   BasicAttackForce: 150
@@ -602,6 +603,7 @@ MonoBehaviour:
   DamageRecoverTime: 1
   ViewRange: 30
   AttackRange: 3
+  AnimationTriggers: []
   deathSound: {fileID: 8300000, guid: aa1fff4ee6a205742bb5766288baf6e6, type: 3}
   state_: 0
   displaySword: {fileID: 2266363295722229812}

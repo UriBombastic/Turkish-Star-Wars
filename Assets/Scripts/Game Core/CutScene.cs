@@ -62,11 +62,28 @@ public class CutScene : MonoBehaviour
          //   Debug.Log("Handling subsection " + i);
             if (i != 0)
                 if(subsections[i-1]!=null)subsections[i - 1].SetActive(false);//deactivate previous
-            if(subsections[i]!=null)subsections[i].SetActive(true); //activate current
+            if (subsections[i] != null)
+            {
+                subsections[i].SetActive(true); //activate current
+                if (subsections[i].GetComponent<CutScene>() != null)
+                {
+                    subsectionDelays[i] = subsections[i].GetComponent<CutScene>().TotalSubsectLength();
+                    Debug.Log("Set subsection " + i + " to " + subsectionDelays[i]);
+                }
+            }
             yield return new WaitForSeconds(subsectionDelays[i]);
         }
       //  subsections[subsections.Length - 1].SetActive(false); //deactivate last subsection
 
+    }
+
+    public float TotalSubsectLength()
+    {
+        float total = 0;
+        for (int i = 0; i < subsectionDelays.Length; i++)
+            total += subsectionDelays[i];
+
+        return total;
     }
 
     
