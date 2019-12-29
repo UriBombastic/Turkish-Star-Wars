@@ -905,6 +905,8 @@ MonoBehaviour:
   JumpForce: 350
   DashForce: 1000
   DashCoolDown: 1
+  AttackParticleEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+    type: 3}
   BasicAttackStartDelay: 0
   BasicAttackSpeed: 2
   JumpAttackDelay: 1
@@ -919,13 +921,13 @@ MonoBehaviour:
   DashAttackRadius: 3.5
   DashAttackForce: 1000
   CounterRadius: 4
-  CounterForce: 850
+  CounterForce: 700
   BasicAttackTransform: {fileID: 1351875628}
   JumpAttackTransform: {fileID: 885408810}
   shieldImage: {fileID: 1900544756}
   maxOpacity: 0.5
   ShieldPower: 0
-  maxShieldTime: 0.25
+  maxShieldTime: 0.5
   shieldDegradeFactor: 60
   ShieldCoolDown: 0.25
   HealthBar: {fileID: 1701285733}
@@ -945,7 +947,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dbad578063107e74b93f1e90bfe9cc27, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1045,8 +1047,8 @@ MonoBehaviour:
   XSensitivity: 1
   YSensitivity: 1
   clampRotation: 1
-  MinimumX: -45
-  MaximumX: 45
+  MinimumX: -90
+  MaximumX: 90
   MinimumY: -180
   MaximumY: 180
 --- !u!1001 &1700784484820481047

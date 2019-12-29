@@ -13,6 +13,7 @@ public class HeroController : MonoBehaviour, IDamageable
     public float JumpForce = 500f;
     public float DashForce = 2000f;
     public float DashCoolDown = 1.0f;
+    public GameObject AttackParticleEffect;
     public float BasicAttackStartDelay = 0.0f;
     public float BasicAttackSpeed = 2f; //basic attacks per second
     public float JumpAttackDelay = 1.0f;
@@ -343,7 +344,7 @@ public class HeroController : MonoBehaviour, IDamageable
             }
 
         }
-
+        if (AttackParticleEffect != null) Instantiate(AttackParticleEffect, t);
     }
 
     void PlayAttackAudio()
