@@ -29,6 +29,8 @@ public class HeroController : MonoBehaviour, IDamageable
     public float DashAttackForce = 1000f;
     public float CounterRadius = 4.0f;
     public float CounterForce = 850f;
+    public float recoverTime = 0.5f;
+    public bool isRecovering = false;
     public Transform BasicAttackTransform;
     public Transform JumpAttackTransform;
 
@@ -356,18 +358,30 @@ public class HeroController : MonoBehaviour, IDamageable
     //IDamageable requirements. We don't want to be invincible now
     public void Damage(float damageToDo, Vector3 knockbackToDo)
     {
-        health -= damageToDo * (1f-ShieldPower);
         if (ShieldPower == 1)
-            Counter(); 
+            Counter();
+        rb.AddForce(knockbackToDo);
+        if (isRecovering) return;
+        float realDamageToDo = damageToDo * (1f - ShieldPower);
+        health -= realDamageToDo;
+        if (realDamageToDo > 0)
+            StartCoroutine(DamageDelay());
         UpdateHealthBar();
        // PlayDamageSound();
-        rb.AddForce(knockbackToDo);
+
         if (health <= 0) Kill();
+    }
+
+    public IEnumerator DamageDelay()
+    {
+        isRecovering = true;
+        yield return new WaitForSeconds(recoverTime);
+        isRecovering = false;
     }
 
     void UpdateHealthBar()
     {
-        HealthText.text = health + " / " + maxHealth;
+        HealthText.text = Mathf.Round(health*10)/10 + " / " + maxHealth;
         HealthBar.fillAmount = health / maxHealth;
     }
 
