@@ -62,7 +62,10 @@ public class GameMaster : MonoBehaviour
         if(CurrentObjective == LevelObjective.KillAllEnemies)
         {
             if (EnemyKillCount == EnemiestToKill)
+            {
                 LevelEndGoal.SetActive(true);
+                if (ShowLevelComplete) LevelCompleteUI.SetActive(true);
+            }
         }
     }
 

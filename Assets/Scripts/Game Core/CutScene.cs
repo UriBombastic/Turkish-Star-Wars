@@ -73,11 +73,6 @@ public class CutScene : MonoBehaviour
             if (subsections[i] != null)
             {
                 subsections[i].SetActive(true); //activate current
-             /*   if (subsections[i].GetComponent<CutScene>() != null)
-                {
-                    subsectionDelays[i] = subsections[i].GetComponent<CutScene>().TotalSubsectLength();
-                    Debug.Log("Set subsection " + i + " to " + subsectionDelays[i]);
-                }*/
             }
             yield return new WaitForSeconds(subsectionDelays[i]);
         }
@@ -87,6 +82,7 @@ public class CutScene : MonoBehaviour
 
     public void End()
     {
+        NarrationTextBox.gameObject.SetActive(false);
         switch (endMode)
         {
             case EndMode.SelfDestruct:
