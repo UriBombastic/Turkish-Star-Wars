@@ -15,8 +15,10 @@ public class CutScene : MonoBehaviour
     public float[] dialogueDelays;
     int subsectionIndex = 0;
     public GameObject [] subsections;
+    public GameObject[] objectsToDeactivate;
     public float [] subsectionDelays;
     public GameObject[] EndSequenceActivations;
+    public bool doRollingDeactivate = true;
     public EndMode endMode = EndMode.None;
     public enum EndMode
     {
@@ -36,6 +38,7 @@ public class CutScene : MonoBehaviour
             Debug.LogError("Uh oh! Stinky! Poopy! Subsections length isn't equal to subsection delays length!");
         if (dialogueTexts.Length != dialogueDelays.Length)
             Debug.LogError("Uh oh! Stinky! Poopy! Dialogues length isn't equal to dialogue delays length!");
+        if (doRollingDeactivate) objectsToDeactivate = subsections;
         StartCoroutine(SectionsSequence());
         StartCoroutine(TextSequence());
     }
@@ -43,19 +46,29 @@ public class CutScene : MonoBehaviour
     public void InitializeDialogueTexts()
     {
         if (CutsceneName == "") return;
-        string filename = CutsceneName + GameMaster.language;
-        TextAsset fileText = Resources.Load("Dialogue/" + filename) as TextAsset;
+        //string filename = CutsceneName + GameMaster.language;
+        TextAsset fileText = Resources.Load(string.Format("Dialogue/{0}/{1}", GameMaster.language, CutsceneName)) as TextAsset;
         dialogueTexts = fileText.text.Split('\n');
-
-       // for (int i = 0; i < dialogueTexts.Length; i++)
-         //   Debug.Log(dialogueTexts[i]);
     }
-
+  
     public IEnumerator TextSequence()
     {
         if (dialogueTexts.Length == 0 || NarrationTextBox == null) yield break;
         for (int i = 0; i < dialogueTexts.Length; i++)
         {
+            if (dialogueTexts[i].Contains("&")) //if includes a character name for image setting
+            {
+                string[] tokens = dialogueTexts[i].Split('&');
+                dialogueTexts[i] = tokens[0]; //the actual dialogue
+                string name = tokens[1];
+                Sprite profile = Resources.Load<Sprite>(string.Format("Sprites/{0}",name));
+                CharacterImage.sprite = profile;
+                CharacterImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                CharacterImage.gameObject.SetActive(false);
+            }
             NarrationTextBox.text = dialogueTexts[i];
             yield return new WaitForSeconds(dialogueDelays[i]);
         }
@@ -69,7 +82,7 @@ public class CutScene : MonoBehaviour
         {
          //   Debug.Log("Handling subsection " + i);
             if (i != 0)
-                if(subsections[i-1]!=null)subsections[i - 1].SetActive(false);//deactivate previous
+                if(objectsToDeactivate[i-1]!=null)objectsToDeactivate[i - 1].SetActive(false);//deactivate previous
             if (subsections[i] != null)
             {
                 subsections[i].SetActive(true); //activate current
@@ -91,6 +104,7 @@ public class CutScene : MonoBehaviour
             case EndMode.BeginLevel:
                 for (int i = 0; i < EndSequenceActivations.Length; i++)
                     EndSequenceActivations[i].SetActive(true);
+                CharacterImage.gameObject.SetActive(false);
                 GameMaster.Instance.StartLevel();
                 gameObject.SetActive(false);
                 break;
