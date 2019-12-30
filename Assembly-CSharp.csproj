@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Game Core\CutScene.cs" />
      <Compile Include="Assets\Scripts\Game Core\GameMaster.cs" />
      <Compile Include="Assets\Scripts\Game Core\IDamageable.cs" />
+     <Compile Include="Assets\Scripts\LevelGoal.cs" />
      <Compile Include="Assets\Scripts\Player\HeroController.cs" />
      <Compile Include="Assets\Scripts\Player\HeroState.cs" />
      <Compile Include="Assets\Scripts\Player\LookDirectionController.cs" />

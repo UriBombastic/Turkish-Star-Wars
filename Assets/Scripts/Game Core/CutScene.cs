@@ -95,6 +95,7 @@ public class CutScene : MonoBehaviour
             case EndMode.BeginLevel:
                 for (int i = 0; i < EndSequenceActivations.Length; i++)
                     EndSequenceActivations[i].SetActive(true);
+                GameMaster.Instance.StartLevel();
                 gameObject.SetActive(false);
                 break;
         }

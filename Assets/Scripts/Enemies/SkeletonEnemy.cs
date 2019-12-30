@@ -9,6 +9,7 @@ public class SkeletonEnemy : Enemy
     public float AttackRotateSpeed = 10f;
     public override void Kill()
     {
+        base.Kill();
         PlayDeathSound();
         rb.constraints = RigidbodyConstraints.None;
         Destroy(healthCanvas);

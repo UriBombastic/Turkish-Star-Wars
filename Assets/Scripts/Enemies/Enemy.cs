@@ -206,17 +206,15 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Kill()
     {
-        Debug.Log("Oh no, I am dead.\n" + name);
-        Destroy(gameObject);
+        GameMaster.Instance.IncrementEnemyKillCount();
     }
+
     //essentially making it so that not every instance of animating has to do a null check, 
     //as well as allowing this method to be within the base Enemy class.
-    protected void Animate(string trigger, bool doReset = true)
+    protected void Animate(string trigger)
     {
         if (animator == null) return; //duh
-     //   if (doReset) ResetAllAnimations(trigger);
        animator.SetTrigger(trigger);
-        //animator.Play(trigger);
     }
 
     protected void ResetAllAnimations(string excluded = "")
