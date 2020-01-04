@@ -7,23 +7,28 @@ using TMPro;
 
 public class HeroController : MonoBehaviour, IDamageable
 {
+    //health
     public float maxHealth = 100f;
     public float health = 100f;
+    //movement
     public float WalkForce = 20f;
     public float JumpForce = 500f;
     public float DashForce = 2000f;
     public float DashCoolDown = 1.0f;
+
+    //attacks
     public GameObject AttackParticleEffect;
+    public float AttackDamageMultiplier = 1.0f; //variable to be upgraded
     public float BasicAttackStartDelay = 0.0f;
     public float BasicAttackSpeed = 2f; //basic attacks per second
-    public float JumpAttackDelay = 1.0f;
-    public float DashAttackDelay = 1.0f; //cooldown invoked by Dash Attack
     public float BasicAttackDamage = 10f;
     public float BasicAttackRadius = 3.0f;
     public float BasicAttackForce = 100f;
+    public float JumpAttackDelay = 1.0f;
     public float JumpAttackDamage = 15f;
     public float JumpAttackRadius = 4.5f;
     public float JumpAttackForce = 400f;
+    public float DashAttackDelay = 1.0f; //cooldown invoked by Dash Attack
     public float DashAttackDamage = 15f;
     public float DashAttackRadius = 4.0f;
     public float DashAttackForce = 1000f;
@@ -36,6 +41,7 @@ public class HeroController : MonoBehaviour, IDamageable
 
     //Shielding
     public Image shieldImage;
+    public int ShieldLevel = 0;
     public float maxOpacity = 0.5f;
     public float ShieldPower = 0f;
     public float maxShieldTime = 0.25f;
@@ -46,11 +52,15 @@ public class HeroController : MonoBehaviour, IDamageable
     //Health
     public Image HealthBar;
     public TextMeshProUGUI HealthText;
-
+    
+    //child components
     private Rigidbody rb;
     private AudioSource aud;
+    
+    //movement shit
     [SerializeField]
     private float h, v;
+    //State enum
     public enum State
     {
         IDLE,
@@ -253,7 +263,7 @@ public class HeroController : MonoBehaviour, IDamageable
     void BasicAttack()
     {
         PlayAttackAudio();
-        FundamentalAttack(BasicAttackDamage, BasicAttackRadius, BasicAttackForce, BasicAttackTransform);
+        FundamentalAttack(BasicAttackDamage * AttackDamageMultiplier, BasicAttackRadius, BasicAttackForce, BasicAttackTransform);
     }
 
     IEnumerator JumpAttackTiming()
@@ -268,7 +278,7 @@ public class HeroController : MonoBehaviour, IDamageable
     void JumpAttack()
     {
         PlayAttackAudio();
-        FundamentalAttack(JumpAttackDamage, JumpAttackRadius, JumpAttackForce, JumpAttackTransform);
+        FundamentalAttack(JumpAttackDamage *AttackDamageMultiplier, JumpAttackRadius, JumpAttackForce, JumpAttackTransform);
     }
 
     IEnumerator DashAttackTiming()
@@ -283,7 +293,7 @@ public class HeroController : MonoBehaviour, IDamageable
     void DashAttack()
     {
         PlayAttackAudio();
-        FundamentalAttack(DashAttackDamage, DashAttackRadius, DashAttackForce, BasicAttackTransform);
+        FundamentalAttack(DashAttackDamage*AttackDamageMultiplier, DashAttackRadius, DashAttackForce, BasicAttackTransform);
     }
 
     IEnumerator BlockTiming()
