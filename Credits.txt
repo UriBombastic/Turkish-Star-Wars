@@ -47,7 +47,8 @@ Indiana Jones Theme:
 https://www.youtube.com/watch?v=-bTpp8PQSog
 
 Robot with Gun:
-https://www.turbosquid.com/FullPreview/Index.cfm/ID/505619
+Robot: https://www.turbosquid.com/FullPreview/Index.cfm/ID/505619
+Gun: https://www.turbosquid.com/FullPreview/Index.cfm/ID/1300974
 
 Gorilla:
 Unity ASset Store, "Gorilla Character"
