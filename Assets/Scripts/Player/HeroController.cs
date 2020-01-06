@@ -89,12 +89,22 @@ public class HeroController : MonoBehaviour, IDamageable
         HealthBar.fillAmount = health / maxHealth;
     }
 
+
+
     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameMaster.TogglePause();
+
+    }
+
+    void FixedUpdate()
     {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
         HandleInput();
     }
+
 
     void HandleInput()
     {

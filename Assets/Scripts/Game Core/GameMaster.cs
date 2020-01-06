@@ -41,6 +41,7 @@ public class GameMaster : MonoBehaviour
     //statics
     public static bool AllowTerribleNoises;
     private static HeroController savedPlayer;
+    public static bool isPaused;
 
     //player
     private HeroController _player;
@@ -67,8 +68,9 @@ public class GameMaster : MonoBehaviour
     //upgrade UI
     public UpgradePlayer upgradeUI;
 
-    //misc
-    public bool isPaused;
+    //pause menu
+    public GameObject PauseMenu;
+    public bool CanPause = true;
 
     public void Awake()
     {
@@ -109,22 +111,31 @@ public class GameMaster : MonoBehaviour
     {
         Debug.Log("Level Ended!");
         Pause(true);
+        CanPause = false;
         upgradeUI.gameObject.SetActive(true);
        // LoadNextLevel();
     }
 
-    public void Pause(bool tf) //true for pause, false for unpause
+    public static void TogglePause()
     {
+        Instance.Pause(!isPaused, true);
+    }
+
+    public void Pause(bool tf, bool showPauseMenu = false) //true for pause, false for unpause
+    {
+        if (!CanPause) return;
         if (LDC == null) LDC = FindObjectOfType<LookDirectionController>();
         if(LDC!=null)LDC.enabled = !tf;
         Time.timeScale = (tf ? 0f : 1f);
         Cursor.lockState = (tf ? CursorLockMode.None : CursorLockMode.Locked);
-        
+        isPaused = tf;
+        LevelGoalDisplay.SetActive(tf);
+        if (showPauseMenu) PauseMenu.SetActive(tf);
     }
 
-    public void HealPlayer()
+    public void HealPlayer(float amount = 0.5f)
     {
-        _player.health = Mathf.Max(_player.maxHealth, _player.health + _player.maxHealth * 0.5f);
+        _player.health = Mathf.Max(_player.maxHealth, _player.health + _player.maxHealth * amount);
     }
 
     public static void LoadNextLevel()
@@ -141,4 +152,16 @@ public class GameMaster : MonoBehaviour
     {
         Instance._player = savedPlayer;
     }
+
+    public void Save()
+    {
+
+    }
+
+    public void ExitGame()
+    {
+        Save();
+        Application.Quit();
+    }
+
 }

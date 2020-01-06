@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour, IDamageable
         playerTransform = player.transform;
     }
 
-    protected virtual void Update() //base functions of all enemies
+    protected virtual void FixedUpdate() //base functions of all enemies
     {
     switch(state_)
         {
