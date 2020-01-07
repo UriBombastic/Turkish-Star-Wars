@@ -32,7 +32,7 @@ public class UpgradePlayer : MonoBehaviour
     {
         pointsText.text = Points.ToString();
         atkVariable.text = player.BasicAttackDamage * player.AttackDamageMultiplier + "";
-        healthVariable.text = player.health.ToString();
+        healthVariable.text = player.maxHealth.ToString();
         shieldVariable.text = player.ShieldLevel.ToString();
     }
 
@@ -49,7 +49,7 @@ public class UpgradePlayer : MonoBehaviour
         if (Points <= 0) return;
         player.maxHealth += HealthUpgradeAmount;
         player.health += HealthUpgradeAmount;
-        healthVariable.text = player.health.ToString();
+        healthVariable.text = player.maxHealth.ToString();
         SubtractPoint();
     }
 
@@ -81,7 +81,7 @@ public class UpgradePlayer : MonoBehaviour
     public void OnNextLevel()
     {
         GameMaster.UploadPlayer();
-        GameMaster.Instance.LoadNextLevel();
+        GameMaster.LoadNextLevel();
     }
 
 }

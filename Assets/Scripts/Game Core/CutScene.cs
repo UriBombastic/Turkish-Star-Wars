@@ -122,6 +122,9 @@ public class CutScene : MonoBehaviour
                 GameMaster.Instance.StartLevel();
                 gameObject.SetActive(false);
                 break;
+            case EndMode.EndLevel:
+                GameMaster.LoadNextLevel();
+                break;
         }
     }
     public float TotalSubsectLength()

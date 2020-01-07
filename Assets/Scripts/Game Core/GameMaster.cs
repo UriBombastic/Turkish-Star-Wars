@@ -18,7 +18,7 @@ public class GameMaster : MonoBehaviour
     }
 
     //level handling
-    private static string[] levels = { "01.DesertFight", "02.Captured" };
+    private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena" };
     private static int LevelIndex = 0;
 
     //enums
@@ -155,13 +155,13 @@ public class GameMaster : MonoBehaviour
         SceneManager.LoadScene("01.DesertFight");
     }
 
-    public void LoadNextLevel()
+    public static void LoadNextLevel()
     {
         LevelIndex++;
         LoadCurrentLevel();
     }
 
-    public void LoadCurrentLevel()
+    public static void LoadCurrentLevel()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(levels[LevelIndex]); 
