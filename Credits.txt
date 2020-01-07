@@ -52,3 +52,7 @@ Gun: https://www.turbosquid.com/FullPreview/Index.cfm/ID/1300974
 
 Gorilla:
 Unity ASset Store, "Gorilla Character"
+
+"You Died":
+Originally from Dark souls
+Extracted from: https://www.youtube.com/watch?v=-ZGlaAxB7nI

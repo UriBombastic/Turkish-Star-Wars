@@ -81,6 +81,7 @@ public class UpgradePlayer : MonoBehaviour
     public void OnNextLevel()
     {
         GameMaster.UploadPlayer();
+        GameMaster.Instance.LoadNextLevel();
     }
 
 }

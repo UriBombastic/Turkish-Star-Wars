@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class GameMaster : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class GameMaster : MonoBehaviour
             return _instance;
         }
     }
+
+    //level handling
+    private static string[] levels = { "01.DesertFight", "02.Captured" };
+    private static int LevelIndex = 0;
 
     //enums
     public enum Language
@@ -65,6 +70,9 @@ public class GameMaster : MonoBehaviour
     public bool ShowLevelComplete;
     public GameObject LevelCompleteUI;
 
+    //Deaths
+    public GameObject DeathScreen;
+
     //upgrade UI
     public UpgradePlayer upgradeUI;
 
@@ -72,16 +80,24 @@ public class GameMaster : MonoBehaviour
     public GameObject PauseMenu;
     public bool CanPause = true;
 
+    //starting functions
     public void Awake()
     {
         _player = FindObjectOfType<HeroController>();
         LDC = FindObjectOfType<LookDirectionController>();
     }
 
+    public void StartLevel()
+    {
+        if (CurrentObjective != LevelObjective.None)
+            StartCoroutine(ObjectivesFlash());
+    }
+
+    //objectives funcitons
     public void IncrementEnemyKillCount()
     {
         EnemyKillCount++;
-        if(CurrentObjective == LevelObjective.KillAllEnemies)
+        if (CurrentObjective == LevelObjective.KillAllEnemies)
         {
             if (EnemyKillCount == EnemiestToKill)
             {
@@ -91,13 +107,8 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    public void StartLevel()
-    {
-        if (CurrentObjective != LevelObjective.None)
-            StartCoroutine(ObjectivesFlash());
-    }
 
-   IEnumerator ObjectivesFlash()
+    IEnumerator ObjectivesFlash()
     {
         LevelGoalDisplay.SetActive(true);
         yield return new WaitForSeconds(GoalDisplayStartTime);
@@ -107,15 +118,7 @@ public class GameMaster : MonoBehaviour
 
     }
 
-    public void EndLevel()
-    {
-        Debug.Log("Level Ended!");
-        Pause(true);
-        CanPause = false;
-        upgradeUI.gameObject.SetActive(true);
-       // LoadNextLevel();
-    }
-
+    //pause
     public static void TogglePause()
     {
         Instance.Pause(!isPaused, true);
@@ -129,7 +132,7 @@ public class GameMaster : MonoBehaviour
         Time.timeScale = (tf ? 0f : 1f);
         Cursor.lockState = (tf ? CursorLockMode.None : CursorLockMode.Locked);
         isPaused = tf;
-        LevelGoalDisplay.SetActive(tf);
+        if(showPauseMenu)LevelGoalDisplay.SetActive(tf);
         if (showPauseMenu) PauseMenu.SetActive(tf);
     }
 
@@ -138,9 +141,25 @@ public class GameMaster : MonoBehaviour
         _player.health = Mathf.Max(_player.maxHealth, _player.health + _player.maxHealth * amount);
     }
 
-    public static void LoadNextLevel()
+    //level transitions
+    public void EndLevel()
     {
+        Debug.Log("Level Ended!");
+        Pause(true);
+        CanPause = false;
+        upgradeUI.gameObject.SetActive(true);
+    }
 
+    public void LoadNextLevel()
+    {
+        LevelIndex++;
+        LoadCurrentLevel();
+    }
+
+    public void LoadCurrentLevel()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(levels[LevelIndex]); 
     }
 
     public static void UploadPlayer()
@@ -153,9 +172,17 @@ public class GameMaster : MonoBehaviour
         Instance._player = savedPlayer;
     }
 
+    //death
+    public void HandleDeath()
+    {
+        Pause(true);
+        Instance.DeathScreen.SetActive(true);
+    }
+
+    //termination functions
     public void Save()
     {
-
+ 
     }
 
     public void ExitGame()

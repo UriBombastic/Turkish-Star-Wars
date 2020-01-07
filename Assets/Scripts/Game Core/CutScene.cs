@@ -93,6 +93,20 @@ public class CutScene : MonoBehaviour
         End();
     }
 
+    public void Update()
+    {
+        if (endMode == EndMode.BeginLevel) //allow breaking cutscenes to begin level
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) 
+            {
+                StopAllCoroutines(); //stop the sequence
+                for (int i = 0; i < subsections.Length; i++) //deactivate all subsections
+                    subsections[i].SetActive(false);
+                End();
+            }
+        }
+    }
+
     public void End()
     {
         NarrationTextBox.gameObject.SetActive(false);

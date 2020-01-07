@@ -408,6 +408,8 @@ public class HeroController : MonoBehaviour, IDamageable
     public void Kill()
     {
         Debug.Log("You are Dead!");
+        rb.constraints = RigidbodyConstraints.None;
+        GameMaster.Instance.HandleDeath();
     }
 }
 
