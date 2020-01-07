@@ -56,3 +56,6 @@ Unity ASset Store, "Gorilla Character"
 "You Died":
 Originally from Dark souls
 Extracted from: https://www.youtube.com/watch?v=-ZGlaAxB7nI
+
+Turkish Star Wars Poster:
+https://io9.gizmodo.com/the-legendary-cult-movie-known-as-turkish-star-wars-now-1825502041

@@ -150,6 +150,11 @@ public class GameMaster : MonoBehaviour
         upgradeUI.gameObject.SetActive(true);
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene("01.DesertFight");
+    }
+
     public void LoadNextLevel()
     {
         LevelIndex++;
