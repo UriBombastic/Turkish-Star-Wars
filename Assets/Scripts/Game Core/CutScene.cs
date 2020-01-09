@@ -33,6 +33,7 @@ public class CutScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         InitializeDialogueTexts();
         if (subsections.Length != subsectionDelays.Length)
             Debug.LogError("Uh oh! Stinky! Poopy! Subsections length isn't equal to subsection delays length!");
