@@ -131,6 +131,7 @@ public class GameMaster : MonoBehaviour
         if(LDC!=null)LDC.enabled = !tf;
         Time.timeScale = (tf ? 0f : 1f);
         Cursor.lockState = (tf ? CursorLockMode.None : CursorLockMode.Locked);
+        Cursor.visible = tf;
         isPaused = tf;
         if(showPauseMenu)LevelGoalDisplay.SetActive(tf);
         if (showPauseMenu) PauseMenu.SetActive(tf);
