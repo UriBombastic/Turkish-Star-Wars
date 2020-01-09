@@ -183,6 +183,7 @@ public class GameMaster : MonoBehaviour
     {
         Pause(true);
         Instance.DeathScreen.SetActive(true);
+        CanPause = false;
     }
 
     //termination functions

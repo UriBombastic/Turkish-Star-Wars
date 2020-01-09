@@ -19,7 +19,7 @@ public class YetiEnemy : Enemy
     protected override void HandleDistances()
     {
         base.HandleDistances();
-        Vector3 playerPosition = playerTransform.position;
+        Vector3 playerPosition = targetTransform.position;
         float distance = Vector3.Distance(transform.position, playerPosition);
         if (distance > ViewRange && distance > AttackRange)
             Animate("Idle");

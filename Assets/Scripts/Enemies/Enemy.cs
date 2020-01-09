@@ -31,9 +31,13 @@ public class Enemy : MonoBehaviour, IDamageable
     protected AudioSource aud;
     protected HeroController player;
     protected Transform playerTransform;
+    protected Transform targetTransform;
+    public List<Transform> potentialTargets;
     protected Animator animator;
     public string[] AnimationTriggers;
     public AudioClip deathSound;
+
+    public bool DoIndiscriminateAttack = false;
 
     public enum State
     {
@@ -53,12 +57,18 @@ public class Enemy : MonoBehaviour, IDamageable
         animator = GetComponentInChildren<Animator>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         health = initialHealth;
         if (nameText != null) nameText.text = enemyName;
         player = FindObjectOfType<HeroController>();
         playerTransform = player.transform;
+        IdentifyTarget();
+    }
+
+    protected virtual void IdentifyTarget()
+    {
+        targetTransform = player.transform;
     }
 
     protected virtual void FixedUpdate() //base functions of all enemies
@@ -93,8 +103,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void HandleDistances() //determine behavior based off player distance
     {
-        Vector3 playerPosition = playerTransform.position;
-        float distance = Vector3.Distance(transform.position, playerPosition);
+        Vector3 targetPosition = targetTransform.position;
+        float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance <= AttackRange)
             state_ = State.AGGRESSION;
         else if (distance <= ViewRange)
@@ -105,7 +115,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void HandlePlayerInView()
     {
-        Vector3 playerAngle = (playerTransform.position - transform.position);
+        Vector3 playerAngle = (targetTransform.position - transform.position);
         playerAngle.Normalize();
         Vector3 lookAngle = new Vector3(playerAngle.x, 0, playerAngle.z);
         Quaternion lookRotation = Quaternion.LookRotation(lookAngle);
@@ -127,6 +137,9 @@ public class Enemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(BasicAttackStartup);
         if (state_ != State.DAMAGED)
         {
+            if (DoIndiscriminateAttack)
+            IndiscriminateAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform);
+            else
             FundamentalAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform);
             yield return new WaitForSeconds(BasicAttackCooldown);
             state_ = State.IDLE;
@@ -149,6 +162,24 @@ public class Enemy : MonoBehaviour, IDamageable
             }
     }
 
+    void IndiscriminateAttack(float damageToDo, float radius, float attackForce, Transform t)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(t.position, radius);
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            if (hitColliders[i].transform != this.transform) //don't hit yourself lol
+            {
+                Debug.Log(hitColliders[i].name);
+                if (hitColliders[i].GetComponent<IDamageable>() != null)
+                {
+                    Vector3 attackVector = hitColliders[i].transform.position - transform.position;
+                    attackVector.Normalize();
+                    Debug.Log("The strike lands");
+                    hitColliders[i].GetComponent<IDamageable>().Damage(damageToDo, attackVector * attackForce);
+                }
+            }
+        }
+    }
 
     public void Damage(float damage)
     {

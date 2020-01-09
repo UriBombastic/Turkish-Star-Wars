@@ -534,8 +534,10 @@ MonoBehaviour:
   DamageRecoverTime: 1
   ViewRange: 35
   AttackRange: 3
+  potentialTargets: []
   AnimationTriggers: []
   deathSound: {fileID: 8300000, guid: aa1fff4ee6a205742bb5766288baf6e6, type: 3}
+  DoIndiscriminateAttack: 0
   state_: 0
 --- !u!82 &8109911719799401829
 AudioSource:
@@ -593,7 +595,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

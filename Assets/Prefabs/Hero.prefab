@@ -564,7 +564,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1900544754
@@ -905,26 +905,30 @@ MonoBehaviour:
   JumpForce: 350
   DashForce: 1000
   DashCoolDown: 1
-  AttackParticleEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+  AttackParticleEffect: {fileID: 1725229196547355346, guid: ac46f21961022bd4aaf327a9b081d90f,
     type: 3}
+  AttackDamageMultiplier: 1
   BasicAttackStartDelay: 0
   BasicAttackSpeed: 2
-  JumpAttackDelay: 1
-  DashAttackDelay: 1
   BasicAttackDamage: 10
   BasicAttackRadius: 3
   BasicAttackForce: 350
+  JumpAttackDelay: 1
   JumpAttackDamage: 15
   JumpAttackRadius: 4
   JumpAttackForce: 750
+  DashAttackDelay: 1
   DashAttackDamage: 15
   DashAttackRadius: 3.5
   DashAttackForce: 1000
   CounterRadius: 4
   CounterForce: 700
+  recoverTime: 0.5
+  isRecovering: 0
   BasicAttackTransform: {fileID: 1351875628}
   JumpAttackTransform: {fileID: 885408810}
   shieldImage: {fileID: 1900544756}
+  ShieldLevel: 0
   maxOpacity: 0.5
   ShieldPower: 0
   maxShieldTime: 0.5
