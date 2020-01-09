@@ -14,16 +14,21 @@ public class Gladiator : Enemy, IDamageable
     protected override void HandleDistances()
     {
         base.HandleDistances();
-        Vector3 targetPosition = targetTransform.position;
-        float distance = Vector3.Distance(transform.position, targetPosition);
-        if (distance > ViewRange)
+        if (targetTransform != null)
+        {
+            Vector3 targetPosition = targetTransform.position;
+            float distance = Vector3.Distance(transform.position, targetPosition);
+            if (distance > ViewRange)
+                IdentifyTarget();
+        }
+        else
             IdentifyTarget();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (!targetTransform.GetComponent<HeroController>() && !targetTransform.GetComponent<Gladiator>())
+        if (targetTransform == null || (!targetTransform.GetComponent<HeroController>() && !targetTransform.GetComponent<Gladiator>()))
             IdentifyTarget();
     }
     protected override void IdentifyTarget()

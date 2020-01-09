@@ -103,6 +103,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void HandleDistances() //determine behavior based off player distance
     {
+        if (targetTransform == null) return;
         Vector3 targetPosition = targetTransform.position;
         float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance <= AttackRange)
@@ -169,12 +170,12 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             if (hitColliders[i].transform != this.transform) //don't hit yourself lol
             {
-                Debug.Log(hitColliders[i].name);
+                //Debug.Log(hitColliders[i].name);
                 if (hitColliders[i].GetComponent<IDamageable>() != null)
                 {
                     Vector3 attackVector = hitColliders[i].transform.position - transform.position;
                     attackVector.Normalize();
-                    Debug.Log("The strike lands");
+                   // Debug.Log("The strike lands");
                     hitColliders[i].GetComponent<IDamageable>().Damage(damageToDo, attackVector * attackForce);
                 }
             }
