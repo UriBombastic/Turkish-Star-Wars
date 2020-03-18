@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - DecalDestroyer
     - ExplodingShip
     - GameMaster
+    - Gladiator
     - HeroController
     - LevelGoal
     - LookDirectionController
@@ -362,6 +363,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9996}
     - Class: 114
+      Script: {instanceID: 10124}
+    - Class: 114
       Script: {instanceID: 10222}
     - Class: 114
       Script: {instanceID: 10256}
@@ -379,6 +382,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11208}
     - Class: 114
       Script: {instanceID: 11402}
+    - Class: 114
+      Script: {instanceID: 208744}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -576,7 +581,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: edf20e45a18bf425d80404850d57253b
+      Hash: 5301a79f1d30befec23c1ef2d740f350
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SkeletonEnemy
@@ -642,7 +647,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 64c2c6beba9b2e110d844773fda45166
+      Hash: 28647ba072834472c14d2bd1a25f97c1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: YetiEnemy
@@ -822,7 +827,7 @@ ScriptsOnlyBuild:
     className: BasicRotate
   - hash:
       serializedVersion: 2
-      Hash: 64c2c6beba9b2e110d844773fda45166
+      Hash: 28647ba072834472c14d2bd1a25f97c1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
@@ -946,6 +951,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 28647ba072834472c14d2bd1a25f97c1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Gladiator
   platform: 5
   scenePathNames:
   - Assets/Scenes/00.MainMenu.unity
