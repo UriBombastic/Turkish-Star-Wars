@@ -20,6 +20,9 @@ public class CutScene : MonoBehaviour
     public GameObject[] EndSequenceActivations;
     public bool doRollingDeactivate = true;
     public bool doFreezeEnemies = false;
+    public bool doFreezePlayer = false;
+    [SerializeField]
+    private HeroController player;
     private Enemy[] allEnemies;
     public EndMode endMode = EndMode.None;
     public enum EndMode
@@ -44,6 +47,12 @@ public class CutScene : MonoBehaviour
         if (doRollingDeactivate) objectsToDeactivate = subsections;
         StartCoroutine(SectionsSequence());
         StartCoroutine(TextSequence());
+
+        if (player == null)
+            player = FindObjectOfType<HeroController>();
+
+        if (doFreezePlayer)
+            player.gameObject.SetActive(false);
 
         if (doFreezeEnemies)
             ToggleEnemies(false);
@@ -139,6 +148,8 @@ public class CutScene : MonoBehaviour
         gameObject.SetActive(false);
         if (doFreezeEnemies)
             ToggleEnemies(true);
+        if (doFreezePlayer)
+            player.gameObject.SetActive(true);
     }
 
     public float TotalSubsectLength()

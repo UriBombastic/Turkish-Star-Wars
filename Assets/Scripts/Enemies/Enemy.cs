@@ -55,13 +55,13 @@ public class Enemy : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody>();
         aud = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
+        player = FindObjectOfType<HeroController>();
     }
 
     protected virtual void Start()
     {
         health = initialHealth;
         if (nameText != null) nameText.text = enemyName;
-        player = FindObjectOfType<HeroController>();
         playerTransform = player.transform;
         IdentifyTarget();
     }

@@ -250,6 +250,8 @@ MonoBehaviour:
   - {fileID: 162523648}
   doRollingDeactivate: 1
   doFreezeEnemies: 1
+  doFreezePlayer: 1
+  player: {fileID: 0}
   endMode: 2
 --- !u!4 &27837604
 Transform:
@@ -6434,7 +6436,7 @@ PrefabInstance:
     - target: {fileID: 1700784485506943674, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1700784485506943664, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
