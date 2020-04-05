@@ -5,8 +5,16 @@ using UnityEngine;
 public class BasicMove : MonoBehaviour
 {
     public Vector3 moveDirection;
+    public bool useTransformForward;
     void Update()
     {
-        transform.Translate(moveDirection);
+        if (useTransformForward)
+        {
+            transform.Translate(new Vector3(transform.forward.x * moveDirection.x, transform.forward.y * moveDirection.y, transform.forward.z * moveDirection.z));
+        }
+        else
+        {
+            transform.Translate(moveDirection);
+        }
     }
 }

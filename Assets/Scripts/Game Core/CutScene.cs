@@ -19,6 +19,8 @@ public class CutScene : MonoBehaviour
     public float [] subsectionDelays;
     public GameObject[] EndSequenceActivations;
     public bool doRollingDeactivate = true;
+    public bool doFreezeEnemies = false;
+    private Enemy[] allEnemies;
     public EndMode endMode = EndMode.None;
     public enum EndMode
     {
@@ -42,6 +44,9 @@ public class CutScene : MonoBehaviour
         if (doRollingDeactivate) objectsToDeactivate = subsections;
         StartCoroutine(SectionsSequence());
         StartCoroutine(TextSequence());
+
+        if (doFreezeEnemies)
+            ToggleEnemies(false);
     }
 
     public void InitializeDialogueTexts()
@@ -117,17 +122,25 @@ public class CutScene : MonoBehaviour
                 Destroy(this);
                 break;
             case EndMode.BeginLevel:
-                for (int i = 0; i < EndSequenceActivations.Length; i++)
-                    EndSequenceActivations[i].SetActive(true);
-                CharacterImage.gameObject.SetActive(false);
-                GameMaster.Instance.StartLevel();
-                gameObject.SetActive(false);
+                BeginLevel();
                 break;
             case EndMode.EndLevel:
                 GameMaster.LoadNextLevel();
                 break;
         }
     }
+
+    private void BeginLevel()
+    {
+        for (int i = 0; i < EndSequenceActivations.Length; i++)
+            EndSequenceActivations[i].SetActive(true);
+        CharacterImage.gameObject.SetActive(false);
+        GameMaster.Instance.StartLevel();
+        gameObject.SetActive(false);
+        if (doFreezeEnemies)
+            ToggleEnemies(true);
+    }
+
     public float TotalSubsectLength()
     {
         float total = 0;
@@ -137,5 +150,11 @@ public class CutScene : MonoBehaviour
         return total;
     }
 
+    private void ToggleEnemies(bool On)
+    {
+            if(allEnemies==null)allEnemies = FindObjectsOfType<Enemy>();
+            for (int i = 0; i < allEnemies.Length; i++)
+                allEnemies[i].enabled = On;
+    }
     
 }
