@@ -288,6 +288,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: aa1fff4ee6a205742bb5766288baf6e6, type: 3}
   DoIndiscriminateAttack: 1
   state_: 0
+  animatedTransform: {fileID: 609248005466392392}
 --- !u!54 &609248004720995547
 Rigidbody:
   m_ObjectHideFlags: 0

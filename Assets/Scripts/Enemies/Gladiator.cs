@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gladiator : Enemy, IDamageable
 {
-
+    public Transform animatedTransform;
     protected override void Start()
     {
         base.Start();
@@ -30,6 +30,8 @@ public class Gladiator : Enemy, IDamageable
         base.FixedUpdate();
         if (targetTransform == null || (!targetTransform.GetComponent<HeroController>() && !targetTransform.GetComponent<Gladiator>()))
             IdentifyTarget();
+
+        animatedTransform.rotation = transform.rotation;
     }
     protected override void IdentifyTarget()
     {
@@ -48,7 +50,12 @@ public class Gladiator : Enemy, IDamageable
         float playerDistance = (player.transform.position - transform.position).magnitude;
         if (playerDistance < ViewRange)
             potentialTargets.Add(player.transform);
-        if (potentialTargets.Count == 0) return;
+        if (potentialTargets.Count == 0)
+        {
+            Animate("Idle");
+            return;
+        }
+
         targetTransform = potentialTargets[Random.Range(0, potentialTargets.Count)];
     }
 
@@ -58,13 +65,37 @@ public class Gladiator : Enemy, IDamageable
         PlayDeathSound();
         rb.constraints = RigidbodyConstraints.None;
         Destroy(healthCanvas);
+        Animate("Die");
         Destroy(this);
     }
 
     protected override IEnumerator Attack()
     {
+        //randomly select attack
+        int attackNumber = Random.Range(1, 4);
+        Animate("Attack" + attackNumber);
         yield return new WaitForSeconds(Random.Range(0f, BasicAttackStartup));
        yield return base.Attack();
+        Animate("Idle");
         yield return null;
+    }
+
+    protected override void EnterDamage()
+    {
+        base.EnterDamage();
+        int damageNumber = Random.Range(1, 3);
+        Animate("Damage"+damageNumber);
+    }
+
+    protected override void ExitDamage()
+    {
+        base.ExitDamage();
+        Animate("Idle");
+    }
+
+    protected override void HandlePlayerInView()
+    {
+        base.HandlePlayerInView();
+        Animate("Run");
     }
 }
