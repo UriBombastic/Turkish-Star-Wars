@@ -224,11 +224,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a8426ce1fd2bd4386aafd9d83429e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CutsceneName: 
+  CutsceneName: ArenaIntro
   NarrationTextBox: {fileID: 985912382}
   CharacterImage: {fileID: 561079685}
   dialogueTexts: []
-  dialogueDelays: []
+  dialogueDelays:
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 1.5
+  - 2.5
   subsections:
   - {fileID: 718409153}
   - {fileID: 325273629}
@@ -242,10 +249,10 @@ MonoBehaviour:
   - 2.5
   - 1.25
   - 1.25
-  - 2
-  - 2
-  - 2
-  - 2
+  - 2.5
+  - 2.5
+  - 2.5
+  - 4
   EndSequenceActivations:
   - {fileID: 162523648}
   doRollingDeactivate: 1
