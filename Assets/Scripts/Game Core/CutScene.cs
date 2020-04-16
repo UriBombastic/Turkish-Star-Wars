@@ -69,6 +69,7 @@ public class CutScene : MonoBehaviour
     public IEnumerator TextSequence()
     {
         if (dialogueTexts.Length == 0 || NarrationTextBox == null) yield break;
+        NarrationTextBox.gameObject.SetActive(true);
         for (int i = 0; i < dialogueTexts.Length; i++)
         {
             if (dialogueTexts[i].Contains("&")) //if includes a character name for image setting
@@ -88,6 +89,7 @@ public class CutScene : MonoBehaviour
             yield return new WaitForSeconds(dialogueDelays[i]);
         }
         NarrationTextBox.gameObject.SetActive(false);
+        CharacterImage.gameObject.SetActive(false);
     }
 
     public IEnumerator SectionsSequence()
@@ -125,6 +127,7 @@ public class CutScene : MonoBehaviour
     public void End()
     {
         NarrationTextBox.gameObject.SetActive(false);
+        CharacterImage.gameObject.SetActive(false);
         switch (endMode)
         {
             case EndMode.SelfDestruct:
