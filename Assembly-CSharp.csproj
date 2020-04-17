@@ -71,6 +71,7 @@
      <Compile Include="Assets\Scripts\Player\HeroState.cs" />
      <Compile Include="Assets\Scripts\Player\LookDirectionController.cs" />
      <Compile Include="Assets\Scripts\UpgradePlayer.cs" />
+     <Compile Include="Assets\Third Party\Cattleya\Scripts\DemoScene.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\GunAim.cs" />

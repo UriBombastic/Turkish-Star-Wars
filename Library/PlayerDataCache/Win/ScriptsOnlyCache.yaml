@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AreaTrigger
     - BasicMove
     - BasicRotate
     - CutScene
@@ -23,10 +24,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -82,19 +81,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10598}
     - Class: 114
-      Script: {instanceID: 10806}
+      Script: {instanceID: 10808}
     - Class: 114
-      Script: {instanceID: 10820}
+      Script: {instanceID: 10822}
     - Class: 114
-      Script: {instanceID: 10986}
+      Script: {instanceID: 10988}
     - Class: 114
-      Script: {instanceID: 11046}
+      Script: {instanceID: 11048}
     - Class: 114
-      Script: {instanceID: 11202}
+      Script: {instanceID: 11204}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11210}
     - Class: 114
-      Script: {instanceID: 11402}
+      Script: {instanceID: 11404}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -167,27 +166,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10598}
     - Class: 114
-      Script: {instanceID: 10806}
+      Script: {instanceID: 10808}
     - Class: 114
-      Script: {instanceID: 10824}
+      Script: {instanceID: 10826}
     - Class: 114
-      Script: {instanceID: 10932}
+      Script: {instanceID: 10934}
     - Class: 114
-      Script: {instanceID: 10986}
+      Script: {instanceID: 10988}
     - Class: 114
-      Script: {instanceID: 11046}
+      Script: {instanceID: 11048}
     - Class: 114
-      Script: {instanceID: 11058}
+      Script: {instanceID: 11060}
     - Class: 114
-      Script: {instanceID: 11106}
+      Script: {instanceID: 11108}
     - Class: 114
-      Script: {instanceID: 11132}
+      Script: {instanceID: 11134}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11210}
     - Class: 114
-      Script: {instanceID: 11284}
+      Script: {instanceID: 11286}
     - Class: 114
-      Script: {instanceID: 11402}
+      Script: {instanceID: 11404}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -272,21 +271,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10598}
     - Class: 114
-      Script: {instanceID: 10806}
+      Script: {instanceID: 10808}
     - Class: 114
-      Script: {instanceID: 10986}
+      Script: {instanceID: 10988}
     - Class: 114
-      Script: {instanceID: 11046}
+      Script: {instanceID: 11048}
     - Class: 114
-      Script: {instanceID: 11058}
+      Script: {instanceID: 11060}
     - Class: 114
-      Script: {instanceID: 11132}
+      Script: {instanceID: 11134}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11210}
     - Class: 114
-      Script: {instanceID: 11284}
+      Script: {instanceID: 11286}
     - Class: 114
-      Script: {instanceID: 11402}
+      Script: {instanceID: 11404}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -371,19 +370,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10598}
     - Class: 114
-      Script: {instanceID: 10806}
+      Script: {instanceID: 10608}
     - Class: 114
-      Script: {instanceID: 10824}
+      Script: {instanceID: 10808}
     - Class: 114
-      Script: {instanceID: 10986}
+      Script: {instanceID: 10826}
     - Class: 114
-      Script: {instanceID: 11046}
+      Script: {instanceID: 10934}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 10988}
     - Class: 114
-      Script: {instanceID: 11402}
+      Script: {instanceID: 11048}
     - Class: 114
-      Script: {instanceID: 208744}
+      Script: {instanceID: 11060}
+    - Class: 114
+      Script: {instanceID: 11210}
+    - Class: 114
+      Script: {instanceID: 11286}
+    - Class: 114
+      Script: {instanceID: 11404}
+    - Class: 114
+      Script: {instanceID: 225040}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -415,6 +422,27 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 1953259897
+      Script: {instanceID: 0}
+    Assets/Scenes/04.Cave.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 157
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -701,6 +729,12 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
+      Hash: eacde865409a5a71eaeb223fdbef2d6c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Gladiator
+  - hash:
+      serializedVersion: 2
       Hash: 92da9881aed190e8bb74661bcd74aa2c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -803,7 +837,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 98d55b6cf8a0dcc00bd8858d433a2dda
+      Hash: 180d68f3f2218fd13d12bf69bc122c0c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CutScene
@@ -857,7 +891,7 @@ ScriptsOnlyBuild:
     className: HeroState
   - hash:
       serializedVersion: 2
-      Hash: 17d0741adefb706c12377a609e1aff67
+      Hash: e215d9faa2eccc56b5f57de7f243a022
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BasicMove
@@ -953,14 +987,15 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 28647ba072834472c14d2bd1a25f97c1
+      Hash: 960ba84792938f2204b8e84533421099
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Gladiator
+    className: AreaTrigger
   platform: 5
   scenePathNames:
   - Assets/Scenes/00.MainMenu.unity
   - Assets/Scenes/01.DesertFight.unity
   - Assets/Scenes/02.Captured.unity
   - Assets/Scenes/03.Arena.unity
+  - Assets/Scenes/04.Cave.unity
   playerPath: E:/Documents/Unity Projects/Turkish Star Wars/Build/Turkish Star Wars.exe

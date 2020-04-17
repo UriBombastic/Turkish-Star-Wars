@@ -18,7 +18,7 @@ public class GameMaster : MonoBehaviour
     }
 
     //level handling
-    private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena" };
+    private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave"};
     private static int LevelIndex = 0;
 
     //enums
@@ -45,7 +45,7 @@ public class GameMaster : MonoBehaviour
 
     //statics
     public static bool AllowTerribleNoises;
-    private static HeroController savedPlayer;
+    private static HeroController savedPlayer; //TODO: replace this with variables for each individual field modified by UpgradePlayer
     public static bool isPaused;
 
     //player
@@ -85,6 +85,10 @@ public class GameMaster : MonoBehaviour
     {
         _player = FindObjectOfType<HeroController>();
         LDC = FindObjectOfType<LookDirectionController>();
+        if (savedPlayer != null)
+            DownloadPlayer();
+        else
+            Debug.Log("No player saved; not downloading player");
     }
 
     public void StartLevel()
