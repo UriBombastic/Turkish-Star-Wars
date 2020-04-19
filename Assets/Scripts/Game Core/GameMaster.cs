@@ -45,8 +45,19 @@ public class GameMaster : MonoBehaviour
 
     //statics
     public static bool AllowTerribleNoises;
-    private static HeroController savedPlayer; //TODO: replace this with variables for each individual field modified by UpgradePlayer
     public static bool isPaused;
+
+    //static player
+    //private static HeroController savedPlayer; //TODO: replace this with variables for each individual field modified by UpgradePlayer
+    private static bool hasUploaded = false;
+    private static float playerAtkMult;
+    private static float playerMaxHealth;
+    private static float playerCurrentHealth;
+    private static float playerMaxShieldTime;
+    private static float playerShieldDegradeFactor;
+    private static float playerShieldCoolDown;
+    private static int playerShieldLevel;
+
 
     //player
     private HeroController _player;
@@ -85,7 +96,7 @@ public class GameMaster : MonoBehaviour
     {
         _player = FindObjectOfType<HeroController>();
         LDC = FindObjectOfType<LookDirectionController>();
-        if (savedPlayer != null)
+        if (hasUploaded)
             DownloadPlayer();
         else
             Debug.Log("No player saved; not downloading player");
@@ -174,12 +185,26 @@ public class GameMaster : MonoBehaviour
 
     public static void UploadPlayer()
     {
-        savedPlayer = Instance._player;
+        // savedPlayer = Instance._player;
+        playerAtkMult = Instance._player.AttackDamageMultiplier;
+        playerMaxHealth = Instance._player.maxHealth;
+        playerCurrentHealth = Instance._player.health;
+        playerMaxShieldTime = Instance._player.maxShieldTime;
+        playerShieldDegradeFactor = Instance._player.shieldDegradeFactor;
+        playerShieldCoolDown = Instance._player.ShieldCoolDown;
+        playerShieldLevel = Instance._player.ShieldLevel;
     }
 
     public static void DownloadPlayer()
     {
-        Instance._player = savedPlayer;
+        //  Instance._player = savedPlayer;
+        Instance._player.AttackDamageMultiplier = playerAtkMult;
+        Instance._player.maxHealth = playerMaxHealth;
+        Instance._player.health = playerCurrentHealth;
+        Instance._player.maxShieldTime = playerMaxShieldTime;
+        Instance._player.shieldDegradeFactor = playerShieldDegradeFactor;
+        Instance._player.ShieldCoolDown = playerShieldCoolDown;
+        Instance._player.ShieldLevel = playerShieldLevel;
     }
 
     //death

@@ -75,7 +75,7 @@ public class UpgradePlayer : MonoBehaviour
     {
         Points--;
         pointsText.text = Points.ToString();
-        if (Points == 0) outOfPointsMessage.SetActive(true);
+        if (Points <= 0) outOfPointsMessage.SetActive(true);
     }
 
     public void OnNextLevel()
