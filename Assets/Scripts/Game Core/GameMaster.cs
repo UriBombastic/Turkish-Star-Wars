@@ -49,14 +49,14 @@ public class GameMaster : MonoBehaviour
 
     //static player
     //private static HeroController savedPlayer; //TODO: replace this with variables for each individual field modified by UpgradePlayer
-    private static bool hasUploaded = false;
-    private static float playerAtkMult;
-    private static float playerMaxHealth;
-    private static float playerCurrentHealth;
-    private static float playerMaxShieldTime;
-    private static float playerShieldDegradeFactor;
-    private static float playerShieldCoolDown;
-    private static int playerShieldLevel;
+    protected static bool hasUploaded = false;
+    private static float playerAtkMult=0f;
+    private static float playerMaxHealth=0f;
+    private static float playerCurrentHealth=0f;
+    private static float playerMaxShieldTime=0f;
+    private static float playerShieldDegradeFactor=0f;
+    private static float playerShieldCoolDown=0f;
+    private static int playerShieldLevel=0;
 
 
     //player
@@ -100,7 +100,8 @@ public class GameMaster : MonoBehaviour
             DownloadPlayer();
         else
             Debug.Log("No player saved; not downloading player");
-    }
+
+}
 
     public void StartLevel()
     {
@@ -186,17 +187,23 @@ public class GameMaster : MonoBehaviour
     public static void UploadPlayer()
     {
         // savedPlayer = Instance._player;
-        playerAtkMult = Instance._player.AttackDamageMultiplier;
+        Instance._player = FindObjectOfType<HeroController>();
+        if (Instance._player == null) return;
+
+        playerAtkMult =Instance._player.AttackDamageMultiplier;
         playerMaxHealth = Instance._player.maxHealth;
         playerCurrentHealth = Instance._player.health;
         playerMaxShieldTime = Instance._player.maxShieldTime;
         playerShieldDegradeFactor = Instance._player.shieldDegradeFactor;
         playerShieldCoolDown = Instance._player.ShieldCoolDown;
         playerShieldLevel = Instance._player.ShieldLevel;
+        hasUploaded = true;
     }
 
     public static void DownloadPlayer()
     {
+        Instance._player = FindObjectOfType<HeroController>();
+        if (Instance._player == null) return; //just stop lol
         //  Instance._player = savedPlayer;
         Instance._player.AttackDamageMultiplier = playerAtkMult;
         Instance._player.maxHealth = playerMaxHealth;
