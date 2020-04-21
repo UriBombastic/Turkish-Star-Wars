@@ -184,6 +184,12 @@ public class GameMaster : MonoBehaviour
         SceneManager.LoadScene(levels[LevelIndex]); 
     }
 
+    //restart level after death; potentially heal player, should be accessible via button rather than statically
+    public void RestartLevel()
+    {
+        LoadCurrentLevel();
+    }
+
     public static void UploadPlayer()
     {
         // savedPlayer = Instance._player;
