@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public AudioClip deathSound;
 
     public bool DoIndiscriminateAttack = false;
-
+    public bool DoFriendlyFire = false;
     public enum State
     {
         IDLE,
@@ -97,7 +97,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
         }
 
-       // Debug.Log(Vector3.Angle(transform.position, playerTransform.position));
     }
 
 
@@ -139,7 +138,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if (state_ != State.DAMAGED)
         {
             if (DoIndiscriminateAttack)
-            IndiscriminateAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform);
+            IndiscriminateAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform, DoFriendlyFire);
             else
             FundamentalAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform);
             yield return new WaitForSeconds(BasicAttackCooldown);
@@ -163,20 +162,22 @@ public class Enemy : MonoBehaviour, IDamageable
             }
     }
 
-    void IndiscriminateAttack(float damageToDo, float radius, float attackForce, Transform t)
+    void IndiscriminateAttack(float damageToDo, float radius, float attackForce, Transform t, bool doAttackEnemies = true)
     {
         Collider[] hitColliders = Physics.OverlapSphere(t.position, radius);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             if (hitColliders[i].transform != this.transform) //don't hit yourself lol
             {
-                //Debug.Log(hitColliders[i].name);
-                if (hitColliders[i].GetComponent<IDamageable>() != null)
+                if (!hitColliders[i].GetComponent<Enemy>() || doAttackEnemies)
                 {
-                    Vector3 attackVector = hitColliders[i].transform.position - transform.position;
-                    attackVector.Normalize();
-                   // Debug.Log("The strike lands");
-                    hitColliders[i].GetComponent<IDamageable>().Damage(damageToDo, attackVector * attackForce);
+                    if (hitColliders[i].GetComponent<IDamageable>() != null)
+                    {
+                        Vector3 attackVector = hitColliders[i].transform.position - transform.position;
+                        attackVector.Normalize();
+                        // Debug.Log("The strike lands");
+                        hitColliders[i].GetComponent<IDamageable>().Damage(damageToDo, attackVector * attackForce);
+                    }
                 }
             }
         }

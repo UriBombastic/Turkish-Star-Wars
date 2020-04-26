@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\AreaTrigger.cs" />
      <Compile Include="Assets\Scripts\BasicMove.cs" />
      <Compile Include="Assets\Scripts\BasicRotate.cs" />
+     <Compile Include="Assets\Scripts\Bystander.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Gladiator.cs" />
      <Compile Include="Assets\Scripts\Enemies\SkeletonEnemy.cs" />
