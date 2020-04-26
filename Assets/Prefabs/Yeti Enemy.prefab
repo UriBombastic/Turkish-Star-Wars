@@ -524,7 +524,7 @@ MonoBehaviour:
   healthBar: {fileID: 2995414761130637118}
   nameText: {fileID: 2995414760028707021}
   attackTransform: {fileID: 109726701}
-  MoveForce: 35
+  MoveForce: 30
   RotateSpeed: 3
   BasicAttackDamage: 12.5
   BasicAttackReach: 3

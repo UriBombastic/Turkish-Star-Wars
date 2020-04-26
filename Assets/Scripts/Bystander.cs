@@ -36,6 +36,7 @@ public class Bystander : MonoBehaviour, IDamageable
 
     public void Kill()
     {
+        healthBarCanvas.SetActive(false);
         rb.constraints = RigidbodyConstraints.None;
         aud.Play();
         Destroy(this);
