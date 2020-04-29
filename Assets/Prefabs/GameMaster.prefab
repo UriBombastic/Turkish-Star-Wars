@@ -3688,6 +3688,8 @@ MonoBehaviour:
   upgradeUI: {fileID: 908915187}
   PauseMenu: {fileID: 6224815804186814814}
   CanPause: 1
+  NarrationTextBox: {fileID: 636832743}
+  CharacterImage: {fileID: 3223582166931211939}
 --- !u!1 &646201836458405349
 GameObject:
   m_ObjectHideFlags: 0

@@ -91,6 +91,10 @@ public class GameMaster : MonoBehaviour
     public GameObject PauseMenu;
     public bool CanPause = true;
 
+    //Cutscenes
+    public TextMeshProUGUI NarrationTextBox;
+    public Image CharacterImage;
+
     //starting functions
     public void Awake()
     {

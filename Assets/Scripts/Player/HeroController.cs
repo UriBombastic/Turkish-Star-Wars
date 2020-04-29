@@ -411,5 +411,10 @@ public class HeroController : MonoBehaviour, IDamageable
         rb.constraints = RigidbodyConstraints.None;
         GameMaster.Instance.HandleDeath();
     }
+
+    public void Blind(bool doBlind)
+    {
+        GetComponent<LookDirectionController>().camera.gameObject.SetActive(doBlind);
+    }
 }
 

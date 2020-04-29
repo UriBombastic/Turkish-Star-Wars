@@ -39,6 +39,8 @@ public class CutScene : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
+        if (NarrationTextBox == null) NarrationTextBox = GameMaster.Instance.NarrationTextBox;
+        if (CharacterImage == null) CharacterImage = GameMaster.Instance.CharacterImage;
         InitializeDialogueTexts();
         if (subsections.Length != subsectionDelays.Length)
             Debug.LogError("Uh oh! Stinky! Poopy! Subsections length isn't equal to subsection delays length!");
@@ -52,7 +54,7 @@ public class CutScene : MonoBehaviour
             player = FindObjectOfType<HeroController>();
 
         if (doFreezePlayer)
-            player.gameObject.SetActive(false);
+            TogglePlayer(false);
 
         if (doFreezeEnemies)
             ToggleEnemies(false);
@@ -77,6 +79,7 @@ public class CutScene : MonoBehaviour
                 string[] tokens = dialogueTexts[i].Split('&');
                 dialogueTexts[i] = tokens[0]; //the actual dialogue
                 string name = tokens[1];
+                Debug.Log(string.Format("Sprites/{0}", name));
                 Sprite profile = Resources.Load<Sprite>(string.Format("Sprites/{0}",name));
                 CharacterImage.sprite = profile;
                 CharacterImage.gameObject.SetActive(true);
@@ -152,7 +155,7 @@ public class CutScene : MonoBehaviour
         if (doFreezeEnemies)
             ToggleEnemies(true);
         if (doFreezePlayer)
-            player.gameObject.SetActive(true);
+            TogglePlayer(true);
     }
 
     public float TotalSubsectLength()
@@ -166,9 +169,16 @@ public class CutScene : MonoBehaviour
 
     private void ToggleEnemies(bool On)
     {
-            if(allEnemies==null)allEnemies = FindObjectsOfType<Enemy>();
+            if(allEnemies==null || allEnemies.Length ==0)allEnemies = FindObjectsOfType<Enemy>();
             for (int i = 0; i < allEnemies.Length; i++)
                 allEnemies[i].enabled = On;
+    }
+
+    private void TogglePlayer(bool On)
+    {
+        player.gameObject.SetActive(On);
+        //player.enabled = On;
+        //player.Blind(On);
     }
     
 }
