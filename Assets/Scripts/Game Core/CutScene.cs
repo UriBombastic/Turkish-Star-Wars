@@ -17,6 +17,7 @@ public class CutScene : MonoBehaviour
     public GameObject [] subsections;
     public GameObject[] objectsToDeactivate;
     public float [] subsectionDelays;
+    public GameObject[] ToggleWhileActive;
     public GameObject[] EndSequenceActivations;
     public bool doRollingDeactivate = true;
     public bool doFreezeEnemies = false;
@@ -58,6 +59,10 @@ public class CutScene : MonoBehaviour
 
         if (doFreezeEnemies)
             ToggleEnemies(false);
+
+        if (ToggleWhileActive.Length > 0)
+            for (int i = 0; i < ToggleWhileActive.Length; i++)
+                ToggleWhileActive[i].SetActive(!ToggleWhileActive[i].activeInHierarchy);
     }
 
     public void InitializeDialogueTexts()
@@ -102,11 +107,11 @@ public class CutScene : MonoBehaviour
         {
          //   Debug.Log("Handling subsection " + i);
             if (i != 0)
-                if(objectsToDeactivate[i-1]!=null)objectsToDeactivate[i - 1].SetActive(false);//deactivate previous
+                if(objectsToDeactivate[i-1]!=null)
+                    objectsToDeactivate[i - 1].SetActive(false);//deactivate previous
+
             if (subsections[i] != null)
-            {
                 subsections[i].SetActive(true); //activate current
-            }
             yield return new WaitForSeconds(subsectionDelays[i]);
         }
         //  subsections[subsections.Length - 1].SetActive(false); //deactivate last subsection
@@ -131,6 +136,12 @@ public class CutScene : MonoBehaviour
     {
         NarrationTextBox.gameObject.SetActive(false);
         CharacterImage.gameObject.SetActive(false);
+
+
+        if (ToggleWhileActive.Length > 0)
+            for (int i = 0; i < ToggleWhileActive.Length; i++)
+                ToggleWhileActive[i].SetActive(!ToggleWhileActive[i].activeInHierarchy);
+
         switch (endMode)
         {
             case EndMode.SelfDestruct:
@@ -143,6 +154,7 @@ public class CutScene : MonoBehaviour
                 GameMaster.LoadNextLevel();
                 break;
         }
+
     }
 
     private void BeginLevel()
