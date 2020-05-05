@@ -79,25 +79,48 @@ public class CutScene : MonoBehaviour
         NarrationTextBox.gameObject.SetActive(true);
         for (int i = 0; i < dialogueTexts.Length; i++)
         {
-            if (dialogueTexts[i].Contains("&")) //if includes a character name for image setting
-            {
-                string[] tokens = dialogueTexts[i].Split('&');
-                dialogueTexts[i] = tokens[0]; //the actual dialogue
-                string name = tokens[1];
-                Debug.Log(string.Format("Sprites/{0}", name));
-                Sprite profile = Resources.Load<Sprite>(string.Format("Sprites/{0}",name));
-                CharacterImage.sprite = profile;
-                CharacterImage.gameObject.SetActive(true);
-            }
-            else
-            {
-                CharacterImage.gameObject.SetActive(false);
-            }
+            HandleTokens(i);
             NarrationTextBox.text = dialogueTexts[i];
             yield return new WaitForSeconds(dialogueDelays[i]);
         }
         NarrationTextBox.gameObject.SetActive(false);
         CharacterImage.gameObject.SetActive(false);
+    }
+
+    private void HandleTokens(int i)
+    {
+        //this could be broken down with a method but I'm lazy
+        if (!dialogueTexts[i].Contains("&")) //if includes a character name for image setting
+        {
+            CharacterImage.gameObject.SetActive(false);
+            NarrationTextBox.color = Color.white;
+            return;
+        }
+
+
+            string[] tokens = dialogueTexts[i].Split('&');
+            dialogueTexts[i] = tokens[0]; //the actual dialogue
+            string name = tokens[1];
+            //Debug.Log(string.Format("Sprites/{0}", name));
+            Sprite profile = Resources.Load<Sprite>(string.Format("Sprites/{0}", name));
+            CharacterImage.sprite = profile;
+            CharacterImage.gameObject.SetActive(true);
+
+        if (tokens.Length < 4)
+        {
+            NarrationTextBox.color = Color.white;
+            return; //avoid outofindex exceptions
+        }
+
+        string color = tokens[2];
+        Debug.Log(color);
+        Color col = new Color();
+        //what the actual fuck Unity? Could you not have, you know, made this method return a Color?
+        if(!ColorUtility.TryParseHtmlString(color, out col))
+            Debug.LogError("Cut! Cut! Something went wrong.");
+
+        NarrationTextBox.color = col;
+        
     }
 
     public IEnumerator SectionsSequence()
