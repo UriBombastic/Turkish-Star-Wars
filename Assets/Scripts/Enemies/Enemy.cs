@@ -195,12 +195,13 @@ public class Enemy : MonoBehaviour, IDamageable
         PlayDamageSound();
         if (rb != null) rb.AddForce(knockback);
         if (health <= 0) Kill();
-        StopAllCoroutines();
-        StartCoroutine(handleDamage(damage));
+        StartCoroutine(HandleDamage(damage));
     }
 
-    protected virtual IEnumerator handleDamage(float damage)
+    protected virtual IEnumerator HandleDamage(float damage)
     {
+        // StopAllCoroutines();
+        StopCoroutine(Attack());
         EnterDamage();
         yield return new WaitForSeconds(DamageRecoverTime);
         ExitDamage();

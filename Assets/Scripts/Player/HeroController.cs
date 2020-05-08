@@ -152,6 +152,7 @@ public class HeroController : MonoBehaviour, IDamageable
             case State.ATTACKING:
                 CheckForMove();
                 CheckForJump();
+                CheckForBlock();
                 break;
 
             case State.JUMPATTACK:
@@ -399,11 +400,13 @@ public class HeroController : MonoBehaviour, IDamageable
     //IDamageable requirements. We don't want to be invincible now
     public void Damage(float damageToDo, Vector3 knockbackToDo)
     {
-        if (ShieldPower >= 1)
+        float adjustedShieldPower = (state_==State.BLOCKING)? Mathf.Min(1, ShieldPower) : 0f;
+
+        if (adjustedShieldPower >= 1)
             Counter();
         rb.AddForce(knockbackToDo);
         if (isRecovering) return;
-        float realDamageToDo = damageToDo * Mathf.Max(0,(1f - ShieldPower)); //prevent negative damage
+        float realDamageToDo = damageToDo * Mathf.Max(0,(1f - adjustedShieldPower)); //prevent negative damage
         health -= realDamageToDo;
         if (realDamageToDo > 0)
             StartCoroutine(DamageDelay());

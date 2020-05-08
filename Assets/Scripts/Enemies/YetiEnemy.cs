@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class YetiEnemy : Enemy
 {
+    public float CanStunCutoff = 100f;
+    public float DamageToStun = 25f;
+
     public override void Kill()
     {
         base.Kill();
@@ -22,6 +25,8 @@ public class YetiEnemy : Enemy
         //target neutralized
         if (targetTransform == null || (!targetTransform.GetComponent<HeroController>() && !targetTransform.GetComponent<Bystander>()))
             IdentifyTarget();
+
+        //Debug.Log(state_);
     }
 
     protected override void HandleDistances()
@@ -53,17 +58,35 @@ public class YetiEnemy : Enemy
         yield return null;
     }
 
+
+    protected override IEnumerator HandleDamage(float damage)
+    {
+        //only stun if above berserker cutoff or large enough to override
+        if (health >= CanStunCutoff || damage >= DamageToStun) 
+        {
+            yield return base.HandleDamage(damage);
+        }
+        targetTransform = playerTransform; //automatically target player when damaged
+    }
+
+
     protected override void EnterDamage()
     {
+   
+      //  if (health < CanStunCutoff || state_ == State.ATTACKING) return; //do not stun lol
         base.EnterDamage();
         Animate("Damage");
-        targetTransform = playerTransform; //automatically target player when damaged
+
     }
 
     protected override void ExitDamage()
     {
-        base.ExitDamage();
-        Animate("Idle");
+        //if (health > CanStunCutoff)
+       // { 
+            base.ExitDamage();
+            Animate("Idle");
+       // }
+
     }
 
     protected override void IdentifyTarget()

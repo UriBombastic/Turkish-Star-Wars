@@ -540,6 +540,7 @@ MonoBehaviour:
   DoIndiscriminateAttack: 1
   DoFriendlyFire: 0
   state_: 0
+  CanStunCutoff: 100
 --- !u!82 &8109911719799401829
 AudioSource:
   m_ObjectHideFlags: 0
