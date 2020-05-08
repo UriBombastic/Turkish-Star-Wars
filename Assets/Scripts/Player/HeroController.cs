@@ -98,7 +98,7 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             GameMaster.TogglePause();
-
+        UpdateHealthBar();
     }
 
     void FixedUpdate()
@@ -329,9 +329,9 @@ public class HeroController : MonoBehaviour, IDamageable
         {
             ShieldPower -= 1 / shieldDegradeFactor;
             float shieldPowerCapped = Mathf.Min(1.0f, ShieldPower); //prevent shield power from being > 1
-            col.a = maxOpacity * ShieldPower;
+            col.a = maxOpacity * shieldPowerCapped;
             shieldImage.color = col;
-            shieldImage.transform.localScale = new Vector3(ShieldPower, ShieldPower/2, 1);
+            shieldImage.transform.localScale = new Vector3(shieldPowerCapped, shieldPowerCapped/2, 1);
             yield return new WaitForSecondsRealtime(1 / 60f); //frame by frame update;
         }
 
@@ -399,15 +399,15 @@ public class HeroController : MonoBehaviour, IDamageable
     //IDamageable requirements. We don't want to be invincible now
     public void Damage(float damageToDo, Vector3 knockbackToDo)
     {
-        if (ShieldPower == 1)
+        if (ShieldPower >= 1)
             Counter();
         rb.AddForce(knockbackToDo);
         if (isRecovering) return;
-        float realDamageToDo = damageToDo * (1f - ShieldPower);
+        float realDamageToDo = damageToDo * Mathf.Max(0,(1f - ShieldPower)); //prevent negative damage
         health -= realDamageToDo;
         if (realDamageToDo > 0)
             StartCoroutine(DamageDelay());
-        UpdateHealthBar();
+       // UpdateHealthBar(); //this may as well be in update?
        // PlayDamageSound();
 
         if (health <= 0) Kill();
