@@ -182,6 +182,11 @@ public class CutScene : MonoBehaviour
 
     private void BeginLevel()
     {
+
+        //turns out, it is critical to unfreeze the player BEFORE enemies become initialized
+        if (doFreezePlayer)
+            TogglePlayer(true);
+
         for (int i = 0; i < EndSequenceActivations.Length; i++)
             EndSequenceActivations[i].SetActive(true);
         CharacterImage.gameObject.SetActive(false);
@@ -189,8 +194,7 @@ public class CutScene : MonoBehaviour
         gameObject.SetActive(false);
         if (doFreezeEnemies)
             ToggleEnemies(true);
-        if (doFreezePlayer)
-            TogglePlayer(true);
+ 
     }
 
     public float TotalSubsectLength()

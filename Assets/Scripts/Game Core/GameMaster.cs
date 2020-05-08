@@ -59,6 +59,7 @@ public class GameMaster : MonoBehaviour
     private static int playerShieldLevel=0;
 
     //player
+    [SerializeField]
     private HeroController _player;
     private LookDirectionController LDC;
     //Enemies to Kill
@@ -99,7 +100,7 @@ public class GameMaster : MonoBehaviour
     //starting functions
     public void Awake()
     {
-        _player = FindObjectOfType<HeroController>();
+        if(_player==null)_player = FindObjectOfType<HeroController>();
         LDC = FindObjectOfType<LookDirectionController>();
         if (hasUploaded)
             DownloadPlayer();
@@ -160,7 +161,7 @@ public class GameMaster : MonoBehaviour
 
     public void HealPlayer(float amount = 0.5f)
     {
-        _player.health = Mathf.Max(_player.maxHealth, _player.health + _player.maxHealth * amount);
+        _player.health = Mathf.Min(_player.maxHealth, _player.health + _player.maxHealth * amount);
     }
 
     //level transitions

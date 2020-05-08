@@ -255,6 +255,7 @@ MonoBehaviour:
   - 2.5
   - 4
   - 0
+  ToggleWhileActive: []
   EndSequenceActivations:
   - {fileID: 162523648}
   - {fileID: 2116542244}
@@ -1052,6 +1053,7 @@ MonoBehaviour:
   objectsToDeactivate: []
   subsectionDelays:
   - 4
+  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -4184,19 +4186,24 @@ PrefabInstance:
       propertyPath: ObjectiveExplanation
       value: Get The Hell Out of Here
       objectReference: {fileID: 0}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 162523651}
     - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: Points
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2795762533006186835, guid: 73166fca5bc078445beabb20ef0cbc22,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 183.9
       objectReference: {fileID: 0}
     - target: {fileID: 2768823019331644119, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2795762533006186835, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 183.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
@@ -7197,11 +7204,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5972004779929493261, guid: a6e139e5ab5b1c643aec54ae11383cb9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 869190739, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -7220,6 +7222,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 188827716, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972004779929493261, guid: a6e139e5ab5b1c643aec54ae11383cb9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9205,6 +9212,7 @@ MonoBehaviour:
   objectsToDeactivate: []
   subsectionDelays:
   - 3
+  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0

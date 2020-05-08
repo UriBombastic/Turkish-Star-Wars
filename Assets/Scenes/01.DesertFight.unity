@@ -5954,6 +5954,7 @@ MonoBehaviour:
   - 5
   - 0
   - 4
+  ToggleWhileActive: []
   EndSequenceActivations:
   - {fileID: 850624971}
   - {fileID: 1148509710}
@@ -7413,6 +7414,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1700784483580788345}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &850624974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1700784485506943677, guid: a6e139e5ab5b1c643aec54ae11383cb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1700784483580788345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850624971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24324923adcd574aaabcf3b1e3e8602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &861923345
 GameObject:
   m_ObjectHideFlags: 0
@@ -18918,6 +18931,7 @@ MonoBehaviour:
   - 5
   - 3.5
   - 5.5
+  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -19045,9 +19059,9 @@ Transform:
   m_LocalPosition: {x: -361.0605, y: 29.211422, z: -445.42563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 353875514}
   - {fileID: 1841020995}
   - {fileID: 6250620569069783371}
+  - {fileID: 353875514}
   m_Father: {fileID: 505307022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19075,6 +19089,7 @@ MonoBehaviour:
   subsectionDelays:
   - 4
   - 2
+  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -47900,7 +47915,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1386154795}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 32.794003, y: -170.457, z: 0}
 --- !u!81 &1841020996
 AudioListener:
@@ -63011,6 +63026,11 @@ PrefabInstance:
       propertyPath: LevelEndGoal
       value: 
       objectReference: {fileID: 1404741444}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 850624974}
     - target: {fileID: 822769761, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 90

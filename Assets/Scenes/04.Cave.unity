@@ -6290,6 +6290,11 @@ PrefabInstance:
       propertyPath: ObjectiveExplanation
       value: Oh God, Oh Fuck, Yetis and Mummies!
       objectReference: {fileID: 0}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 416824303}
     - target: {fileID: 636832743, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: m_text
       value: 
