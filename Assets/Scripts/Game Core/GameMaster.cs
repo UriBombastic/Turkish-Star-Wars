@@ -53,9 +53,11 @@ public class GameMaster : MonoBehaviour
     private static float playerAtkMult=0f;
     private static float playerMaxHealth=0f;
     private static float playerCurrentHealth=0f;
-    private static float playerMaxShieldTime=0f;
+ //   private static float playerMaxShieldTime=0f;
     private static float playerShieldDegradeFactor=0f;
-    private static float playerShieldCoolDown=0f;
+ //   private static float playerShieldCoolDown=0f;
+    private static float playerMaxShieldPower = 0f;
+    private static float playershieldRegenFactor = 0f;
     private static int playerShieldLevel=0;
 
     //player
@@ -206,10 +208,12 @@ public class GameMaster : MonoBehaviour
         playerAtkMult =Instance._player.AttackDamageMultiplier;
         playerMaxHealth = Instance._player.maxHealth;
         playerCurrentHealth = Instance._player.health;
-        playerMaxShieldTime = Instance._player.maxShieldTime;
         playerShieldDegradeFactor = Instance._player.shieldDegradeFactor;
-        playerShieldCoolDown = Instance._player.ShieldCoolDown;
         playerShieldLevel = Instance._player.ShieldLevel;
+        playerMaxShieldPower = Instance._player.maxShieldPower;
+        playershieldRegenFactor = Instance._player.shieldRegenFactor;
+        // playerMaxShieldTime = Instance._player.maxShieldTime;
+        //  playerShieldCoolDown = Instance._player.ShieldCoolDown;
         hasUploaded = true;
     }
 
@@ -221,10 +225,12 @@ public class GameMaster : MonoBehaviour
         Instance._player.AttackDamageMultiplier = playerAtkMult;
         Instance._player.maxHealth = playerMaxHealth;
         Instance._player.health = playerCurrentHealth;
-        Instance._player.maxShieldTime = playerMaxShieldTime;
         Instance._player.shieldDegradeFactor = playerShieldDegradeFactor;
-        Instance._player.ShieldCoolDown = playerShieldCoolDown;
+        Instance._player.maxShieldPower = playerMaxShieldPower;
+        Instance._player.shieldRegenFactor = playershieldRegenFactor;
         Instance._player.ShieldLevel = playerShieldLevel;
+        //  Instance._player.maxShieldTime = playerMaxShieldTime;
+        //   Instance._player.ShieldCoolDown = playerShieldCoolDown;
     }
 
     //death

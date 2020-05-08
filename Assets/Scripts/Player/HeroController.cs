@@ -44,10 +44,12 @@ public class HeroController : MonoBehaviour, IDamageable
     public int ShieldLevel = 0;
     public float maxOpacity = 0.5f;
     public float ShieldPower = 0f;
-    public float maxShieldTime = 0.25f;
-    public float shieldDegradeFactor = 60f;
-    public float ShieldCoolDown = 0.25f;
-    private bool canShield = true;
+    public float shieldDegradeFactor = 60f; //frames to reduce Shield Power by 1.0. 
+    public float maxShieldPower = 1.25f;
+    public float shieldRegenFactor = 120f;//frames to regenerate Shield Power by 1.0
+    //public float maxShieldTime = 0.25f;
+    // public float ShieldCoolDown = 0.25f;
+    // private bool canShield = true;
 
     //Health
     public Image HealthBar;
@@ -87,6 +89,7 @@ public class HeroController : MonoBehaviour, IDamageable
         Cursor.lockState = CursorLockMode.Locked;
         HealthText.text = health + " / " + maxHealth;
         HealthBar.fillAmount = health / maxHealth;
+        ShieldPower = maxShieldPower;
     }
 
 
@@ -103,6 +106,7 @@ public class HeroController : MonoBehaviour, IDamageable
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
         HandleInput();
+        RegenerateShield();
     }
 
 
@@ -225,7 +229,7 @@ public class HeroController : MonoBehaviour, IDamageable
 
     void CheckForBlock()
     {
-        if (!canShield) return;
+        //if (!canShield) return; //hard cooldown replaced with continuous regeneration
         if(Input.GetKeyDown(KeyCode.Mouse1))
         {
             StartCoroutine(BlockTiming());
@@ -311,15 +315,20 @@ public class HeroController : MonoBehaviour, IDamageable
         state_ = State.BLOCKING;
         shieldImage.gameObject.SetActive(true);
         Color col = shieldImage.color;
-        col.a = maxOpacity;
+
+        //initialization. Deprecated.
+      /*  col.a = maxOpacity;
         shieldImage.color = col;
-        ShieldPower = 1.0f;
+       ShieldPower = 1.0f;
         shieldImage.transform.localScale = new Vector3(1, 0.5f, 1);
         yield return new WaitForSeconds(maxShieldTime);
+        */
 
+        //degrade shield
         while(state_ == State.BLOCKING && ShieldPower > 0f)
         {
             ShieldPower -= 1 / shieldDegradeFactor;
+            float shieldPowerCapped = Mathf.Min(1.0f, ShieldPower); //prevent shield power from being > 1
             col.a = maxOpacity * ShieldPower;
             shieldImage.color = col;
             shieldImage.transform.localScale = new Vector3(ShieldPower, ShieldPower/2, 1);
@@ -334,16 +343,28 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         state_ = State.IDLE;
         shieldImage.gameObject.SetActive(false);
-        ShieldPower = 0;
-        StartCoroutine(BlockCoolDown());
+      //  ShieldPower = 0;
+      //  StartCoroutine(BlockCoolDown());
     }
 
-    IEnumerator BlockCoolDown()
+    void RegenerateShield()
+    {
+        //regenerate only if not blocking and not maxxed out
+        if (state_ == State.BLOCKING || ShieldPower >= maxShieldPower) return; 
+
+        ShieldPower += 1 / shieldRegenFactor;
+        ShieldPower = Mathf.Min(ShieldPower, maxShieldPower); //prevent from even slightest overflow
+        
+    }
+
+    //deprecated
+    /*IEnumerator BlockCoolDown()
     {
         canShield = false;
         yield return new WaitForSeconds(ShieldCoolDown);
         canShield = true;
-    }
+    }*/
+
 
     void Counter()
     {

@@ -19,7 +19,7 @@ public class UpgradePlayer : MonoBehaviour
     public int ShieldUpgradeMax = 5;
     public float ShieldTimeUpgrade = 0.05f;
     public float ShieldDegradeUpgrade = 12f;
-    public float ShieldCoolDownUpgrade = 0.025f;
+    public float ShieldRegenUpgrade = 12f;
 
     public GameObject outOfPointsMessage;
     
@@ -64,9 +64,9 @@ public class UpgradePlayer : MonoBehaviour
             return;
         }
 
-        player.maxShieldTime += ShieldTimeUpgrade;
+        player.maxShieldPower += ShieldTimeUpgrade;
         player.shieldDegradeFactor += ShieldDegradeUpgrade;
-        player.ShieldCoolDown -= ShieldCoolDownUpgrade;
+        player.shieldRegenFactor -= ShieldRegenUpgrade;
         player.ShieldLevel++;
         shieldVariable.text = player.ShieldLevel.ToString();
         SubtractPoint();
