@@ -58,7 +58,6 @@ public class GameMaster : MonoBehaviour
     private static float playerShieldCoolDown=0f;
     private static int playerShieldLevel=0;
 
-
     //player
     private HeroController _player;
     private LookDirectionController LDC;
@@ -81,7 +80,7 @@ public class GameMaster : MonoBehaviour
     public bool ShowLevelComplete;
     public GameObject LevelCompleteUI;
 
-    //Deaths
+    //Deaths 
     public GameObject DeathScreen;
 
     //upgrade UI
@@ -94,6 +93,8 @@ public class GameMaster : MonoBehaviour
     //Cutscenes
     public TextMeshProUGUI NarrationTextBox;
     public Image CharacterImage;
+
+
 
     //starting functions
     public void Awake()
@@ -191,6 +192,7 @@ public class GameMaster : MonoBehaviour
     //restart level after death; potentially heal player, should be accessible via button rather than statically
     public void RestartLevel()
     {
+        HealPlayer(0.1f); //heal player for 10% of their max health
         LoadCurrentLevel();
     }
 

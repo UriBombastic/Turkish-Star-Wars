@@ -34,6 +34,7 @@ public class UpgradePlayer : MonoBehaviour
         atkVariable.text = player.BasicAttackDamage * player.AttackDamageMultiplier + "";
         healthVariable.text = player.maxHealth.ToString();
         shieldVariable.text = player.ShieldLevel.ToString();
+        GameMaster.Instance.HealPlayer(); //sister demanded that this be a thing
     }
 
     public void UpgradeAttack()

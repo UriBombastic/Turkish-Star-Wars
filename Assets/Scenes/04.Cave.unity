@@ -4393,7 +4393,9 @@ MonoBehaviour:
   - 9
   - 24
   ToggleWhileActive: []
-  EndSequenceActivations: []
+  EndSequenceActivations:
+  - {fileID: 1502433717}
+  - {fileID: 1886634026}
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 1
