@@ -518,8 +518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: A Yeti??
-  initialHealth: 300
-  health: 300
+  initialHealth: 240
+  health: 240
   healthCanvas: {fileID: 2995414760695729831}
   healthBar: {fileID: 2995414761130637118}
   nameText: {fileID: 2995414760028707021}
@@ -533,8 +533,8 @@ MonoBehaviour:
   BasicAttackDamage: 12.5
   BasicAttackReach: 3
   BasicAttackForce: 600
-  BasicAttackCooldown: 1.25
-  BasicAttackStartup: 1
+  BasicAttackCooldown: 2.5
+  BasicAttackStartup: 1.2
   DamageRecoverTime: 1
   ViewRange: 35
   AttackRange: 3
@@ -544,8 +544,8 @@ MonoBehaviour:
   DoIndiscriminateAttack: 1
   DoFriendlyFire: 0
   state_: 0
-  CanStunCutoff: 100
-  DamageToStun: 25
+  CanStunCutoff: 60
+  DamageToStun: 24
 --- !u!82 &8109911719799401829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -654,6 +654,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yeti@Idle
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: f40ff7263bdb8684a8fe053436a603b9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 534a54e3c80c93c4ba4d9e07cf0494c0, type: 2}
     - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,11 +729,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 534a54e3c80c93c4ba4d9e07cf0494c0, type: 2}
     - target: {fileID: 8104116013650832364, guid: f40ff7263bdb8684a8fe053436a603b9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
