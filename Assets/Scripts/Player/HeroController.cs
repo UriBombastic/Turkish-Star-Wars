@@ -147,6 +147,7 @@ public class HeroController : MonoBehaviour, IDamageable
 
             case State.DASHING:
                 CheckForDashAttack();
+                CheckForBlock();
                 break;
 
             case State.ATTACKING:

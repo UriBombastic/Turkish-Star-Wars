@@ -1164,6 +1164,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mummy Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2091463304810404559, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3124661496805320924, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1258,6 +1263,16 @@ PrefabInstance:
         type: 3}
       propertyPath: DamageToStun
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091463304810404558, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
+        type: 3}
+      propertyPath: BasicAttackStartup
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091463304810404558, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3fd977bb53ea25479ce569fdfe7e6b1, type: 3}
@@ -1412,6 +1427,16 @@ PrefabInstance:
         type: 3}
       propertyPath: DamageToStun
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackStartup
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88c6e2d7bc8be6c449245435cb8743a6, type: 3}
@@ -4188,6 +4213,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: DamageToStun
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackStartup
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2995414760028707021, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -4218,11 +4258,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b8ac154efd0e89345a8a567dd4b30078, type: 2}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: DamageToStun
-      value: 24
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88c6e2d7bc8be6c449245435cb8743a6, type: 3}
 --- !u!1001 &634237960
@@ -6670,7 +6705,8 @@ PrefabInstance:
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
 --- !u!4 &1499552499 stripped
 Transform:
@@ -8436,6 +8472,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mummy Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2091463304810404559, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3124661496805320924, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8495,6 +8536,16 @@ PrefabInstance:
         type: 3}
       propertyPath: DamageToStun
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091463304810404558, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
+        type: 3}
+      propertyPath: BasicAttackStartup
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091463304810404558, guid: d3fd977bb53ea25479ce569fdfe7e6b1,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3fd977bb53ea25479ce569fdfe7e6b1, type: 3}

@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public GameObject healthCanvas;
     public Image healthBar;
     public TextMeshProUGUI nameText;
+    public GameObject attackParticles;
+    public bool doSpawnAttackParticles;
+    public float TelegraphDelay = 0.5f;
 
     public Transform attackTransform;
     public float MoveForce;
@@ -134,9 +137,11 @@ public class Enemy : MonoBehaviour, IDamageable
     {
       //  Debug.Log(name + " is Attacking!");
         state_ = State.ATTACKING;
+        StartCoroutine(TelegraphAttack()); //other methods to give player warning of attack
         yield return new WaitForSeconds(BasicAttackStartup);
         if (state_ != State.DAMAGED)
         {
+            Debug.Log("Releasing Attack Hitbox");
             if (DoIndiscriminateAttack)
             IndiscriminateAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform, DoFriendlyFire);
             else
@@ -144,6 +149,15 @@ public class Enemy : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(BasicAttackCooldown);
             state_ = State.IDLE;
         }
+    }
+
+    protected virtual IEnumerator TelegraphAttack()
+    {
+        float telegraphDelay = Mathf.Max(0, BasicAttackStartup - TelegraphDelay);
+        yield return new WaitForSeconds(telegraphDelay);
+        if (attackParticles != null && doSpawnAttackParticles)
+            Instantiate(attackParticles, attackTransform);
+
     }
 
     protected virtual void HandleAttacking()
@@ -201,7 +215,9 @@ public class Enemy : MonoBehaviour, IDamageable
     protected virtual IEnumerator HandleDamage(float damage)
     {
         // StopAllCoroutines();
+        Debug.Log("Handling Damage");
         StopCoroutine(Attack());
+        StopCoroutine(TelegraphAttack());
         EnterDamage();
         yield return new WaitForSeconds(DamageRecoverTime);
         ExitDamage();

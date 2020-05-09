@@ -52,6 +52,7 @@ public class YetiEnemy : Enemy
 
     protected override IEnumerator Attack()
     {
+        Debug.Log("Beggining Attack Animation");
         Animate("Attack");
         yield return base.Attack();
         Animate("Idle"); //exit attack state and return to idle
