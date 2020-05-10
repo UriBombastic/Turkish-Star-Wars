@@ -4219,7 +4219,6 @@ MonoBehaviour:
   subsectionDelays:
   - 10
   - 14
-  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -5010,7 +5009,6 @@ MonoBehaviour:
   - 9
   - 24
   - 5
-  ToggleWhileActive: []
   EndSequenceActivations:
   - {fileID: 1502433717}
   - {fileID: 1886634026}
@@ -5635,8 +5633,6 @@ MonoBehaviour:
   - 0.3
   - 0.5
   - 4
-  ToggleWhileActive:
-  - {fileID: 1502433717}
   EndSequenceActivations: []
   doRollingDeactivate: 0
   doFreezeEnemies: 0
@@ -6466,7 +6462,6 @@ MonoBehaviour:
   - 2
   - 2
   - 1
-  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 0
   doFreezeEnemies: 0
@@ -8380,7 +8375,6 @@ MonoBehaviour:
   - 4
   - 1.5
   - 5
-  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -8456,7 +8450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.074
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: bf495eacf58e31146ab012aa89ac68da, type: 3}
       propertyPath: m_LocalPosition.y
