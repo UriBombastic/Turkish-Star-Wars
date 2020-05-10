@@ -17,7 +17,6 @@ public class CutScene : MonoBehaviour
     public GameObject [] subsections;
     public GameObject[] objectsToDeactivate;
     public float [] subsectionDelays;
-    public GameObject[] ToggleWhileActive;
     public GameObject[] EndSequenceActivations;
     public bool doRollingDeactivate = true;
     public bool doFreezeEnemies = false;
@@ -60,9 +59,6 @@ public class CutScene : MonoBehaviour
         if (doFreezeEnemies)
             ToggleEnemies(false);
 
-        if (ToggleWhileActive!=null && ToggleWhileActive.Length > 0)
-            for (int i = 0; i < ToggleWhileActive.Length; i++)
-                ToggleWhileActive[i].SetActive(!ToggleWhileActive[i].activeInHierarchy);
     }
 
     public void InitializeDialogueTexts()
@@ -159,11 +155,6 @@ public class CutScene : MonoBehaviour
     {
         NarrationTextBox.gameObject.SetActive(false);
         CharacterImage.gameObject.SetActive(false);
-
-
-        if (ToggleWhileActive!=null && ToggleWhileActive.Length > 0)
-            for (int i = 0; i < ToggleWhileActive.Length; i++)
-                ToggleWhileActive[i].SetActive(!ToggleWhileActive[i].activeInHierarchy);
 
         switch (endMode)
         {
