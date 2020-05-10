@@ -143,7 +143,7 @@ public class CutScene : MonoBehaviour
 
     public void Update()
     {
-        if (endMode == EndMode.BeginLevel) //allow breaking cutscenes to begin level
+        if (endMode == EndMode.BeginLevel || endMode == EndMode.EndLevel) //allow breaking cutscenes to begin level
         {
             if (Input.GetKeyDown(KeyCode.Escape)) 
             {
