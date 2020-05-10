@@ -1005,7 +1005,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 54647d25d1ea5e76d1aaa2df7e7cae78
+      Hash: 180d68f3f2218fd13d12bf69bc122c0c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CutScene

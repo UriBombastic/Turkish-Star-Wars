@@ -18,7 +18,7 @@ public class GameMaster : MonoBehaviour
     }
 
     //level handling
-    private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave"};
+    private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave", "99.FillerEndcap"};
     private static int LevelIndex = 0;
 
     //enums
