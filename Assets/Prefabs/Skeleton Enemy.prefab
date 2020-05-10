@@ -124,7 +124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2266363295403325670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2663879, y: 0.00000023841858, z: -2.3052368}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 0.8, z: 1.2}
   m_Children:
   - {fileID: 7715301544899434674}
@@ -184,6 +184,9 @@ MonoBehaviour:
   healthCanvas: {fileID: 415423116}
   healthBar: {fileID: 2128536341}
   nameText: {fileID: 813747430}
+  attackParticles: {fileID: 0}
+  doSpawnAttackParticles: 0
+  TelegraphDelay: 0.5
   attackTransform: {fileID: 1415866653}
   MoveForce: 5
   RotateSpeed: 3.5
@@ -199,6 +202,7 @@ MonoBehaviour:
   AnimationTriggers: []
   deathSound: {fileID: 8300000, guid: aa1fff4ee6a205742bb5766288baf6e6, type: 3}
   DoIndiscriminateAttack: 0
+  DoFriendlyFire: 0
   state_: 0
   displaySword: {fileID: 2266363295722229812}
   AttackSword: {fileID: 774762388}
