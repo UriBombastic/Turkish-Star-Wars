@@ -141,7 +141,7 @@ public class Enemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(BasicAttackStartup);
         if (state_ != State.DAMAGED)
         {
-            Debug.Log("Releasing Attack Hitbox");
+          //  Debug.Log("Releasing Attack Hitbox");
             if (DoIndiscriminateAttack)
             IndiscriminateAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform, DoFriendlyFire);
             else
@@ -215,7 +215,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected virtual IEnumerator HandleDamage(float damage)
     {
         // StopAllCoroutines();
-        Debug.Log("Handling Damage");
+      //  Debug.Log("Handling Damage");
         StopCoroutine(Attack());
         StopCoroutine(TelegraphAttack());
         EnterDamage();

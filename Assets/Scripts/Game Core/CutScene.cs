@@ -161,7 +161,7 @@ public class CutScene : MonoBehaviour
         CharacterImage.gameObject.SetActive(false);
 
 
-        if (ToggleWhileActive.Length > 0)
+        if (ToggleWhileActive!=null && ToggleWhileActive.Length > 0)
             for (int i = 0; i < ToggleWhileActive.Length; i++)
                 ToggleWhileActive[i].SetActive(!ToggleWhileActive[i].activeInHierarchy);
 

@@ -202,7 +202,7 @@ public class GameMaster : MonoBehaviour
     public static void UploadPlayer()
     {
         // savedPlayer = Instance._player;
-        Instance._player = FindObjectOfType<HeroController>();
+        if(Instance._player==null)Instance._player = FindObjectOfType<HeroController>();
         if (Instance._player == null) return;
 
         playerAtkMult =Instance._player.AttackDamageMultiplier;
@@ -219,7 +219,7 @@ public class GameMaster : MonoBehaviour
 
     public static void DownloadPlayer()
     {
-        Instance._player = FindObjectOfType<HeroController>();
+        if (Instance._player == null) Instance._player = FindObjectOfType<HeroController>();
         if (Instance._player == null) return; //just stop lol
         //  Instance._player = savedPlayer;
         Instance._player.AttackDamageMultiplier = playerAtkMult;
