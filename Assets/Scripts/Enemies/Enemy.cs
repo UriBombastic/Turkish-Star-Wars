@@ -42,6 +42,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public bool DoIndiscriminateAttack = false;
     public bool DoFriendlyFire = false;
+    public GameObject floatingDamageText;
+    protected bool doSpawnDamageText = true;
     public enum State
     {
         IDLE,
@@ -209,7 +211,14 @@ public class Enemy : MonoBehaviour, IDamageable
         PlayDamageSound();
         if (rb != null) rb.AddForce(knockback);
         if (health <= 0) Kill();
+        if (doSpawnDamageText) SpawnDamageText(damage);
         StartCoroutine(HandleDamage(damage));
+    }
+
+    void SpawnDamageText(float damage)
+    {
+        GameObject damageText = Instantiate(floatingDamageText, transform);
+        damageText.GetComponent<FloatingDamageText>().SetValue(damage);
     }
 
     protected virtual IEnumerator HandleDamage(float damage)

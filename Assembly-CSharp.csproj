@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Enemies\SkeletonEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\YetiEnemy.cs" />
      <Compile Include="Assets\Scripts\ExplodingShip.cs" />
+     <Compile Include="Assets\Scripts\FloatingDamageText.cs" />
      <Compile Include="Assets\Scripts\Game Core\CutScene.cs" />
      <Compile Include="Assets\Scripts\Game Core\GameMaster.cs" />
      <Compile Include="Assets\Scripts\Game Core\IDamageable.cs" />

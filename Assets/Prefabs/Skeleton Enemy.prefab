@@ -203,6 +203,8 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: aa1fff4ee6a205742bb5766288baf6e6, type: 3}
   DoIndiscriminateAttack: 0
   DoFriendlyFire: 0
+  floatingDamageText: {fileID: 2588620035215492404, guid: 6c4f119d6d6985c4db132c3599fab6b3,
+    type: 3}
   state_: 0
   displaySword: {fileID: 2266363295722229812}
   AttackSword: {fileID: 774762388}
