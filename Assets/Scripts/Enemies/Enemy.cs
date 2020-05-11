@@ -215,7 +215,7 @@ public class Enemy : MonoBehaviour, IDamageable
         StartCoroutine(HandleDamage(damage));
     }
 
-    void SpawnDamageText(float damage)
+    protected virtual void SpawnDamageText(float damage)
     {
         GameObject damageText = Instantiate(floatingDamageText, transform);
         damageText.GetComponent<FloatingDamageText>().SetValue(damage);
