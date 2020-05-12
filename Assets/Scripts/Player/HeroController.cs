@@ -102,22 +102,6 @@ public class HeroController : MonoBehaviour, IDamageable
     }
     #endregion
 
-    #region items
-    public void EquipItem(ItemState iState)
-    {
-        this.itemState = iState; //in case this is being accessed externally. Should be the ONLY reference to iState.
-        for (int i = 0; i < itemDisplays.Length; i++)
-            itemDisplays[i].SetActive(i == (int)itemState);
-    }
-
-    public Item GetCurrentItem()
-    {
-        return allItems[(int)itemState];
-    }
-
-
-    #endregion
-
     #region updates
     //updates
     void Update()
@@ -131,6 +115,7 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
+        HandleItem();
         HandleInput();
         RegenerateShield();
     }
@@ -200,6 +185,60 @@ public class HeroController : MonoBehaviour, IDamageable
                 break;
         }
     }
+
+    void HandleItem()
+    {
+        switch(itemState)
+        {
+            case ItemState.NULL:
+                break;
+
+            case ItemState.HEAVYBOOTS:
+                HandleHeavyBoots();
+                break;
+
+            case ItemState.LIGHTNINGSWORD:
+                break;
+
+            case ItemState.GOLDENKNUCKLES:
+                break;
+        }
+    }
+
+    #endregion
+
+    #region Items
+    public void EquipItem(ItemState iState)
+    {
+        this.itemState = iState; //in case this is being accessed externally. Should be the ONLY reference to iState.
+        for (int i = 0; i < itemDisplays.Length; i++)
+            itemDisplays[i].SetActive(i == (int)itemState);
+    }
+
+    public Item GetCurrentItem()
+    {
+        return allItems[(int)itemState];
+    }
+
+    void HandleHeavyBoots()
+    {
+        //this void is essentially called in synch with walking.
+        //If not walking, don't bother with it.
+        if (state_ == State.WALKING)
+        {
+
+            ItemMaster.Instance.TrainWalking();
+
+            if (CheckForJump(false)) //check for jump without invoking jump
+                ItemMaster.Instance.TrainJumping();
+        }
+
+        if(state_ == State.WALKING || state_== State.JUMPING)
+            if (CheckForDash(false))
+             ItemMaster.Instance.TrainDashing();
+
+    }
+
     #endregion
 
     #region checks
@@ -215,21 +254,26 @@ public class HeroController : MonoBehaviour, IDamageable
         return false;
     }
 
-    bool CheckForJump()
+    bool CheckForJump(bool doAction = true)
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
+            if(doAction)Jump();
             return true;
         }
         return false;
     }
 
-   void CheckForDash()
+   bool CheckForDash(bool doAction = true)
     {
-        if (v == 0) return;
+        if (v == 0) return false;
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-            StartCoroutine(DashTiming(v));
+        {
+            if(doAction)StartCoroutine(DashTiming(v));
+            return true;
+        }
+
+        return false;
     }
 
     bool CheckForAttack()
@@ -321,7 +365,7 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         state_ = State.JUMPATTACK;
         JumpAttack();
-        yield return new WaitForSeconds(JumpAttackDelay);
+        yield return new WaitForSeconds(JumpAttackDelay/GetCurrentItem().AttackSpeedMult);
         if(state_ == State.JUMPATTACK) state_ = State.JUMPING;
 
     }
@@ -339,7 +383,7 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         state_ = State.DASHATTACK;
         DashAttack();
-        yield return new WaitForSeconds(DashAttackDelay);
+        yield return new WaitForSeconds(DashAttackDelay/GetCurrentItem().AttackSpeedMult);
         state_ = State.IDLE;
 
     }

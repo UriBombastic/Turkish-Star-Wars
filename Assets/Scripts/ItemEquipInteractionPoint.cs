@@ -56,7 +56,7 @@ public class ItemEquipInteractionPoint : MonoBehaviour
             player.EquipItem(itemState); //if not equipped give player item in question
         }
 
-        DisplayText.text = "Press 'R' to " + ((equipped) ? "unequip " : "equip ") + itemName;
+        DisplayText.text = "Press 'R' to " + ((!equipped) ? "unequip " : "equip ") + itemName;
         ItemGameObject.SetActive(equipped);
     }
 }

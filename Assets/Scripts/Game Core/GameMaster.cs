@@ -61,8 +61,7 @@ public class GameMaster : MonoBehaviour
     private static int playerShieldLevel=0;
 
     //player
-    [SerializeField]
-    private HeroController _player;
+    public HeroController _player;
     private LookDirectionController LDC;
     //Enemies to Kill
     [SerializeField]

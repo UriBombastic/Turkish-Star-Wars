@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/04.Cave.unity
     guid: 24d69f3787fe6a14394fff03348979af
+  - enabled: 1
+    path: Assets/Scenes/99.FillerEndcap.unity
+    guid: 1fd6365ff4257d54aa6b1db7e9ff4a9d
   m_configObjects: {}
