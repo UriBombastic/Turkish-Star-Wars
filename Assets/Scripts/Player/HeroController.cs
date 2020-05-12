@@ -7,6 +7,7 @@ using TMPro;
 
 public class HeroController : MonoBehaviour, IDamageable
 {
+    #region declarations
     //health
     public float maxHealth = 100f;
     public float health = 100f;
@@ -77,12 +78,19 @@ public class HeroController : MonoBehaviour, IDamageable
     };
     
     public State state_;
-    
+
+    public ItemState itemState;
+    public Item[] allItems;
+    public GameObject [] itemDisplays;
+    #endregion
+
+    #region initialization
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         aud = GetComponent<AudioSource>();
     }
+
 
     void Start()
     {
@@ -90,10 +98,28 @@ public class HeroController : MonoBehaviour, IDamageable
         HealthText.text = health + " / " + maxHealth;
         HealthBar.fillAmount = health / maxHealth;
         ShieldPower = maxShieldPower;
+        EquipItem(itemState);
+    }
+    #endregion
+
+    #region items
+    public void EquipItem(ItemState iState)
+    {
+        this.itemState = iState; //in case this is being accessed externally. Should be the ONLY reference to iState.
+        for (int i = 0; i < itemDisplays.Length; i++)
+            itemDisplays[i].SetActive(i == (int)itemState);
+    }
+
+    public Item GetCurrentItem()
+    {
+        return allItems[(int)itemState];
     }
 
 
+    #endregion
 
+    #region updates
+    //updates
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -174,7 +200,10 @@ public class HeroController : MonoBehaviour, IDamageable
                 break;
         }
     }
+    #endregion
 
+    #region checks
+    //checks
     bool CheckForMove()
     {
         if (h != 0 || v != 0)
@@ -237,17 +266,20 @@ public class HeroController : MonoBehaviour, IDamageable
             StartCoroutine(BlockTiming());
         }
     }
+    #endregion
 
+    #region executions
+    //executions
     void Walk(float x, float z)
     {
 
         Vector3 WalkVector = transform.forward * z + transform.right * x;
-        rb.AddForce(WalkVector * WalkForce);
+        rb.AddForce(WalkVector * WalkForce * GetCurrentItem().MoveSpeedMult);
     }
 
     void Jump()
     {
-        rb.AddForce(new Vector3(0f, JumpForce, 0f));
+        rb.AddForce(new Vector3(0f, JumpForce * GetCurrentItem().JumpForceMult, 0f));
         state_ = State.JUMPING;
     }
 
@@ -255,8 +287,8 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         state_ = State.DASHING;
         Vector3 DashVector = transform.forward * z;
-        rb.AddForce(DashVector * DashForce);
-        yield return new WaitForSeconds(DashCoolDown);
+        rb.AddForce(DashVector * DashForce * GetCurrentItem().MoveSpeedMult);
+        yield return new WaitForSeconds(DashCoolDown / GetCurrentItem().DashCooldownReduction);
         state_ = State.WALKING;
     }
 
@@ -271,7 +303,7 @@ public class HeroController : MonoBehaviour, IDamageable
         state_ = State.ATTACKING;
         yield return new WaitForSeconds(BasicAttackStartDelay);
         BasicAttack();
-        yield return new WaitForSeconds(1/BasicAttackSpeed);
+        yield return new WaitForSeconds(1/(BasicAttackSpeed*GetCurrentItem().AttackSpeedMult));
         state_ = State.IDLE;
 
     }
@@ -279,7 +311,10 @@ public class HeroController : MonoBehaviour, IDamageable
     void BasicAttack()
     {
         PlayAttackAudio();
-        FundamentalAttack(BasicAttackDamage * AttackDamageMultiplier, BasicAttackRadius, BasicAttackForce, BasicAttackTransform);
+        float actualAttackDamage = BasicAttackDamage * AttackDamageMultiplier * GetCurrentItem().AttackDamageMult;
+        float actualAttackRadius = BasicAttackRadius * GetCurrentItem().AttackRangeMult;
+        float actualAttackForce = BasicAttackForce * GetCurrentItem().AttackForceMult;
+        FundamentalAttack(actualAttackDamage, actualAttackRadius, actualAttackForce, BasicAttackTransform);
     }
 
     IEnumerator JumpAttackTiming()
@@ -294,7 +329,10 @@ public class HeroController : MonoBehaviour, IDamageable
     void JumpAttack()
     {
         PlayAttackAudio();
-        FundamentalAttack(JumpAttackDamage *AttackDamageMultiplier, JumpAttackRadius, JumpAttackForce, JumpAttackTransform);
+        float actualAttackDamage = JumpAttackDamage * AttackDamageMultiplier * GetCurrentItem().AttackDamageMult;
+        float actualAttackRadius = JumpAttackRadius * GetCurrentItem().AttackRangeMult;
+        float actualAttackForce = JumpAttackForce * GetCurrentItem().AttackForceMult;
+        FundamentalAttack(actualAttackDamage, actualAttackRadius, actualAttackForce, JumpAttackTransform);
     }
 
     IEnumerator DashAttackTiming()
@@ -309,7 +347,10 @@ public class HeroController : MonoBehaviour, IDamageable
     void DashAttack()
     {
         PlayAttackAudio();
-        FundamentalAttack(DashAttackDamage*AttackDamageMultiplier, DashAttackRadius, DashAttackForce, BasicAttackTransform);
+        float actualAttackDamage = DashAttackDamage * AttackDamageMultiplier * GetCurrentItem().AttackDamageMult;
+        float actualAttackRadius = DashAttackRadius * GetCurrentItem().AttackRangeMult;
+        float actualAttackForce = DashAttackForce * GetCurrentItem().AttackForceMult;
+        FundamentalAttack(actualAttackDamage, actualAttackRadius, actualAttackForce, BasicAttackTransform);
     }
 
     IEnumerator BlockTiming()
@@ -359,22 +400,16 @@ public class HeroController : MonoBehaviour, IDamageable
         
     }
 
-    //deprecated
-    /*IEnumerator BlockCoolDown()
-    {
-        canShield = false;
-        yield return new WaitForSeconds(ShieldCoolDown);
-        canShield = true;
-    }*/
-
-
     void Counter()
     {
         Debug.Log("Counter!");
         FundamentalAttack(0, CounterRadius, CounterForce, BasicAttackTransform);
     }
+    #endregion
 
-  void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
+    #region Attack/Damage
+    //Attack and Damage
+    void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>(); 
         for(int i = 0; i < enemies.Length; i++)
@@ -396,7 +431,6 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         aud.Play();
     }
-
 
     //IDamageable requirements. We don't want to be invincible now
     public void Damage(float damageToDo, Vector3 knockbackToDo)
@@ -436,10 +470,14 @@ public class HeroController : MonoBehaviour, IDamageable
         rb.constraints = RigidbodyConstraints.None;
         GameMaster.Instance.HandleDeath();
     }
+    #endregion
 
+    #region misc
+    //Additional functions
     public void Blind(bool doBlind)
     {
         GetComponent<LookDirectionController>().camera.gameObject.SetActive(doBlind);
     }
+    #endregion
 }
 
