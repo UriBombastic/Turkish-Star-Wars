@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicRotate : MonoBehaviour
 {
     public Vector3 moveDirection;
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(moveDirection);
     }

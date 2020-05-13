@@ -6,7 +6,7 @@ public class BasicMove : MonoBehaviour
 {
     public Vector3 moveDirection;
     public bool useTransformForward;
-    void Update()
+    void FixedUpdate()
     {
         if (useTransformForward)
         {

@@ -14,7 +14,7 @@ public class ItemMaster : MonoBehaviour
         }
     }
     //by default, player default values * 2
-    public float maxMoveSpeed = 40f;
+    public float maxMoveSpeed = 30f;
     public float maxJumpPower = 700f;
     public float maxDashPower = 2000f;
 

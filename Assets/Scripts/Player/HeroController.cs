@@ -109,17 +109,18 @@ public class HeroController : MonoBehaviour, IDamageable
         if (Input.GetKeyDown(KeyCode.Escape))
             GameMaster.TogglePause();
         UpdateHealthBar();
-    }
 
-    void FixedUpdate()
-    {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
         HandleItem();
         HandleInput();
-        RegenerateShield();
+
     }
 
+    void FixedUpdate()
+    {
+        RegenerateShield();
+    }
 
     void HandleInput()
     {
