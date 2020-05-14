@@ -505,7 +505,7 @@ public class HeroController : MonoBehaviour, IDamageable
 
     void UpdateHealthBar()
     {
-        HealthText.text = Mathf.Round(health*10)/10 + " / " + maxHealth;
+        HealthText.text = GameMaster.StandardRounding(health)+ " / " + maxHealth;
         HealthBar.fillAmount = health / maxHealth;
     }
 

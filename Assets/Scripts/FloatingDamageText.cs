@@ -9,6 +9,6 @@ public class FloatingDamageText : MonoBehaviour
 
     public void SetValue(float value)
     {
-        text.text = value.ToString();
+        text.text = GameMaster.StandardRounding(value).ToString();
     }
 }

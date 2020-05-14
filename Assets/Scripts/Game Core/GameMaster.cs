@@ -252,4 +252,11 @@ public class GameMaster : MonoBehaviour
         Application.Quit();
     }
 
+    //For consistent rounding
+    public static float StandardRounding(float value, int power = 1) //power is digits of accuracy
+    {
+        float powerValue = Mathf.Pow(10, power);
+        return (Mathf.Round(value * powerValue) / powerValue);
+    }
+
 }
