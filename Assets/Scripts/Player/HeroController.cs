@@ -119,6 +119,7 @@ public class HeroController : MonoBehaviour, IDamageable
 
     void FixedUpdate()
     {
+        DoPhysicsActions();
         RegenerateShield();
     }
 
@@ -248,7 +249,7 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         if (h != 0 || v != 0)
         {
-            Walk(h, v);
+           // Walk(h, v);
             return true;
         }
 
@@ -315,6 +316,12 @@ public class HeroController : MonoBehaviour, IDamageable
 
     #region executions
     //executions
+    void DoPhysicsActions()//for now, just walking
+    {
+        if (state_ == State.WALKING)
+            Walk(h, v);
+    }
+
     void Walk(float x, float z)
     {
 
