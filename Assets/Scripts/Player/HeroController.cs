@@ -55,13 +55,18 @@ public class HeroController : MonoBehaviour, IDamageable
     //Health
     public Image HealthBar;
     public TextMeshProUGUI HealthText;
+
+    //Damage feedback
+    public Image damageFlare;
+    public float damageFlareTime = 0.5f;
+    //private bool 
     
     //child components
     private Rigidbody rb;
     private AudioSource aud;
     
     //movement shit
-    [SerializeField]
+    //[SerializeField]
     private float h, v;
     //State enum
     public enum State
@@ -128,7 +133,7 @@ public class HeroController : MonoBehaviour, IDamageable
         switch(state_)
         {
             case State.IDLE:
-                if( h != 0 || v != 0)
+                if(CheckForMove())
                 {
                     state_ = State.WALKING;
                 }
@@ -164,13 +169,13 @@ public class HeroController : MonoBehaviour, IDamageable
                 break;
 
             case State.ATTACKING:
-                CheckForMove();
+               // CheckForMove();
                 CheckForJump();
                 CheckForBlock();
                 break;
 
             case State.JUMPATTACK:
-                CheckForMove();
+              //  CheckForMove();
                 break;
 
             case State.DASHATTACK:
@@ -318,9 +323,12 @@ public class HeroController : MonoBehaviour, IDamageable
     //executions
     void DoPhysicsActions()//for now, just walking
     {
-        if (state_ == State.WALKING)
-            Walk(h, v);
+        List<State> moveStates = new List<State>{ State.WALKING, State.JUMPING, State.ATTACKING, State.JUMPATTACK };
+        if (moveStates.Contains(state_))
+            if(CheckForMove()) Walk(h, v);
     }
+
+ 
 
     void Walk(float x, float z)
     {
@@ -456,6 +464,7 @@ public class HeroController : MonoBehaviour, IDamageable
     {
         Debug.Log("Counter!");
         FundamentalAttack(0, CounterRadius, CounterForce, BasicAttackTransform);
+        ShieldPower = maxShieldPower;//on counter, restore shield health
     }
     #endregion
 
@@ -496,11 +505,36 @@ public class HeroController : MonoBehaviour, IDamageable
         float realDamageToDo = damageToDo * Mathf.Max(0,(1f - adjustedShieldPower)); //prevent negative damage
         health -= realDamageToDo;
         if (realDamageToDo > 0)
+        {
             StartCoroutine(DamageDelay());
+            StopCoroutine(ShowDamageFlare());
+            StartCoroutine(ShowDamageFlare());
+        }
        // UpdateHealthBar(); //this may as well be in update?
        // PlayDamageSound();
 
         if (health <= 0) Kill();
+
+    }
+
+    public IEnumerator ShowDamageFlare()
+    {
+        Color col = damageFlare.color;
+        //I'm going to hardcode this to 60 fps like a dick because it's easier
+        float frames = damageFlareTime * 60;
+        float degradePerFrame = 1f / frames;
+
+        damageFlare.gameObject.SetActive(true);
+
+
+        for(int i = 0; i< (int) frames; i++) //iterate like an asshole
+        {
+            col.a = 1.0f - degradePerFrame * i; //lessen opacity
+            damageFlare.color = col;
+            yield return new WaitForSeconds(1 / 60); //haha look at me making shit happen at 60fps
+        }
+
+        damageFlare.gameObject.SetActive(false);
     }
 
     public IEnumerator DamageDelay()
