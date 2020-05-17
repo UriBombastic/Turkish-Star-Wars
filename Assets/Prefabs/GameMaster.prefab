@@ -1464,7 +1464,7 @@ MonoBehaviour:
   AtkUpgradeAmount: 0.2
   HealthUpgradeAmount: 20
   ShieldUpgradeMax: 5
-  ShieldTimeUpgrade: 0.05
+  ShieldTimeUpgrade: 0.025
   ShieldDegradeUpgrade: 12
   ShieldRegenUpgrade: 12
   outOfPointsMessage: {fileID: 1029715596}

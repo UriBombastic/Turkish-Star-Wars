@@ -255,7 +255,6 @@ MonoBehaviour:
   - 2.5
   - 4
   - 0
-  ToggleWhileActive: []
   EndSequenceActivations:
   - {fileID: 162523648}
   - {fileID: 2116542244}
@@ -898,6 +897,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -962,16 +971,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.1999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1053,7 +1052,6 @@ MonoBehaviour:
   objectsToDeactivate: []
   subsectionDelays:
   - 4
-  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -1545,6 +1543,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1599,16 +1607,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2889,6 +2887,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2943,11 +2946,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -3175,6 +3173,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3229,16 +3237,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -3487,6 +3485,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3551,16 +3559,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.1999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -4191,6 +4189,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 162523651}
+    - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
+      propertyPath: Points
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2768823019331644119, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: m_IsActive
@@ -4200,10 +4202,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 183.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
-      propertyPath: Points
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
@@ -4488,6 +4486,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4542,11 +4545,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -4972,6 +4970,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5036,16 +5044,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.1999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -6356,6 +6354,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6411,11 +6414,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -6453,6 +6451,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6517,16 +6525,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.1999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -7208,6 +7206,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5972004779929493261, guid: a6e139e5ab5b1c643aec54ae11383cb9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 188827716, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -7222,11 +7225,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 188827716, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5972004779929493261, guid: a6e139e5ab5b1c643aec54ae11383cb9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7406,6 +7404,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7460,11 +7463,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -8941,6 +8939,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8995,16 +9003,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -9212,7 +9210,6 @@ MonoBehaviour:
   objectsToDeactivate: []
   subsectionDelays:
   - 3
-  ToggleWhileActive: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -9460,6 +9457,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 449813086}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9514,16 +9521,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -10463,6 +10460,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10517,11 +10519,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (4)
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -12246,6 +12243,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12300,11 +12302,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (6)
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -12538,14 +12535,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2032025695681348, guid: cdc73d6444881fc479a26ff40d7d2a5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3932757513135755875, guid: cdc73d6444881fc479a26ff40d7d2a5c,
         type: 3}
       propertyPath: m_Radius
       value: 10.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032025695681348, guid: cdc73d6444881fc479a26ff40d7d2a5c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc73d6444881fc479a26ff40d7d2a5c, type: 3}
@@ -13028,6 +13025,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13082,11 +13084,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (3)
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
@@ -14876,6 +14873,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 60864336}
     m_Modifications:
+    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skeleton Enemy (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14930,11 +14932,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skeleton Enemy (7)
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount

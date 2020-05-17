@@ -961,7 +961,7 @@ MonoBehaviour:
   ShieldLevel: 0
   maxOpacity: 0.5
   ShieldPower: 0
-  shieldDegradeFactor: 60
+  shieldDegradeFactor: 75
   maxShieldPower: 1.25
   shieldRegenFactor: 120
   HealthBar: {fileID: 1701285733}

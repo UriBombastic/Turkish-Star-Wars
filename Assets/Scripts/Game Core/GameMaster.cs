@@ -205,8 +205,8 @@ public class GameMaster : MonoBehaviour
         if (Instance._player == null) return;
 
         playerAtkMult =Instance._player.AttackDamageMultiplier;
-        playerMaxHealth = Instance._player.maxHealth;
-        playerCurrentHealth = Instance._player.health;
+        playerMaxHealth = StandardRounding(Instance._player.maxHealth, 0); //round to nearest whole
+        playerCurrentHealth = Mathf.Min(Instance._player.health, playerMaxHealth);
         playerShieldDegradeFactor = Instance._player.shieldDegradeFactor;
         playerShieldLevel = Instance._player.ShieldLevel;
         playerMaxShieldPower = Instance._player.maxShieldPower;
