@@ -56,8 +56,8 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     [SerializeField]
     private float rockThrowCharge = 0;
     public float maxRockThrowCharge = 100;
-    public float minRockSize = 1f; //this is for the scale vector multiplier
-    public float maxRockSize = 2f;
+    public float minRockSize = .4f; //this is for the scale vector multiplier
+    public float maxRockSize = .8f;
     public float timeToMaxRockCharge = 2.0f;
     private GameObject currentProjectile;
 

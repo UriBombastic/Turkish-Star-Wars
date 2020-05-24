@@ -969,8 +969,8 @@ MonoBehaviour:
     type: 3}
   rockThrowCharge: 0
   maxRockThrowCharge: 100
-  minRockSize: 2
-  maxRockSize: 4
+  minRockSize: 0.4
+  maxRockSize: 0.8
   timeToMaxRockCharge: 2
   HealthBar: {fileID: 1701285733}
   HealthText: {fileID: 188827716}
