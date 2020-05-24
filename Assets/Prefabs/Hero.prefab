@@ -702,7 +702,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.617, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7381826739811331719}
   m_Father: {fileID: 1700784485506943664}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -957,6 +958,8 @@ MonoBehaviour:
   isRecovering: 0
   BasicAttackTransform: {fileID: 1351875628}
   JumpAttackTransform: {fileID: 885408810}
+  rockChargeTransform: {fileID: 7381826739811331719}
+  cameraTransform: {fileID: 1700784483871186095}
   shieldImage: {fileID: 1900544756}
   ShieldLevel: 0
   maxOpacity: 0.5
@@ -964,14 +967,17 @@ MonoBehaviour:
   shieldDegradeFactor: 75
   maxShieldPower: 1.25
   shieldRegenFactor: 120
-  canUseRangedAttack: 0
+  canUseRangedAttack: 1
   rockPrefab: {fileID: 4680553670461018483, guid: a96473571bf7a1b449f9e82ef6944d96,
     type: 3}
   rockThrowCharge: 0
   maxRockThrowCharge: 100
   minRockSize: 0.4
   maxRockSize: 0.8
-  timeToMaxRockCharge: 2
+  rockMaxDamage: 28
+  minRockForceRatio: 0.25
+  minRockAttackRadius: 1.5
+  maxRockAttackRadius: 3
   HealthBar: {fileID: 1701285733}
   HealthText: {fileID: 188827716}
   damageFlare: {fileID: 1976462131171922395}
@@ -1104,6 +1110,36 @@ MonoBehaviour:
   MaximumX: 90
   MinimumY: -180
   MaximumY: 180
+--- !u!1 &2936684462153354429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7381826739811331719}
+  m_Layer: 0
+  m_Name: Rock Spawn Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7381826739811331719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936684462153354429}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.27699995, z: 0.853}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1700784483871186095}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5218045229867548402
 GameObject:
   m_ObjectHideFlags: 0

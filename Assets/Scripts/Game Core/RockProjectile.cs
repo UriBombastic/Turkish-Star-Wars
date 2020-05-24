@@ -13,8 +13,11 @@ public class RockProjectile : Projectile
         owner.FundamentalAttack(damageToDo * trueMultiplier, radius * trueMultiplier,
             attackForce * trueMultiplier, transform);
 
-        Instantiate(explosionParticles, transform.position, transform.rotation); //explosion effect
-        Destroy(gameObject);
+        if (doSpecial)
+        {
+            Instantiate(explosionParticles, transform.position, transform.rotation); //explosion effect
+            Destroy(gameObject);
+        }
         enabled = false;
     }
 

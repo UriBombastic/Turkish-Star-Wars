@@ -6,7 +6,7 @@ using UnityEngine;
 public class PunchingBag : Enemy
 {
     public float DamageUpgradePerHit = 1.01f;
-
+    public float minDamageForUpgrade = 10f;
     protected override void FixedUpdate()
     {
      //do nothing; rocks won't attack you.
@@ -22,7 +22,7 @@ public class PunchingBag : Enemy
     public override void Damage(float damage, Vector3 knockback)
     {
         base.Damage(damage, Vector3.zero); //ignore knockback
-        player.AttackDamageMultiplier *= DamageUpgradePerHit; //increase player's attack damage
+       if(damage >= minDamageForUpgrade) player.AttackDamageMultiplier *= DamageUpgradePerHit; //increase player's attack damage
     }
 
     protected override IEnumerator HandleDamage(float damage)

@@ -37,8 +37,11 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float CounterForce = 850f;
     public float recoverTime = 0.5f;
     public bool isRecovering = false;
+    //transforms
     public Transform BasicAttackTransform;
     public Transform JumpAttackTransform;
+    public Transform rockChargeTransform;
+    public Transform cameraTransform;
 
     //Shielding
     public Image shieldImage;
@@ -55,10 +58,13 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public GameObject rockPrefab;
     [SerializeField]
     private float rockThrowCharge = 0;
-    public float maxRockThrowCharge = 100;
+    public float maxRockThrowCharge = 120; //frames to get to 100% rock throw charge
     public float minRockSize = .4f; //this is for the scale vector multiplier
     public float maxRockSize = .8f;
-    public float timeToMaxRockCharge = 2.0f;
+    public float rockMaxDamage = 20f; //2x basic attack damage, 1/4 speed, balances with 25% boost if maxed plus obvious range advantage
+    public float minRockForceRatio = .25f;
+    public float minRockAttackRadius = 1.5f;
+    public float maxRockAttackRadius = 3.0f;
     private GameObject currentProjectile;
 
     //Health
@@ -201,7 +207,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
                 break;
 
             case State.RANGEDATTACK:
-                CheckForRangedAttackRelease();
+                CheckForRangedAttackRelease(); //upon releasing E, throw the projectile
                 break;
 
 
@@ -345,9 +351,9 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         return false;
     }
 
-    void SummonRock()
+    void SummonRock() //necessary initialization for the rock prefab
     {
-        currentProjectile = Instantiate(rockPrefab, BasicAttackTransform);
+        currentProjectile = Instantiate(rockPrefab, rockChargeTransform);
         currentProjectile.transform.localScale = new Vector3(minRockSize, minRockSize, minRockSize);
         currentProjectile.GetComponent<RockProjectile>().enabled = false;
         //currentProjectile.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.No
@@ -518,11 +524,30 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
 
     void HandleProjectileCharge()
     {
-
+        rockThrowCharge += GetCurrentItem().AttackSpeedMult; //rock throw charge is affected by equipped item. (Should it be?)
+        rockThrowCharge = Mathf.Min(rockThrowCharge, maxRockThrowCharge); //cap throw charge
+        //scale rock scale from min size to max size based off proportion of charge
+        float rockScale = minRockSize + ((maxRockSize - minRockSize) * (rockThrowCharge / maxRockThrowCharge)); 
+        currentProjectile.transform.localScale = new Vector3(rockScale, rockScale, rockScale);
     }
 
     void ThrowProjectile()
     {
+        //calculate attack power
+        float powerRatio = rockThrowCharge / maxRockThrowCharge;
+        Debug.Log(powerRatio);
+        float actualThrowDamage = rockMaxDamage * powerRatio * AttackDamageMultiplier * GetCurrentItem().AttackDamageMult;
+        float actualRockAttackRadius = (minRockAttackRadius + (maxRockAttackRadius - minRockAttackRadius) * powerRatio) * GetCurrentItem().AttackRangeMult;
+        float throwForce = BasicAttackForce * ((minRockForceRatio) + (powerRatio * (1 - minRockForceRatio)))*GetCurrentItem().AttackForceMult;
+        currentProjectile.GetComponent<RockProjectile>().InstantiateProjectile(this, actualThrowDamage, actualRockAttackRadius, 0, powerRatio==1f);
+
+        //throw rock
+        currentProjectile.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None; //go free
+        currentProjectile.transform.SetParent(null); //dissassociate from spawn transform
+        currentProjectile.GetComponent<Rigidbody>().AddForce(throwForce * cameraTransform.forward);
+
+        //reset throwing state
+        rockThrowCharge = 0;
         state_ = State.IDLE;
     }
     #endregion
