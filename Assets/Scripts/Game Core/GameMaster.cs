@@ -58,6 +58,10 @@ public class GameMaster : MonoBehaviour
     private static float playerMaxShieldPower = 0f;
     private static float playershieldRegenFactor = 0f;
     private static int playerShieldLevel=0;
+    private static float playerWalkForce;
+    private static float playerJumpForce;
+    private static float playerDashPower;
+    
 
     //player
     public HeroController _player;
@@ -220,8 +224,10 @@ public class GameMaster : MonoBehaviour
         playerShieldLevel = Instance._player.ShieldLevel;
         playerMaxShieldPower = Instance._player.maxShieldPower;
         playershieldRegenFactor = Instance._player.shieldRegenFactor;
-        // playerMaxShieldTime = Instance._player.maxShieldTime;
-        //  playerShieldCoolDown = Instance._player.ShieldCoolDown;
+        playerWalkForce = Instance._player.WalkForce;
+        playerJumpForce = Instance._player.JumpForce;
+        playerDashPower = Instance._player.DashForce;
+
         hasUploaded = true;
     }
 
@@ -237,8 +243,9 @@ public class GameMaster : MonoBehaviour
         Instance._player.maxShieldPower = playerMaxShieldPower;
         Instance._player.shieldRegenFactor = playershieldRegenFactor;
         Instance._player.ShieldLevel = playerShieldLevel;
-        //  Instance._player.maxShieldTime = playerMaxShieldTime;
-        //   Instance._player.ShieldCoolDown = playerShieldCoolDown;
+        Instance._player.WalkForce = playerWalkForce;
+        Instance._player.JumpForce = playerJumpForce;
+        Instance._player.DashForce = playerDashPower;
     }
 
     //death

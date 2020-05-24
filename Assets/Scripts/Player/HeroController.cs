@@ -254,17 +254,17 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         //If not walking, don't bother with it.
         if (state_ == State.WALKING)
         {
-
             ItemMaster.Instance.TrainWalking();
-
-            if (CheckForJump(false)) //check for jump without invoking jump
-                ItemMaster.Instance.TrainJumping();
         }
 
         if(state_ == State.WALKING || state_== State.JUMPING)
             if (CheckForDash(false))
              ItemMaster.Instance.TrainDashing();
 
+        if(state_== State.WALKING || state_== State.IDLE)
+            if (CheckForJump(false)) //check for jump without invoking jump
+                ItemMaster.Instance.TrainJumping();
+        
     }
 
     #endregion
