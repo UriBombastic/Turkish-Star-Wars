@@ -967,7 +967,7 @@ MonoBehaviour:
   shieldDegradeFactor: 75
   maxShieldPower: 1.25
   shieldRegenFactor: 120
-  canUseRangedAttack: 1
+  canUseRangedAttack: 0
   rockPrefab: {fileID: 4680553670461018483, guid: a96473571bf7a1b449f9e82ef6944d96,
     type: 3}
   rockThrowCharge: 0

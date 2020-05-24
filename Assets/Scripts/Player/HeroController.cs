@@ -535,7 +535,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     {
         //calculate attack power
         float powerRatio = rockThrowCharge / maxRockThrowCharge;
-        Debug.Log(powerRatio);
+        //Debug.Log(powerRatio);
         float actualThrowDamage = rockMaxDamage * powerRatio * AttackDamageMultiplier * GetCurrentItem().AttackDamageMult;
         float actualRockAttackRadius = (minRockAttackRadius + (maxRockAttackRadius - minRockAttackRadius) * powerRatio) * GetCurrentItem().AttackRangeMult;
         float throwForce = BasicAttackForce * ((minRockForceRatio) + (powerRatio * (1 - minRockForceRatio)))*GetCurrentItem().AttackForceMult;

@@ -18,7 +18,8 @@ public class GameMaster : MonoBehaviour
     }
 
     //level handling
-    private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave", "99.FillerEndcap"};
+    private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave",
+        "05.TrainingGrounds","99.FillerEndcap"};
     private static int LevelIndex = 0;
 
     //enums
@@ -112,7 +113,17 @@ public class GameMaster : MonoBehaviour
     {
         if (CurrentObjective != LevelObjective.None)
             StartCoroutine(ObjectivesFlash());
+
+        SpecialLevelConditions();
+
     }
+
+    void SpecialLevelConditions()
+    {
+        if (LevelIndex >= 4) //manually unlock ranged attack if level 4 or above
+            _player.canUseRangedAttack = true;
+    }
+
 
     //objectives funcitons
     public void IncrementEnemyKillCount()
