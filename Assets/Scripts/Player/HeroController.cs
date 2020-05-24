@@ -56,8 +56,8 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     [SerializeField]
     private float rockThrowCharge = 0;
     public float maxRockThrowCharge = 100;
-    public float minRockSize = 2f; //this is for the scale vector multiplier
-    public float maxRockSize = 4f;
+    public float minRockSize = 1f; //this is for the scale vector multiplier
+    public float maxRockSize = 2f;
     public float timeToMaxRockCharge = 2.0f;
     private GameObject currentProjectile;
 
@@ -339,9 +339,18 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
        if(Input.GetKeyDown(KeyCode.E)) //Check if E key is pressed
         {
             state_ = State.RANGEDATTACK;
+            SummonRock();
             return true;
         }
         return false;
+    }
+
+    void SummonRock()
+    {
+        currentProjectile = Instantiate(rockPrefab, BasicAttackTransform);
+        currentProjectile.transform.localScale = new Vector3(minRockSize, minRockSize, minRockSize);
+        currentProjectile.GetComponent<RockProjectile>().enabled = false;
+        //currentProjectile.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.No
     }
 
     bool CheckForRangedAttackRelease()
@@ -517,6 +526,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         state_ = State.IDLE;
     }
     #endregion
+
 
     #region Attack/Damage
     //Attack and Damage
