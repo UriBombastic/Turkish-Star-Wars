@@ -964,6 +964,14 @@ MonoBehaviour:
   shieldDegradeFactor: 75
   maxShieldPower: 1.25
   shieldRegenFactor: 120
+  canUseRangedAttack: 0
+  rockPrefab: {fileID: 7251896966674936823, guid: a96473571bf7a1b449f9e82ef6944d96,
+    type: 3}
+  rockThrowCharge: 0
+  maxRockThrowCharge: 100
+  minRockSize: 2
+  maxRockSize: 4
+  timeToMaxRockCharge: 2
   HealthBar: {fileID: 1701285733}
   HealthText: {fileID: 188827716}
   damageFlare: {fileID: 1976462131171922395}

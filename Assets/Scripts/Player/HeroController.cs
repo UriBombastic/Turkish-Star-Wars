@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 
-public class HeroController : MonoBehaviour, IDamageable
+public class HeroController : MonoBehaviour, IDamageable, IAttacker 
 {
     #region declarations
     //health
@@ -48,9 +48,18 @@ public class HeroController : MonoBehaviour, IDamageable
     public float shieldDegradeFactor = 60f; //frames to reduce Shield Power by 1.0. 
     public float maxShieldPower = 1.25f;
     public float shieldRegenFactor = 120f;//frames to regenerate Shield Power by 1.0
-    //public float maxShieldTime = 0.25f;
-    // public float ShieldCoolDown = 0.25f;
-    // private bool canShield = true;
+
+
+    //ranged attack
+    public bool canUseRangedAttack = false;
+    public GameObject rockPrefab;
+    [SerializeField]
+    private float rockThrowCharge = 0;
+    public float maxRockThrowCharge = 100;
+    public float minRockSize = 2f; //this is for the scale vector multiplier
+    public float maxRockSize = 4f;
+    public float timeToMaxRockCharge = 2.0f;
+    private GameObject currentProjectile;
 
     //Health
     public Image HealthBar;
@@ -79,7 +88,7 @@ public class HeroController : MonoBehaviour, IDamageable
         JUMPATTACK,
         DASHATTACK,
         BLOCKING,
-        GRABBING
+        RANGEDATTACK
     };
     
     public State state_;
@@ -141,6 +150,7 @@ public class HeroController : MonoBehaviour, IDamageable
                 CheckForJump();
                 CheckForAttack();
                 CheckForBlock();
+                CheckForRangedAttack();
                 break;
 
             case State.WALKING:
@@ -153,6 +163,7 @@ public class HeroController : MonoBehaviour, IDamageable
                 CheckForDash();
                 CheckForAttack();
                 CheckForBlock();
+                CheckForRangedAttack();
                 break;
 
             case State.JUMPING:
@@ -161,6 +172,7 @@ public class HeroController : MonoBehaviour, IDamageable
                 CheckForDash();
                 CheckForJumpAttack();
                 CheckForBlock();
+                CheckForRangedAttack();
                 break;
 
             case State.DASHING:
@@ -168,7 +180,7 @@ public class HeroController : MonoBehaviour, IDamageable
                 CheckForBlock();
                 break;
 
-            case State.ATTACKING:
+            case State.ATTACKING: 
                // CheckForMove();
                 CheckForJump();
                 CheckForBlock();
@@ -188,8 +200,11 @@ public class HeroController : MonoBehaviour, IDamageable
                     BreakShield();
                 break;
 
-            case State.GRABBING:
+            case State.RANGEDATTACK:
+                CheckForRangedAttackRelease();
                 break;
+
+
         }
     }
 
@@ -317,6 +332,28 @@ public class HeroController : MonoBehaviour, IDamageable
             StartCoroutine(BlockTiming());
         }
     }
+
+    bool CheckForRangedAttack()
+    {
+        if (!canUseRangedAttack) return false;
+       if(Input.GetKeyDown(KeyCode.E)) //Check if E key is pressed
+        {
+            state_ = State.RANGEDATTACK;
+            return true;
+        }
+        return false;
+    }
+
+    bool CheckForRangedAttackRelease()
+    {
+        if(!Input.GetKey(KeyCode.E))
+        {
+            ThrowProjectile();
+            state_ = State.IDLE;
+            return true;
+        }
+        return false;
+    }
     #endregion
 
     #region executions
@@ -326,6 +363,9 @@ public class HeroController : MonoBehaviour, IDamageable
         List<State> moveStates = new List<State>{ State.WALKING, State.JUMPING, State.ATTACKING, State.JUMPATTACK };
         if (moveStates.Contains(state_))
             if(CheckForMove()) Walk(h, v);
+
+        if (state_ == State.RANGEDATTACK)
+            HandleProjectileCharge();
     }
 
  
@@ -466,11 +506,21 @@ public class HeroController : MonoBehaviour, IDamageable
         FundamentalAttack(0, CounterRadius, CounterForce, BasicAttackTransform);
         ShieldPower = maxShieldPower;//on counter, restore shield health
     }
+
+    void HandleProjectileCharge()
+    {
+
+    }
+
+    void ThrowProjectile()
+    {
+        state_ = State.IDLE;
+    }
     #endregion
 
     #region Attack/Damage
     //Attack and Damage
-    void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
+    public void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>(); 
         for(int i = 0; i < enemies.Length; i++)

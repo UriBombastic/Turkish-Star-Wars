@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable, IAttacker
 {
     public string enemyName = "Enemy";
     public float initialHealth = 100f;
@@ -168,7 +168,7 @@ public class Enemy : MonoBehaviour, IDamageable
     }
 
 
-    void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
+    public void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
     {
             if (Vector3.Distance(t.position, playerTransform.position) <= radius)
             {

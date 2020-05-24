@@ -53,9 +53,7 @@ public class GameMaster : MonoBehaviour
     private static float playerAtkMult=0f;
     private static float playerMaxHealth=0f;
     private static float playerCurrentHealth=0f;
- //   private static float playerMaxShieldTime=0f;
     private static float playerShieldDegradeFactor=0f;
- //   private static float playerShieldCoolDown=0f;
     private static float playerMaxShieldPower = 0f;
     private static float playershieldRegenFactor = 0f;
     private static int playerShieldLevel=0;
