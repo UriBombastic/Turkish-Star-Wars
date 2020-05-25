@@ -7,6 +7,8 @@ public class PunchingBag : Enemy
 {
     public float DamageUpgradePerHit = 1.01f;
     public float minDamageForUpgrade = 10f;
+    public GameObject explosionEffect;
+
     protected override void FixedUpdate()
     {
      //do nothing; rocks won't attack you.
@@ -33,8 +35,9 @@ public class PunchingBag : Enemy
     public override void Kill()
     {
         PlayDeathSound();
+        if (explosionEffect != null) Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
-        //TODO: explode
+
     }
 
     protected override void SpawnDamageText(float damage)

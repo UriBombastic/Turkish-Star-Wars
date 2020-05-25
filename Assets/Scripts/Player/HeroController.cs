@@ -544,6 +544,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         //throw rock
         currentProjectile.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None; //go free
         currentProjectile.transform.SetParent(null); //dissassociate from spawn transform
+        currentProjectile.GetComponent<Collider>().enabled = true;
         currentProjectile.GetComponent<Rigidbody>().AddForce(throwForce * cameraTransform.forward);
 
         //reset throwing state

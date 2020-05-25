@@ -68,9 +68,13 @@
      <Compile Include="Assets\Scripts\FloatingDamageText.cs" />
      <Compile Include="Assets\Scripts\Game Core\CutScene.cs" />
      <Compile Include="Assets\Scripts\Game Core\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\Game Core\IAttacker.cs" />
      <Compile Include="Assets\Scripts\Game Core\IDamageable.cs" />
      <Compile Include="Assets\Scripts\Game Core\ItemMaster.cs" />
+     <Compile Include="Assets\Scripts\Game Core\Projectile.cs" />
+     <Compile Include="Assets\Scripts\Game Core\RockProjectile.cs" />
      <Compile Include="Assets\Scripts\Game Core\UpgradePlayer.cs" />
+     <Compile Include="Assets\Scripts\HealingStation.cs" />
      <Compile Include="Assets\Scripts\ItemEquipInteractionPoint.cs" />
      <Compile Include="Assets\Scripts\ItemState.cs" />
      <Compile Include="Assets\Scripts\LevelGoal.cs" />
@@ -94,7 +98,7 @@
      <None Include="Assets\Resources\Dialogue\EN\ArenaEnd.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-     <None Include="Assets\Disclaimer.txt" />
+     <None Include="Assets\Resources\Dialogue\EN\TrainingScene.txt" />
      <None Include="Assets\Resources\Dialogue\EN\Cogedlos.txt" />
      <None Include="Assets\Third Party\Small Cave Kit\Documentation\Support.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
@@ -103,6 +107,7 @@
      <None Include="Assets\Resources\Dialogue\EN\Captured.txt" />
      <None Include="Assets\Resources\Dialogue\EN\CaveExposition.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\Third Party\BarProps\Credits.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
