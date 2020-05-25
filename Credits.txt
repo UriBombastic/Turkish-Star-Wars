@@ -75,3 +75,6 @@ Woman character:
 Old man/ village elder:
 https://www.cgtrader.com/free-3d-models/character/man/old-farmer
 "old-farmer" by burakozdemir on cgtrader
+
+Bar Props:
+"Bar props"on the unity asset store by SimpleModelsForMe
