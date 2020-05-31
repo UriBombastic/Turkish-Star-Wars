@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 8296172668903172601}
   - component: {fileID: 6681069031219891225}
   - component: {fileID: 6421544173124614478}
+  - component: {fileID: 1177044619083490252}
   m_Layer: 0
   m_Name: Skeleton Enemy
   m_TagString: Untagged
@@ -205,6 +206,7 @@ MonoBehaviour:
   DoFriendlyFire: 0
   floatingDamageText: {fileID: 2588620035215492404, guid: 6c4f119d6d6985c4db132c3599fab6b3,
     type: 3}
+  moveMode: 0
   state_: 0
   displaySword: {fileID: 2266363295722229812}
   AttackSword: {fileID: 774762388}
@@ -305,6 +307,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1177044619083490252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266363295403325670}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cedb949dfc6b44aa88e1e82ba6471d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 40
 --- !u!1 &3550825722365239301
 GameObject:
   m_ObjectHideFlags: 0

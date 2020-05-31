@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 6534781114316160466}
   - component: {fileID: 3954834140406639820}
   - component: {fileID: 8109911719799401829}
+  - component: {fileID: 3646509848965609224}
   m_Layer: 0
   m_Name: Yeti Enemy
   m_TagString: Untagged
@@ -545,6 +546,7 @@ MonoBehaviour:
   DoFriendlyFire: 0
   floatingDamageText: {fileID: 2588620035215492404, guid: 6c4f119d6d6985c4db132c3599fab6b3,
     type: 3}
+  moveMode: 0
   state_: 0
   CanStunCutoff: 60
   DamageToStun: 24
@@ -644,6 +646,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3646509848965609224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3954834140406639821}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cedb949dfc6b44aa88e1e82ba6471d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 15
 --- !u!1001 &9029525781695715977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,6 +671,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yeti@Idle
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: f40ff7263bdb8684a8fe053436a603b9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 534a54e3c80c93c4ba4d9e07cf0494c0, type: 2}
     - target: {fileID: -4216859302048453862, guid: f40ff7263bdb8684a8fe053436a603b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -726,11 +746,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: f40ff7263bdb8684a8fe053436a603b9,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 534a54e3c80c93c4ba4d9e07cf0494c0, type: 2}
     - target: {fileID: 8104116013650832364, guid: f40ff7263bdb8684a8fe053436a603b9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

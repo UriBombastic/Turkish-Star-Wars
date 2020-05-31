@@ -143,6 +143,11 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    public int GetEnemyKillCount()
+    {
+        return EnemyKillCount;
+    }
+
 
     IEnumerator ObjectivesFlash()
     {

@@ -285,6 +285,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     public virtual void Kill()
     {
         GameMaster.Instance.IncrementEnemyKillCount();
+        if (GetComponent<DecalDestroyer>()) GetComponent<DecalDestroyer>().enabled = true;
     }
 
     //essentially making it so that not every instance of animating has to do a null check, 
