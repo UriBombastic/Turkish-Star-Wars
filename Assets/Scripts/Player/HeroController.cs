@@ -202,7 +202,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
             case State.BLOCKING:
                 if (!Input.GetKey(KeyCode.Mouse1))
                     BreakShield();
-                if (CheckForAttack() || CheckForJump())
+                if (CheckForAttack()) //|| CheckForJump())
                     BreakShield();
                 break;
 

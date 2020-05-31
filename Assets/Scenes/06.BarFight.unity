@@ -239,6 +239,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 641937175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &254288041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932757513135755873, guid: cdc73d6444881fc479a26ff40d7d2a5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 552272964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &411573446
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,6 +613,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4323639778709823821, guid: 044fb4dae44857a498ef5a4a52c57950,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4323639778709823847, guid: 044fb4dae44857a498ef5a4a52c57950,
         type: 3}
       propertyPath: m_Enabled
@@ -623,6 +634,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4323639778709823845, guid: 044fb4dae44857a498ef5a4a52c57950,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323639778709823853, guid: 044fb4dae44857a498ef5a4a52c57950,
         type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -847,6 +863,16 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1018087710}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: LevelEndGoal
+      value: 
+      objectReference: {fileID: 254288041}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: EnemiestToKill
+      value: 26
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
 --- !u!1 &1784159304
