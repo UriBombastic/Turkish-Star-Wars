@@ -44,6 +44,15 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     public bool DoFriendlyFire = false;
     public GameObject floatingDamageText;
     protected bool doSpawnDamageText = true;
+
+    public enum MoveMode
+    {
+        FORCE,
+        SETSPEED
+    };
+
+    public MoveMode moveMode = MoveMode.FORCE;
+
     public enum State
     {
         IDLE,
@@ -126,7 +135,17 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         Quaternion lookRotation = Quaternion.LookRotation(lookAngle);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotateSpeed);
         //rb.AddForce(playerAngle * MoveForce); //walk towards player
-        rb.AddForce(transform.forward * MoveForce);
+        MoveTowardsPlayer();
+    }
+
+    protected virtual void MoveTowardsPlayer()
+    {
+        //note: same variable quantities will result in DRASTICALLY different effects based on MoveMode.
+        if (moveMode == MoveMode.FORCE)
+            rb.AddForce(transform.forward * MoveForce);
+        else if (moveMode == MoveMode.SETSPEED)
+            transform.Translate(transform.forward * MoveForce);
+     
     }
 
     protected virtual void HandleAggression()
@@ -226,7 +245,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         // StopAllCoroutines();
       //  Debug.Log("Handling Damage");
         StopCoroutine(Attack());
-        StopCoroutine(TelegraphAttack());
+        StopCoroutine(TelegraphAttack ());
         EnterDamage();
         yield return new WaitForSeconds(DamageRecoverTime);
         ExitDamage();
