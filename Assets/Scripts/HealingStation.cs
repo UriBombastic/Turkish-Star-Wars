@@ -9,6 +9,8 @@ public class HealingStation : MonoBehaviour
 
     public float HealthIncreasePS = 1f;
     public float MaxHealthIncreasePS = .1f;
+    public float GrandMaxHealth = 500f;
+    public GameObject MaxHealthNotice;
 
     void Start()
     {
@@ -25,8 +27,17 @@ public class HealingStation : MonoBehaviour
 
     public void DoHealing()
     {//assuming called every frame @ 60 fps fixedUpdate
+        if (player.maxHealth >= GrandMaxHealth)
+        {
+            player.maxHealth = GrandMaxHealth;
+            if (MaxHealthNotice != null && !MaxHealthNotice.activeInHierarchy)
+                MaxHealthNotice.SetActive(true);
+            return; //stop healing
+
+        }
         GameMaster.Instance.HealPlayer(HealthIncreasePS / 60); //use healplayer interface to avoid overflow
         player.maxHealth += GameMaster.StandardRounding(MaxHealthIncreasePS / 60,3); //some gimmicky potential here
+
 
     }
 
