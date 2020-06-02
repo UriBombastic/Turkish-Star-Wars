@@ -78,3 +78,6 @@ https://www.cgtrader.com/free-3d-models/character/man/old-farmer
 
 Bar Props:
 "Bar props"on the unity asset store by SimpleModelsForMe
+
+Masks (Used on Wizard, tentatively used elsewhere):
+Masks Pack 2 by Dmitry Dryzhak on the Unity Asset Store
