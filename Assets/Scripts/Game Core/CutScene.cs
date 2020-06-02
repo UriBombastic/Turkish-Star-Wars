@@ -30,6 +30,7 @@ public class CutScene : MonoBehaviour
         None,
         SelfDestruct,
         BeginLevel,
+        AdvanceLevel,
         EndLevel
     }
     //public List<GameObject[]> subsectionObjects;
@@ -164,6 +165,9 @@ public class CutScene : MonoBehaviour
             case EndMode.BeginLevel:
                 BeginLevel();
                 break;
+            case EndMode.AdvanceLevel:
+                AdvanceLevel();
+                break;
             case EndMode.EndLevel:
                 GameMaster.UploadPlayer();
                 GameMaster.LoadNextLevel();
@@ -181,12 +185,21 @@ public class CutScene : MonoBehaviour
 
         for (int i = 0; i < EndSequenceActivations.Length; i++)
             EndSequenceActivations[i].SetActive(true);
-        CharacterImage.gameObject.SetActive(false);
         GameMaster.Instance.StartLevel();
         gameObject.SetActive(false);
         if (doFreezeEnemies)
             ToggleEnemies(true);
  
+    }
+
+    void AdvanceLevel()
+    {
+        if (doFreezePlayer)
+            TogglePlayer(true);
+
+        for (int i = 0; i < EndSequenceActivations.Length; i++)
+            EndSequenceActivations[i].SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public float TotalSubsectLength()

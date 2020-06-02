@@ -8,6 +8,7 @@ public class MagoEnemyPassive : MonoBehaviour //not ACTUALLY an enemy so doesn't
     public float rotateSpeed = 10f;
     public float repelForce = 200f;
     public float repelRadius = 5f;
+    public bool doRotate = true;
     void Start()
     {
         playerTransform = FindObjectOfType<HeroController>().transform;
@@ -15,12 +16,13 @@ public class MagoEnemyPassive : MonoBehaviour //not ACTUALLY an enemy so doesn't
 
     void Update()
     {
-        FacePlayer();
+        if(doRotate)FacePlayer();
         RepelEverything();
     }
 
     void FacePlayer() //ripped from enemy script
     {
+        if (playerTransform == null) return;
         Vector3 playerAngle = (playerTransform.position - transform.position);
         playerAngle.Normalize();
         Vector3 lookAngle = new Vector3(playerAngle.x, 0, playerAngle.z);
