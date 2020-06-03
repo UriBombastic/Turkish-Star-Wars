@@ -178,7 +178,8 @@ public class CutScene : MonoBehaviour
 
     private void BeginLevel()
     {
-
+        if(doRollingDeactivate)
+            subsections[subsections.Length - 1].SetActive(false); //how is this not getting set to false before??
         //turns out, it is critical to unfreeze the player BEFORE enemies become initialized
         if (doFreezePlayer)
             TogglePlayer(true);
