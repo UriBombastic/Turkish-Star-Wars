@@ -25,7 +25,8 @@ public class UpgradePlayer : MonoBehaviour
     
     void Awake()
     {
-        player = FindObjectOfType<HeroController>();
+        if(player==null)
+            player = FindObjectOfType<HeroController>();
     }
 
     void Start()

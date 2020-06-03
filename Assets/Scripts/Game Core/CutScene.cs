@@ -30,8 +30,8 @@ public class CutScene : MonoBehaviour
         None,
         SelfDestruct,
         BeginLevel,
-        AdvanceLevel,
-        EndLevel
+        EndLevel,
+        AdvanceLevel
     }
     //public List<GameObject[]> subsectionObjects;
     //public List<float[]> subsectionObjectDelays;
@@ -165,12 +165,12 @@ public class CutScene : MonoBehaviour
             case EndMode.BeginLevel:
                 BeginLevel();
                 break;
-            case EndMode.AdvanceLevel:
-                AdvanceLevel();
-                break;
             case EndMode.EndLevel:
                 GameMaster.UploadPlayer();
                 GameMaster.LoadNextLevel();
+                break;
+            case EndMode.AdvanceLevel:
+                AdvanceLevel();
                 break;
         }
 
