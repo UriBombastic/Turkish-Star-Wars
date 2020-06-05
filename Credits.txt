@@ -1,8 +1,8 @@
 Music Used:
-Golden Axe Death Adder & Death Bringer Themes
+Golden Axe Death Adder & Death Bringer Themes, "Battle Field"theme
 "Whistle" by Flo Rida
 Indiana Jones Theme (duh) by John Williams
-
+Sonic the Hedgehog-Boss theme
 
 Main Character:
 https://sketchfab.com/3d-models/bruce-lee-low-poly-model-bff2fe59dc8c42a78c0b20ce83d73515
@@ -24,6 +24,7 @@ https://www.freesoundeffects.com/free-sounds/fight-sounds-10034/
 
 Golden Axe Music:
 https://downloads.khinsider.com/game-soundtracks/album/golden-axe-i-original-game-audio
+Battle field theme: https://www.youtube.com/watch?v=ob-2kfWxDiE
 
 Shield:
 https://www.pinterest.com/pin/267964246551300367/?lp=true
@@ -81,3 +82,6 @@ Bar Props:
 
 Masks (Used on Wizard, tentatively used elsewhere):
 Masks Pack 2 by Dmitry Dryzhak on the Unity Asset Store
+
+Sonic the hedgehog boss music via:
+https://www.youtube.com/watch?v=SEIHIVNzfZc
