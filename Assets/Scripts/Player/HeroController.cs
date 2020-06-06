@@ -51,7 +51,8 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float shieldDegradeFactor = 60f; //frames to reduce Shield Power by 1.0. 
     public float maxShieldPower = 1.25f;
     public float shieldRegenFactor = 120f;//frames to regenerate Shield Power by 1.0
-
+    private float minShieldTime = 0; //to prevent epic, game-breaking combos with the shield; will equal basic attack speed
+    private float currentShieldTime = 0;//time spent shielding
 
     //ranged attack
     public bool canUseRangedAttack = false;
@@ -133,6 +134,8 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
         HandleItem();
+        if (state_ != State.BLOCKING && shieldImage.gameObject.activeInHierarchy)
+            shieldImage.gameObject.SetActive(false);
         HandleInput();
 
     }
@@ -148,7 +151,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         switch(state_)
         {
             case State.IDLE:
-                if(CheckForMove())
+                if (CheckForMove())
                 {
                     state_ = State.WALKING;
                 }
@@ -200,10 +203,16 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
                 break;
 
             case State.BLOCKING:
-                if (!Input.GetKey(KeyCode.Mouse1))
-                    BreakShield();
-                if (CheckForAttack()) //|| CheckForJump())
-                    BreakShield();
+                CheckForMove();
+                if (currentShieldTime >= minShieldTime)
+                {
+                     if (!Input.GetKey(KeyCode.Mouse1))
+                        BreakShield();
+                    if (CheckForAttack() || CheckForJump())
+                        BreakShield();
+                }
+
+                currentShieldTime += Time.deltaTime;
                 break;
 
             case State.RANGEDATTACK:
@@ -213,6 +222,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
 
         }
     }
+
 
     void HandleItem()
     {
@@ -241,6 +251,8 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         this.itemState = iState; //in case this is being accessed externally. Should be the ONLY reference to iState.
         for (int i = 0; i < itemDisplays.Length; i++)
             itemDisplays[i].SetActive(i == (int)itemState);
+
+        minShieldTime = 1 / (BasicAttackSpeed * GetCurrentItem().AttackSpeedMult); //calculate time to attack
     }
 
     public Item GetCurrentItem()
@@ -419,7 +431,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         yield return new WaitForSeconds(BasicAttackStartDelay);
         BasicAttack();
         yield return new WaitForSeconds(1/(BasicAttackSpeed*GetCurrentItem().AttackSpeedMult));
-        state_ = State.IDLE;
+        if(!Input.GetKey(KeyCode.Mouse1)) state_ = State.IDLE; //if mouse pressed go to shielding
 
     }
 
@@ -471,16 +483,9 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     IEnumerator BlockTiming()
     {
         state_ = State.BLOCKING;
+        currentShieldTime = 0;
         shieldImage.gameObject.SetActive(true);
         Color col = shieldImage.color;
-
-        //initialization. Deprecated.
-      /*  col.a = maxOpacity;
-        shieldImage.color = col;
-       ShieldPower = 1.0f;
-        shieldImage.transform.localScale = new Vector3(1, 0.5f, 1);
-        yield return new WaitForSeconds(maxShieldTime);
-        */
 
         //degrade shield
         while(state_ == State.BLOCKING && ShieldPower > 0f)
@@ -493,7 +498,11 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
             yield return new WaitForSecondsRealtime(1 / 60f); //frame by frame update;
         }
 
-        BreakShield();
+        //prevent proceeding until minimum shielding time met.
+      /*  while (currentShieldTime < minShieldTime)
+            yield return new WaitForEndOfFrame();
+
+        BreakShield();*/
 
     }
 
