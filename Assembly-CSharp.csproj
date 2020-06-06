@@ -77,6 +77,7 @@
      <Compile Include="Assets\Scripts\Game Core\Projectile.cs" />
      <Compile Include="Assets\Scripts\Game Core\RockProjectile.cs" />
      <Compile Include="Assets\Scripts\Game Core\UpgradePlayer.cs" />
+     <Compile Include="Assets\Scripts\Game Core\VolumeControl.cs" />
      <Compile Include="Assets\Scripts\HealingStation.cs" />
      <Compile Include="Assets\Scripts\ItemEquipInteractionPoint.cs" />
      <Compile Include="Assets\Scripts\ItemState.cs" />
