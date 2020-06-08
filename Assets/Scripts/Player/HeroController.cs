@@ -566,7 +566,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     #region Attack/Damage
     //Attack and Damage
     public void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
-    {
+    {/*
         Enemy[] enemies = FindObjectsOfType<Enemy>(); 
         for(int i = 0; i < enemies.Length; i++)
         {
@@ -579,7 +579,19 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
                 enemies[i].Damage(damageToDo, attackVector * attackForce);
             }
 
+        }*/
+        Collider[] hitColliders = Physics.OverlapSphere(t.position, radius); //refactoring to use physics overlapsphere
+        for(int i = 0; i < hitColliders.Length; i++)
+        {
+            if(hitColliders[i].GetComponent<Enemy>() != null) //check if is enemy
+            {
+                Vector3 attackVector = hitColliders[i].transform.position - transform.position;
+                attackVector.Normalize();
+                //it would perhaps be better to do generic iDamageable, however the player should only be able to hit enemies.
+                hitColliders[i].GetComponent<Enemy>().Damage(damageToDo, attackVector * attackForce); 
+            }
         }
+
         if (AttackParticleEffect != null) Instantiate(AttackParticleEffect, t);
     }
 

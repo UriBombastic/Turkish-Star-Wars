@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     protected virtual void Start()
     {
         health = initialHealth;
+        if (healthCanvas != null) healthCanvas.SetActive(true);
         if (nameText != null) nameText.text = enemyName;
         playerTransform = player.transform;
         IdentifyTarget();
@@ -191,6 +192,19 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     }
 
 
+    protected Vector3 GetAimAngle()
+    {
+        return GetAimAngle(transform); //defaults to getting angle from base transform to target
+    }
+
+    protected Vector3 GetAimAngle(Transform fromTransform) //gets angle from attack transform to target
+    {
+        Vector3 playerAngle = (targetTransform.position - fromTransform.position);
+        playerAngle.Normalize();
+        Vector3 aimAngle = new Vector3(playerAngle.x, playerAngle.y, playerAngle.z);
+        return aimAngle;
+    }
+
     public void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
     {
             if (Vector3.Distance(t.position, playerTransform.position) <= radius)
@@ -281,7 +295,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     protected void PlayDeathSound()
     {
         if (deathSound == null) return;
-        aud.volume = 1f;
+        aud.volume *= 2.0f;
         aud.clip = deathSound;
         aud.Play();
     }
