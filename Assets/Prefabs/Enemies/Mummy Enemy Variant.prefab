@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3954834140406639821, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_Name
-      value: Mummy Enemy
+      value: Mummy Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3954834140406639821, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
@@ -106,6 +106,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 316686178d6809a4cb43eed101a4b475, type: 2}
+      objectReference: {fileID: 2100000, guid: 409eb91a892ac564da023209597bda70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88c6e2d7bc8be6c449245435cb8743a6, type: 3}

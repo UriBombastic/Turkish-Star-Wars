@@ -129,13 +129,17 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
 
     protected virtual void HandlePlayerInView()
     {
+        FacePlayer();
+        MoveTowardsPlayer();
+    }
+
+    protected virtual void FacePlayer()
+    {
         Vector3 playerAngle = (targetTransform.position - transform.position);
         playerAngle.Normalize();
         Vector3 lookAngle = new Vector3(playerAngle.x, 0, playerAngle.z);
         Quaternion lookRotation = Quaternion.LookRotation(lookAngle);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotateSpeed);
-        //rb.AddForce(playerAngle * MoveForce); //walk towards player
-        MoveTowardsPlayer();
     }
 
     protected virtual void MoveTowardsPlayer()
