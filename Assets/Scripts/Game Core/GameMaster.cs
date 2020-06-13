@@ -38,7 +38,6 @@ public class GameMaster : MonoBehaviour
         None,
         ReachGoal,
         KillAllEnemies,
-//        KillAllEnemiesSet,
         KillBoss
     }
 
@@ -84,6 +83,7 @@ public class GameMaster : MonoBehaviour
     //level complete UI
     public bool ShowLevelComplete;
     public GameObject LevelCompleteUI;
+    public GameObject[] endLevelToggles;
 
     //Deaths 
     public GameObject DeathScreen;
@@ -133,13 +133,23 @@ public class GameMaster : MonoBehaviour
     public void IncrementEnemyKillCount()
     {
         EnemyKillCount++;
-        if (CurrentObjective == LevelObjective.KillAllEnemies)
+        if (CurrentObjective == LevelObjective.KillAllEnemies || (CurrentObjective == LevelObjective.KillBoss && EnemiestToKill >1))
         {
-            if (EnemyKillCount == EnemiestToKill)
+            if (EnemyKillCount >= EnemiestToKill)
             {
                 LevelEndGoal.SetActive(true);
                 if (ShowLevelComplete) LevelCompleteUI.SetActive(true);
             }
+        }
+    }
+
+    public void RegisterKillBoss()
+    {
+        if(CurrentObjective == LevelObjective.KillBoss)
+        {
+            if (endLevelToggles.Length > 0)
+                for (int i = 0; i < endLevelToggles.Length; i++)
+                    endLevelToggles[i].SetActive(!endLevelToggles[i].activeInHierarchy);
         }
     }
 

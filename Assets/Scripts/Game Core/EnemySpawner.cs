@@ -33,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnLocations;
 
     public SpawnMode spawnMode = SpawnMode.FINITE;
+    public Transform enemyParentTransform;
 
    // private int lastKillCount = 0;
   //  private int enemiesAlive;
@@ -66,7 +67,9 @@ public class EnemySpawner : MonoBehaviour
         enemiesSpawned++;
         Transform selectedTransform = SelectTransform();
         EnemyPack selectedEnemy = (BossConditions())? boss : SelectEnemy();
-        Instantiate(selectedEnemy.prefab, selectedTransform.position, selectedTransform.rotation); //spawn enemies
+        GameObject spawnedEnemy = Instantiate(selectedEnemy.prefab, selectedTransform.position, selectedTransform.rotation); //spawn enemies
+        if (enemyParentTransform != null)
+            spawnedEnemy.transform.SetParent(enemyParentTransform);
         if(selectedEnemy.spawnParticles!=null)
             Instantiate(selectedEnemy.spawnParticles, selectedTransform.position, selectedTransform.rotation); //spawn particles
 
@@ -82,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
 
     private bool BossConditions()
     {
-        return (spawnMode == SpawnMode.FINITE && boss != null && enemiesSpawned == enemiesToDefeat);
+        return (spawnMode == SpawnMode.FINITE && boss.prefab != null && enemiesSpawned == enemiesToDefeat);
     }
 
     private EnemyPack SelectEnemy()

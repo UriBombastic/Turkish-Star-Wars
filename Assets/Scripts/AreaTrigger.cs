@@ -5,7 +5,7 @@ using UnityEngine;
 public class AreaTrigger : MonoBehaviour
 {
     public GameObject[] objectsToActivate;
-
+    public bool doShutoff = true;
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<HeroController>())
@@ -18,6 +18,6 @@ public class AreaTrigger : MonoBehaviour
         for (int i = 0; i < objectsToActivate.Length; i++)
             objectsToActivate[i].SetActive(true);
 
-        gameObject.SetActive(false);
+        if(doShutoff)gameObject.SetActive(false);
     }
 }

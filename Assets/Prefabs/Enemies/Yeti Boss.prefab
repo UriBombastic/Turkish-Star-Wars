@@ -1186,7 +1186,6 @@ Transform:
   - {fileID: 5294944827976066281}
   - {fileID: 6983593865898844578}
   - {fileID: 6403925757157497820}
-  - {fileID: 9212828666001143880}
   - {fileID: 6983593864643484734}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1390,6 +1389,11 @@ MonoBehaviour:
   isLeaping: 0
   dustParticles: {fileID: 2433673544585794160, guid: ad1cc35cdfdd07e4eb047147b59dbd78,
     type: 3}
+  berzerkHealthCutoff: 300
+  berzerkStrenghtMultiplier: 1.2
+  isBerzerk: 0
+  berzerkParticles: {fileID: 0}
+  deathTime: 3
 --- !u!1 &6303849839299521620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1485,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6941042033568363665}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6983593865898844579
 GameObject:
@@ -1605,6 +1609,7 @@ Transform:
   m_Children:
   - {fileID: 7601691243734441893}
   - {fileID: 6856029378353789274}
+  - {fileID: 9212828666001143880}
   m_Father: {fileID: 6941042033568363665}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1915,12 +1920,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9212828666001143887}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.465, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.9299994, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 6941042033568363665}
-  m_RootOrder: 3
+  m_Father: {fileID: 6403925757157497820}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &9212828666001143881
 Light:
