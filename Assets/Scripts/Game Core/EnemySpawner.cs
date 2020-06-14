@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
     public int maxEnemies;
     public int initialEnemies;
     public float timeBetweenSpawns = 1.0f;
+    public float spawnRandomRadius = 0f;
     private float timeElapsedBetweenSpawns;
     public int enemiesToDefeat;
     public int enemiesSpawned = 0;
@@ -68,6 +69,7 @@ public class EnemySpawner : MonoBehaviour
         Transform selectedTransform = SelectTransform();
         EnemyPack selectedEnemy = (BossConditions())? boss : SelectEnemy();
         GameObject spawnedEnemy = Instantiate(selectedEnemy.prefab, selectedTransform.position, selectedTransform.rotation); //spawn enemies
+        spawnedEnemy.transform.Translate(RandomDistance(), RandomDistance(), RandomDistance()); //so that it's not right on spawn transform
         if (enemyParentTransform != null)
             spawnedEnemy.transform.SetParent(enemyParentTransform);
         if(selectedEnemy.spawnParticles!=null)
@@ -77,6 +79,10 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    private float RandomDistance()
+    {
+        return Random.Range(-spawnRandomRadius, spawnRandomRadius);
+    }
 
     private Transform SelectTransform()
     {

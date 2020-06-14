@@ -26,6 +26,9 @@ public class YetiBoss : YetiEnemy
     public GameObject berzerkParticles;
     public float deathTime = 3.0f;
 
+    //for game continuity
+    public GameObject[] toggleOnDeath;
+
     protected override void Start()
     {
         base.Start();
@@ -172,6 +175,15 @@ public class YetiBoss : YetiEnemy
         yield return new WaitForSeconds(3.0f);
         GameObject BigExplosion = Instantiate(dustParticles, transform.position, transform.rotation);
         BigExplosion.transform.localScale *= 3;
+        ToggleContinuityElements();
         Destroy(gameObject);
+    }
+
+    void ToggleContinuityElements()
+    {
+        for(int i = 0; i < toggleOnDeath.Length; i++)
+            if(toggleOnDeath[i]!=null)
+                toggleOnDeath[i].SetActive(!toggleOnDeath[i].activeInHierarchy);
+
     }
 }
