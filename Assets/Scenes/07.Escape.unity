@@ -653,6 +653,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Real LevelEndZone
       objectReference: {fileID: 0}
+    - target: {fileID: 3932757513135755873, guid: cdc73d6444881fc479a26ff40d7d2a5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3932757513135755872, guid: cdc73d6444881fc479a26ff40d7d2a5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -707,6 +712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932757513135755875, guid: cdc73d6444881fc479a26ff40d7d2a5c,
+        type: 3}
+      propertyPath: m_Radius
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc73d6444881fc479a26ff40d7d2a5c, type: 3}
@@ -3914,6 +3924,11 @@ PrefabInstance:
       propertyPath: ObjectiveExplanation
       value: Escape with your ass intact
       objectReference: {fileID: 0}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1608301880}
     - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: Points
       value: 4

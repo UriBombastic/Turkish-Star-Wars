@@ -135,9 +135,13 @@ public class YetiBoss : YetiEnemy
 
     protected override IEnumerator HandleDamage(float damage)
     {
-        yield return base.HandleDamage(damage);
-        if (health <= berzerkHealthCutoff && !isBerzerk)
-            EnterBerzerkMode();
+        if (state_ != State.DEAD)
+        {
+            yield return base.HandleDamage(damage);
+            if (health <= berzerkHealthCutoff && !isBerzerk)
+                EnterBerzerkMode();
+        }
+        yield return null;
     }
 
     void EnterBerzerkMode()
@@ -160,6 +164,7 @@ public class YetiBoss : YetiEnemy
 
     public override void Kill()
     {
+        state_ = State.DEAD;
         PlayDeathSound();
         StopCoroutine(AttackClock());
         ViewRange = 0;

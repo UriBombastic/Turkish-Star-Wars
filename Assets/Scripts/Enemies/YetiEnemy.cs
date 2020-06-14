@@ -62,6 +62,7 @@ public class YetiEnemy : Enemy
 
     protected override IEnumerator HandleDamage(float damage)
     {
+
         //only stun if above berserker cutoff or large enough to override
         if (health >= CanStunCutoff || damage >= DamageToStun) 
         {

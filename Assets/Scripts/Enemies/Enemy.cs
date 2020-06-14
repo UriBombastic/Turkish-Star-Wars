@@ -59,7 +59,8 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         PLAYERINVIEW,
         AGGRESSION,
         ATTACKING,
-        DAMAGED
+        DAMAGED,
+        DEAD
     };
 
     public State state_;
