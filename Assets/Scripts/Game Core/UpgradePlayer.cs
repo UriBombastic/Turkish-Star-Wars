@@ -32,7 +32,7 @@ public class UpgradePlayer : MonoBehaviour
     void Start()
     {
         pointsText.text = Points.ToString();
-        atkVariable.text = player.BasicAttackDamage * player.AttackDamageMultiplier + "";
+        atkVariable.text = GameMaster.StandardRounding(player.BasicAttackDamage * player.AttackDamageMultiplier) + "";
         healthVariable.text = player.maxHealth.ToString();
         shieldVariable.text = player.ShieldLevel.ToString();
         GameMaster.Instance.HealPlayer(); //sister demanded that this be a thing

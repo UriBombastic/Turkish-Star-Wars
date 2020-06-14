@@ -2522,6 +2522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToActivate:
   - {fileID: 1434731514}
+  doShutoff: 1
 --- !u!1 &1434731514
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,6 +3714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToActivate:
   - {fileID: 1784751893}
+  doShutoff: 1
 --- !u!1 &1969446097
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,6 +4354,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2433673544585794160, guid: ad1cc35cdfdd07e4eb047147b59dbd78,
         type: 3}
+    - target: {fileID: 2281357308866630478, guid: 053a8d5bfc1406940b66e7d48ea90fcf,
+        type: 3}
+      propertyPath: DamageUpgradePerHit
+      value: 1.005
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 053a8d5bfc1406940b66e7d48ea90fcf, type: 3}
 --- !u!82 &3949229175513206432 stripped

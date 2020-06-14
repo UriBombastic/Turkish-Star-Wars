@@ -1461,7 +1461,7 @@ MonoBehaviour:
   healthVariable: {fileID: 556197009}
   shieldVariable: {fileID: 2104574421}
   shieldMaxNotification: {fileID: 2025211478}
-  AtkUpgradeAmount: 0.2
+  AtkUpgradeAmount: 0.1
   HealthUpgradeAmount: 20
   ShieldUpgradeMax: 5
   ShieldTimeUpgrade: 0.025
@@ -3811,6 +3811,7 @@ MonoBehaviour:
   GoalDisplayDuration: 3
   ShowLevelComplete: 1
   LevelCompleteUI: {fileID: 1973265075}
+  endLevelToggles: []
   DeathScreen: {fileID: 4193766542690471962}
   upgradeUI: {fileID: 908915187}
   PauseMenu: {fileID: 6224815804186814814}
