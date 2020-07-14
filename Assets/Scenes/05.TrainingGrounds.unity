@@ -2052,9 +2052,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 409539718}
   isHealing: 0
-  HealthIncreasePS: 1
+  HealthIncreasePS: 0.25
   MaxHealthIncreasePS: 0.1
-  GrandMaxHealth: 500
+  GrandMaxHealth: 420
   MaxHealthNotice: {fileID: 1602044703}
 --- !u!1 &980303562
 GameObject:
