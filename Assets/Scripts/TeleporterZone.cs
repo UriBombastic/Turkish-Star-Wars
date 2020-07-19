@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class TeleporterZone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform teleportDestination;
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        
+        if (teleportDestination == null) return;
+        if(other.GetComponent<Rigidbody>())
+        {
+            other.transform.position = teleportDestination.position;
+        }
     }
 }
