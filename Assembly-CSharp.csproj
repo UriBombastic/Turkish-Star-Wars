@@ -56,18 +56,20 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AreaTrigger.cs" />
+     <Compile Include="Assets\Scripts\AudioReverser.cs" />
      <Compile Include="Assets\Scripts\BasicMove.cs" />
      <Compile Include="Assets\Scripts\BasicRotate.cs" />
      <Compile Include="Assets\Scripts\Bystander.cs" />
+     <Compile Include="Assets\Scripts\Enemies\CollectiveEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Gladiator.cs" />
      <Compile Include="Assets\Scripts\Enemies\GorillaEnemy.cs" />
-     <Compile Include="Assets\Scripts\Enemies\MagoEnemyPassive.cs" />
      <Compile Include="Assets\Scripts\Enemies\PunchingBag.cs" />
      <Compile Include="Assets\Scripts\Enemies\SkeletonEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\YetiBoss.cs" />
      <Compile Include="Assets\Scripts\Enemies\YetiEnemy.cs" />
      <Compile Include="Assets\Scripts\ExplodingShip.cs" />
+     <Compile Include="Assets\Scripts\FaceGameObject.cs" />
      <Compile Include="Assets\Scripts\FloatingDamageText.cs" />
      <Compile Include="Assets\Scripts\Game Core\CutScene.cs" />
      <Compile Include="Assets\Scripts\Game Core\EnemySpawner.cs" />
@@ -88,6 +90,8 @@
      <Compile Include="Assets\Scripts\Player\HeroState.cs" />
      <Compile Include="Assets\Scripts\Player\Item.cs" />
      <Compile Include="Assets\Scripts\Player\LookDirectionController.cs" />
+     <Compile Include="Assets\Scripts\Repulsor.cs" />
+     <Compile Include="Assets\Scripts\TeleporterZone.cs" />
      <Compile Include="Assets\Third Party\Cattleya\Scripts\DemoScene.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
      <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
@@ -123,6 +127,7 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Resources\Dialogue\EN\ChurchSceneIntro.txt" />
      <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_Standart2Sided.shader" />
      <None Include="Assets\Resources\Dialogue\EN\Captured.txt" />
      <None Include="Assets\Resources\Dialogue\EN\CaveExposition.txt" />
@@ -132,6 +137,7 @@
      <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartInnerGlowIce.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\Resources\Dialogue\EN\ChurchSceneDeusEx.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartTransparent.shader" />

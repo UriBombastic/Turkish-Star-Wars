@@ -303,12 +303,13 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
 
     public virtual void Kill()
     {
+        health = 0; // Prevent Negative
         GameMaster.Instance.IncrementEnemyKillCount();
         if (GetComponent<DecalDestroyer>()) GetComponent<DecalDestroyer>().enabled = true;
     }
 
-    //essentially making it so that not every instance of animating has to do a null check, 
-    //as well as allowing this method to be within the base Enemy class.
+    // Essentially making it so that not every instance of animating has to do a null check, 
+    // As well as allowing this method to be within the base Enemy class.
     protected void Animate(string trigger)
     {
         if (animator == null) return; //duh
