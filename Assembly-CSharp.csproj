@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\Enemies\CollectiveEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\Gladiator.cs" />
+     <Compile Include="Assets\Scripts\Enemies\GoldenNinja.cs" />
      <Compile Include="Assets\Scripts\Enemies\GorillaEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\PunchingBag.cs" />
      <Compile Include="Assets\Scripts\Enemies\SkeletonEnemy.cs" />
