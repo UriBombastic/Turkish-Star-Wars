@@ -29,6 +29,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float JumpAttackDamage = 15f;
     public float JumpAttackRadius = 4.5f;
     public float JumpAttackForce = 400f;
+    public float JumpCollideReturnToIdleTime = 0.4f;
     public float DashAttackDelay = 1.0f; //cooldown invoked by Dash Attack
     public float DashAttackDamage = 15f;
     public float DashAttackRadius = 4.0f;
@@ -422,7 +423,18 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     void OnCollisionEnter(Collision col)
     {
         if (state_ == State.JUMPING || state_ == State.JUMPATTACK)
-            state_ = State.IDLE;
+        {
+            StopCoroutine(ReturnToIdle());
+            StartCoroutine(ReturnToIdle(JumpCollideReturnToIdleTime));
+        }
+ 
+    }
+
+    // This method exists solely to prevent machine-gunning via bouncing off the ceiling
+    IEnumerator ReturnToIdle(float timeToWait = 0f)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        state_ = State.IDLE;
     }
 
     IEnumerator BasicAttackTiming()

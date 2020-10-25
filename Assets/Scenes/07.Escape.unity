@@ -19470,6 +19470,11 @@ PrefabInstance:
       propertyPath: toggleOnDeath.Array.data[5]
       value: 
       objectReference: {fileID: 90463149}
+    - target: {fileID: 9212828666727724210, guid: 59a33eea818594746a7653a03f07b47d,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2e2fe323bc095624ea9a12d00a93dcfd, type: 3}
     - target: {fileID: 5294944827976066280, guid: 59a33eea818594746a7653a03f07b47d,
         type: 3}
       propertyPath: m_IsActive

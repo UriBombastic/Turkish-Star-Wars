@@ -1461,7 +1461,7 @@ MonoBehaviour:
   healthVariable: {fileID: 556197009}
   shieldVariable: {fileID: 2104574421}
   shieldMaxNotification: {fileID: 2025211478}
-  AtkUpgradeAmount: 0.1
+  AtkUpgradeAmount: 0.05
   HealthUpgradeAmount: 10
   ShieldUpgradeMax: 5
   ShieldTimeUpgrade: 0.025
