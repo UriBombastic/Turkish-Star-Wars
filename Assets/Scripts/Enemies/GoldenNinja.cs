@@ -14,6 +14,8 @@ public class GoldenNinja :GenericBoss
 
     public AttackState attackState_;
 
+    public GameObject telegraphObject;
+
     public float spinDashChance = 0.25f;
     public float spinDashDamage = 20f;
     public float spinDashForce = 3000f;
@@ -24,6 +26,9 @@ public class GoldenNinja :GenericBoss
     public float spinDashShockwaveReach = 5.0f;
     public float maxSpinSpeed = 60f;
 
+    public int proximityAttackCount = 5;
+    public float flurryStartupTime = 1.0f;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -32,12 +37,12 @@ public class GoldenNinja :GenericBoss
 
     protected override void SelectAttack()
     {
-        selection = Random.Range(0, 1);
+        selection = Random.Range(0, 1f);
         if (selection > spinDashChance)
         {
             if (state_ == State.AGGRESSION)
             {
-
+                StartCoroutine(ProximityFlurry());
             }
             else if (state_ == State.PLAYERINVIEW)
             {
@@ -103,4 +108,27 @@ public class GoldenNinja :GenericBoss
         }
     }
 
+    IEnumerator ProximityFlurry()
+    {
+        attackState_ = AttackState.PROXIMITY;
+        StartCoroutine(TelegraphAttack());
+        yield return new WaitForSeconds(TelegraphDelay);
+        for(int i = 0; i < proximityAttackCount; i++)
+        {
+            BasicAttack();
+            yield return new WaitForSeconds(BasicAttackStartup);
+        }
+        attackState_ = AttackState.NONE;
+        state_ = State.IDLE;
+        yield return null;
+    }
+   
+
+    protected override IEnumerator TelegraphAttack()
+    {
+        telegraphObject.SetActive(true);
+        yield return new WaitForSeconds(TelegraphDelay);
+        telegraphObject.SetActive(false);
+        yield return null;
+    }
 }

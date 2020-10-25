@@ -168,14 +168,19 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         yield return new WaitForSeconds(BasicAttackStartup);
         if (state_ != State.DAMAGED)
         {
-          //  Debug.Log("Releasing Attack Hitbox");
+            //  Debug.Log("Releasing Attack Hitbox");
             if (DoIndiscriminateAttack)
-            IndiscriminateAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform, DoFriendlyFire);
+                IndiscriminateAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform, DoFriendlyFire);
             else
-            FundamentalAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform);
+                BasicAttack();
             yield return new WaitForSeconds(BasicAttackCooldown);
             state_ = State.IDLE;
         }
+    }
+
+    protected void BasicAttack()
+    {
+        FundamentalAttack(BasicAttackDamage, BasicAttackReach, BasicAttackForce, attackTransform);
     }
 
     protected virtual IEnumerator TelegraphAttack()
@@ -186,6 +191,8 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
             Instantiate(attackParticles, attackTransform);
 
     }
+
+
 
     protected virtual void HandleAttacking()
     {
