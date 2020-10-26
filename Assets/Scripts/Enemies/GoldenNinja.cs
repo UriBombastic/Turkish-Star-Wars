@@ -29,6 +29,8 @@ public class GoldenNinja :GenericBoss
     public int proximityAttackCount = 5;
     public float flurryStartupTime = 1.0f;
 
+    public float teleportAttackChance = 0.25f;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -46,7 +48,15 @@ public class GoldenNinja :GenericBoss
             }
             else if (state_ == State.PLAYERINVIEW)
             {
-
+                selection = Random.Range(0, 1f);
+                if (selection > teleportAttackChance)
+                {
+                    ProjectileSequence();
+                }
+                else
+                {
+                    TeleportSequence();
+                }
             }
         }
         else
@@ -95,6 +105,13 @@ public class GoldenNinja :GenericBoss
         //FacePlayer();
     }
 
+    protected override IEnumerator TelegraphAttack()
+    {
+        telegraphObject.SetActive(true);
+        yield return new WaitForSeconds(TelegraphDelay);
+        telegraphObject.SetActive(false);
+        yield return null;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (attackState_ == AttackState.SPINDASH && state_ == State.ATTACKING)
@@ -123,12 +140,14 @@ public class GoldenNinja :GenericBoss
         yield return null;
     }
    
-
-    protected override IEnumerator TelegraphAttack()
+    IEnumerator ProjectileSequence()
     {
-        telegraphObject.SetActive(true);
-        yield return new WaitForSeconds(TelegraphDelay);
-        telegraphObject.SetActive(false);
         yield return null;
     }
+
+    IEnumerator TeleportSequence()
+    {
+        yield return null;
+    }
+
 }
