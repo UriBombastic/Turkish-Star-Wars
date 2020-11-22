@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4680553670461018483, guid: a96473571bf7a1b449f9e82ef6944d96,
         type: 3}
       propertyPath: m_Name
-      value: GoldenNinjaProjectile
+      value: GoldenNinjaProjectile Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4680553670461018487, guid: a96473571bf7a1b449f9e82ef6944d96,
         type: 3}
@@ -87,10 +87,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 65994a00604f4a34fad1257b3a180bca, type: 2}
+    - target: {fileID: 4680553670461018482, guid: a96473571bf7a1b449f9e82ef6944d96,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4680553670461018486, guid: a96473571bf7a1b449f9e82ef6944d96,
         type: 3}
       propertyPath: m_Mass
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680553670461018486, guid: a96473571bf7a1b449f9e82ef6944d96,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a96473571bf7a1b449f9e82ef6944d96, type: 3}

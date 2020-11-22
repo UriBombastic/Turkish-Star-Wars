@@ -36,6 +36,7 @@ public class GoldenNinja :GenericBoss
     [Header("Projectiles")]
     public int projectileCount = 5;
     public GameObject projectile;
+    public Transform projectileTransform;
     public float projectileDelay = 0.5f;
     public float projectileDamage = 15f;
     public float projectileImpactRange = 3;
@@ -64,11 +65,11 @@ public class GoldenNinja :GenericBoss
                 selection = Random.Range(0, 1f);
                 if (selection > teleportAttackChance)
                 {
-                    ProjectileSequence();
+                    StartCoroutine(ProjectileSequence());
                 }
                 else
                 {
-                    TeleportSequence();
+                    StartCoroutine(TeleportSequence());
                 }
             }
         }
@@ -181,9 +182,11 @@ public class GoldenNinja :GenericBoss
 
     void SpawnProjectile()
     {
-        GameObject instantiatedProjectile = Instantiate(projectile, attackTransform.position, attackTransform.rotation);
+        GameObject instantiatedProjectile = Instantiate(projectile, projectileTransform.position, projectileTransform.rotation); ;
         instantiatedProjectile.GetComponent<RockProjectile>().InstantiateProjectile(this, projectileDamage, projectileImpactRange, 0);
-        instantiatedProjectile.GetComponent<Rigidbody>().AddForce(GetAimAngle() * projectileLaunchForce);
+        Vector3 angle = GetAimAngle();
+        angle.y = 0f;
+        instantiatedProjectile.GetComponent<Rigidbody>().AddForce(angle * projectileLaunchForce);
     }
 
     IEnumerator TeleportSequence()
