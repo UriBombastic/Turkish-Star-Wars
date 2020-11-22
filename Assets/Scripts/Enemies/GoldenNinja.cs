@@ -66,7 +66,7 @@ public class GoldenNinja :GenericBoss
 
     protected override void SelectAttack()
     {
-        if (currentConsecutiveAttacks < maxConsecutiveAttacks)
+        if (currentConsecutiveAttacks < maxConsecutiveAttacks && state_ != State.DAMAGED)
         {
             selection = Random.Range(0, 1f);
             if (selection > spinDashChance)
