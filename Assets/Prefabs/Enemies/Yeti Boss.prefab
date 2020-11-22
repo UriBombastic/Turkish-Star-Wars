@@ -6031,7 +6031,7 @@ MonoBehaviour:
   projectileTransform: {fileID: 6983593864643484734}
   projectileDamage: 15
   projectileImpactRange: 4
-  projectileLaunchForce: 3000
+  projectileLaunchForce: 3500
   leapForce: 6000
   leapRange: 10
   leapDamage: 25

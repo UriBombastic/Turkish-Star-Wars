@@ -228,6 +228,7 @@ public class GameMaster : MonoBehaviour
     public void RestartLevel()
     {
         HealPlayer(0.1f); //heal player for 10% of their max health
+        UploadPlayer();
         LoadCurrentLevel();
     }
 
