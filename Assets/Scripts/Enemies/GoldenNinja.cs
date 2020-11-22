@@ -238,4 +238,14 @@ public class GoldenNinja :GenericBoss
         currentConsecutiveAttacks = 0;
         yield return null;
     }
+
+    public override void Kill()
+    {
+        base.Kill();
+        Destroy(healthCanvas);
+        rb.constraints = RigidbodyConstraints.None;
+        Destroy(this);
+    }
+
+
 }

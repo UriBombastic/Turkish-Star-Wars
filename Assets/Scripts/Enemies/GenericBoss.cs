@@ -56,4 +56,13 @@ public class GenericBoss : Enemy
 
     }
 
+    public override void Kill()
+    {
+        state_ = State.DEAD;
+        PlayDeathSound();
+        StopCoroutine(AttackClock());
+        ViewRange = 0;
+        AttackRange = 0;
+    }
+
 }

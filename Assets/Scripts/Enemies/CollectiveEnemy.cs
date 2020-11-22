@@ -26,4 +26,10 @@ public class CollectiveEnemy : Enemy
             totalHealth += (isInit) ? components[i].initialHealth : components[i].health;
         return totalHealth;
     }
+
+    public override void Kill()
+    {
+        GameMaster.Instance.IncrementEnemyKillCount();
+        Destroy(this);
+    }
 }
