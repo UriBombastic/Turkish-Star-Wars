@@ -10,12 +10,17 @@ public class GoldenNinja :GenericBoss
         NONE,
         SPINDASH,
         PROXIMITY,
-        PROJECTILE
+        PROJECTILE,
+        TELEPORT
     }
     [Header("Golden Ninja")]
     public AttackState attackState_;
-
     public GameObject telegraphObject;
+
+    public int maxConsecutiveAttacks = 5;
+    public int currentConsecutiveAttacks = 0;
+    public float restTime = 5.0f;
+    public GameObject restIndicator;
 
     [Header("Spindash")]
     public float spinDashChance = 0.25f;
@@ -44,6 +49,14 @@ public class GoldenNinja :GenericBoss
 
     [Header("Teleportation")]
     public float teleportAttackChance = 0.25f;
+    public float teleportSeekTime = 1.0f;
+    public float teleportProjection = 1.0f;
+    public float slashParticleDuration = 1.0f;
+    public float teleportDamage = 25f;
+    public float teleportAttackRange = 7f;
+    public float teleportAttackForce = 400f;
+    public GameObject teleportMarker;
+    public GameObject slashParticles;
 
     protected override void FixedUpdate()
     {
@@ -53,29 +66,37 @@ public class GoldenNinja :GenericBoss
 
     protected override void SelectAttack()
     {
-        selection = Random.Range(0, 1f);
-        if (selection > spinDashChance)
+        if (currentConsecutiveAttacks < maxConsecutiveAttacks)
         {
-            if (state_ == State.AGGRESSION)
+            selection = Random.Range(0, 1f);
+            if (selection > spinDashChance)
             {
-                StartCoroutine(ProximityFlurry());
+                if (state_ == State.AGGRESSION)
+                {
+                    StartCoroutine(ProximityFlurry());
+                }
+                else if (state_ == State.PLAYERINVIEW)
+                {
+                    selection = Random.Range(0, 1f);
+                    if (selection > teleportAttackChance)
+                    {
+                        StartCoroutine(ProjectileSequence());
+                    }
+                    else
+                    {
+                        StartCoroutine(TeleportSequence());
+                    }
+                }
             }
-            else if (state_ == State.PLAYERINVIEW)
+            else
             {
-                selection = Random.Range(0, 1f);
-                if (selection > teleportAttackChance)
-                {
-                    StartCoroutine(ProjectileSequence());
-                }
-                else
-                {
-                    StartCoroutine(TeleportSequence());
-                }
+                StartCoroutine(SpinDashSequence());
             }
+            currentConsecutiveAttacks++;
         }
         else
         {
-            StartCoroutine(SpinDashSequence());
+            StartCoroutine(RestSequence());
         }
     }
 
@@ -191,7 +212,30 @@ public class GoldenNinja :GenericBoss
 
     IEnumerator TeleportSequence()
     {
+        attackState_ = AttackState.TELEPORT;
+        GameObject currentTeleportMarker = Instantiate(teleportMarker, playerTransform);
+        yield return new WaitForSeconds(teleportSeekTime);
+        currentTeleportMarker.transform.SetParent(null);
+        yield return new WaitForSeconds(teleportProjection);
+        transform.position = currentTeleportMarker.transform.position;
+        Destroy(currentTeleportMarker);
+        FundamentalAttack(teleportDamage, teleportAttackRange, teleportAttackForce, attackTransform);
+        slashParticles.SetActive(true);
+        yield return new WaitForSeconds(slashParticleDuration);
+        slashParticles.SetActive(false);
+        attackState_ = AttackState.NONE;
+        state_ = State.IDLE;
         yield return null;
     }
-
+    
+    IEnumerator RestSequence()
+    {
+        state_ = State.DAMAGED;
+        restIndicator.SetActive(true);
+        yield return new WaitForSeconds(restTime);
+        restIndicator.SetActive(false);
+        state_ = State.IDLE;
+        currentConsecutiveAttacks = 0;
+        yield return null;
+    }
 }
