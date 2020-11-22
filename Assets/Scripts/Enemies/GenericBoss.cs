@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GenericBoss : Enemy
 {
+    [Header("Generic Boss Fundamentals")]
     protected float selection;
     public float minAttackTime = 1.5f;
     public float maxAttackTime = 3.0f;
@@ -44,6 +45,7 @@ public class GenericBoss : Enemy
         HandleDistances();
         FacePlayer();
     }
+
 
     //Typically, when you kill a boss, things happen. Make said things happen.
     void ToggleContinuityElements()

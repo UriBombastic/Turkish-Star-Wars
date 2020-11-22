@@ -4911,7 +4911,8 @@ MonoBehaviour:
   healthCanvas: {fileID: 1213868185}
   healthBar: {fileID: 94117932}
   nameText: {fileID: 1102362982}
-  attackParticles: {fileID: 0}
+  attackParticles: {fileID: 1725229196547355346, guid: ac46f21961022bd4aaf327a9b081d90f,
+    type: 3}
   doSpawnAttackParticles: 0
   TelegraphDelay: 0.5
   attackTransform: {fileID: 675446771}
@@ -4950,6 +4951,15 @@ MonoBehaviour:
   maxSpinSpeed: 60
   proximityAttackCount: 5
   flurryStartupTime: 1
+  particleSpawnRadius: 0.5
+  projectileCount: 5
+  projectile: {fileID: 2912437779920976592, guid: 1ad8f03a0a192f74a9bd10fb5f01fafb,
+    type: 3}
+  projectileDelay: 0.5
+  projectileDamage: 15
+  projectileImpactRange: 3
+  projectileLaunchForce: 2000
+  teleportAttackChance: 0.25
 --- !u!136 &1118926050
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7394,11 +7404,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -7617779271042558191, guid: ee26c9604a010434d9460ffb8efaa52a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 95be4df36eca6eb4b821dcab4acd4a1e, type: 2}
     - target: {fileID: -4216859302048453862, guid: ee26c9604a010434d9460ffb8efaa52a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7469,6 +7474,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5.333332
       objectReference: {fileID: 0}
+    - target: {fileID: -7617779271042558191, guid: ee26c9604a010434d9460ffb8efaa52a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 95be4df36eca6eb4b821dcab4acd4a1e, type: 2}
     - target: {fileID: 1271644825676201929, guid: ee26c9604a010434d9460ffb8efaa52a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -8,7 +8,9 @@ using TMPro;
 public class HeroController : MonoBehaviour, IDamageable, IAttacker 
 {
     #region declarations
+    
     //health
+    [Header("Fundamentals")]
     public float maxHealth = 100f;
     public float health = 100f;
     //movement
@@ -18,6 +20,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float DashCoolDown = 1.0f;
 
     //attacks
+    [Header("Attacks")]
     public GameObject AttackParticleEffect;
     public float AttackDamageMultiplier = 1.0f; //variable to be upgraded
     public float BasicAttackStartDelay = 0.0f;
@@ -39,12 +42,14 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float recoverTime = 0.5f;
     public bool isRecovering = false;
     //transforms
+    [Header("Transforms")]
     public Transform BasicAttackTransform;
     public Transform JumpAttackTransform;
     public Transform rockChargeTransform;
     public Transform cameraTransform;
 
     //Shielding
+    [Header("Shielding")]
     public Image shieldImage;
     public int ShieldLevel = 0;
     public float maxOpacity = 0.5f;
@@ -56,6 +61,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     private float currentShieldTime = 0;//time spent shielding
 
     //ranged attack
+    [Header("Ranged Attack")]
     public bool canUseRangedAttack = false;
     public GameObject rockPrefab;
     [SerializeField]
@@ -70,6 +76,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     private GameObject currentProjectile;
 
     //Health
+    [Header("External Components or some shit idc, misc")]
     public Image HealthBar;
     public TextMeshProUGUI HealthText;
 
@@ -578,20 +585,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     #region Attack/Damage
     //Attack and Damage
     public void FundamentalAttack(float damageToDo, float radius, float attackForce, Transform t)
-    {/*
-        Enemy[] enemies = FindObjectsOfType<Enemy>(); 
-        for(int i = 0; i < enemies.Length; i++)
-        {
-            Transform enemyTransform = enemies[i].transform;
-            if(Vector3.Distance(t.position, enemyTransform.position)<= radius)
-            {
-             //   Debug.Log(enemies[i].name);
-                Vector3 attackVector = enemyTransform.position - transform.position;
-                attackVector.Normalize();
-                enemies[i].Damage(damageToDo, attackVector * attackForce);
-            }
-
-        }*/
+    {
         Collider[] hitColliders = Physics.OverlapSphere(t.position, radius); //refactoring to use physics overlapsphere
         for(int i = 0; i < hitColliders.Length; i++)
         {

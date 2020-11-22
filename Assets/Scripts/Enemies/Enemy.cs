@@ -6,6 +6,7 @@ using TMPro;
 
 public class Enemy : MonoBehaviour, IDamageable, IAttacker
 {
+    [Header("Fundamentals")]
     public string enemyName = "Enemy";
     public float initialHealth = 100f;
     public float health;
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     public bool doSpawnAttackParticles;
     public float TelegraphDelay = 0.5f;
 
+    [Header("Basic Attack")]
     public Transform attackTransform;
     public float MoveForce;
    public float RotateSpeed = 4f;
@@ -30,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     public float ViewRange;
     public float AttackRange;
 
+   [Header("Misc Enemy Fundamentals")]
     protected Rigidbody rb;
     protected AudioSource aud;
     protected HeroController player;
