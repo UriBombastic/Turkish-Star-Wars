@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     [Header("Basic Attack")]
     public Transform attackTransform;
     public float MoveForce;
-   public float RotateSpeed = 4f;
+    public float RotateSpeed = 4f;
     public float BasicAttackDamage;
     public float BasicAttackReach;
     public float BasicAttackForce;
