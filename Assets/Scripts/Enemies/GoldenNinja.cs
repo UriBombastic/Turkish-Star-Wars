@@ -15,7 +15,6 @@ public class GoldenNinja :GenericBoss
     }
     [Header("Golden Ninja")]
     public AttackState attackState_;
-    public GameObject telegraphObject;
 
     public int maxConsecutiveAttacks = 5;
     public int currentConsecutiveAttacks = 0;
@@ -140,13 +139,6 @@ public class GoldenNinja :GenericBoss
         //FacePlayer();
     }
 
-    protected override IEnumerator TelegraphAttack()
-    {
-        telegraphObject.SetActive(true);
-        yield return new WaitForSeconds(TelegraphDelay);
-        telegraphObject.SetActive(false);
-        yield return null;
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (attackState_ == AttackState.SPINDASH && state_ == State.ATTACKING)
@@ -193,7 +185,7 @@ public class GoldenNinja :GenericBoss
         yield return new WaitForSeconds(TelegraphDelay);
         for(int i = 0; i < projectileCount; i++)
         {
-            SpawnProjectile();
+            SpawnProjectile(projectile, projectileTransform, projectileDamage, projectileImpactRange, projectileLaunchForce);
             yield return new WaitForSeconds(projectileDelay);
         }
         attackState_ = AttackState.NONE;
@@ -201,14 +193,6 @@ public class GoldenNinja :GenericBoss
         yield return null;
     }
 
-    void SpawnProjectile()
-    {
-        GameObject instantiatedProjectile = Instantiate(projectile, projectileTransform.position, projectileTransform.rotation); ;
-        instantiatedProjectile.GetComponent<RockProjectile>().InstantiateProjectile(this, projectileDamage, projectileImpactRange, 0);
-        Vector3 angle = GetAimAngle();
-        angle.y = 0f;
-        instantiatedProjectile.GetComponent<Rigidbody>().AddForce(angle * projectileLaunchForce);
-    }
 
     IEnumerator TeleportSequence()
     {

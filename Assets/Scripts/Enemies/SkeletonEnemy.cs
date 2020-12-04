@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkeletonEnemy : Enemy
 {
+    [Header("Skeleton Enemy")]
     public GameObject displaySword;
     public GameObject AttackSword;
     public float AttackRotateSpeed = 10f;

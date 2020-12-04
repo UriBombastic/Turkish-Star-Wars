@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GenericBoss : Enemy
 {
+
     [Header("Generic Boss Fundamentals")]
-    protected float selection;
     public float minAttackTime = 1.5f;
     public float maxAttackTime = 3.0f;
+    protected float selection;
+    public GameObject telegraphObject;
 
     //for game continuity
     public GameObject[] toggleOnDeath;
@@ -63,6 +65,14 @@ public class GenericBoss : Enemy
         StopCoroutine(AttackClock());
         ViewRange = 0;
         AttackRange = 0;
+    }
+
+    protected override IEnumerator TelegraphAttack()
+    {
+        telegraphObject.SetActive(true);
+        yield return new WaitForSeconds(TelegraphDelay);
+        telegraphObject.SetActive(false);
+        yield return null;
     }
 
 }

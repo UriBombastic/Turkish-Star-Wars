@@ -247,6 +247,15 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         }
     }
 
+    protected virtual void SpawnProjectile(GameObject projectile, Transform projectileTransform, float projectileDamage, float projectileImpactRange, float projectileLaunchForce)
+    {
+        GameObject instantiatedProjectile = Instantiate(projectile, projectileTransform.position, projectileTransform.rotation); ;
+        instantiatedProjectile.GetComponent<RockProjectile>().InstantiateProjectile(this, projectileDamage, projectileImpactRange, 0);
+        Vector3 angle = GetAimAngle();
+        angle.y = 0f;
+        instantiatedProjectile.GetComponent<Rigidbody>().AddForce(angle * projectileLaunchForce);
+    }
+
     public void Damage(float damage)
     {
         Damage(damage, Vector3.zero);

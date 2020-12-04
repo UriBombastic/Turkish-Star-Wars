@@ -18,12 +18,18 @@ public class HeroEnemy : GenericBoss
 
     [Header("Visual Elements")]
     public GameObject shieldIndicator;
-    public GameObject projectionLight;
+    public GameObject attackSword;
+    public float AttackRotateSpeed = 10f;
+
 
     [Header("Dash Attack")]
     public float dashAttackDamage = 30f;
-    public float dashAttackForce = 1250f;
-    public float dashAttackRadius = 5f; 
+    public float dashAttackForce = 600f;
+    public float dashAttackRadius = 5f;
+    public float dashForce = 1250f;
+    public float dashStartup = 1.0f;
+   // public float dashChance = 0.5f;
+    public float dashDuration = 2.0f;
 
     [Header("Counter")]
     public float counterDamage = 5f;
@@ -31,6 +37,16 @@ public class HeroEnemy : GenericBoss
     public float counterRadius = 4;
     public float shieldMinTime = 0.25f;
     public float shieldTime = 0.0f;
+
+    [Header("Projectile")]
+    public float projectileChance = 0.2f;
+    public GameObject projectile;
+    public float projectileDamage = 20f;
+    public float projectileStartup = 0.5f;
+    public float projectileImpactRange = 3.0f;
+
+    //[Header("Misc")]
+    //public float back
     protected override void Start()
     {
         base.Start();
@@ -49,39 +65,59 @@ public class HeroEnemy : GenericBoss
     protected override void HandlePlayerInView()
     {
         base.HandlePlayerInView();
-        LowerShield();
+            LowerShield();
     }
 
     protected override void HandleAggression()
     {
-        if(IsHeroAttacking())
+        FacePlayer();
+        if (attackState == AttackState.DASH)
         {
-            attackState = AttackState.SHIELD;
-            shieldIndicator.SetActive(true);
+            Debug.Log("Dash Attack");
+            FundamentalAttack(dashAttackDamage, dashAttackRadius, dashAttackForce, attackTransform);
+            attackState = AttackState.NONE;
+            state_ = State.ATTACKING;
         }
-        else if(shieldTime >= shieldMinTime)
+        else
         {
-            LowerShield();
+            if (IsHeroAttacking())
+            {
+                attackState = AttackState.SHIELD;
+                shieldIndicator.SetActive(true);
+            }
+            else if (shieldTime >= shieldMinTime)
+            {
+                attackState = AttackState.NONE;
+                LowerShield();
+            }
         }
         HandleDistances();
     }
 
-    void LowerShield()
+    protected override void HandleAttacking()
     {
-        attackState = AttackState.NONE;
+        base.HandleAttacking();
+        if(attackState == AttackState.BASIC || attackState == AttackState.DASH)
+        {
+            Vector3 rotation = new Vector3(0, AttackRotateSpeed, 0);
+            attackSword.transform.Rotate(rotation);
+        }
+
+    }
+
+    void LowerShield()
+    {       
         shieldIndicator.SetActive(false);
         shieldTime = 0f;
     }
     public override void Damage(float damage, Vector3 knockback)
-    {
-        if (state_ != State.ATTACKING)
+    {        
+        if (state_ != State.ATTACKING && state_ != State.DAMAGED && state_ != State.DEAD)
         {
             Counter();
         }
         else
         {
-            Debug.Log(player.state_);
-            Debug.Log(shieldTime);
             base.Damage(damage, knockback);
         }
     }
@@ -95,6 +131,73 @@ public class HeroEnemy : GenericBoss
 
     void Counter()
     {
+        Debug.Log(state_);
+        //This is to prevent a god damn feedback loop which literally crashes Unity
+        if (state_ == State.DAMAGED || state_ == State.ATTACKING || player.state_ == HeroController.State.BLOCKING)
+            return;
+        Debug.Log("Countering!");
         FundamentalAttack(counterDamage, counterRadius, counterForce, attackTransform);
     }
+
+    protected override void SelectAttack()
+    {
+        selection = Random.Range(0, 1f);
+        if (selection <= projectileChance)
+        {
+            StartCoroutine(ProjectileAttack());
+        }
+        else {
+            if (state_ == State.AGGRESSION) //Within basic attack range
+            {
+                StartCoroutine(BasicAttackSequence());
+            }
+            else if (state_ == State.PLAYERINVIEW)
+            {
+                StartCoroutine(DashAttack());
+            }
+        }
+    }
+
+    IEnumerator BasicAttackSequence()
+    {
+        state_ = State.ATTACKING;
+        StartCoroutine(TelegraphAttack());
+        attackState = AttackState.BASIC;
+        yield return new WaitForSeconds(BasicAttackStartup);
+        BasicAttack();
+        yield return new WaitForSeconds(BasicAttackCooldown);
+        attackState = AttackState.NONE;
+        state_ = State.IDLE;
+        Debug.Log("Attack Complete");
+    }
+
+    IEnumerator DashAttack()
+    {
+
+        StartCoroutine(TelegraphAttack());
+        yield return new WaitForSeconds(dashStartup);
+        //state_ = State.ATTACKING;
+        attackState = AttackState.DASH;
+        rb.AddForce(dashForce*GetAimAngle());
+        //Attack will be executed if player is in range
+        yield return new WaitForSeconds(dashDuration);
+        state_ = State.IDLE;
+        attackState = AttackState.NONE;
+
+    }
+    IEnumerator ProjectileAttack()
+    {
+        state_ = State.ATTACKING;
+        StartCoroutine(TelegraphAttack());
+        yield return new WaitForSeconds(projectileStartup);
+        SpawnProjectile(projectile, attackTransform,  projectileDamage, projectileImpactRange, BasicAttackForce);
+
+    }
+
+    public override void Kill()
+    {
+        Debug.Log("I am Kill");
+        base.Kill();
+    }
+
 }
