@@ -9,12 +9,14 @@ public class HeroEnemy : GenericBoss
         NONE,
         BASIC,
         DASH,
-        SHIELD
+        SHIELD,
+        PROJECTILE
     }
 
     [Header("HeroEnemy Essentials")]
     public bool doStealPlayerStats = true;
     public AttackState attackState;
+    public float healthMult = 2.0f;
 
     [Header("Visual Elements")]
     public GameObject shieldIndicator;
@@ -44,12 +46,25 @@ public class HeroEnemy : GenericBoss
     public float projectileDamage = 20f;
     public float projectileStartup = 0.5f;
     public float projectileImpactRange = 3.0f;
+    public float projectileAttackDuration = 1.0f;
 
     //[Header("Misc")]
     //public float back
     protected override void Start()
     {
+        if (doStealPlayerStats)
+            StealPlayerStats();
         base.Start();
+
+    }
+
+    void StealPlayerStats()
+    {
+        initialHealth = player.maxHealth * healthMult;
+        projectileDamage *= player.AttackDamageMultiplier;
+        dashAttackDamage *= player.AttackDamageMultiplier;
+        BasicAttackDamage *= player.AttackDamageMultiplier;
+
     }
 
     protected override void FixedUpdate()
@@ -65,7 +80,7 @@ public class HeroEnemy : GenericBoss
     protected override void HandlePlayerInView()
     {
         base.HandlePlayerInView();
-            LowerShield();
+       LowerShield();
     }
 
     protected override void HandleAggression()
@@ -188,9 +203,13 @@ public class HeroEnemy : GenericBoss
     IEnumerator ProjectileAttack()
     {
         state_ = State.ATTACKING;
+        attackState = AttackState.PROJECTILE;
         StartCoroutine(TelegraphAttack());
         yield return new WaitForSeconds(projectileStartup);
         SpawnProjectile(projectile, attackTransform,  projectileDamage, projectileImpactRange, BasicAttackForce);
+        yield return new WaitForSeconds(projectileAttackDuration);
+        state_ = State.IDLE;
+        attackState = AttackState.NONE;
 
     }
 

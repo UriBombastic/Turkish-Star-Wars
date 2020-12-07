@@ -2119,6 +2119,11 @@ PrefabInstance:
       propertyPath: canUseRangedAttack
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1700784485506943677, guid: a6e139e5ab5b1c643aec54ae11383cb9,
+        type: 3}
+      propertyPath: AttackDamageMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1700784485506943664, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6797,6 +6802,10 @@ PrefabInstance:
       propertyPath: nameText
       value: 
       objectReference: {fileID: 1284579858}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: dashAttackRadius
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
 --- !u!223 &8299947208920654422
