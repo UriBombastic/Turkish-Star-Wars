@@ -99,3 +99,9 @@ public class GorillaEnemy : Enemy
 
     }
 }
+
+// Documentation Easter Egg Time!
+// I am honestly not entirely sure why I put this gorilla into the game.
+// However, I went through the trouble of finding this model, and gearing it to be useable in the game,
+// And even cutting audio from the original movie to absolutely blast players' audio. 
+// Anyway, I'm going to double down on using this Gorilla model, and put it in the game over and over again.

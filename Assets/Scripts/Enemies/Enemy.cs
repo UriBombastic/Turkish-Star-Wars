@@ -188,6 +188,8 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
 
     protected virtual IEnumerator TelegraphAttack()
     {
+        // Once attack is called, wait the startup time minus the telegraph delay.
+        // TelegraphDelay seconds before attacking, telegraph the attack.
         float telegraphDelay = Mathf.Max(0, BasicAttackStartup - TelegraphDelay);
         yield return new WaitForSeconds(telegraphDelay);
         if (attackParticles != null && doSpawnAttackParticles)
@@ -199,7 +201,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
 
     protected virtual void HandleAttacking()
     {
-
+        //By default, this does nothing. Enemy hitbox basically lasts a frame by default
     }
 
 

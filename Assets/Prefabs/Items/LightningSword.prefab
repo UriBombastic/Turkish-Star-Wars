@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackDamageMult: 2
   AttackSpeedMult: 0.8
-  AttackRangeMult: 1.5
+  AttackRangeMult: 1.15
   AttackForceMult: 2
   MoveSpeedMult: 1
   JumpForceMult: 1
