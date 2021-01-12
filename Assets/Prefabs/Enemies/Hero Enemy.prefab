@@ -29,7 +29,7 @@ Transform:
   m_Children:
   - {fileID: 8997033817742713214}
   m_Father: {fileID: 5664872852681848836}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1235665869
 GameObject:
@@ -227,6 +227,97 @@ Transform:
   m_Father: {fileID: 5664872852681848836}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1840493147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1840493148}
+  - component: {fileID: 1840493149}
+  m_Layer: 0
+  m_Name: Secondary Telegraph Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1840493148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840493147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.599, z: 0.659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5664872852681848836}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1840493149
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840493147}
+  m_Enabled: 1
+  serializedVersion: 9
+  m_Type: 2
+  m_Color: {r: 1, g: 0.2784314, b: 0.012152195, a: 1}
+  m_Intensity: 1.2
+  m_Range: 3
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &2070310455
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +452,7 @@ Transform:
   - {fileID: 2070310456}
   - {fileID: 1724841378}
   - {fileID: 1235665870}
+  - {fileID: 1840493148}
   - {fileID: 867610022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -538,12 +630,13 @@ MonoBehaviour:
   toggleOnDeath: []
   doStealPlayerStats: 1
   attackState: 0
+  healthMult: 2
   shieldIndicator: {fileID: 2070310455}
   attackSword: {fileID: 867610021}
   AttackRotateSpeed: 10
   dashAttackDamage: 30
   dashAttackForce: 600
-  dashAttackRadius: 5
+  dashAttackRadius: 4
   dashForce: 1500
   dashStartup: 1
   dashDuration: 3
@@ -552,12 +645,21 @@ MonoBehaviour:
   counterRadius: 4
   shieldMinTime: 0.25
   shieldTime: 0
-  projectileChance: 0.2
+  projectileChance: 0.5
   projectile: {fileID: 2715606550881893890, guid: 255255fc4d8d0574885ad39439b00b8d,
     type: 3}
   projectileDamage: 20
   projectileStartup: 0.5
   projectileImpactRange: 2.5
+  projectileAttackDuration: 1
+  slamChance: 0.2
+  slamParticles: {fileID: 8433281444714633442, guid: 56922966873b2004f903de360da45442,
+    type: 3}
+  slamTelegraph: {fileID: 1840493147}
+  slamProjection: 0.75
+  slamDamage: 30
+  slamRadius: 5
+  slamForce: 1350
 --- !u!1001 &5664872854711041511
 PrefabInstance:
   m_ObjectHideFlags: 0

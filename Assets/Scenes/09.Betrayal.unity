@@ -6803,8 +6803,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1284579858}
     - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
-      propertyPath: dashAttackRadius
-      value: 4
+      propertyPath: projectileChance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: slamForce
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: slamDamage
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 413f112239ac7724f9e807dafaed479f, type: 3}

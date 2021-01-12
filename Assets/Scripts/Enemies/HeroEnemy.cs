@@ -10,7 +10,8 @@ public class HeroEnemy : GenericBoss
         BASIC,
         DASH,
         SHIELD,
-        PROJECTILE
+        PROJECTILE,
+        SLAM
     }
 
     [Header("HeroEnemy Essentials")]
@@ -30,7 +31,7 @@ public class HeroEnemy : GenericBoss
     public float dashAttackRadius = 5f;
     public float dashForce = 1250f;
     public float dashStartup = 1.0f;
-   // public float dashChance = 0.5f;
+    // public float dashChance = 0.5f;
     public float dashDuration = 2.0f;
 
     [Header("Counter")]
@@ -47,6 +48,16 @@ public class HeroEnemy : GenericBoss
     public float projectileStartup = 0.5f;
     public float projectileImpactRange = 3.0f;
     public float projectileAttackDuration = 1.0f;
+
+    [Header("Slam Attack")]
+    public float slamChance= 0.2f;
+    public GameObject slamParticles;
+    public GameObject slamTelegraph;
+    public float slamStartup = 0.75f;
+    public float slamDamage = 30;
+    public float slamRadius = 5.0f;
+    public float slamForce = 1350;
+    public float slamAttackDuration = 1.0f;
 
     //[Header("Misc")]
     //public float back
@@ -70,17 +81,17 @@ public class HeroEnemy : GenericBoss
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if(attackState == AttackState.SHIELD)
+        if (attackState == AttackState.SHIELD)
         {
             shieldTime += Time.deltaTime;
         }
-       
+
     }
 
     protected override void HandlePlayerInView()
     {
         base.HandlePlayerInView();
-       LowerShield();
+        LowerShield();
     }
 
     protected override void HandleAggression()
@@ -112,7 +123,7 @@ public class HeroEnemy : GenericBoss
     protected override void HandleAttacking()
     {
         base.HandleAttacking();
-        if(attackState == AttackState.BASIC || attackState == AttackState.DASH)
+        if (attackState == AttackState.BASIC || attackState == AttackState.DASH)
         {
             Vector3 rotation = new Vector3(0, AttackRotateSpeed, 0);
             attackSword.transform.Rotate(rotation);
@@ -121,12 +132,12 @@ public class HeroEnemy : GenericBoss
     }
 
     void LowerShield()
-    {       
+    {
         shieldIndicator.SetActive(false);
         shieldTime = 0f;
     }
     public override void Damage(float damage, Vector3 knockback)
-    {        
+    {
         if (state_ != State.ATTACKING && state_ != State.DAMAGED && state_ != State.DEAD)
         {
             Counter();
@@ -157,16 +168,24 @@ public class HeroEnemy : GenericBoss
     protected override void SelectAttack()
     {
         selection = Random.Range(0, 1f);
-        if (selection <= projectileChance)
+        if (state_ == State.AGGRESSION) //Within basic attack range
         {
-            StartCoroutine(ProjectileAttack());
-        }
-        else {
-            if (state_ == State.AGGRESSION) //Within basic attack range
+            if (selection <= slamChance)
+            {
+                StartCoroutine(SlamAttack());
+            }
+            else
             {
                 StartCoroutine(BasicAttackSequence());
             }
-            else if (state_ == State.PLAYERINVIEW)
+        }
+        else if (state_ == State.PLAYERINVIEW)
+        {
+            if (selection <= projectileChance)
+            {
+                StartCoroutine(ProjectileAttack());
+            }
+            else
             {
                 StartCoroutine(DashAttack());
             }
@@ -193,7 +212,7 @@ public class HeroEnemy : GenericBoss
         yield return new WaitForSeconds(dashStartup);
         //state_ = State.ATTACKING;
         attackState = AttackState.DASH;
-        rb.AddForce(dashForce*GetAimAngle());
+        rb.AddForce(dashForce * GetAimAngle());
         //Attack will be executed if player is in range
         yield return new WaitForSeconds(dashDuration);
         state_ = State.IDLE;
@@ -206,17 +225,31 @@ public class HeroEnemy : GenericBoss
         attackState = AttackState.PROJECTILE;
         StartCoroutine(TelegraphAttack());
         yield return new WaitForSeconds(projectileStartup);
-        SpawnProjectile(projectile, attackTransform,  projectileDamage, projectileImpactRange, BasicAttackForce);
+        SpawnProjectile(projectile, attackTransform, projectileDamage, projectileImpactRange, BasicAttackForce);
         yield return new WaitForSeconds(projectileAttackDuration);
         state_ = State.IDLE;
         attackState = AttackState.NONE;
 
     }
 
+    IEnumerator SlamAttack()
+    {
+        state_ = State.ATTACKING;
+        StartCoroutine(TelegraphAttack(slamTelegraph, slamStartup));
+        yield return new WaitForSeconds(slamStartup);
+        attackState = AttackState.SLAM;
+        Instantiate(slamParticles, transform);
+        FundamentalAttack(slamDamage, slamRadius, slamForce, transform);
+        yield return new WaitForSeconds(slamAttackDuration);
+        state_ = State.IDLE;
+        attackState = AttackState.NONE;
+    }
+
     public override void Kill()
     {
         Debug.Log("I am Kill");
         base.Kill();
+       // Trigger Wolf because fuck you that's why
     }
 
 }

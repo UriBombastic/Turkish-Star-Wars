@@ -67,12 +67,19 @@ public class GenericBoss : Enemy
         AttackRange = 0;
     }
 
-    protected override IEnumerator TelegraphAttack()
+    //Genericized version of TelegraphAttack to abide by DRY principle
+    protected IEnumerator TelegraphAttack(GameObject obj, float time)
     {
-        telegraphObject.SetActive(true);
-        yield return new WaitForSeconds(TelegraphDelay);
-        telegraphObject.SetActive(false);
+        obj.SetActive(true);
+        yield return new WaitForSeconds(time);
+        obj.SetActive(false);
         yield return null;
     }
+
+    protected override IEnumerator TelegraphAttack()
+    {
+        yield return TelegraphAttack(telegraphObject, TelegraphDelay);
+    }
+
 
 }
