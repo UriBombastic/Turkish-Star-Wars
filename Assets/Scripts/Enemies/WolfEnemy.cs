@@ -13,7 +13,6 @@ public class WolfEnemy : Enemy
     {
         base.Start();
         StartCoroutine(InitializationAnimation());
-
     }
 
     IEnumerator InitializationAnimation()

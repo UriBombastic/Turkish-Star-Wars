@@ -6,6 +6,7 @@ using TMPro;
 public class ItemEquipInteractionPoint : MonoBehaviour
 {
     public bool playerInRange;
+    public bool doUnequip = true;
     public TextMeshProUGUI DisplayText;
     public GameObject ItemGameObject;
     public string itemName;
@@ -58,5 +59,8 @@ public class ItemEquipInteractionPoint : MonoBehaviour
 
         DisplayText.text = "Press 'R' to " + ((!equipped) ? "unequip " : "equip ") + itemName;
         ItemGameObject.SetActive(equipped);
+
+        if (!doUnequip)
+            Destroy(gameObject);
     }
 }
