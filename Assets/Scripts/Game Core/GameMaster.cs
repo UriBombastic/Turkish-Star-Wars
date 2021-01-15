@@ -158,10 +158,6 @@ public class GameMaster : MonoBehaviour
         return EnemyKillCount;
     }
 
-    public void RegisterBossDeath()
-    {
-
-    }
 
 
     IEnumerator ObjectivesFlash()

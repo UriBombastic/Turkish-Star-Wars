@@ -170,7 +170,6 @@ public class YetiBoss : YetiEnemy
         ViewRange = 0;
         AttackRange = 0;
         state_ = State.IDLE;
-        GameMaster.Instance.RegisterBossDeath();
         Animate("Die");
         StartCoroutine(DeathExplosion());
     }

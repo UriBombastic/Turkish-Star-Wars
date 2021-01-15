@@ -6,6 +6,25 @@ public class WolfEnemy : Enemy
 {
     public GameObject telegraphObject;
     public float telegraphLinger = 0.5f;
+    public float initializationTime = 2.0f;
+    public GameObject initializationParticles;
+
+    protected override void Start()
+    {
+        base.Start();
+        StartCoroutine(InitializationAnimation());
+
+    }
+
+    IEnumerator InitializationAnimation()
+    {
+        state_ = State.DAMAGED; //To basically freeze functions
+        GameObject particles = Instantiate(initializationParticles, transform);
+        particles.GetComponent<DecalDestroyer>().lifeTime = initializationTime;
+        yield return new WaitForSeconds(initializationTime);
+        state_ = State.IDLE; //Begin attack sequences.
+
+    }
     protected override IEnumerator TelegraphAttack()
     {
         telegraphObject.SetActive(true);
