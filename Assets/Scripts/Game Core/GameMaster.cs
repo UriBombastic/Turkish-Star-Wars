@@ -162,6 +162,8 @@ public class GameMaster : MonoBehaviour
             if (endLevelToggles.Length > 0)
                 for (int i = 0; i < endLevelToggles.Length; i++)
                     endLevelToggles[i].SetActive(!endLevelToggles[i].activeInHierarchy);
+
+            LevelEndGoal.SetActive(true);
         }
     }
 

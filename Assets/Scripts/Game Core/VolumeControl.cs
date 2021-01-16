@@ -66,6 +66,7 @@ public class VolumeControl : MonoBehaviour
 
     public void RegisterNewAudioSource(AudioSource aud)
     {
+        if (!aud) return;
         if (allAudioSources.Contains(aud)) return;
 
         allAudioSources.Add(aud);
