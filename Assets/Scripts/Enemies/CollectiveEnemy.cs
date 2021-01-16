@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectiveEnemy : Enemy
 {
     public Enemy[] components;
-
+    public bool isBoss = false;
     protected override void Start()
     {
         initialHealth = SumComponentsHealth(true);
@@ -30,6 +30,7 @@ public class CollectiveEnemy : Enemy
     public override void Kill()
     {
         GameMaster.Instance.IncrementEnemyKillCount();
+        if (isBoss) GameMaster.Instance.RegisterKillBoss();
         Destroy(this);
     }
 }
