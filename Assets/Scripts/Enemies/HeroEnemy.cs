@@ -48,6 +48,7 @@ public class HeroEnemy : GenericBoss
     public float projectileStartup = 0.5f;
     public float projectileImpactRange = 3.0f;
     public float projectileAttackDuration = 1.0f;
+    public float projectileDisplacement = 2.5f;
 
     [Header("Slam Attack")]
     public float slamChance= 0.2f;
@@ -230,7 +231,8 @@ public class HeroEnemy : GenericBoss
         attackState = AttackState.PROJECTILE;
         StartCoroutine(TelegraphAttack());
         yield return new WaitForSeconds(projectileStartup);
-        SpawnProjectile(projectile, attackTransform, projectileDamage, projectileImpactRange, BasicAttackForce);
+        SpawnProjectile(projectile, attackTransform, projectileDamage, 
+            projectileImpactRange, BasicAttackForce, projectileDisplacement * transform.forward);
         yield return new WaitForSeconds(projectileAttackDuration);
         state_ = State.IDLE;
         attackState = AttackState.NONE;

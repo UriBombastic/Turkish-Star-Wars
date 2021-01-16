@@ -146,7 +146,7 @@ public class CutScene : MonoBehaviour
             {
                 StopAllCoroutines(); //stop the sequence
                 for (int i = 0; i < subsections.Length; i++) //deactivate all subsections
-                    subsections[i].SetActive(false);
+                    if(subsections[i])subsections[i].SetActive(false);
                 End();
             }
         }
