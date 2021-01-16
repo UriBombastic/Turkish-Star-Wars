@@ -128,7 +128,7 @@ public class GameMaster : MonoBehaviour
 
         if (CurrentObjective == LevelObjective.KillAllEnemies)
             enemiesKilledText.gameObject.SetActive(true);
-
+        enemiesKilledText.text = EnemyKillCount + " / " + EnemiestToKill;
         SpecialLevelConditions();
 
     }
