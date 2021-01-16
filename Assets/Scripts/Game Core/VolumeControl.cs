@@ -17,10 +17,10 @@ public class VolumeControl : MonoBehaviour
     public static float storedVolume = 1.0f;
     public Slider volumeSlider;
     public TextMeshProUGUI volumeText;
-    public AudioSource[] allAudioSources;
+    public List<AudioSource> allAudioSources;
     // [SerializeField]
     //public VolumePack[] audioSourceVolumeTracker;
-    public float[] originalAudioVolumes;
+    public List<float> originalAudioVolumes;
    
     void Awake()
     {
@@ -29,10 +29,10 @@ public class VolumeControl : MonoBehaviour
 
     void InitializeAudioSourceTrackers()
     {
-        originalAudioVolumes = new float[allAudioSources.Length];
-        for (int i = 0; i < allAudioSources.Length; i++)
+        originalAudioVolumes = new List<float>();
+        for (int i = 0; i < allAudioSources.Count; i++)
         {
-            originalAudioVolumes[i] = allAudioSources[i].volume;
+            originalAudioVolumes.Add(allAudioSources[i].volume);
         }
     }
 
@@ -58,9 +58,18 @@ public class VolumeControl : MonoBehaviour
     {
         currentVolume = newVolume;
         volumeText.text = GameMaster.StandardRounding(currentVolume * 100) + "%";
-        for(int i = 0; i < allAudioSources.Length; i++)
+        for(int i = 0; i < allAudioSources.Count; i++)
         {
             allAudioSources[i].volume = originalAudioVolumes[i] * newVolume;
         }
+    }
+
+    public void RegisterNewAudioSource(AudioSource aud)
+    {
+        if (allAudioSources.Contains(aud)) return;
+
+        allAudioSources.Add(aud);
+        originalAudioVolumes.Add(aud.volume);
+        aud.volume *= currentVolume;
     }
 }

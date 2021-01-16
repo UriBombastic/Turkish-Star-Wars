@@ -19,7 +19,7 @@ public class GameMaster : MonoBehaviour
 
     //level handling
     private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave",
-        "05.TrainingGrounds","06.BarFight","07.Escape","08.Church","99.FillerEndcap"};
+        "05.TrainingGrounds","06.BarFight","07.Escape","08.Church","09.Betrayal","99.FillerEndcap"};
     private static int LevelIndex = 0;
 
     //enums
@@ -99,19 +99,21 @@ public class GameMaster : MonoBehaviour
     public TextMeshProUGUI NarrationTextBox;
     public Image CharacterImage;
 
-
+    //Volume Control Access
+    private VolumeControl volumeControl;
 
     //starting functions
     public void Awake()
     {
-        if(_player==null)_player = FindObjectOfType<HeroController>();
+        if (_player == null) _player = FindObjectOfType<HeroController>();
         LDC = FindObjectOfType<LookDirectionController>();
         if (hasUploaded)
             DownloadPlayer();
         else
             Debug.Log("No player saved; not downloading player");
 
-}
+        volumeControl = GetComponent<VolumeControl>();
+    }
 
     public void StartLevel()
     {
@@ -276,7 +278,7 @@ public class GameMaster : MonoBehaviour
     //termination functions
     public void Save()
     {
- 
+    // TODO: save player data
     }
 
     public void ExitGame()
@@ -290,6 +292,11 @@ public class GameMaster : MonoBehaviour
     {
         float powerValue = Mathf.Pow(10, power);
         return (Mathf.Round(value * powerValue) / powerValue);
+    }
+
+    public void RegisterAudioSource(AudioSource aud)
+    {
+        volumeControl.RegisterNewAudioSource(aud);
     }
 
 }

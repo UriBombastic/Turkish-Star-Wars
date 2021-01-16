@@ -74,6 +74,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         aud = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
         player = FindObjectOfType<HeroController>();
+        GameMaster.Instance.RegisterAudioSource(aud);
     }
 
     protected virtual void Start()

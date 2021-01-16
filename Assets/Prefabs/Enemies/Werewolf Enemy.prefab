@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: A . . . Werewolf??
-  initialHealth: 250
-  health: 250
+  initialHealth: 320
+  health: 320
   healthCanvas: {fileID: 0}
   healthBar: {fileID: 0}
   nameText: {fileID: 0}
@@ -140,7 +140,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b75cd07bad5dc87478b1708e230eaaa5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
