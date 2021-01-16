@@ -100,6 +100,7 @@ public class GameMaster : MonoBehaviour
     public Image CharacterImage;
 
     //Volume Control Access
+    [SerializeField]
     private VolumeControl volumeControl;
 
     //starting functions
@@ -112,7 +113,7 @@ public class GameMaster : MonoBehaviour
         else
             Debug.Log("No player saved; not downloading player");
 
-        volumeControl = GetComponent<VolumeControl>();
+        if(!volumeControl)volumeControl = GetComponent<VolumeControl>();
     }
 
     public void StartLevel()

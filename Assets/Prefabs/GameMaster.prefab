@@ -3818,6 +3818,7 @@ MonoBehaviour:
   CanPause: 1
   NarrationTextBox: {fileID: 636832743}
   CharacterImage: {fileID: 3223582166931211939}
+  volumeControl: {fileID: 489460709760848423}
 --- !u!114 &489460709760848423
 MonoBehaviour:
   m_ObjectHideFlags: 0
