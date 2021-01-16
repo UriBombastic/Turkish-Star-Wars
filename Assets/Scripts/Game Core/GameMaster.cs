@@ -79,6 +79,7 @@ public class GameMaster : MonoBehaviour
     public TextMeshProUGUI GoalText;
     public float GoalDisplayStartTime = 1f;
     public float GoalDisplayDuration = 3f;
+    public TextMeshProUGUI enemiesKilledText;
 
     //level complete UI
     public bool ShowLevelComplete;
@@ -125,6 +126,9 @@ public class GameMaster : MonoBehaviour
         if (CurrentObjective != LevelObjective.None)
             StartCoroutine(ObjectivesFlash());
 
+        if (CurrentObjective == LevelObjective.KillAllEnemies)
+            enemiesKilledText.gameObject.SetActive(true);
+
         SpecialLevelConditions();
 
     }
@@ -140,6 +144,7 @@ public class GameMaster : MonoBehaviour
     public void IncrementEnemyKillCount()
     {
         EnemyKillCount++;
+        enemiesKilledText.text = EnemyKillCount + " / " + EnemiestToKill;
         if (CurrentObjective == LevelObjective.KillAllEnemies || (CurrentObjective == LevelObjective.KillBoss && EnemiestToKill >1))
         {
             if (EnemyKillCount >= EnemiestToKill)
