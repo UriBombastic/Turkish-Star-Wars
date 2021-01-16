@@ -99,6 +99,10 @@ public class GameMaster : MonoBehaviour
     public TextMeshProUGUI NarrationTextBox;
     public Image CharacterImage;
 
+    //Boss UI
+    public Image bossHealthBar;
+    public TextMeshProUGUI bossNameDisplay;
+
     //Volume Control Access
     [SerializeField]
     private VolumeControl volumeControl;

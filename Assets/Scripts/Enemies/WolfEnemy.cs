@@ -8,9 +8,12 @@ public class WolfEnemy : Enemy
     public float telegraphLinger = 0.5f;
     public float initializationTime = 2.0f;
     public GameObject initializationParticles;
+    public GameObject deathExplosion;
 
     protected override void Start()
     {
+        if (!healthBar) healthBar = GameMaster.Instance.bossHealthBar;
+        if (!nameText) nameText = GameMaster.Instance.bossNameDisplay;
         base.Start();
         StartCoroutine(InitializationAnimation());
     }
@@ -35,15 +38,15 @@ public class WolfEnemy : Enemy
 
     public override void Damage(float damage, Vector3 knockback)
     {
-        Debug.Log("Considering damage");
         if (player.itemState == ItemState.NULL) return; //MUST have the sword to hurt this bastard
-        Debug.Log(damage);
         base.Damage(damage, knockback);
     }
     public override void Kill()
     {
         //TODO: dramatic explosion, level end
-        base.Kill();
+        Instantiate(deathExplosion, transform.position, transform.rotation);
+        GameMaster.Instance.RegisterKillBoss();
+        Destroy(gameObject);
     }
 
 }

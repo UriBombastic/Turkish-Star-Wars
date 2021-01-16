@@ -59,6 +59,11 @@ public class HeroEnemy : GenericBoss
     public float slamForce = 1350;
     public float slamAttackDuration = 1.0f;
 
+    [Header("Continuity Elements")]
+    public GameObject wolfBoss;
+    public GameObject lightningSword;
+
+
     //[Header("Misc")]
     //public float back
     protected override void Start()
@@ -247,9 +252,14 @@ public class HeroEnemy : GenericBoss
 
     public override void Kill()
     {
-        Debug.Log("I am Kill");
+        rb.constraints = RigidbodyConstraints.None;
         base.Kill();
-       // Trigger Wolf because fuck you that's why
+        Instantiate(wolfBoss, transform.position, transform.rotation);
+        Instantiate(lightningSword, transform.position, transform.rotation);
+        for (int i = 0; i < toggleOnDeath.Length; i++)
+            toggleOnDeath[i].SetActive(!toggleOnDeath[i].activeInHierarchy);
+        Destroy(this);
+        // Trigger Wolf because fuck you that's why
     }
 
 }

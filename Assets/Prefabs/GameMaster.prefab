@@ -3818,6 +3818,8 @@ MonoBehaviour:
   CanPause: 1
   NarrationTextBox: {fileID: 636832743}
   CharacterImage: {fileID: 3223582166931211939}
+  bossHealthBar: {fileID: 2203271661603799047}
+  bossNameDisplay: {fileID: 2203271662513319924}
   volumeControl: {fileID: 489460709760848423}
 --- !u!114 &489460709760848423
 MonoBehaviour:

@@ -645,7 +645,7 @@ MonoBehaviour:
   counterRadius: 4
   shieldMinTime: 0.25
   shieldTime: 0
-  projectileChance: 0.5
+  projectileChance: 0.4
   projectile: {fileID: 2715606550881893890, guid: 255255fc4d8d0574885ad39439b00b8d,
     type: 3}
   projectileDamage: 20
@@ -656,10 +656,15 @@ MonoBehaviour:
   slamParticles: {fileID: 8433281444714633442, guid: 56922966873b2004f903de360da45442,
     type: 3}
   slamTelegraph: {fileID: 1840493147}
-  slamProjection: 0.75
-  slamDamage: 30
+  slamStartup: 0.75
+  slamDamage: 25
   slamRadius: 5
-  slamForce: 1350
+  slamForce: 1500
+  slamAttackDuration: 1
+  wolfBoss: {fileID: 8194464545957639674, guid: c4a496b2f78c9f34383ae78d2df492c1,
+    type: 3}
+  lightningSword: {fileID: 7666764145452244990, guid: 69b11d7134cbb2b49a8b2886d149ca06,
+    type: 3}
 --- !u!1001 &5664872854711041511
 PrefabInstance:
   m_ObjectHideFlags: 0

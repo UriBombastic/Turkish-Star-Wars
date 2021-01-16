@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b356650c446172e4f98a19284dc78a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: A . . . Werewolf??
+  enemyName: A . . . Shapeshifting Werewolf??
   initialHealth: 320
   health: 320
   healthCanvas: {fileID: 0}
@@ -84,6 +84,8 @@ MonoBehaviour:
   telegraphLinger: 0.5
   initializationTime: 3.5
   initializationParticles: {fileID: 1858479309413375740, guid: 26bdec8623f646843ad089eff64b3f37,
+    type: 3}
+  deathExplosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
     type: 3}
 --- !u!54 &8194464545957639679
 Rigidbody:

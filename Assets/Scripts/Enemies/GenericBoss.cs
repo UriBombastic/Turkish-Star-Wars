@@ -16,8 +16,11 @@ public class GenericBoss : Enemy
 
     protected override void Start()
     {
+        if (!healthBar) healthBar = GameMaster.Instance.bossHealthBar;
+        if (!nameText) nameText = GameMaster.Instance.bossNameDisplay;
         base.Start();
         StartCoroutine(AttackClock());
+
     }
 
     protected IEnumerator AttackClock()
