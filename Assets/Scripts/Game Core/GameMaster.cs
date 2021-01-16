@@ -215,13 +215,13 @@ public class GameMaster : MonoBehaviour
         SceneManager.LoadScene("01.DesertFight");
     }
 
-    public static void LoadNextLevel()
+    public void LoadNextLevel()
     {
         LevelIndex++;
         LoadCurrentLevel();
     }
 
-    public static void LoadCurrentLevel()
+    public void LoadCurrentLevel()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(levels[LevelIndex]); 

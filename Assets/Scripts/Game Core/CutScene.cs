@@ -167,7 +167,7 @@ public class CutScene : MonoBehaviour
                 break;
             case EndMode.EndLevel:
                 GameMaster.UploadPlayer();
-                GameMaster.LoadNextLevel();
+                GameMaster.Instance.LoadNextLevel();
                 break;
             case EndMode.AdvanceLevel:
                 AdvanceLevel();

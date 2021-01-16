@@ -4408,7 +4408,7 @@ GameObject:
   - component: {fileID: 5924176799996438213}
   - component: {fileID: 1140570291087513260}
   m_Layer: 0
-  m_Name: btnExit (1)
+  m_Name: btnRestart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
