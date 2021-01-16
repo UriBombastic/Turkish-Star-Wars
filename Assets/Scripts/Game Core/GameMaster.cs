@@ -230,8 +230,7 @@ public class GameMaster : MonoBehaviour
     //restart level after death; potentially heal player, should be accessible via button rather than statically
     public void RestartLevel()
     {
-        HealPlayer(0.1f); //heal player for 10% of their max health
-        UploadPlayer();
+        playerCurrentHealth = Mathf.Min(playerMaxHealth, playerCurrentHealth + (playerMaxHealth * 0.1f));
         LoadCurrentLevel();
     }
 
