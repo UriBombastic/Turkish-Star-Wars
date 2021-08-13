@@ -22,9 +22,9 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     //attacks
     [Header("Attacks")]
     public GameObject AttackParticleEffect;
-    public float AttackDamageMultiplier = 1.0f; //variable to be upgraded
+    public float AttackDamageMultiplier = 1.0f; // variable to be upgraded
     public float BasicAttackStartDelay = 0.0f;
-    public float BasicAttackSpeed = 2f; //basic attacks per second
+    public float BasicAttackSpeed = 2f; // basic attacks per second
     public float BasicAttackDamage = 10f;
     public float BasicAttackRadius = 3.0f;
     public float BasicAttackForce = 100f;
@@ -33,7 +33,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float JumpAttackRadius = 4.5f;
     public float JumpAttackForce = 400f;
     public float JumpCollideReturnToIdleTime = 0.4f;
-    public float DashAttackDelay = 1.0f; //cooldown invoked by Dash Attack
+    public float DashAttackDelay = 1.0f; // cooldown invoked by Dash Attack
     public float DashAttackDamage = 15f;
     public float DashAttackRadius = 4.0f;
     public float DashAttackForce = 1000f;
@@ -56,9 +56,9 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float ShieldPower = 0f;
     public float shieldDegradeFactor = 60f; //frames to reduce Shield Power by 1.0. 
     public float maxShieldPower = 1.25f;
-    public float shieldRegenFactor = 120f;//frames to regenerate Shield Power by 1.0
+    public float shieldRegenFactor = 120f; //frames to regenerate Shield Power by 1.0
     private float minShieldTime = 0; //to prevent epic, game-breaking combos with the shield; will equal basic attack speed
-    private float currentShieldTime = 0;//time spent shielding
+    private float currentShieldTime = 0; //time spent shielding
 
     //ranged attack
     [Header("Ranged Attack")]

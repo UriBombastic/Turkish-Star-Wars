@@ -30,6 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/07.Escape.unity
     guid: dd597f64df3022147ab22d49d8d4682f
   - enabled: 1
+    path: Assets/Scenes/08.Church.unity
+    guid: 81322ce8429586e4c8d1a2331cedcff9
+  - enabled: 1
+    path: Assets/Scenes/09.Betrayal.unity
+    guid: f6b91d83016a3ad48b4ab5d86f7a6107
+  - enabled: 1
     path: Assets/Scenes/99.FillerEndcap.unity
     guid: 1fd6365ff4257d54aa6b1db7e9ff4a9d
   m_configObjects: {}
