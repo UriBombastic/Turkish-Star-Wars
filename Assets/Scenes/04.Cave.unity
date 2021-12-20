@@ -6620,6 +6620,11 @@ PrefabInstance:
       propertyPath: EnemiestToKill
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: CurrentObjective
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: allAudioSources.Array.size
