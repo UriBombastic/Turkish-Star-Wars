@@ -68,6 +68,9 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
 
     public State state_;
 
+    /// <summary>
+    /// Retrieve components fundamental to functioning of all enemies.
+    /// </summary>
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -86,6 +89,9 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         IdentifyTarget();
     }
 
+    /// <summary>
+    /// Identifies who to attack.
+    /// </summary>
     protected virtual void IdentifyTarget()
     {
         targetTransform = player.transform;
