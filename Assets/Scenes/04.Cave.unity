@@ -289,11 +289,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -364,10 +359,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -382,6 +373,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -563,16 +563,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492873390791012013, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -591,6 +581,16 @@ PrefabInstance:
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492873390791012013, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2946,16 +2946,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492873390791012013, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2974,6 +2964,16 @@ PrefabInstance:
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492873390791012013, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3466,21 +3466,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: DamageToStun
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: BasicAttackStartup
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: BasicAttackCooldown
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2995414760028707021, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -3500,6 +3485,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: DamageToStun
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackStartup
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 952734831555522917, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
@@ -5562,11 +5562,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5637,10 +5632,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -5655,6 +5646,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5753,26 +5753,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8290156
       objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: DamageToStun
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: BasicAttackStartup
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: BasicAttackCooldown
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2995414760028707021, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -5797,6 +5777,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Yeti's???
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: DamageToStun
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackStartup
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88c6e2d7bc8be6c449245435cb8743a6, type: 3}
@@ -5899,26 +5899,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8290156
       objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: DamageToStun
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: BasicAttackStartup
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: BasicAttackCooldown
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2995414760028707021, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -5943,6 +5923,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Yeti's???
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: DamageToStun
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackStartup
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 952734831555522917, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
@@ -5979,11 +5979,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skeleton Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
@@ -6055,10 +6050,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -6073,6 +6064,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6615,6 +6615,11 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 416824303}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: EnemiestToKill
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: allAudioSources.Array.size
