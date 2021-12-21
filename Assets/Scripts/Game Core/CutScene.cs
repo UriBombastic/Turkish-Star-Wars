@@ -110,7 +110,6 @@ public class CutScene : MonoBehaviour
         }
 
         string color = tokens[2];
-        Debug.Log(color);
         Color col = new Color();
         //what the actual fuck Unity? Could you not have, you know, made this method return a Color?
         if(!ColorUtility.TryParseHtmlString(color, out col))
