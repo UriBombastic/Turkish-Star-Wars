@@ -30,7 +30,7 @@ public class EnemyLock : MonoBehaviour
         }
 
        // Maybe refactor for generic unity event?
-       if(numDead > deathLimit)
+       if(numDead >= deathLimit)
         {
             gameObject.SetActive(false);
         }
