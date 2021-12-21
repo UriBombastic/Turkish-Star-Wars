@@ -17,9 +17,10 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    //level handling
+    // Level handling
+    // Is there . . . a better way to do this? There has to be a better way to do this.
     private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave",
-        "05.TrainingGrounds","06.BarFight","07.Escape","08.Church","09.Betrayal","99.FillerEndcap"};
+        "05.TrainingGrounds","06.BarFight","07.Escape","08.Church","09.Betrayal","10.Breakout","99.FillerEndcap"};
     private static int LevelIndex = 0;
 
     //enums
@@ -43,11 +44,11 @@ public class GameMaster : MonoBehaviour
 
     public LevelObjective CurrentObjective = LevelObjective.ReachGoal;
 
-    //statics
-    public static bool AllowTerribleNoises;
+    // Statics
+    public static bool AllowTerribleNoises; // A little cherry on top in my to do list
     public static bool isPaused;
 
-    //static player
+    // Static player
     //private static HeroController savedPlayer; //TODO: replace this with variables for each individual field modified by UpgradePlayer
     protected static bool hasUploaded = false;
     private static float playerAtkMult=0f;
