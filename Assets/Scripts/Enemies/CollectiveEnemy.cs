@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// A simple script to group an array of enemies under a single health bar
 public class CollectiveEnemy : Enemy
 {
+    [Header("The Collective Part")]
     public Enemy[] components;
     public bool isBoss = false;
     protected override void Start()
     {
         initialHealth = SumComponentsHealth(true);
+        if(isBoss)
+        {
+            if (!healthBar) healthBar = GameMaster.Instance.bossHealthBar;
+            if (!nameText) nameText = GameMaster.Instance.bossNameDisplay;
+        }
         base.Start();
     }
 
@@ -23,7 +30,7 @@ public class CollectiveEnemy : Enemy
     {
         float totalHealth = 0;
         for (int i = 0; i < components.Length; i++)
-            totalHealth += (isInit) ? components[i].initialHealth : components[i].health;
+            totalHealth += (isInit) ? components[i].initialHealth : Mathf.Max(components[i].health, 0);
         return totalHealth;
     }
 

@@ -88,4 +88,12 @@ public class GunnerEnemy : GenericBoss
         yield return null;
     }
 
+    public override void Kill()
+    {
+        base.Kill();
+        Destroy(healthCanvas);
+        rb.constraints = RigidbodyConstraints.None;
+        Destroy(this);
+    }
+
 }

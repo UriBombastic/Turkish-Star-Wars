@@ -146,7 +146,7 @@ public class GameMaster : MonoBehaviour
     {
         EnemyKillCount++;
         enemiesKilledText.text = EnemyKillCount + " / " + EnemiestToKill;
-        if (CurrentObjective == LevelObjective.KillAllEnemies || (CurrentObjective == LevelObjective.KillBoss && EnemiestToKill >1))
+        if (CurrentObjective == LevelObjective.KillAllEnemies )
         {
             if (EnemyKillCount >= EnemiestToKill)
             {
