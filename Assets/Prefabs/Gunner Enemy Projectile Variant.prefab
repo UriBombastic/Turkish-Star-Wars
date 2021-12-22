@@ -163,6 +163,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 77d08210df254d845885518314593544, type: 2}
+    - target: {fileID: 2912437779920976602, guid: 1ad8f03a0a192f74a9bd10fb5f01fafb,
+        type: 3}
+      propertyPath: maxForceMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912437779920976602, guid: 1ad8f03a0a192f74a9bd10fb5f01fafb,
+        type: 3}
+      propertyPath: doSpecial
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912437779920976602, guid: 1ad8f03a0a192f74a9bd10fb5f01fafb,
+        type: 3}
+      propertyPath: explosionParticles
+      value: 
+      objectReference: {fileID: 1280606153933234655, guid: 9345e56882740a24badab1077ea96351,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad8f03a0a192f74a9bd10fb5f01fafb, type: 3}
 --- !u!4 &8898299614678424291 stripped

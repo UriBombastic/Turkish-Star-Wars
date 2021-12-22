@@ -28,6 +28,7 @@ public class GunnerEnemy : GenericBoss
     public float projectileImpactRange = 3;
     public float projectileLaunchForce = 250;
 
+
     protected override void SelectAttack()
     {
         if(currentConsecutiveAttacks < maxConsecutiveAttacks && state_ != State.DAMAGED)
@@ -41,7 +42,7 @@ public class GunnerEnemy : GenericBoss
             // Fire
             else if (state_ == State.PLAYERINVIEW)
             {
-                StartCoroutine(ProjectileSequence());
+                StartCoroutine(ProjectileSequence(projectile, projectileCount));
             }
             currentConsecutiveAttacks++;
         }
@@ -63,14 +64,16 @@ public class GunnerEnemy : GenericBoss
         state_ = State.IDLE;
     }
 
-    IEnumerator ProjectileSequence()
+    IEnumerator ProjectileSequence(GameObject projectile, int projectileCount)
     {
         state_ = State.ATTACKING;
         StartCoroutine(TelegraphAttack());
         yield return new WaitForSeconds(TelegraphDelay);
         for(int i = 0; i < projectileCount; i++)
         {
-            SpawnProjectile(projectile, projectileTransform, projectileDamage, projectileImpactRange, projectileLaunchForce, new Vector3(), false);
+            GameObject instantiatedProjectile = Instantiate(projectile, projectileTransform.position, projectileTransform.rotation);
+            instantiatedProjectile.GetComponent<RockProjectile>().InstantiateProjectile(this, projectileDamage, projectileImpactRange, 0, true);
+            instantiatedProjectile.GetComponent<Rigidbody>().AddForce(projectileTransform.forward * projectileLaunchForce);
             yield return new WaitForSeconds(projectileDelay);
         }
         state_ = State.IDLE;
