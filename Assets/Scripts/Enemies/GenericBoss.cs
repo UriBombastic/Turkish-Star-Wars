@@ -85,4 +85,18 @@ public class GenericBoss : Enemy
     }
 
 
+    // A rest/damaged sequence which will be useful for an array of bosses
+    protected IEnumerator GenericRestSequence(GameObject restIndicator, float restTime)
+    {
+        state_ = State.DAMAGED;
+        restIndicator.SetActive(true);
+        yield return new WaitForSeconds(restTime);
+        restIndicator.SetActive(false);
+        state_ = State.IDLE;
+       
+        yield return null;
+    }
+
+ 
+
 }

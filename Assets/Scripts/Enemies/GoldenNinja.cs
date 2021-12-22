@@ -214,11 +214,7 @@ public class GoldenNinja :GenericBoss
     
     IEnumerator RestSequence()
     {
-        state_ = State.DAMAGED;
-        restIndicator.SetActive(true);
-        yield return new WaitForSeconds(restTime);
-        restIndicator.SetActive(false);
-        state_ = State.IDLE;
+        StartCoroutine(base.GenericRestSequence(restIndicator, restTime));
         currentConsecutiveAttacks = 0;
         yield return null;
     }
