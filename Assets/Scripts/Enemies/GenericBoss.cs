@@ -97,6 +97,5 @@ public class GenericBoss : Enemy
         yield return null;
     }
 
- 
 
 }

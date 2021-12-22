@@ -43,9 +43,14 @@ public class GunnerEnemy : GenericBoss
             {
                 StartCoroutine(ProjectileSequence());
             }
-
+            currentConsecutiveAttacks++;
+        }
+        else
+        {
+            StartCoroutine(RestSequence());
         }
     }
+
 
     IEnumerator ProximityAttackSequence()
     {
@@ -65,7 +70,7 @@ public class GunnerEnemy : GenericBoss
         yield return new WaitForSeconds(TelegraphDelay);
         for(int i = 0; i < projectileCount; i++)
         {
-            SpawnProjectile(projectile, projectileTransform, projectileDamage, projectileImpactRange, projectileLaunchForce);
+            SpawnProjectile(projectile, projectileTransform, projectileDamage, projectileImpactRange, projectileLaunchForce, new Vector3(), false);
             yield return new WaitForSeconds(projectileDelay);
         }
         state_ = State.IDLE;
