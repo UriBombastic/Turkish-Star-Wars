@@ -1,0 +1,8 @@
+
+"Halt! You've been..." &Robot&
+"No." &Ali&
+"...No?" &Robot&
+"I'm stronger than ever. I'm going to tear each one of you to scrap metal." &Ali&
+"Then I'm going to save my friend." &Ali&
+"..." &Robot&
+"Kill him." &Robot&#FF0000FF&

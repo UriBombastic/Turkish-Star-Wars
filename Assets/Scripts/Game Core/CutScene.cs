@@ -17,6 +17,7 @@ public class CutScene : MonoBehaviour
     public GameObject [] subsections;
     public GameObject[] objectsToDeactivate;
     public float [] subsectionDelays;
+    public GameObject[] StartSequenceDeactivations;
     public GameObject[] EndSequenceActivations;
     public bool doRollingDeactivate = true;
     public bool doFreezeEnemies = false;
@@ -27,11 +28,11 @@ public class CutScene : MonoBehaviour
     public EndMode endMode = EndMode.None;
     public enum EndMode
     {
-        None,
-        SelfDestruct,
-        BeginLevel,
-        EndLevel,
-        AdvanceLevel
+        None,          // Does nothing upon completion
+        SelfDestruct, // Destroys the cutscene after completion
+        BeginLevel, // Cutscenes which initialize the level
+        EndLevel,   // Automatically proceeds to the next level
+        AdvanceLevel    // Continues the level
     }
     //public List<GameObject[]> subsectionObjects;
     //public List<float[]> subsectionObjectDelays;
@@ -42,6 +43,11 @@ public class CutScene : MonoBehaviour
         Cursor.visible = false;
         if (NarrationTextBox == null) NarrationTextBox = GameMaster.Instance.NarrationTextBox;
         if (CharacterImage == null) CharacterImage = GameMaster.Instance.CharacterImage;
+        if(StartSequenceDeactivations.Length > 0)
+        {
+            for (int i = 0; i < StartSequenceDeactivations.Length; i++)
+                StartSequenceDeactivations[i].SetActive(false);
+        }
         InitializeDialogueTexts();
         if (subsections.Length != subsectionDelays.Length)
             Debug.LogError("Uh oh! Stinky! Poopy! Subsections length isn't equal to subsection delays length!");
@@ -139,7 +145,7 @@ public class CutScene : MonoBehaviour
 
     public void Update()
     {
-        if (endMode == EndMode.BeginLevel || endMode == EndMode.EndLevel) //allow breaking cutscenes to begin level
+        if (endMode == EndMode.BeginLevel || endMode == EndMode.EndLevel || endMode == EndMode.AdvanceLevel) //allow breaking cutscenes to begin level
         {
             if (Input.GetKeyDown(KeyCode.Escape)) 
             {
