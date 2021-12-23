@@ -43,7 +43,7 @@ public class CutScene : MonoBehaviour
         Cursor.visible = false;
         if (NarrationTextBox == null) NarrationTextBox = GameMaster.Instance.NarrationTextBox;
         if (CharacterImage == null) CharacterImage = GameMaster.Instance.CharacterImage;
-        if(StartSequenceDeactivations.Length > 0)
+        if(StartSequenceDeactivations!=null && StartSequenceDeactivations.Length > 0)
         {
             for (int i = 0; i < StartSequenceDeactivations.Length; i++)
                 StartSequenceDeactivations[i].SetActive(false);

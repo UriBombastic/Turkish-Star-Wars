@@ -4876,6 +4876,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1354510686, guid: 7a9c347d84f50dc43aed7ce4e37f0a0f, type: 3}
+      propertyPath: objectsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 656764897}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9c347d84f50dc43aed7ce4e37f0a0f, type: 3}
 --- !u!4 &541496444 stripped
@@ -8187,7 +8191,7 @@ MonoBehaviour:
   - {fileID: 859780885}
   - {fileID: 65411946}
   - {fileID: 1156081810}
-  deathLimit: 2
+  deathLimit: 3
 --- !u!65 &898495506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9090,12 +9094,12 @@ PrefabInstance:
     - target: {fileID: 1700784485506943677, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
       propertyPath: maxHealth
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1700784485506943677, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
       propertyPath: health
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1700784485506943677, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
@@ -9105,7 +9109,7 @@ PrefabInstance:
     - target: {fileID: 1700784485506943677, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
       propertyPath: AttackDamageMultiplier
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1700784485506943664, guid: a6e139e5ab5b1c643aec54ae11383cb9,
         type: 3}
@@ -10865,6 +10869,11 @@ PrefabInstance:
       propertyPath: ObjectiveExplanation
       value: Save Lee!
       objectReference: {fileID: 0}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: LevelEndGoal
+      value: 
+      objectReference: {fileID: 1941988367}
     - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: Points
       value: 2
@@ -14214,6 +14223,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2297006676423945194, guid: 50735013778c76040b2a965ad0766d0b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: daf3a997880f61a4fb05566e79a85943, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50735013778c76040b2a965ad0766d0b, type: 3}
 --- !u!1 &1461770550
@@ -19061,6 +19075,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
     type: 3}
   m_PrefabInstance: {fileID: 1935209197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1941988367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3095802489140076461, guid: 7a9c347d84f50dc43aed7ce4e37f0a0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 541496443}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1968663524
 GameObject:
