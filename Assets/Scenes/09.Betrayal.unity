@@ -1025,6 +1025,7 @@ MonoBehaviour:
   objectsToDeactivate: []
   subsectionDelays:
   - 10
+  StartSequenceDeactivations: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
@@ -1125,6 +1126,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 758730235}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &758730237 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2297006676423945194, guid: 50735013778c76040b2a965ad0766d0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 758730235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &816538786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1211,6 +1218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameMaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900113319572327663, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 497743115545971768, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
@@ -1331,14 +1343,54 @@ PrefabInstance:
       propertyPath: endLevelToggles.Array.data[2]
       value: 
       objectReference: {fileID: 1014865282}
-    - target: {fileID: 7900113319572327663, guid: 73166fca5bc078445beabb20ef0cbc22,
+    - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
+      propertyPath: Points
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: allAudioSources.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: allAudioSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 840833429}
+    - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: allAudioSources.Array.data[1]
+      value: 
+      objectReference: {fileID: 526068522}
+    - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: allAudioSources.Array.data[2]
+      value: 
+      objectReference: {fileID: 1345355455}
+    - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: allAudioSources.Array.data[3]
+      value: 
+      objectReference: {fileID: 5746692029836722144}
+    - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: allAudioSources.Array.data[4]
+      value: 
+      objectReference: {fileID: 758730237}
+    - target: {fileID: 6224815804186814814, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
-      propertyPath: Points
-      value: 2
+    - target: {fileID: 1259217401194237481, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479729486286765418, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2203271662513319927, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
@@ -1358,21 +1410,6 @@ PrefabInstance:
     - target: {fileID: 2203271662513319927, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6224815804186814814, guid: 73166fca5bc078445beabb20ef0cbc22,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259217401194237481, guid: 73166fca5bc078445beabb20ef0cbc22,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 479729486286765418, guid: 73166fca5bc078445beabb20ef0cbc22,
-        type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5178763743582439966, guid: 73166fca5bc078445beabb20ef0cbc22,
@@ -1484,6 +1521,12 @@ PrefabInstance:
 --- !u!4 &840833428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2297006676423945195, guid: 50735013778c76040b2a965ad0766d0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 840833427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &840833429 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2297006676423945194, guid: 50735013778c76040b2a965ad0766d0b,
     type: 3}
   m_PrefabInstance: {fileID: 840833427}
   m_PrefabAsset: {fileID: 0}
@@ -2774,6 +2817,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
+--- !u!82 &1345355455 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 127742735, guid: a6e139e5ab5b1c643aec54ae11383cb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1345355454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1353296027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4227,6 +4276,7 @@ MonoBehaviour:
   - 2
   - 1
   - 3
+  StartSequenceDeactivations: []
   EndSequenceActivations:
   - {fileID: 937312707}
   - {fileID: 1014865282}
@@ -7859,6 +7909,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+--- !u!82 &5746692029836722144 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1965677212, guid: 413f112239ac7724f9e807dafaed479f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5746692029836722143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &8299947208920654422
 Canvas:
   m_ObjectHideFlags: 0
