@@ -19,9 +19,10 @@ public class CutScene : MonoBehaviour
     public float [] subsectionDelays;
     public GameObject[] StartSequenceDeactivations;
     public GameObject[] EndSequenceActivations;
-    public bool doRollingDeactivate = true;
-    public bool doFreezeEnemies = false;
-    public bool doFreezePlayer = false;
+    public bool doRollingDeactivate = true; // If cutscene should simply deactivate sections when moving on to the next
+    public bool doFreezeEnemies = false; // If cutscene should pause enemies
+    public bool doFreezePlayer = false; // If cutscene should pause player
+    public bool doRecursiveCutscenes = false; // If cutscene should consider lengths of sub-cutscenes within it
     [SerializeField]
     private HeroController player;
     private Enemy[] allEnemies;
@@ -54,6 +55,19 @@ public class CutScene : MonoBehaviour
         if (dialogueTexts.Length != dialogueDelays.Length)
             Debug.LogError("Uh oh! Stinky! Poopy! Dialogues length isn't equal to dialogue delays length!");
         if (doRollingDeactivate) objectsToDeactivate = subsections;
+
+        // For each subsection, if they are a cutscene, make sure the subsection delay is equal to the length of that segment.
+        if(doRecursiveCutscenes)
+        {
+            for(int i = 0; i < subsections.Length; i++)
+            {
+                CutScene subScene = subsections[i].GetComponent<CutScene>();
+                if(subScene != null)
+                {
+                    subsectionDelays[i] = subScene.getTotalLength();
+                }
+            }
+        }
         StartCoroutine(SectionsSequence());
         StartCoroutine(TextSequence());
 
@@ -66,6 +80,16 @@ public class CutScene : MonoBehaviour
         if (doFreezeEnemies)
             ToggleEnemies(false);
 
+    }
+
+    public float getTotalLength()
+    {
+        float totalLength = 0;
+        for(int i = 0; i < subsectionDelays.Length; i++)
+        {
+            totalLength += subsectionDelays[i];
+        }
+        return totalLength;
     }
 
     public void InitializeDialogueTexts()

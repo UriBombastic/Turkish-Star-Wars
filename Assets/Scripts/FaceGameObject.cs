@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FaceGameObject : MonoBehaviour
 {
-    protected Transform targetTransform;
+    public Transform targetTransform;
     public float rotateSpeed = 10f;
     public bool doSeekPlayer = false;
 
