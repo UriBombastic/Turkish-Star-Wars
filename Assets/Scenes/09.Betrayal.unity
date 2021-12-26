@@ -1030,6 +1030,7 @@ MonoBehaviour:
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 0
 --- !u!4 &710613420
@@ -4283,6 +4284,7 @@ MonoBehaviour:
   doRollingDeactivate: 0
   doFreezeEnemies: 0
   doFreezePlayer: 1
+  doRecursiveCutscenes: 0
   player: {fileID: 1826936786}
   endMode: 2
 --- !u!114 &2009461970 stripped
