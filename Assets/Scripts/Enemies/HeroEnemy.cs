@@ -260,8 +260,10 @@ public class HeroEnemy : GenericBoss
         Instantiate(lightningSword, transform.position, transform.rotation);
         for (int i = 0; i < toggleOnDeath.Length; i++)
             toggleOnDeath[i].SetActive(!toggleOnDeath[i].activeInHierarchy);
-        Destroy(this);
+        
+        Destroy(gameObject);
         // Trigger Wolf because fuck you that's why
+
     }
 
 }

@@ -46,6 +46,7 @@ MonoBehaviour:
   AttackDamageMult: 1.25
   AttackSpeedMult: 1.5
   AttackRangeMult: 1
-  MoveSpeedMult: 1
+  AttackForceMult: 1
+  MoveSpeedMult: 1.25
   JumpForceMult: 1
   DashCooldownReduction: 1.25
