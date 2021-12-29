@@ -29,17 +29,11 @@ public class GenericBoss : Enemy
         yield return new WaitForSeconds(timeToNextAttack);
 
 
-        StartCoroutine(Attack());
+        SelectAttack();
         yield return new WaitForSeconds(BasicAttackCooldown); //allow time for attack to execute before even thinking of doing another attack
         StartCoroutine(AttackClock()); //begin next attack
 
     }
-    protected override IEnumerator Attack()
-    {
-        SelectAttack();
-        yield return new WaitForEndOfFrame();
-    }
-   
    protected virtual void SelectAttack()
     {
         //This will change in each boss.
@@ -53,7 +47,7 @@ public class GenericBoss : Enemy
 
 
     //Typically, when you kill a boss, things happen. Make said things happen.
-    void ToggleContinuityElements()
+    protected void ToggleContinuityElements()
     {
         for (int i = 0; i < toggleOnDeath.Length; i++)
             if (toggleOnDeath[i] != null)

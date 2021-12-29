@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class YetiBoss : YetiEnemy
+// Note: has been refactored to derive from genericboss instead of Yeti enemy.
+public class YetiBoss : GenericBoss
 {
-    public float minAttackTime = 1.5f;
-    public float maxAttackTime = 3.0f;
-    public float leapChance = 0.25f;
+    [Header("Projectile")]
     public GameObject projectile;
     public Transform projectileTransform;
     public float projectileDamage;
     public float projectileImpactRange;
     public float projectileLaunchForce;
 
+    [Header("Leaping")]
+    public float leapChance = 0.25f;
     public float leapForce = 5000f;
     public float leapRange = 10f;
     public float leapDamage = 25f;
@@ -20,14 +20,16 @@ public class YetiBoss : YetiEnemy
     public bool isLeaping = false; //sub-state for leap attack
     public GameObject dustParticles;
 
+    [Header("Berzerk")]
     public float berzerkHealthCutoff = 300f;
     public float berzerkStrenghtMultiplier = 1.2f;
     public bool isBerzerk = false;
     public GameObject berzerkParticles;
     public float deathTime = 3.0f;
 
-    //for game continuity
-    public GameObject[] toggleOnDeath;
+    [Header("Defense")]
+    public float CanStunCutoff = 300f;
+    public float DamageToStun = 50f;
 
     protected override void Start()
     {
@@ -35,31 +37,12 @@ public class YetiBoss : YetiEnemy
         StartCoroutine(AttackClock());
     }
 
-    protected IEnumerator AttackClock()
-    {
-        float timeToNextAttack = Random.Range(minAttackTime, maxAttackTime);
-        yield return new WaitForSeconds(timeToNextAttack);
 
-
-        StartCoroutine(Attack());
-        yield return new WaitForSeconds(BasicAttackCooldown); //allow time for attack to execute before even thinking of doing another attack
-        StartCoroutine(AttackClock()); //begin next attack
-
-    }
-
-    protected override IEnumerator Attack()
-    {
-       // state_ = State.ATTACKING;
-        SelectAttack();
-        yield return new WaitForEndOfFrame();
-       // state_ = State.ATTACKING;
-    }
-
-    private void SelectAttack()
+    protected override void SelectAttack()
     {
         if(state_ == State.AGGRESSION)
         {
-            StartCoroutine(BasicAttack());
+            StartCoroutine(Attack());
         }
         else if(state_== State.PLAYERINVIEW)
         {
@@ -73,11 +56,6 @@ public class YetiBoss : YetiEnemy
                 StartCoroutine(Leap());
             }
         }
-    }
-
-    IEnumerator BasicAttack() //this attack is literally just the basic yeti attack
-    {
-        yield return base.Attack();
     }
 
     IEnumerator ProjectileAttack()
@@ -128,6 +106,13 @@ public class YetiBoss : YetiEnemy
         yield return new WaitForEndOfFrame();
     }
 
+    // Ripped from original Yeti enemy
+    protected override void HandlePlayerInView()
+    {
+        base.HandlePlayerInView();
+        Animate("Walk");
+    }
+
     protected override void HandleAggression()
     {
         FacePlayer();
@@ -137,7 +122,11 @@ public class YetiBoss : YetiEnemy
     {
         if (state_ != State.DEAD)
         {
-            yield return base.HandleDamage(damage);
+            //only stun if above berserker cutoff or large enough to override
+            if (health >= CanStunCutoff || damage >= DamageToStun)
+            {
+                yield return base.HandleDamage(damage);
+            }
             if (health <= berzerkHealthCutoff && !isBerzerk)
                 EnterBerzerkMode();
         }
@@ -183,11 +172,14 @@ public class YetiBoss : YetiEnemy
         Destroy(gameObject);
     }
 
-    void ToggleContinuityElements()
+    // Fuck it, override to revert to original attack telegraph
+    protected override IEnumerator TelegraphAttack()
     {
-        for(int i = 0; i < toggleOnDeath.Length; i++)
-            if(toggleOnDeath[i]!=null)
-                toggleOnDeath[i].SetActive(!toggleOnDeath[i].activeInHierarchy);
-
+        // Once attack is called, wait the startup time minus the telegraph delay.
+        // TelegraphDelay seconds before attacking, telegraph the attack.
+        float telegraphDelay = Mathf.Max(0, BasicAttackStartup - TelegraphDelay);
+        yield return new WaitForSeconds(telegraphDelay);
+        if (attackParticles != null && doSpawnAttackParticles)
+            Instantiate(attackParticles, attackTransform);
     }
 }
