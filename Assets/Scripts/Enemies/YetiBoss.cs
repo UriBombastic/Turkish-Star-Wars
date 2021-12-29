@@ -10,6 +10,7 @@ public class YetiBoss : GenericBoss
     public float projectileDamage;
     public float projectileImpactRange;
     public float projectileLaunchForce;
+    public bool doProjectileSpecial = false; // Makes it explode lol
 
     [Header("Leaping")]
     public float leapChance = 0.25f;
@@ -58,20 +59,20 @@ public class YetiBoss : GenericBoss
         }
     }
 
-    IEnumerator ProjectileAttack()
+    protected virtual IEnumerator ProjectileAttack()
     {
         state_ = State.ATTACKING;
         Animate("Attack");
         yield return new WaitForSeconds(BasicAttackStartup / 2);
         GameObject instantiatedProjectile = Instantiate(projectile, projectileTransform.position, projectileTransform.rotation);
-        instantiatedProjectile.GetComponent<RockProjectile>().InstantiateProjectile(this, projectileDamage, projectileImpactRange, 0);
+        instantiatedProjectile.GetComponent<RockProjectile>().InstantiateProjectile(this, projectileDamage, projectileImpactRange, 0, doProjectileSpecial);
         instantiatedProjectile.GetComponent<Rigidbody>().AddForce(GetAimAngle() * projectileLaunchForce);
         state_ = State.IDLE;
         yield return new WaitForEndOfFrame();
 
     }
 
-    IEnumerator Leap()
+    protected virtual IEnumerator Leap()
     {
         state_ = State.ATTACKING;
         Vector3 upwardsVector = transform.up * leapForce;
@@ -95,7 +96,7 @@ public class YetiBoss : GenericBoss
 
     }
 
-    IEnumerator LeapAttack()
+    protected virtual IEnumerator LeapAttack()
     {
         Instantiate(dustParticles, transform.position, transform.rotation);
         FundamentalAttack(leapDamage, leapRange, leapAttackForce, transform); //powerful, shorter range hitbox. Simulating direct impact.
@@ -133,7 +134,7 @@ public class YetiBoss : GenericBoss
         yield return null;
     }
 
-    void EnterBerzerkMode()
+    protected virtual void EnterBerzerkMode()
     {
         isBerzerk = true;
      //   PlayDeathSound(); //fearsome roar
@@ -158,7 +159,7 @@ public class YetiBoss : GenericBoss
         StopCoroutine(AttackClock());
         ViewRange = 0;
         AttackRange = 0;
-        state_ = State.IDLE;
+        //state_ = State.IDLE;
         Animate("Die");
         StartCoroutine(DeathExplosion());
     }

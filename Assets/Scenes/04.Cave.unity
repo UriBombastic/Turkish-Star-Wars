@@ -375,13 +375,13 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2562,12 +2562,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 776324181}
     m_Modifications:
+    - target: {fileID: -4913314155094324479, guid: acf39d9f4addf294d93fa56fa373961b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
       propertyPath: m_Name
       value: BigExplosionEffect
       objectReference: {fileID: 0}
     - target: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
+        type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
+        type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010212820824, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
@@ -2625,26 +2650,6 @@ PrefabInstance:
     - target: {fileID: 4000010212820824, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
       propertyPath: m_LocalScale.z
       value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
-        type: 3}
-      propertyPath: VelocityModule.y.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.minScalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
-        type: 3}
-      propertyPath: simulationSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b,
-        type: 3}
-      propertyPath: looping
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1000010336741610, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
       propertyPath: m_IsActive
@@ -3050,10 +3055,12 @@ MonoBehaviour:
   subsectionDelays:
   - 10
   - 14
+  StartSequenceDeactivations: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 0
 --- !u!114 &566383353 stripped
@@ -3774,6 +3781,7 @@ MonoBehaviour:
   - 9
   - 24
   - 5
+  StartSequenceDeactivations: []
   EndSequenceActivations:
   - {fileID: 1502433717}
   - {fileID: 1886634026}
@@ -3781,6 +3789,7 @@ MonoBehaviour:
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 1
+  doRecursiveCutscenes: 0
   player: {fileID: 416824303}
   endMode: 2
 --- !u!4 &644139937
@@ -4398,10 +4407,12 @@ MonoBehaviour:
   - 0.3
   - 0.5
   - 4
+  StartSequenceDeactivations: []
   EndSequenceActivations: []
   doRollingDeactivate: 0
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 0
 --- !u!1001 &787654332
@@ -5162,10 +5173,12 @@ MonoBehaviour:
   - 2
   - 2
   - 1
+  StartSequenceDeactivations: []
   EndSequenceActivations: []
   doRollingDeactivate: 0
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 0
 --- !u!114 &999494545
@@ -5648,13 +5661,13 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6066,13 +6079,13 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415423116, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6904,10 +6917,12 @@ MonoBehaviour:
   - 4
   - 1.5
   - 5
+  StartSequenceDeactivations: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 0
 --- !u!1 &1502433717

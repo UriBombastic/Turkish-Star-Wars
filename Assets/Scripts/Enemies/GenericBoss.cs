@@ -23,7 +23,7 @@ public class GenericBoss : Enemy
 
     }
 
-    protected IEnumerator AttackClock()
+    protected virtual IEnumerator AttackClock()
     {
         float timeToNextAttack = Random.Range(minAttackTime, maxAttackTime);
         yield return new WaitForSeconds(timeToNextAttack);

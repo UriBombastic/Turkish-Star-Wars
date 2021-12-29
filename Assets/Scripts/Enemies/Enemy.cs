@@ -33,21 +33,21 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
     public float AttackRange;
 
    [Header("Misc Enemy Fundamentals")]
-    protected Rigidbody rb;
-    protected AudioSource aud;
-    protected HeroController player;
-    protected Transform playerTransform;
-    protected Transform targetTransform;
     public List<Transform> potentialTargets;
     protected Animator animator;
     public string[] AnimationTriggers;
     public AudioClip deathSound;
 
-    public bool DoIndiscriminateAttack = false;
-    public bool DoFriendlyFire = false;
+    public bool DoIndiscriminateAttack = false; // If enemy will target other enemies (ie gladiator)
+    public bool DoFriendlyFire = false; // If enemy can actually damage other enemies (I should have documented this when I wrote it ngl)
     public GameObject floatingDamageText;
-    protected bool doSpawnDamageText = true;
 
+    protected bool doSpawnDamageText = true;
+    protected Rigidbody rb;
+    protected AudioSource aud;
+    protected HeroController player;
+    protected Transform playerTransform;
+    protected Transform targetTransform;
     public enum MoveMode
     {
         FORCE,
