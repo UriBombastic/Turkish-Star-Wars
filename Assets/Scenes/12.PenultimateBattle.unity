@@ -3420,6 +3420,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5218045229867548402, guid: a6e139e5ab5b1c643aec54ae11383cb9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
 --- !u!114 &898200009 stripped
@@ -5818,6 +5823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMaster
       objectReference: {fileID: 0}
+    - target: {fileID: 497743115545971769, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 497743115545971768, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5876,6 +5886,15 @@ PrefabInstance:
     - target: {fileID: 1396954001, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: CurrentObjective
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396954000, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}

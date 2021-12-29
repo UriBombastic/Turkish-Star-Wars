@@ -75,10 +75,27 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     public float maxRockAttackRadius = 3.0f;
     private GameObject currentProjectile;
 
+    [Header("Ultimate")]
+    public float ultRechargeTime = 60f;
+    public float currentUltRechargeTime = 0f;
+    private bool canUseUlt = true;
+
+    //Sword and brain
+    public float swordUltDamage = 50f;
+    public float swordUltKnockback = 500f;
+    public float swordUltRange = 25f;
+
+    // Golden Fists
+    public float fistsUltMultiplier = 1.5f;
+    public float fistsUltDuration = 10f;
+    public GameObject fistsUltDisplay;
+
     //Health
-    [Header("External Components or some shit idc, misc")]
+    [Header("UI Elements")]
     public Image HealthBar;
     public TextMeshProUGUI HealthText;
+    public GameObject ultDislay;
+    public Image ultRechargeImage;
 
     //Damage feedback
     public Image damageFlare;
@@ -106,9 +123,11 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         RANGEDATTACK
     };
     
+    [Header("State(s)")]
     public State state_;
-
     public ItemState itemState;
+
+    [Header("Items")]
     public Item[] allItems;
     public GameObject [] itemDisplays;
     #endregion
@@ -152,10 +171,12 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     {
         DoPhysicsActions();
         RegenerateShield();
+        HandleUltRecharge();
     }
 
     void HandleInput()
     {
+        CheckForUlt(); // Fuck it, let's make ults broken. Available from any input state!
         switch(state_)
         {
             case State.IDLE:
@@ -261,6 +282,8 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
             itemDisplays[i].SetActive(i == (int)itemState);
 
         minShieldTime = 1 / (BasicAttackSpeed * GetCurrentItem().AttackSpeedMult); //calculate time to attack
+        // Set ult display to active only if this item has an associated ult
+        ultDislay.SetActive(itemState == ItemState.GOLDENKNUCKLES || itemState == ItemState.SWORDANDBRAIN);
     }
 
     public Item GetCurrentItem()
@@ -388,6 +411,30 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
             return true;
         }
         return false;
+    }
+
+    void CheckForUlt()
+    {
+        if(Input.GetKey(KeyCode.Q))
+        {
+            if(canUseUlt)
+            {
+                if(itemState == ItemState.SWORDANDBRAIN)
+                {
+                    SwordBrainUlt();
+                }
+                else if (itemState == ItemState.GOLDENKNUCKLES)
+                {
+                    StartCoroutine(GoldenFistsUlt());
+                }
+                else
+                {
+                    return; // Stop. Why are you trying to ult?
+                }
+                currentUltRechargeTime = 0;
+                canUseUlt = false;
+            }
+        }
     }
     #endregion
 
@@ -579,6 +626,73 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         rockThrowCharge = 0;
         state_ = State.IDLE;
     }
+
+    void HandleUltRecharge()
+    {
+        if (canUseUlt)
+        {
+            return; // Do not recharge
+        }
+
+        currentUltRechargeTime += Time.deltaTime;
+        if(currentUltRechargeTime >= ultRechargeTime)
+        {
+            currentUltRechargeTime = ultRechargeTime;
+            canUseUlt = true;
+        }
+
+        ultRechargeImage.fillAmount = (currentUltRechargeTime / ultRechargeTime);
+
+    }
+
+    void SwordBrainUlt()
+    {
+        PlayAttackAudio();
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+
+        for(int i = 0; i < enemies.Length; i++)
+        {
+            // We don't need to do an overlap sphere or whatever . . . right?
+            float distance = (enemies[i].transform.position - transform.position).magnitude;
+            if(distance < swordUltRange)
+            {
+                FundamentalAttack(swordUltDamage * AttackDamageMultiplier, 0.1f, swordUltKnockback, enemies[i].transform);
+            }
+
+        }
+
+    }
+
+    IEnumerator GoldenFistsUlt()
+    {
+        EnterFistsUlt();
+        yield return new WaitForSeconds(fistsUltDuration);
+        ExitFistsUlt();
+        yield return null;
+    }
+
+    void EnterFistsUlt()
+    {
+        FistsUltGenericTransition(fistsUltMultiplier);
+        fistsUltDisplay.SetActive(true);
+    }
+
+    void ExitFistsUlt()
+    {
+        FistsUltGenericTransition(1/fistsUltMultiplier);
+        fistsUltDisplay.SetActive(false);
+    }
+
+    // I'm too nitpicky of a programmer not to do this
+    void FistsUltGenericTransition(float mult)
+    {
+        AttackDamageMultiplier *= mult;
+        BasicAttackSpeed *= mult;
+        WalkForce *= mult;
+        JumpForce *= mult;
+        DashForce *= mult;
+        DashCoolDown /= mult;
+    }
     #endregion
 
 
@@ -667,7 +781,13 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
     {
         Debug.Log("You are Dead!");
         rb.constraints = RigidbodyConstraints.None;
+        ExitFistsUlt(); // Avoid any strength multiplier glitches
         GameMaster.Instance.HandleDeath();
+    }
+
+    void OnDisable()
+    {
+        ExitFistsUlt(); // Avoid any strength multiplier glitches
     }
     #endregion
 
