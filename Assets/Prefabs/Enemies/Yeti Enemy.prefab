@@ -467,7 +467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3954834140406639821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.392, y: 0.00000023841858, z: -2.3052368}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 0.8, z: 1.2}
   m_Children:
   - {fileID: 2995414760695729830}
@@ -537,7 +537,7 @@ MonoBehaviour:
   BasicAttackCooldown: 2.5
   BasicAttackStartup: 1.2
   DamageRecoverTime: 1
-  ViewRange: 35
+  ViewRange: 65
   AttackRange: 3
   potentialTargets: []
   AnimationTriggers: []

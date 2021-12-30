@@ -20,17 +20,17 @@ PrefabInstance:
     - target: {fileID: 52140398768856798, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7331543
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 52140398768856798, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5829306
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 52140398768856798, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.73639
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 52140398768856798, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}
@@ -76,6 +76,11 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyName
       value: A Mummy?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954834140406639820, guid: 88c6e2d7bc8be6c449245435cb8743a6,
+        type: 3}
+      propertyPath: ViewRange
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 2995414760028707021, guid: 88c6e2d7bc8be6c449245435cb8743a6,
         type: 3}

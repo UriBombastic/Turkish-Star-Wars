@@ -90,7 +90,7 @@ public class GorillaEnemy : Enemy
 
         // Finds vertical angle between Gorilla and player
         float verticalDiff = (targetTransform.position.y - projectileTransform.position.y) / Vector3.Distance(projectileTransform.position, targetTransform.position);
-        Debug.Log(verticalDiff);
+        //Debug.Log(verticalDiff);
         Vector3 aimAngle = new Vector3(transform.forward.x, transform.forward.y + verticalDiff, transform.forward.z);
 
         // Launch projectile

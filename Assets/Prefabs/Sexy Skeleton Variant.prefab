@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &1065097430595086019
+--- !u!95 &1065097429758132586
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447626253190805426}
+  m_GameObject: {fileID: 7446769052208841827}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f68dd9bfda48e0642a01dd6476a64e9f, type: 3}
   m_Controller: {fileID: 9100000, guid: 53694add8a4c7f74abf29c01fe56cc57, type: 2}
@@ -19,14 +19,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &1065097429758132586
+--- !u!95 &1065097430595086019
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7446769052208841827}
+  m_GameObject: {fileID: 7447626253190805426}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f68dd9bfda48e0642a01dd6476a64e9f, type: 3}
   m_Controller: {fileID: 9100000, guid: 53694add8a4c7f74abf29c01fe56cc57, type: 2}
@@ -198,52 +198,22 @@ PrefabInstance:
     - target: {fileID: 2266363295403325670, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_Name
-      value: Sexy Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: deathSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 4fece5732a3b8354a82605d8e2f6199c, type: 3}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: initialHealth
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: health
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: BasicAttackDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: MoveForce
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: BasicAttackCooldown
-      value: 0.5
+      value: Sexy Skeleton Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5603027
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4122609
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.2718506
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
@@ -300,6 +270,36 @@ PrefabInstance:
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fece5732a3b8354a82605d8e2f6199c, type: 3}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: initialHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: BasicAttackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: MoveForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681069031219891225, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: BasicAttackCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}

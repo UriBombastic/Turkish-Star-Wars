@@ -95,9 +95,9 @@ public class YetiBoss : GenericBoss
     protected virtual IEnumerator LeapAttack()
     {
         Instantiate(dustParticles, transform.position, transform.rotation);
-        FundamentalAttack(leapDamage, leapRange, leapAttackForce, transform); //powerful, shorter range hitbox. Simulating direct impact.
+        IndiscriminateAttack(leapDamage, leapRange, leapAttackForce, transform); //powerful, shorter range hitbox. Simulating direct impact.
         yield return new WaitForEndOfFrame(); //ensure first impact is prioritized
-        FundamentalAttack(leapDamage/2, leapRange, leapAttackForce/2, transform); //bigger hitbox but less damage, simulating shockwave.
+        IndiscriminateAttack(leapDamage/2, leapRange, leapAttackForce/2, transform); //bigger hitbox but less damage, simulating shockwave.
         //due to the way player handles damage: forcing a brief break before taking damage again, 
         //it is theoretically impossible that both of these hitboxes damage the player.
         yield return new WaitForEndOfFrame();

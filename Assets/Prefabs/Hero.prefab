@@ -1169,8 +1169,8 @@ MonoBehaviour:
   maxRockAttackRadius: 3
   ultRechargeTime: 60
   currentUltRechargeTime: 0
-  swordUltDamage: 50
-  swordUltKnockback: 500
+  swordUltDamage: 100
+  swordUltKnockback: 1500
   swordUltRange: 25
   fistsUltMultiplier: 1.5
   fistsUltDuration: 10
