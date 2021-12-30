@@ -15,6 +15,7 @@ public class WolfEnemy : Enemy
         if (!healthBar) healthBar = GameMaster.Instance.bossHealthBar;
         if (!nameText) nameText = GameMaster.Instance.bossNameDisplay;
         base.Start();
+        UpdateHealthBar();
         StartCoroutine(InitializationAnimation());
     }
 

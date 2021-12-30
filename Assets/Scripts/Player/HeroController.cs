@@ -592,7 +592,6 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
 
     void Counter()
     {
-        Debug.Log("Counter!");
         FundamentalAttack(0, CounterRadius, CounterForce, BasicAttackTransform);
         ShieldPower = maxShieldPower;//on counter, restore shield health
     }

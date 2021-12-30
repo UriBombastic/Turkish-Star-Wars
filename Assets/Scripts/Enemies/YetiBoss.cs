@@ -28,10 +28,6 @@ public class YetiBoss : GenericBoss
     public GameObject berzerkParticles;
     public float deathTime = 3.0f;
 
-    [Header("Defense")]
-    public float CanStunCutoff = 300f;
-    public float DamageToStun = 50f;
-
     protected override void Start()
     {
         base.Start();
@@ -123,11 +119,6 @@ public class YetiBoss : GenericBoss
     {
         if (state_ != State.DEAD)
         {
-            //only stun if above berserker cutoff or large enough to override
-            if (health >= CanStunCutoff || damage >= DamageToStun)
-            {
-                yield return base.HandleDamage(damage);
-            }
             if (health <= berzerkHealthCutoff && !isBerzerk)
                 EnterBerzerkMode();
         }
