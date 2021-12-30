@@ -8123,6 +8123,11 @@ PrefabInstance:
       propertyPath: LevelEndGoal
       value: 
       objectReference: {fileID: 1559085002}
+    - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: doUploadItem
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1396954000, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: m_IsActive
       value: 1

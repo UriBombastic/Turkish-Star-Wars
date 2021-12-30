@@ -61,10 +61,11 @@ public class GameMaster : MonoBehaviour
     private static float playerWalkForce;
     private static float playerJumpForce;
     private static float playerDashPower;
-    
+    private static ItemState playerItemState;
 
     //player
     public HeroController _player;
+    public bool doUploadItem = false;
     private LookDirectionController LDC;
     //Enemies to Kill
     [SerializeField]
@@ -258,6 +259,10 @@ public class GameMaster : MonoBehaviour
         playerWalkForce = Instance._player.WalkForce;
         playerJumpForce = Instance._player.JumpForce;
         playerDashPower = Instance._player.DashForce;
+        if(Instance.doUploadItem)
+        {
+            playerItemState = Instance._player.itemState;
+        }
 
         hasUploaded = true;
     }
@@ -277,6 +282,10 @@ public class GameMaster : MonoBehaviour
         Instance._player.WalkForce = playerWalkForce;
         Instance._player.JumpForce = playerJumpForce;
         Instance._player.DashForce = playerDashPower;
+        if (Instance.doUploadItem)
+        {
+            Instance._player.EquipItem(playerItemState);
+        }
     }
 
     //death
