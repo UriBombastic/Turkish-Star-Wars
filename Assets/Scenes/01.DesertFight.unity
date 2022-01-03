@@ -591,6 +591,11 @@ PrefabInstance:
       propertyPath: enemyName
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -671,11 +676,6 @@ PrefabInstance:
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
@@ -5960,6 +5960,7 @@ MonoBehaviour:
   - 5
   - 0
   - 4
+  StartSequenceDeactivations: []
   EndSequenceActivations:
   - {fileID: 850624971}
   - {fileID: 1148509710}
@@ -5969,6 +5970,7 @@ MonoBehaviour:
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 2
 --- !u!1 &510704922
@@ -7804,6 +7806,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: enemyName
+      value: Skeleton
+      objectReference: {fileID: 0}
     - target: {fileID: 1689131589915426516, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7869,11 +7881,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
-    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: enemyName
-      value: Skeleton
-      objectReference: {fileID: 0}
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -7893,11 +7900,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc, type: 3}
@@ -17864,6 +17866,11 @@ PrefabInstance:
       propertyPath: enemyName
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17944,11 +17951,6 @@ PrefabInstance:
     - target: {fileID: 813747430, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}
@@ -18948,10 +18950,12 @@ MonoBehaviour:
   - 5
   - 3.5
   - 5.5
+  StartSequenceDeactivations: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 1
 --- !u!1 &1373550313
@@ -19105,10 +19109,12 @@ MonoBehaviour:
   subsectionDelays:
   - 4
   - 2
+  StartSequenceDeactivations: []
   EndSequenceActivations: []
   doRollingDeactivate: 1
   doFreezeEnemies: 0
   doFreezePlayer: 0
+  doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 0
 --- !u!1 &1403838152
@@ -47687,6 +47693,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: enemyName
+      value: Skeleton
+      objectReference: {fileID: 0}
     - target: {fileID: 1689131589915426516, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -47752,11 +47768,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
-    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: enemyName
-      value: Skeleton
-      objectReference: {fileID: 0}
     - target: {fileID: 4492873390115600583, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -47776,11 +47787,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc, type: 3}
@@ -63586,10 +63592,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 360
       objectReference: {fileID: 0}
-    - target: {fileID: 2032014737, guid: 09fa18731609fbf4d8c021377eee47fd, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2032014738, guid: 09fa18731609fbf4d8c021377eee47fd, type: 3}
       propertyPath: moveForce.x
       value: -440
@@ -63606,6 +63608,10 @@ PrefabInstance:
       propertyPath: explosionParticles
       value: 
       objectReference: {fileID: 1374776997}
+    - target: {fileID: 2032014737, guid: 09fa18731609fbf4d8c021377eee47fd, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2934230858093936985, guid: 09fa18731609fbf4d8c021377eee47fd,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -73184,6 +73190,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
+        type: 3}
+      propertyPath: enemyName
+      value: Skeleton
+      objectReference: {fileID: 0}
     - target: {fileID: 1689131589915426516, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -73248,16 +73264,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128644509983602744, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: enemyName
-      value: Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 7441086693730913647, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab7eae0cdc009c4ebcc7c99d9e904fc, type: 3}
@@ -73846,6 +73852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2965871800227547893, guid: 6879c8c038776ad43ad897aebfe54e2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -73900,11 +73911,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6421544173124614478, guid: 6879c8c038776ad43ad897aebfe54e2f,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6879c8c038776ad43ad897aebfe54e2f, type: 3}

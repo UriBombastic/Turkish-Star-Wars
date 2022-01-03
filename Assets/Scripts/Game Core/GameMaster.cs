@@ -20,7 +20,8 @@ public class GameMaster : MonoBehaviour
     // Level handling
     // Is there . . . a better way to do this? There has to be a better way to do this.
     private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave",
-        "05.TrainingGrounds","06.BarFight","07.Escape","08.Church","09.Betrayal","10.Breakout","11.Storyline","99.FillerEndcap"};
+        "05.TrainingGrounds","06.BarFight","07.Escape","08.Church","09.Betrayal","10.Breakout","11.Storyline",
+        "12.PenultimateBattle", "13.FinalBattle", "99.FillerEndcap"};
     private static int LevelIndex = 0;
 
     //enums

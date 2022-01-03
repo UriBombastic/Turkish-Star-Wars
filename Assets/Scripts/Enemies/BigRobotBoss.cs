@@ -208,6 +208,7 @@ public class BigRobotBoss : YetiBoss
         }
         yield return new WaitForSeconds(bigExplosionDelay);
         Instantiate(bigDeathExplosion, explosionsCenter.position, explosionsCenter.rotation).transform.localScale *=2;
+        GameMaster.Instance.HealPlayer();
         Destroy(gameObject);
     }
 

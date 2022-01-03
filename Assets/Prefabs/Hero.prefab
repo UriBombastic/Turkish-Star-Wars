@@ -1123,7 +1123,7 @@ MonoBehaviour:
   WalkForce: 20
   JumpForce: 350
   DashForce: 1000
-  DashCoolDown: 1
+  DashCoolDown: 0.75
   AttackParticleEffect: {fileID: 1725229196547355346, guid: ac46f21961022bd4aaf327a9b081d90f,
     type: 3}
   AttackDamageMultiplier: 1
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   JumpAttackDamage: 15
   JumpAttackRadius: 4
   JumpAttackForce: 750
-  JumpCollideReturnToIdleTime: 0.4
+  JumpCollideReturnToIdleTime: 0
   DashAttackDelay: 1
   DashAttackDamage: 15
   DashAttackRadius: 3.5

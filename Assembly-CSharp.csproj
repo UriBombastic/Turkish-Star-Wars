@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\BasicRotate.cs" />
     <Compile Include="Assets\Scripts\BasicSeek.cs" />
     <Compile Include="Assets\Scripts\Bystander.cs" />
+    <Compile Include="Assets\Scripts\Enemies\BigRobotBoss.cs" />
     <Compile Include="Assets\Scripts\Enemies\CollectiveEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\GenericBoss.cs" />
@@ -119,6 +120,8 @@
     <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\Third Party\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
+    <None Include="Assets\Resources\Dialogue\EN\FinalBattleDramaBuilding.txt" />
+    <None Include="Assets\Resources\Dialogue\EN\MagoEntrance.txt" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartMaskedDetails.shader" />
     <None Include="Assets\Resources\Dialogue\EN\BreakoutIntro.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -144,6 +147,7 @@
     <None Include="Assets\Resources\Dialogue\EN\Cogedlos.txt" />
     <None Include="Assets\Third Party\Small Cave Kit\Documentation\Support.txt" />
     <None Include="Assets\Resources\Dialogue\EN\EscapeTooSoon.txt" />
+    <None Include="Assets\Resources\Dialogue\EN\BigRobotActivation.txt" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartSnow.shader" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartVertexCDetails.shader" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartArray.shader" />

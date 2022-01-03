@@ -670,28 +670,52 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
         yield return null;
     }
 
+    //TODO: refactor. This is stupid.
+    private bool hasUsedfistsUlt = false;
+    private float originalADM;
+    private float originalAtkSpd;
+    private float originalWalk;
+    private float originalJump;
+    private float originalDashForce;
+    private float originalDashCool;
     void EnterFistsUlt()
     {
-        FistsUltGenericTransition(fistsUltMultiplier);
-        fistsUltDisplay.SetActive(true);
+        hasUsedfistsUlt = true;
+
+        // Save values
+        originalADM = AttackDamageMultiplier;
+        originalAtkSpd = BasicAttackSpeed;
+        originalWalk = WalkForce;
+        originalJump = JumpForce;
+        originalDashForce = DashForce;
+        originalDashCool = DashCoolDown;
+
+        // Change values
+        AttackDamageMultiplier *= fistsUltMultiplier;
+        BasicAttackSpeed *= fistsUltMultiplier;
+        WalkForce *= fistsUltMultiplier;
+        JumpForce *= fistsUltMultiplier;
+        DashForce *= fistsUltMultiplier;
+        DashCoolDown /= fistsUltMultiplier;
     }
 
     void ExitFistsUlt()
     {
-        FistsUltGenericTransition(1/fistsUltMultiplier);
-        fistsUltDisplay.SetActive(false);
+        // Don't do anything if unused
+        if(!hasUsedfistsUlt)
+        {
+            return;
+        }
+
+        //Restore values
+        AttackDamageMultiplier = originalADM;
+        BasicAttackSpeed = originalAtkSpd;
+        WalkForce = originalWalk;
+        JumpForce = originalJump;
+        DashForce = originalDashForce;
+        DashCoolDown = originalDashCool;
     }
 
-    // I'm too nitpicky of a programmer not to do this
-    void FistsUltGenericTransition(float mult)
-    {
-        AttackDamageMultiplier *= mult;
-        BasicAttackSpeed *= mult;
-        WalkForce *= mult;
-        JumpForce *= mult;
-        DashForce *= mult;
-        DashCoolDown /= mult;
-    }
     #endregion
 
 
