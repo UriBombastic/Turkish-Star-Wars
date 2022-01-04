@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Simple script that's dependent on an array of 
+/// Simple script that's dependent on an array of Enemies
 /// </summary>
 public class EnemyLock : MonoBehaviour
 {

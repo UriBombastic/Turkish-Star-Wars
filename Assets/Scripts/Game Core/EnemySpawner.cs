@@ -12,8 +12,9 @@ public class EnemyPack
 
 public enum SpawnMode
 {
-    ENDLESS,
-    FINITE
+    ENDLESS, // Spawns enemies indefinitely. (Clever idea but I don't think I ever used it.)
+    FINITE,  // Spawns a set amount of enemies.
+    DEPENDENT // Spawns endlessly, but only when called upon by an outside source.
 };
 
 public class EnemySpawner : MonoBehaviour
@@ -47,13 +48,16 @@ public class EnemySpawner : MonoBehaviour
 
     public void Update()
     {
-        timeElapsedBetweenSpawns += Time.deltaTime;
-        if(timeElapsedBetweenSpawns >= timeBetweenSpawns)
+        if (spawnMode != SpawnMode.DEPENDENT)
         {
-            int enemiesAlive = CountEnemiesAlive();
-            if (enemiesAlive < maxEnemies)
-                SpawnEnemy();
-            timeElapsedBetweenSpawns = 0; //reset timer
+            timeElapsedBetweenSpawns += Time.deltaTime;
+            if (timeElapsedBetweenSpawns >= timeBetweenSpawns)
+            {
+                int enemiesAlive = CountEnemiesAlive();
+                if (enemiesAlive < maxEnemies)
+                    SpawnEnemy();
+                timeElapsedBetweenSpawns = 0; //reset timer
+            }
         }
 
     }
