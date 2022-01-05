@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 // This class will be used to organize the Wizard's attacks
 [System.Serializable]
@@ -12,11 +13,18 @@ public class MagoAttack
     public int weight;
 }
 
+// This boss is going to go through 3 different attack stages, and 1 final stage where he is getting defeated.
+// Pretty much all the information for each stage is going to be inside the Stage class.
+// Either this architecture is BRILLIANT, or over-relying on it will be a living nightmare.
 [System.Serializable]
-public class AttackPack
+public class Stage
 {
     public MagoAttack[] attacks;
-
+    public EnemySpawner enemySpawner;
+    public float minAttackTime;
+    public float maxAttackTime;
+    public GameObject[] stageEntranceActivations;
+    public GameObject[] stageEntranceDeactivations;
     /// <summary>
     ///  Ripped from Enemy Spawner. Selects an attack.
     /// </summary>
@@ -28,8 +36,8 @@ public class AttackPack
         {
             totalWeight += attacks[i].weight;
         }
-
-        int selectedWeight = Random.Range(0, totalWeight);
+        // +1 to convert random.range from maxExclusive to maxInclusive
+        int selectedWeight = Random.Range(0, totalWeight + 1);
         for(int i = 0; i < attacks.Length; i++)
         {
             if (attacks[i].weight >= selectedWeight)
@@ -46,21 +54,126 @@ public class MagoBoss : GenericBoss
 {
     [Header("Final Boss")]
     public int currentStage = 0;
+    public float maxStamina = 100;
+    public float currentStamina = 100;
+    public float attackSequenceDuration = 30f; // This is just for ease of calculations . . .
+    private float staminaDecreasePerSecond; // This is what will actually decrease the stamina.
+    public float stunDuration = 15f; // Window player has to damage the boss once stamina is depleted. 
+    private float currentStun = 0; // Use this for purposes of refilling stamina bar?
+    public Image staminaBar;
     public float[] stageThresholds;
-    public EnemySpawner stageSpawners;
-    public float stageAttackTimeMins;
-    public float stageAttackTimeMaxes;
-    public GameObject[] stageTransitActivators;
-    public GameObject[] stageTransitDeactivators;
+    private bool isFinalStage = false;
 
-    [Header("Attacks")]
+    [Header("Stages")]
     [SerializeField]
-    public AttackPack[] stages;
+    public Stage[] stages;
+    protected override void Start()
+    {
+        base.Start();
+        staminaDecreasePerSecond = currentStamina / attackSequenceDuration;
+    }
+
     // We don't want the Wizard to do any of the regular enemy stuff with states.
     // Regardless of player distance, he will be selecting from a set of attacks.
     protected override void FixedUpdate() 
     {
         FacePlayer();
+        if(state_ != State.DAMAGED)
+        {
+            DegradeStamina();
+        }
+    }
 
+    private void DegradeStamina()
+    {
+        currentStamina -= staminaDecreasePerSecond * Time.deltaTime;
+        if(currentStamina <=0)
+        {
+            StartCoroutine(Stun());
+        }
+    }
+
+    // Todo: Actually implement
+    protected IEnumerator Stun()
+    {
+        state_ = State.DAMAGED;
+        StopCoroutine(AttackClock());
+        yield return null;
+    }
+
+
+    protected override void SelectAttack()
+    {
+        MagoAttack selectedAttack = stages[currentStage].SelectAttack();
+        BasicAttackCooldown = selectedAttack.executionCooldown; // Force AttackClock to wait long enough for execution.
+        selectedAttack.attackEvent.Invoke(); // Invoke method attached to attack.
+        
+    }
+
+    /******************************* Attacks! ****************************/
+    public void DummyAttack1()
+    {
+        Debug.Log("Wop!");
+    }
+
+    public void DummyAttack2()
+    {
+        Debug.Log("Hello World.");
+    }
+
+    public void DummyAttack3()
+    {
+        Debug.LogError("Haha I am  the wizard get fucked");
+    }
+
+    /*************************** Damage / Dying ************************/
+    public override void Damage(float damage, Vector3 knockback)
+    {
+        health -= damage;
+        UpdateHealthBar();
+        PlayDamageSound();
+        if (doSpawnDamageText) SpawnDamageText(damage);
+        // All this is so the player can have the satisfaction of dealing one final death blow to the Wizard.
+        if (isFinalStage)
+        {
+            if (health <= 0) Kill();
+        }
+        else
+        {
+            if(health <= stageThresholds[currentStage])
+            {
+                SwitchStage();
+            }
+            if (health <= 0) health = 10; // Bail 
+
+        }
+    }
+
+    private void SwitchStage()
+    {
+        currentStage++;
+        Debug.Log("Switching to stage " + currentStage);
+        isFinalStage = (currentStage == stages.Length - 1);
+        if(isFinalStage)
+        {
+            Debug.Log("On Final Stage");
+        }
+        minAttackTime = stages[currentStage].minAttackTime;
+        maxAttackTime = stages[currentStage].maxAttackTime;
+        // Proper activations/deactivations
+        for(int i = 0; i < stages[currentStage].stageEntranceActivations.Length; i++)
+        {
+            stages[currentStage].stageEntranceActivations[i].SetActive(true);
+        }
+        for (int i = 0; i < stages[currentStage].stageEntranceDeactivations.Length; i++)
+        {
+            stages[currentStage].stageEntranceDeactivations[i].SetActive(false);
+        }
+    }
+
+    public override void Kill()
+    {
+        Debug.Log("am dying");
+        base.Kill();
     }
 }

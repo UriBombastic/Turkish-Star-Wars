@@ -10,6 +10,11 @@ public class Projectile : MonoBehaviour
     public float attackForce;
     public bool doSpecial = false;
 
+    public void InstantiateProjectile(IAttacker owner)
+    {
+        this.owner = owner;
+    }
+
    public void InstantiateProjectile(IAttacker owner, float damageToDo, float radius, float attackForce, bool doSpecial = false)
     {
         this.owner = owner;

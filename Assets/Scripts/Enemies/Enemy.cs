@@ -322,7 +322,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
         healthBar.fillAmount = ratio;
     }
 
-    void PlayDamageSound()
+    protected void PlayDamageSound()
     {
         aud.Play();
     }
