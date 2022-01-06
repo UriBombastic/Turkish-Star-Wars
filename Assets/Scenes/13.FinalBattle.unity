@@ -458,6 +458,66 @@ Transform:
   m_Father: {fileID: 6053307994255678836}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &539509299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 539509300}
+  - component: {fileID: 539509301}
+  m_Layer: 0
+  m_Name: Stage 1 Cutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &539509300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539509299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6053307994255678836}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539509301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539509299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a8426ce1fd2bd4386aafd9d83429e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutsceneName: MagoStage1
+  NarrationTextBox: {fileID: 0}
+  CharacterImage: {fileID: 0}
+  dialogueTexts: []
+  dialogueDelays:
+  - 4
+  subsections: []
+  objectsToDeactivate: []
+  subsectionDelays: []
+  StartSequenceDeactivations: []
+  EndSequenceActivations: []
+  doRollingDeactivate: 1
+  doFreezeEnemies: 0
+  doFreezePlayer: 0
+  doRecursiveCutscenes: 0
+  player: {fileID: 0}
+  endMode: 0
 --- !u!1 &578423421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 786999809234203537, guid: 44205e5fa4ae51042a07b20a3fb9571c,
@@ -6219,6 +6279,127 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1508240511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1686398719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1686398720}
+  - component: {fileID: 1686398721}
+  m_Layer: 0
+  m_Name: 'Stage 2 Cutscene '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1686398720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686398719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6053307994255678836}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1686398721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686398719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a8426ce1fd2bd4386aafd9d83429e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutsceneName: MagoStage2
+  NarrationTextBox: {fileID: 0}
+  CharacterImage: {fileID: 0}
+  dialogueTexts: []
+  dialogueDelays:
+  - 2
+  - 4
+  subsections: []
+  objectsToDeactivate: []
+  subsectionDelays: []
+  StartSequenceDeactivations: []
+  EndSequenceActivations: []
+  doRollingDeactivate: 1
+  doFreezeEnemies: 0
+  doFreezePlayer: 0
+  doRecursiveCutscenes: 0
+  player: {fileID: 0}
+  endMode: 0
+--- !u!1 &1810427162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810427163}
+  - component: {fileID: 1810427164}
+  m_Layer: 0
+  m_Name: Stage 3 Cutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1810427163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810427162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6053307994255678836}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1810427164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810427162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a8426ce1fd2bd4386aafd9d83429e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutsceneName: MagoStage3
+  NarrationTextBox: {fileID: 0}
+  CharacterImage: {fileID: 0}
+  dialogueTexts: []
+  dialogueDelays:
+  - 4
+  subsections: []
+  objectsToDeactivate: []
+  subsectionDelays: []
+  StartSequenceDeactivations: []
+  EndSequenceActivations: []
+  doRollingDeactivate: 1
+  doFreezeEnemies: 0
+  doFreezePlayer: 0
+  doRecursiveCutscenes: 0
+  player: {fileID: 0}
+  endMode: 0
 --- !u!1001 &1825407659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6334,7 +6515,7 @@ PrefabInstance:
     - target: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
       propertyPath: m_Name
-      value: Indiana Jones Theme
+      value: Boss Music
       objectReference: {fileID: 0}
     - target: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
@@ -6512,6 +6693,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
+--- !u!1 &2024617854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 917064117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2047664202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1939194268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2075216310
 GameObject:
   m_ObjectHideFlags: 0
@@ -6845,6 +7038,7 @@ MonoBehaviour:
     maxAttackTime: 3
     stageEntranceActivations:
     - {fileID: 675032982}
+    - {fileID: 539509299}
     stageEntranceDeactivations:
     - {fileID: 578423421}
   - attacks:
@@ -6871,6 +7065,7 @@ MonoBehaviour:
     maxAttackTime: 2
     stageEntranceActivations:
     - {fileID: 1232766476}
+    - {fileID: 1686398719}
     stageEntranceDeactivations:
     - {fileID: 953995856}
   - attacks:
@@ -6897,7 +7092,10 @@ MonoBehaviour:
     maxAttackTime: 4
     stageEntranceActivations:
     - {fileID: 1825407661}
+    - {fileID: 1810427162}
+    - {fileID: 2024617854}
     stageEntranceDeactivations:
+    - {fileID: 2047664202}
     - {fileID: 1232766476}
 --- !u!4 &6053307994255678836
 Transform:
@@ -6918,6 +7116,9 @@ Transform:
   - {fileID: 508851154}
   - {fileID: 2131684522}
   - {fileID: 1218944386}
+  - {fileID: 539509300}
+  - {fileID: 1686398720}
+  - {fileID: 1810427163}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 98.522, z: 0}

@@ -19,6 +19,10 @@ public class HeroEnemy : GenericBoss
     public AttackState attackState;
     public float healthMult = 2.0f;
 
+    // Only for non-boss variant. Tbh mostly for debug purposes but also so this dude doesn't get too cracked.
+    public float healthLimit = 300f;
+    public float attackLimit = 2.5f;
+
     [Header("Visual Elements")]
     public GameObject shieldIndicator;
     public GameObject attackSword;
@@ -77,10 +81,11 @@ public class HeroEnemy : GenericBoss
 
     void StealPlayerStats()
     {
-        initialHealth = player.maxHealth * healthMult;
-        projectileDamage *= player.AttackDamageMultiplier;
-        dashAttackDamage *= player.AttackDamageMultiplier;
-        BasicAttackDamage *= player.AttackDamageMultiplier;
+        initialHealth = (isBoss ? player.maxHealth : Mathf.Min(player.maxHealth, healthLimit)) * healthMult;
+        float attackMultiplier = (isBoss ? player.AttackDamageMultiplier : Mathf.Min(player.AttackDamageMultiplier, attackLimit));
+        projectileDamage *= attackMultiplier;
+        dashAttackDamage *= attackMultiplier;
+        BasicAttackDamage *= attackMultiplier;
 
     }
 
