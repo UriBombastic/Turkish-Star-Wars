@@ -194,7 +194,7 @@ public class MagoBoss : GenericBoss
 
     public override void Kill()
     {
-        Debug.Log("am dying");
         base.Kill();
+        ToggleContinuityElements();
     }
 }

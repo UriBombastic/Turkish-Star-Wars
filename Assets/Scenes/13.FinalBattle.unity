@@ -6946,7 +6946,7 @@ MonoBehaviour:
   AttackRange: 0
   potentialTargets: []
   AnimationTriggers: []
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: e9d2d00a0ca21304c8d0886cf563afdd, type: 3}
   DoIndiscriminateAttack: 0
   DoFriendlyFire: 0
   floatingDamageText: {fileID: 2588620035215492404, guid: 6c4f119d6d6985c4db132c3599fab6b3,
@@ -7146,8 +7146,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 3370026669b0bc94b93dd6aded88bcc7, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
