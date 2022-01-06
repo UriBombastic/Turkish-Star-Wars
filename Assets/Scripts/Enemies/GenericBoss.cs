@@ -10,6 +10,7 @@ public class GenericBoss : Enemy
     public float maxAttackTime = 3.0f;
     protected float selection;
     public GameObject telegraphObject;
+    public bool isBoss = true; // for using as miniboss
 
     //for game continuity
     public GameObject[] toggleOnDeath;

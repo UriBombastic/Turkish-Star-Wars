@@ -9,11 +9,16 @@ public class WolfEnemy : Enemy
     public float initializationTime = 2.0f;
     public GameObject initializationParticles;
     public GameObject deathExplosion;
+    public bool isBoss;
 
     protected override void Start()
     {
-        if (!healthBar) healthBar = GameMaster.Instance.bossHealthBar;
-        if (!nameText) nameText = GameMaster.Instance.bossNameDisplay;
+        if (isBoss)
+        {
+            if (!healthBar) healthBar = GameMaster.Instance.bossHealthBar;
+            if (!nameText) nameText = GameMaster.Instance.bossNameDisplay;
+
+        }
         base.Start();
         UpdateHealthBar();
         StartCoroutine(InitializationAnimation());
@@ -39,7 +44,7 @@ public class WolfEnemy : Enemy
 
     public override void Damage(float damage, Vector3 knockback)
     {
-        if (player.itemState == ItemState.NULL) return; //MUST have the sword to hurt this bastard
+        if (player.itemState == ItemState.NULL && isBoss) return; //MUST have the sword to hurt this bastard
         base.Damage(damage, knockback);
     }
     public override void Kill()

@@ -17,6 +17,12 @@ public enum SpawnMode
     DEPENDENT // Spawns endlessly, but only when called upon by an outside source.
 };
 
+public enum TransformSelectionMode
+{
+    RANDOM,
+    SEQUENTIAL
+}
+
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
@@ -31,10 +37,12 @@ public class EnemySpawner : MonoBehaviour
     private float timeElapsedBetweenSpawns;
     public int enemiesToDefeat;
     public int enemiesSpawned = 0;
+   
 
     public Transform[] spawnLocations;
 
     public SpawnMode spawnMode = SpawnMode.FINITE;
+    public TransformSelectionMode selectionMode = TransformSelectionMode.RANDOM;
     public Transform enemyParentTransform;
 
    // private int lastKillCount = 0;
@@ -62,16 +70,11 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    private int CountEnemiesAlive()
-    {
-        return FindObjectsOfType<Enemy>().Length; 
-    }
-
-    public void SpawnEnemy()
+    public void SpawnEnemy(bool doOverideSpawnBoss = false)
     {
         enemiesSpawned++;
         Transform selectedTransform = SelectTransform();
-        EnemyPack selectedEnemy = (BossConditions())? boss : SelectEnemy();
+        EnemyPack selectedEnemy = (BossConditions() || doOverideSpawnBoss)? boss : SelectEnemy();
         GameObject spawnedEnemy = Instantiate(selectedEnemy.prefab, selectedTransform.position, selectedTransform.rotation); //spawn enemies
         spawnedEnemy.transform.Translate(RandomDistance(), RandomDistance(), RandomDistance()); //so that it's not right on spawn transform
         if (enemyParentTransform != null)
@@ -83,6 +86,20 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    public void SpawnEnemies(int batchSize)
+    {
+        for(int i = 0; i < batchSize; i++)
+        {
+            SpawnEnemy();
+        }
+    }
+
+
+    private int CountEnemiesAlive()
+    {
+        return FindObjectsOfType<Enemy>().Length; 
+    }
+
     private float RandomDistance()
     {
         return Random.Range(-spawnRandomRadius, spawnRandomRadius);
@@ -90,7 +107,14 @@ public class EnemySpawner : MonoBehaviour
 
     private Transform SelectTransform()
     {
-        return spawnLocations[Random.Range(0, spawnLocations.Length)];
+        if (selectionMode == TransformSelectionMode.RANDOM)
+        {
+            return spawnLocations[Random.Range(0, spawnLocations.Length)];
+        }
+        else
+        {
+            return spawnLocations[enemiesSpawned % spawnLocations.Length];
+        }
     }
 
     private bool BossConditions()

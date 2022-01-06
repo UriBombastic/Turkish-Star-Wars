@@ -64,6 +64,10 @@ public class MagoBoss : GenericBoss
     public float[] stageThresholds;
     private bool isFinalStage = false;
 
+    // Minibosses
+    public float[] minibossThresholds = { 1000f, 1000f }; // I know they're the same but what if I want to change them?
+    private bool[] hasSpawnedMiniboss = { false, false };
+
     [Header("Stages")]
     [SerializeField]
     public Stage[] stages;
@@ -77,7 +81,7 @@ public class MagoBoss : GenericBoss
     // Regardless of player distance, he will be selecting from a set of attacks.
     protected override void FixedUpdate() 
     {
-        FacePlayer();
+        if(!isFinalStage) FacePlayer();
         if(state_ != State.DAMAGED)
         {
             DegradeStamina();
@@ -133,6 +137,8 @@ public class MagoBoss : GenericBoss
         UpdateHealthBar();
         PlayDamageSound();
         if (doSpawnDamageText) SpawnDamageText(damage);
+        // Decide if you'll spawn the miniboss
+        CheckMiniBoss();
         // All this is so the player can have the satisfaction of dealing one final death blow to the Wizard.
         if (isFinalStage)
         {
@@ -146,6 +152,21 @@ public class MagoBoss : GenericBoss
             }
             if (health <= 0) health = 10; // Bail 
 
+        }
+    }
+
+    private void CheckMiniBoss()
+    {
+        // Only going to have minibosses in first 2 stages
+        if (currentStage > 1) return;
+
+        // Don't spawn miniboss if has already, we don't want battlefield absolutely flooded
+        if (hasSpawnedMiniboss[currentStage]) return;
+
+        if(health <= stageThresholds[currentStage] + minibossThresholds[currentStage])
+        {
+            stages[currentStage].enemySpawner.SpawnEnemy(true);
+            hasSpawnedMiniboss[currentStage] = true;
         }
     }
 

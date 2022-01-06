@@ -163,7 +163,6 @@ public class HeroEnemy : GenericBoss
 
     void Counter()
     {
-        Debug.Log(state_);
         //This is to prevent a god damn feedback loop which literally crashes Unity
         if (state_ == State.DAMAGED || state_ == State.ATTACKING || player.state_ == HeroController.State.BLOCKING)
             return;
@@ -256,8 +255,9 @@ public class HeroEnemy : GenericBoss
     {
         rb.constraints = RigidbodyConstraints.None;
         base.Kill();
-        Instantiate(wolfBoss, transform.position, transform.rotation);
-        Instantiate(lightningSword, transform.position, transform.rotation);
+        WolfEnemy wolf = Instantiate(wolfBoss, transform.position, transform.rotation).GetComponent<WolfEnemy>();
+        wolf.isBoss = this.isBoss;
+        if(isBoss) Instantiate(lightningSword, transform.position, transform.rotation);
         for (int i = 0; i < toggleOnDeath.Length; i++)
             toggleOnDeath[i].SetActive(!toggleOnDeath[i].activeInHierarchy);
         
