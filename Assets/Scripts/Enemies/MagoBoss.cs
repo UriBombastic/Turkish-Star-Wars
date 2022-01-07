@@ -68,6 +68,13 @@ public class MagoBoss : GenericBoss
     public float[] minibossThresholds = { 1000f, 1000f }; // I know they're the same but what if I want to change them?
     private bool[] hasSpawnedMiniboss = { false, false };
 
+    [Header("Dramatic Death")]
+    public GameObject smallDeathExplosion;
+    public Transform explosionsCenter;
+    public float smallExplosionRange = 3f;
+    public int smallExplosions = 15;
+    public float smallExplosionDelay = 0.2f;
+
     [Header("Stages")]
     [SerializeField]
     public Stage[] stages;
@@ -195,6 +202,46 @@ public class MagoBoss : GenericBoss
     public override void Kill()
     {
         base.Kill();
+        healthCanvas.SetActive(false);
         ToggleContinuityElements();
+        KillAllEnemies(); // Make sure there are none left
+        StartCoroutine(DeathAnimation());
+    }
+
+    IEnumerator DeathAnimation()
+    {
+        for (int i = 0; i < smallExplosions; i++)
+        {
+            SpawnRandomDeathExplosion();
+            Animate("Die"); // Create a spasming effect?
+            yield return new WaitForSeconds(smallExplosionDelay);
+        }
+        // yield return new WaitForSeconds(bigExplosionDelay);
+        // Instantiate(bigDeathExplosion, explosionsCenter.position, explosionsCenter.rotation).transform.localScale *= 2;
+        Destroy(gameObject);
+    }
+
+    private void SpawnRandomDeathExplosion()
+    {
+        GameObject explosion = Instantiate(smallDeathExplosion, explosionsCenter.position, explosionsCenter.rotation);
+        // Randomly change position
+        Vector3 newPosition = new Vector3(
+            explosion.transform.position.x + Random.Range(-smallExplosionRange, smallExplosionRange),
+            explosion.transform.position.y + Random.Range(-smallExplosionRange, smallExplosionRange),
+            explosion.transform.position.z + Random.Range(-smallExplosionRange, smallExplosionRange)
+            );
+        explosion.transform.position = newPosition;
+    }
+
+    private void KillAllEnemies()
+    {
+        Enemy[] allEnemies = FindObjectsOfType<Enemy>();
+        for(int i = 0; i < allEnemies.Length; i++)
+        {
+            if(allEnemies[i] != this)
+            {
+                allEnemies[i].Kill();
+            }
+        }
     }
 }
