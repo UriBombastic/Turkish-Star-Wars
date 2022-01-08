@@ -86,6 +86,11 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    public void SpawnEnemies()
+    {
+        SpawnEnemies(spawnLocations.Length);
+    }
+
     public void SpawnEnemies(int batchSize)
     {
         for(int i = 0; i < batchSize; i++)

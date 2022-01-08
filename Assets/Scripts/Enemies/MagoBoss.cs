@@ -75,6 +75,11 @@ public class MagoBoss : GenericBoss
     public int smallExplosions = 15;
     public float smallExplosionDelay = 0.2f;
 
+    [Header("Attacks")]
+    public Transform leftHandTransform;
+    public Transform rightHandTransform;
+    public GameObject sawProjectile;
+
     [Header("Stages")]
     [SerializeField]
     public Stage[] stages;
@@ -122,19 +127,16 @@ public class MagoBoss : GenericBoss
     }
 
     /******************************* Attacks! ****************************/
-    public void DummyAttack1()
+    public void AttackSummonMinions()
     {
-        Debug.Log("Wop!");
+        stages[currentStage].enemySpawner.SpawnEnemies();
     }
 
-    public void DummyAttack2()
+    public void AttackSeekingSaw()
     {
-        Debug.Log("Hello World.");
-    }
-
-    public void DummyAttack3()
-    {
-        Debug.LogError("Haha I am  the wizard get fucked");
+        
+        Instantiate(sawProjectile, leftHandTransform.position, leftHandTransform.rotation)
+            .GetComponent<SawProjectile>().InstantiateProjectile(this);
     }
 
     /*************************** Damage / Dying ************************/

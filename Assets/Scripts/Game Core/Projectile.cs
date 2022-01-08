@@ -25,11 +25,16 @@ public class Projectile : MonoBehaviour
         enabled = true;
     }
 
-    public virtual void OnCollisionEnter()
+    public virtual void OnCollisionEnter(Collision other)
     {
         if (!enabled) return;
         //execute attack by entity which spawned projectile at location of projecile upon collision
-        owner.FundamentalAttack(damageToDo, radius, attackForce, transform);
+        ExecuteImpact();
         enabled = false;
+    }
+
+    protected void ExecuteImpact()
+    {
+        owner.FundamentalAttack(damageToDo, radius, attackForce, transform);
     }
 }

@@ -51,7 +51,7 @@ public class WolfEnemy : Enemy
     {
         //TODO: dramatic explosion, level end
         Instantiate(deathExplosion, transform.position, transform.rotation);
-        GameMaster.Instance.RegisterKillBoss();
+        if(isBoss) GameMaster.Instance.RegisterKillBoss();
         Destroy(gameObject);
     }
 
