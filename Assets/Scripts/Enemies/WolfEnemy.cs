@@ -19,6 +19,10 @@ public class WolfEnemy : Enemy
             if (!nameText) nameText = GameMaster.Instance.bossNameDisplay;
 
         }
+        else
+        {
+            aud.volume /= 4;
+        }
         base.Start();
         UpdateHealthBar();
         StartCoroutine(InitializationAnimation());

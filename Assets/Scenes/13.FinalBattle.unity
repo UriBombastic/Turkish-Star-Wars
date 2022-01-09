@@ -1355,6 +1355,18 @@ Transform:
   m_Father: {fileID: 2131684522}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &696929841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3240668832778744325, guid: 73166fca5bc078445beabb20ef0cbc22,
+    type: 3}
+  m_PrefabInstance: {fileID: 583003569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &769771779
 GameObject:
   m_ObjectHideFlags: 0
@@ -8269,6 +8281,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1861105268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932994886415477412, guid: 6e29ba7047089244f97c49e8f0a48908,
+    type: 3}
+  m_PrefabInstance: {fileID: 6053307994803669750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1939194268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8346,6 +8364,11 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 4f4eaa882798bdf4eb537b68d5cfe31d, type: 3}
+    - target: {fileID: 2297006676423945194, guid: 50735013778c76040b2a965ad0766d0b,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50735013778c76040b2a965ad0766d0b, type: 3}
 --- !u!1001 &1993412203
@@ -8922,13 +8945,16 @@ MonoBehaviour:
   currentStage: 0
   maxStamina: 100
   currentStamina: 100
-  attackSequenceDuration: 30
-  stunDuration: 10
-  staminaBar: {fileID: 0}
+  attackSequenceDuration: 16
+  stunDuration: 8
+  staminaBar: {fileID: 696929841}
   stageThresholds:
   - 6000
   - 2000
   - 1
+  repelRadius: 10
+  repelForce: 200
+  RepelRings: {fileID: 1861105268}
   minibossThresholds:
   - 1000
   - 1000
@@ -8944,7 +8970,6 @@ MonoBehaviour:
     type: 3}
   spearProjectile: {fileID: 1722685248713451997, guid: cb9ab98611bb20b40bc381b341d2322a,
     type: 3}
-  spearProjectileNormalizer: 10
   stages:
   - enemySpawner: {fileID: 1011263377}
     minAttackTime: 3
@@ -8969,7 +8994,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       executionCooldown: 15
-      weight: -1
+      weight: 10
     - attackEvent:
         m_PersistentCalls:
           m_Calls:
@@ -8987,7 +9012,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       executionCooldown: 2
-      weight: -1
+      weight: 50
     - attackEvent:
         m_PersistentCalls:
           m_Calls:
@@ -9005,7 +9030,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       executionCooldown: 2
-      weight: 100
+      weight: 40
   - enemySpawner: {fileID: 508851153}
     minAttackTime: 2
     maxAttackTime: 3

@@ -62,7 +62,11 @@ public class MagoBoss : GenericBoss
     public float stunDuration = 15f; // Window player has to damage the boss once stamina is depleted. 
     private float currentStun = 0; // Use this for purposes of refilling stamina bar?
     public Image staminaBar;
+
     public float[] stageThresholds;
+    public float repelRadius = 10f;
+    public float repelForce = 200f;
+    public GameObject RepelRings;
     private bool isFinalStage = false;
 
     // Minibosses
@@ -93,32 +97,90 @@ public class MagoBoss : GenericBoss
 
     // We don't want the Wizard to do any of the regular enemy stuff with states.
     // Regardless of player distance, he will be selecting from a set of attacks.
-    protected override void FixedUpdate() 
+    protected override void FixedUpdate()
     {
-        if(!isFinalStage) FacePlayer();
-        if(state_ != State.DAMAGED)
+        if (!isFinalStage) FacePlayer();
+        if (state_ != State.DAMAGED)
         {
+            Repel();
             DegradeStamina();
         }
+
     }
 
     private void DegradeStamina()
     {
         currentStamina -= staminaDecreasePerSecond * Time.deltaTime;
-        if(currentStamina <=0)
+        if (currentStamina <= 0)
         {
             StartCoroutine(Stun());
         }
+        staminaBar.fillAmount = currentStamina / maxStamina;
     }
+
 
     // Todo: Actually implement
     protected IEnumerator Stun()
     {
         state_ = State.DAMAGED;
         StopCoroutine(AttackClock());
+        RepelRings.SetActive(false);
+        PlayDamageSound();
+        Debug.Log("Entering Stun");
+        yield return new WaitForSeconds(stunDuration);
+        ExitStun();
         yield return null;
     }
 
+    private void ExitStun()
+    {
+        RepelRings.SetActive(true);
+        state_ = State.IDLE;
+        Debug.Log("Exiting Stun");
+        StartCoroutine(AttackClock());
+        currentStamina = maxStamina;
+    }
+
+
+    protected override IEnumerator AttackClock()
+    {
+        if (state_ == State.DAMAGED) yield break;
+        yield return base.AttackClock();
+    }
+
+    private void Repel()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, repelRadius);
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            if (repelConditions(hitColliders[i])) // Determine if should be repelled, then do it
+            {
+                Rigidbody rb = hitColliders[i].GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    Vector3 attackVector = hitColliders[i].transform.position - transform.position;
+                    attackVector = new Vector3(attackVector.x, 0, attackVector.z);
+                    attackVector.Normalize();
+                    rb.AddForce(attackVector * repelForce);
+                }
+            }
+        }
+    }
+
+    // Conditions to be repelled from Mago
+    private bool repelConditions(Collider collider)
+    {
+        if (collider.transform == this.transform) return false; // If this, don't repel.
+        Projectile p = collider.gameObject.GetComponent<Projectile>(); // Check if has projectile
+        if (!p)
+        {
+            return true; // if not projectile, repel. 
+        }
+        else
+        {
+            return (!p.owner.Equals(this)); // If projectile, ensure it's not part of this.
+        }
+    }
 
     protected override void SelectAttack()
     {
@@ -168,6 +230,7 @@ public class MagoBoss : GenericBoss
         {
             if(health <= stageThresholds[currentStage])
             {
+                ExitStun();
                 SwitchStage();
             }
             if (health <= 0) health = 10; // Bail 
