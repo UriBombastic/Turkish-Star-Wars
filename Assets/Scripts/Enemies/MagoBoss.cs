@@ -19,12 +19,13 @@ public class MagoAttack
 [System.Serializable]
 public class Stage
 {
-    public MagoAttack[] attacks;
+
     public EnemySpawner enemySpawner;
     public float minAttackTime;
     public float maxAttackTime;
     public GameObject[] stageEntranceActivations;
     public GameObject[] stageEntranceDeactivations;
+    public MagoAttack[] attacks;
     /// <summary>
     ///  Ripped from Enemy Spawner. Selects an attack.
     /// </summary>
@@ -79,6 +80,7 @@ public class MagoBoss : GenericBoss
     public Transform leftHandTransform;
     public Transform rightHandTransform;
     public GameObject sawProjectile;
+    public GameObject spearProjectile;
 
     [Header("Stages")]
     [SerializeField]
@@ -137,6 +139,15 @@ public class MagoBoss : GenericBoss
         
         Instantiate(sawProjectile, leftHandTransform.position, leftHandTransform.rotation)
             .GetComponent<SawProjectile>().InstantiateProjectile(this);
+    }
+
+    public void AttackLightningSpear()
+    {
+        SpearProjectile projectile = Instantiate(spearProjectile, 
+            rightHandTransform.position + spearProjectile.transform.position, rightHandTransform.rotation)
+            .GetComponent<SpearProjectile>();
+        projectile.attackForce *= (targetTransform.position - transform.position).magnitude;///spearProjectileNormalizer;
+        projectile.InstantiateProjectile(this);
     }
 
     /*************************** Damage / Dying ************************/

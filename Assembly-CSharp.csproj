@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Enemies\GorillaEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\GunnerEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\HeroEnemy.cs" />
+    <Compile Include="Assets\Scripts\Enemies\MagoBoss.cs" />
     <Compile Include="Assets\Scripts\Enemies\PunchingBag.cs" />
     <Compile Include="Assets\Scripts\Enemies\SkeletonEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\WolfEnemy.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Assets\Scripts\Game Core\ItemMaster.cs" />
     <Compile Include="Assets\Scripts\Game Core\Projectile.cs" />
     <Compile Include="Assets\Scripts\Game Core\RockProjectile.cs" />
+    <Compile Include="Assets\Scripts\Game Core\SawProjectile.cs" />
+    <Compile Include="Assets\Scripts\Game Core\SpearProjectile.cs" />
     <Compile Include="Assets\Scripts\Game Core\UpgradePlayer.cs" />
     <Compile Include="Assets\Scripts\Game Core\VolumeControl.cs" />
     <Compile Include="Assets\Scripts\HealingStation.cs" />
@@ -132,6 +135,7 @@
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartInnerGlowIceT.shader" />
     <None Include="Assets\Resources\Dialogue\EN\FinalExposition1.txt" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_Standart.shader" />
+    <None Include="Assets\Resources\Dialogue\EN\MagoStage1.txt" />
     <None Include="Assets\Resources\Dialogue\EN\ArenaEnd.txt" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_Standart2SidedSimple.shader" />
     <None Include="Assets\Resources\Dialogue\EN\FinalExposition4.txt" />
@@ -140,6 +144,7 @@
     <None Include="Assets\Resources\Dialogue\EN\BarFightExit.txt" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartTransparentAdditive.shader" />
     <None Include="Assets\Resources\Dialogue\EN\EscapeOnTime.txt" />
+    <None Include="Assets\Resources\Dialogue\EN\MagoStage3.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_StandartInnerGlow.shader" />
     <None Include="Assets\Resources\Dialogue\EN\TrainingScene.txt" />
@@ -158,6 +163,7 @@
     <None Include="Assets\Resources\Dialogue\EN\FinalExpositionComplete.txt" />
     <None Include="Assets\Resources\Dialogue\EN\ChurchSceneIntro.txt" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_Standart2Sided.shader" />
+    <None Include="Assets\Resources\Dialogue\EN\MagoStage2.txt" />
     <None Include="Assets\Resources\Dialogue\EN\Captured.txt" />
     <None Include="Assets\Resources\Dialogue\EN\CaveExposition.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
