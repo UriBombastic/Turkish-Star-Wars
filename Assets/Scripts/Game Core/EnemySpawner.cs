@@ -135,7 +135,7 @@ public class EnemySpawner : MonoBehaviour
             totalWeight += enemies[i].weight;
         }
         // +1 to convert random.range from maxExclusive to maxInclusive
-        int selectedWeight = Random.Range(0, totalWeight + 1);
+        int selectedWeight = Random.Range(0, totalWeight) + 1;
         for(int i = 0; i < enemies.Length; i++)
         {
             if (enemies[i].weight >= selectedWeight) //enemy is within range of random weighted selection

@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 2875375274178218639}
   - component: {fileID: 2875375274178218638}
   - component: {fileID: 4788101065964140589}
+  - component: {fileID: 8460480814408933408}
   m_Layer: 0
   m_Name: SawBlade Projectile
   m_TagString: Untagged
@@ -173,3 +174,16 @@ MonoBehaviour:
   doSpecial: 0
   moveForce: 20
   maximumNegativeAngle: -0.25
+--- !u!114 &8460480814408933408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108727748179322729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cedb949dfc6b44aa88e1e82ba6471d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 15

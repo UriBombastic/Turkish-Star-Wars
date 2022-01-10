@@ -38,7 +38,7 @@ public class Stage
             totalWeight += attacks[i].weight;
         }
         // +1 to convert random.range from maxExclusive to maxInclusive
-        int selectedWeight = Random.Range(0, totalWeight + 1);
+        int selectedWeight = Random.Range(0, totalWeight) +1;
         for(int i = 0; i < attacks.Length; i++)
         {
             if (attacks[i].weight >= selectedWeight)
@@ -71,7 +71,9 @@ public class MagoBoss : GenericBoss
 
     // Minibosses
     public float[] minibossThresholds = { 1000f, 1000f }; // I know they're the same but what if I want to change them?
+    public float miniBossAttackDelay = 15f;
     private bool[] hasSpawnedMiniboss = { false, false };
+
 
     [Header("Dramatic Death")]
     public GameObject smallDeathExplosion;
@@ -81,10 +83,12 @@ public class MagoBoss : GenericBoss
     public float smallExplosionDelay = 0.2f;
 
     [Header("Attacks")]
+    private float attackPenalty = 0f;
     public Transform leftHandTransform;
     public Transform rightHandTransform;
     public GameObject sawProjectile;
     public GameObject spearProjectile;
+    public GameObject spellProjectile;
 
     [Header("Stages")]
     [SerializeField]
@@ -94,6 +98,7 @@ public class MagoBoss : GenericBoss
         base.Start();
         staminaDecreasePerSecond = currentStamina / attackSequenceDuration;
     }
+
 
     // We don't want the Wizard to do any of the regular enemy stuff with states.
     // Regardless of player distance, he will be selecting from a set of attacks.
@@ -144,6 +149,11 @@ public class MagoBoss : GenericBoss
 
     protected override IEnumerator AttackClock()
     {
+        if(attackPenalty != 0)
+        {
+            yield return new WaitForSeconds(attackPenalty);
+            attackPenalty = 0;
+        }
         if (state_ == State.DAMAGED) yield break;
         yield return base.AttackClock();
     }
@@ -198,9 +208,19 @@ public class MagoBoss : GenericBoss
 
     public void AttackSeekingSaw()
     {
-        
-        Instantiate(sawProjectile, leftHandTransform.position, leftHandTransform.rotation)
-            .GetComponent<SawProjectile>().InstantiateProjectile(this);
+        SummonSaw(leftHandTransform);
+    }
+
+    public void AttackSeekingSawDouble()
+    {
+        SummonSaw(leftHandTransform);
+        SummonSaw(rightHandTransform);
+    }
+
+    private void SummonSaw(Transform spawnTransform)
+    {
+        Instantiate(sawProjectile, spawnTransform.position, spawnTransform.rotation)
+        .GetComponent<SawProjectile>().InstantiateProjectile(this);
     }
 
     public void AttackLightningSpear()
@@ -212,6 +232,12 @@ public class MagoBoss : GenericBoss
         projectile.InstantiateProjectile(this);
     }
 
+    public void AttackSpell()
+    {
+        //TODO: some method of swearing?
+        Instantiate(spellProjectile, explosionsCenter.position, explosionsCenter.rotation)
+            .GetComponent<SpellProjectile>().InstantiateProjectile(this);
+    }
     /*************************** Damage / Dying ************************/
     public override void Damage(float damage, Vector3 knockback)
     {
@@ -250,6 +276,7 @@ public class MagoBoss : GenericBoss
         {
             stages[currentStage].enemySpawner.SpawnEnemy(true);
             hasSpawnedMiniboss[currentStage] = true;
+            attackPenalty = miniBossAttackDelay;
         }
     }
 

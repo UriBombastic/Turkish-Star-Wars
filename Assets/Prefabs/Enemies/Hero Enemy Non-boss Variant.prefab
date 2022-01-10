@@ -12,26 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health bar Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1423703253925308995, guid: 55439fc51b7e6f847a173b33d69d1f4f,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423703253925308995, guid: 55439fc51b7e6f847a173b33d69d1f4f,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423703253925308995, guid: 55439fc51b7e6f847a173b33d69d1f4f,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423703253925308995, guid: 55439fc51b7e6f847a173b33d69d1f4f,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1423703253250161704, guid: 55439fc51b7e6f847a173b33d69d1f4f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -236,23 +216,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5664872852681848836, guid: 413f112239ac7724f9e807dafaed479f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5664872852681848836, guid: 413f112239ac7724f9e807dafaed479f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
-      propertyPath: isBoss
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
       propertyPath: enemyName
       value: Mimic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: initialHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
       propertyPath: healthCanvas
@@ -266,6 +236,51 @@ PrefabInstance:
       propertyPath: nameText
       value: 
       objectReference: {fileID: 5056735757995121544}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: minAttackTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: maxAttackTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: isBoss
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: healthMult
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: healthLimit
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: attackLimit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: lightningSword
+      value: 
+      objectReference: {fileID: 8374715673297385398, guid: 322d3acfd6f7b4844b1d0ebd4be6d980,
+        type: 3}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: BasicAttackDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: slamDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: slamRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965677211, guid: 413f112239ac7724f9e807dafaed479f, type: 3}
+      propertyPath: slamForce
+      value: 750
+      objectReference: {fileID: 0}
     - target: {fileID: 8973039436677904118, guid: 413f112239ac7724f9e807dafaed479f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

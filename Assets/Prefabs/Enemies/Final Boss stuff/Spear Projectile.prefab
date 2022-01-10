@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1722685248713451992}
   - component: {fileID: 1722685248713451990}
   - component: {fileID: 9036105278726496192}
+  - component: {fileID: -7005006951551208861}
   m_Layer: 0
   m_Name: Spear Projectile
   m_TagString: Untagged
@@ -115,6 +116,19 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   moveForce: 25
   doSeekPlayer: 1
+--- !u!114 &-7005006951551208861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722685248713451997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cedb949dfc6b44aa88e1e82ba6471d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 15
 --- !u!1001 &1722685249641422398
 PrefabInstance:
   m_ObjectHideFlags: 0
