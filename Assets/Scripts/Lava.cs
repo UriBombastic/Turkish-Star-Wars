@@ -14,6 +14,16 @@ public class Lava : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        DoLava(other);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        DoLava(collision.collider);
+    }
+
+    private void DoLava(Collider other)
+    {
         IDamageable victim = other.GetComponent<IDamageable>();
 
         // If no damageable component, stop sequence.
@@ -26,12 +36,12 @@ public class Lava : MonoBehaviour
         }
         else
         {
-           if(doBreakShield)
+            if (doBreakShield)
             {
                 HeroController hero = other.GetComponent<HeroController>();
-                if(hero)
+                if (hero)
                 {
-                    if(hero.state_ == HeroController.State.BLOCKING)
+                    if (hero.state_ == HeroController.State.BLOCKING)
                     {
                         hero.ShieldPower = 0;
                         hero.BreakShield();
@@ -41,7 +51,7 @@ public class Lava : MonoBehaviour
             victim.Damage(lavaDamage, new Vector3(0, bounceForce, 0));
         }
 
-        if(explosionEffect)
+        if (explosionEffect)
             Instantiate(explosionEffect, other.transform.position, other.transform.rotation);
     }
 }

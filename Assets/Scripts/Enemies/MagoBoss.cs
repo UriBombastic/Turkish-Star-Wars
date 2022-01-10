@@ -60,6 +60,7 @@ public class MagoBoss : GenericBoss
     public float attackSequenceDuration = 30f; // This is just for ease of calculations . . .
     private float staminaDecreasePerSecond; // This is what will actually decrease the stamina.
     public float stunDuration = 15f; // Window player has to damage the boss once stamina is depleted. 
+    public float finalStageDifficultyIncrease = 1.25f; // How much longer attack sequence lasts in final stage.
     private float currentStun = 0; // Use this for purposes of refilling stamina bar?
     public Image staminaBar;
 
@@ -94,6 +95,10 @@ public class MagoBoss : GenericBoss
     public GameObject skyHammerCrosshairs;
     private GameObject spawnedCrosshairs;
     public float skyHammerStalkDuration;
+    public GameObject[] LavaChunks;
+    public int minLavaSpawns = 4;
+    public int maxLavaSpawns = 6;
+    public float LavaDelay = 1;
 
     [Header("Stages")]
     [SerializeField]
@@ -110,7 +115,7 @@ public class MagoBoss : GenericBoss
     protected override void FixedUpdate()
     {
         if (!isFinalStage) FacePlayer();
-        if (state_ != State.DAMAGED)
+        if (state_ != State.DAMAGED && !isFinalStage)
         {
             Repel();
             DegradeStamina();
@@ -144,6 +149,7 @@ public class MagoBoss : GenericBoss
 
     private void ExitStun()
     {
+        if (isFinalStage) return; 
         RepelRings.SetActive(true);
         state_ = State.IDLE;
         Debug.Log("Exiting Stun");
@@ -206,6 +212,11 @@ public class MagoBoss : GenericBoss
     }
 
     /******************************* Attacks! ****************************/
+    public void AttackDummy()
+    {
+        Debug.Log("Dummy Attack");
+    }
+
     public void AttackSummonMinions()
     {
         stages[currentStage].enemySpawner.SpawnEnemies();
@@ -247,6 +258,7 @@ public class MagoBoss : GenericBoss
     {
         for(int i = 0; i < multiSpearCount; i++)
         {
+            if (state_ == State.DAMAGED) yield break;
             AttackLightningSpear();
             yield return new WaitForSeconds(multiSpearDelay);
         }
@@ -270,6 +282,29 @@ public class MagoBoss : GenericBoss
         hammer.InstantiateProjectile(this);
         yield return new WaitForSeconds(skyHammerStalkDuration);
         hammer.Explode();
+    }
+
+    public void AttackLavaRain()
+    {
+        StartCoroutine(LavaRainReal());
+    }
+
+    private IEnumerator LavaRainReal()
+    {
+        int selectedLavaChunks = Random.Range(minLavaSpawns, maxLavaSpawns);
+        for(int i = 0; i < selectedLavaChunks; i++)
+        {
+            if (state_ == State.DAMAGED) yield break; // Stop if damaged
+            SpawnLavaChunk();
+            yield return new WaitForSeconds(LavaDelay);
+        }
+    }
+
+    private void SpawnLavaChunk()
+    {
+        GameObject lavaChunk = LavaChunks[Random.Range(0, LavaChunks.Length)];
+        Vector3 spawnPosition = new Vector3(targetTransform.position.x, lavaChunk.transform.position.y, targetTransform.position.z);
+        Instantiate(lavaChunk, spawnPosition, Random.rotation);
     }
 
     /*************************** Damage / Dying ************************/
@@ -319,10 +354,11 @@ public class MagoBoss : GenericBoss
         currentStage++;
         Debug.Log("Switching to stage " + currentStage);
         isFinalStage = (currentStage == stages.Length - 1);
-        if(isFinalStage)
+        if(currentStage == 2)
         {
-            Debug.Log("On Final Stage");
+            staminaDecreasePerSecond /= finalStageDifficultyIncrease; // Takes longer to degrade stamina
         }
+
         minAttackTime = stages[currentStage].minAttackTime;
         maxAttackTime = stages[currentStage].maxAttackTime;
         // Proper activations/deactivations

@@ -342,7 +342,7 @@ MonoBehaviour:
   radius: 5
   attackForce: 1500
   doSpecial: 0
-  delay: 1
+  delay: 0.75
   deathDelay: 2.5
   Explosion: {fileID: 2433673544585794160, guid: ad1cc35cdfdd07e4eb047147b59dbd78,
     type: 3}
@@ -533,6 +533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RingParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932994886415477412, guid: 6e29ba7047089244f97c49e8f0a48908,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3932994886415477409, guid: 6e29ba7047089244f97c49e8f0a48908,
         type: 3}

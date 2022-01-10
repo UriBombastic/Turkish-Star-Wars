@@ -8476,7 +8476,7 @@ PrefabInstance:
     - target: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2297006676423945195, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
@@ -9217,6 +9217,7 @@ MonoBehaviour:
   currentStamina: 100
   attackSequenceDuration: 16
   stunDuration: 8
+  finalStageDifficultyIncrease: 1.25
   staminaBar: {fileID: 696929841}
   stageThresholds:
   - 6000
@@ -9248,6 +9249,15 @@ MonoBehaviour:
   skyHammerCrosshairs: {fileID: 7573268146945412393, guid: 416c3dc340446ff40903537de2d09829,
     type: 3}
   skyHammerStalkDuration: 2.5
+  LavaChunks:
+  - {fileID: 1596167864859246300, guid: 6789d1be0402260489753e4d57555a57, type: 3}
+  - {fileID: 6240696801180716533, guid: f3607f07bf4b12f41a93489510d54686, type: 3}
+  - {fileID: 2649052875968444601, guid: 59938ecb7b6b02747ae7e51e16d863ad, type: 3}
+  - {fileID: 3501244159235385426, guid: 50ef2867f29b0a04597558b0d0c7b2e4, type: 3}
+  - {fileID: 1195937414964090848, guid: 9d84a442fc031d249bce39b5eec05fe9, type: 3}
+  minLavaSpawns: 8
+  maxLavaSpawns: 10
+  LavaDelay: 1
   stages:
   - enemySpawner: {fileID: 1011263377}
     minAttackTime: 3
@@ -9391,8 +9401,8 @@ MonoBehaviour:
       executionCooldown: 4
       weight: 20
   - enemySpawner: {fileID: 0}
-    minAttackTime: 1
-    maxAttackTime: 2
+    minAttackTime: 0.5
+    maxAttackTime: 1
     stageEntranceActivations:
     - {fileID: 1232766476}
     - {fileID: 1686398719}
@@ -9415,8 +9425,8 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      executionCooldown: 3
-      weight: 0
+      executionCooldown: 2
+      weight: 20
     - attackEvent:
         m_PersistentCalls:
           m_Calls:
@@ -9433,8 +9443,8 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      executionCooldown: 3
-      weight: 0
+      executionCooldown: 1
+      weight: 20
     - attackEvent:
         m_PersistentCalls:
           m_Calls:
@@ -9451,8 +9461,8 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      executionCooldown: 3
-      weight: 0
+      executionCooldown: 1
+      weight: 20
     - attackEvent:
         m_PersistentCalls:
           m_Calls:
@@ -9470,7 +9480,25 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       executionCooldown: 4
-      weight: 1
+      weight: 20
+    - attackEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 6053307994255678835}
+            m_MethodName: AttackLavaRain
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      executionCooldown: 6
+      weight: 20
   - enemySpawner: {fileID: 0}
     minAttackTime: 3
     maxAttackTime: 4
@@ -9484,7 +9512,25 @@ MonoBehaviour:
     - {fileID: 1232766476}
     - {fileID: 1216139063}
     - {fileID: 6053307994101567028}
-    attacks: []
+    attacks:
+    - attackEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 6053307994255678835}
+            m_MethodName: AttackDummy
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      executionCooldown: 0
+      weight: 1
 --- !u!4 &6053307994255678836
 Transform:
   m_ObjectHideFlags: 0
