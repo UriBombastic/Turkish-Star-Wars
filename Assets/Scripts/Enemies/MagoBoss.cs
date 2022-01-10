@@ -75,6 +75,14 @@ public class MagoBoss : GenericBoss
     public float miniBossAttackDelay = 15f;
     private bool[] hasSpawnedMiniboss = { false, false };
 
+    // "Spells"
+    public CutScene spellAnnouncer;
+    public float spellDuration = 2.0f;
+    public float spellChance = 0.25f;
+    private string[] spellFirstHalves = { "Odiolo ", "Chingalo ", "Cogedlo ", "Conquista " };
+    private string[] spellSecondHalves = { "Los Humanos!", "Tu Puta Madre!", "La Tierra!", "El Mundo!" };
+    private string regularTailend = "&Mago&#A9A900FF&";
+    private string enragedTailend = "&Mago&#FF0000FF&";
 
     [Header("Dramatic Death")]
     public GameObject smallDeathExplosion;
@@ -103,6 +111,8 @@ public class MagoBoss : GenericBoss
     [Header("Stages")]
     [SerializeField]
     public Stage[] stages;
+
+    #region core
     protected override void Start()
     {
         base.Start();
@@ -205,13 +215,16 @@ public class MagoBoss : GenericBoss
 
     protected override void SelectAttack()
     {
+        if(Random.Range(0f,1f) < spellChance) Swear();
         MagoAttack selectedAttack = stages[currentStage].SelectAttack();
         BasicAttackCooldown = selectedAttack.executionCooldown; // Force AttackClock to wait long enough for execution.
         selectedAttack.attackEvent.Invoke(); // Invoke method attached to attack.
         
     }
+    #endregion
 
     /******************************* Attacks! ****************************/
+    #region Attacks
     public void AttackDummy()
     {
         Debug.Log("Dummy Attack");
@@ -303,11 +316,30 @@ public class MagoBoss : GenericBoss
     private void SpawnLavaChunk()
     {
         GameObject lavaChunk = LavaChunks[Random.Range(0, LavaChunks.Length)];
-        Vector3 spawnPosition = new Vector3(targetTransform.position.x, lavaChunk.transform.position.y, targetTransform.position.z);
+        Vector3 spawnPosition = new Vector3(targetTransform.position.x, lavaChunk.transform.position.y + targetTransform.position.y, targetTransform.position.z);
         Instantiate(lavaChunk, spawnPosition, Random.rotation);
+    }
+    #endregion
+   
+    /************************** Gimmick ********************/
+    public void Swear()
+    {
+        bool isEnraged = (currentStage == 2);
+        string firstHalf = spellFirstHalves[Random.Range(0, spellFirstHalves.Length)];
+        string secondHalf = spellSecondHalves[Random.Range(0, spellSecondHalves.Length)];
+        if(isEnraged)
+        {
+            firstHalf = firstHalf.ToUpper();
+            secondHalf = secondHalf.ToUpper();
+        }
+        string tailend = isEnraged ? enragedTailend : regularTailend;
+
+        string output = firstHalf + secondHalf + tailend;
+        spellAnnouncer.OneShotText(output, spellDuration);
     }
 
     /*************************** Damage / Dying ************************/
+    #region Damage
     public override void Damage(float damage, Vector3 knockback)
     {
         health -= damage;
@@ -417,4 +449,5 @@ public class MagoBoss : GenericBoss
             }
         }
     }
+    #endregion
 }

@@ -125,13 +125,14 @@ public class CutScene : MonoBehaviour
         }
 
 
-            string[] tokens = dialogueTexts[i].Split('&');
-            dialogueTexts[i] = tokens[0]; //the actual dialogue
-            string name = tokens[1];
-            //Debug.Log(string.Format("Sprites/{0}", name));
-            Sprite profile = Resources.Load<Sprite>(string.Format("Sprites/{0}", name));
-            CharacterImage.sprite = profile;
-            CharacterImage.gameObject.SetActive(true);
+        string[] tokens = dialogueTexts[i].Split('&');
+
+        dialogueTexts[i] = tokens[0]; //the actual dialogue
+        string name = tokens[1];
+        //Debug.Log(string.Format("Sprites/{0}", name));
+        Sprite profile = Resources.Load<Sprite>(string.Format("Sprites/{0}", name));
+        CharacterImage.sprite = profile;
+        CharacterImage.gameObject.SetActive(true);
 
         if (tokens.Length < 4)
         {
@@ -142,11 +143,11 @@ public class CutScene : MonoBehaviour
         string color = tokens[2];
         Color col = new Color();
         //what the actual fuck Unity? Could you not have, you know, made this method return a Color?
-        if(!ColorUtility.TryParseHtmlString(color, out col))
+        if (!ColorUtility.TryParseHtmlString(color, out col))
             Debug.LogError("Cut! Cut! Something went wrong.");
 
         NarrationTextBox.color = col;
-        
+
     }
 
     public IEnumerator SectionsSequence()
@@ -179,6 +180,14 @@ public class CutScene : MonoBehaviour
                 End();
             }
         }
+    }
+
+    public void OneShotText(string text, float duration)
+    {
+        StopCoroutine(TextSequence());
+        dialogueTexts = new string[]{ text};
+        dialogueDelays = new float[] { duration };
+        StartCoroutine(TextSequence());
     }
 
     public void End()
