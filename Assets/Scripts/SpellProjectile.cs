@@ -15,6 +15,7 @@ public class SpellProjectile : Projectile
     }
     private void FixedUpdate()
     {
+        if (((Enemy)owner).state_ == Enemy.State.DAMAGED) Destroy(gameObject); // Die if owner is damaged
         if (rb.velocity.magnitude > velocityMax)
         {
             rb.velocity = rb.velocity.normalized * velocityMax;

@@ -8476,7 +8476,7 @@ PrefabInstance:
     - target: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297006676423945195, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
@@ -9178,7 +9178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: The Wizard
-  initialHealth: 2000
+  initialHealth: 8000
   health: 0
   healthCanvas: {fileID: 71121092}
   healthBar: {fileID: 0}
@@ -9212,7 +9212,7 @@ MonoBehaviour:
   isBoss: 1
   toggleOnDeath:
   - {fileID: 1835934700}
-  currentStage: 2
+  currentStage: 0
   maxStamina: 100
   currentStamina: 100
   attackSequenceDuration: 16
@@ -9282,7 +9282,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       executionCooldown: 15
-      weight: 75
+      weight: 8
     - attackEvent:
         m_PersistentCalls:
           m_Calls:

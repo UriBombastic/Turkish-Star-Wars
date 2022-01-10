@@ -242,6 +242,7 @@ public class MagoBoss : GenericBoss
 
     public void AttackLightningSpear()
     {
+        if (state_ == State.DAMAGED) return;
         SpearProjectile projectile = Instantiate(spearProjectile, 
             rightHandTransform.position + spearProjectile.transform.position, rightHandTransform.rotation)
             .GetComponent<SpearProjectile>();
@@ -258,7 +259,6 @@ public class MagoBoss : GenericBoss
     {
         for(int i = 0; i < multiSpearCount; i++)
         {
-            if (state_ == State.DAMAGED) yield break;
             AttackLightningSpear();
             yield return new WaitForSeconds(multiSpearDelay);
         }

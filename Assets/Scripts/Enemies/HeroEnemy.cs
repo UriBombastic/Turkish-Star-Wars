@@ -261,7 +261,7 @@ public class HeroEnemy : GenericBoss
         rb.constraints = RigidbodyConstraints.None;
         base.Kill();
         WolfEnemy wolf = Instantiate(wolfBoss, transform.position, transform.rotation).GetComponent<WolfEnemy>();
-        wolf.isBoss = this.isBoss;
+        if(wolf) wolf.isBoss = this.isBoss;
         if(isBoss) Instantiate(lightningSword, transform.position, transform.rotation);
         for (int i = 0; i < toggleOnDeath.Length; i++)
             toggleOnDeath[i].SetActive(!toggleOnDeath[i].activeInHierarchy);

@@ -24,6 +24,8 @@ public class SawProjectile : Projectile
 
     private void FixedUpdate()
     {
+        if (((Enemy)owner).state_ == Enemy.State.DAMAGED) Destroy(gameObject); // Die if owner is damaged
+
         if (targetTransform.gameObject.activeInHierarchy)
         {
             Vector3 moveAngle = new Vector3(
