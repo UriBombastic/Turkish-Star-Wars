@@ -8476,7 +8476,7 @@ PrefabInstance:
     - target: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2297006676423945195, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
@@ -9282,7 +9282,7 @@ MonoBehaviour:
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
       executionCooldown: 15
-      weight: 8
+      weight: 6
     - attackEvent:
         m_PersistentCalls:
           m_Calls:
