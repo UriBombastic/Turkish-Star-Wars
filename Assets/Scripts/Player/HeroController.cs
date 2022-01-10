@@ -572,7 +572,7 @@ public class HeroController : MonoBehaviour, IDamageable, IAttacker
 
     }
 
-    void BreakShield()
+    public void BreakShield()
     {
         state_ = State.IDLE;
         shieldImage.gameObject.SetActive(false);

@@ -994,7 +994,7 @@ PrefabInstance:
     - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: allAudioSources.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
@@ -1030,12 +1030,12 @@ PrefabInstance:
         type: 3}
       propertyPath: allAudioSources.Array.data[6]
       value: 
-      objectReference: {fileID: 1278531452}
+      objectReference: {fileID: 1649746521}
     - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: allAudioSources.Array.data[7]
       value: 
-      objectReference: {fileID: 1649746521}
+      objectReference: {fileID: 324069862}
     - target: {fileID: 489460709760848423, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: allAudioSources.Array.data[8]
@@ -2344,63 +2344,6 @@ MonoBehaviour:
   spawnMode: 1
   selectionMode: 1
   enemyParentTransform: {fileID: 943054609}
---- !u!1001 &1027685447
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_Name
-      value: PlasmaExplosionEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 383.51505
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 437.02106
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011693693590, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
 --- !u!1 &1063052287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7569,12 +7512,6 @@ MonoBehaviour:
   doRecursiveCutscenes: 0
   player: {fileID: 0}
   endMode: 0
---- !u!82 &1278531452 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -2306504868319063694, guid: 96730f8640590934eacb6f860058e7f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1027685447}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356676530
 GameObject:
   m_ObjectHideFlags: 0
@@ -8539,7 +8476,7 @@ PrefabInstance:
     - target: {fileID: 2297006676423945197, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297006676423945195, guid: 50735013778c76040b2a965ad0766d0b,
         type: 3}
@@ -9241,7 +9178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: The Wizard
-  initialHealth: 6000
+  initialHealth: 2000
   health: 0
   healthCanvas: {fileID: 71121092}
   healthBar: {fileID: 0}
@@ -9275,7 +9212,7 @@ MonoBehaviour:
   isBoss: 1
   toggleOnDeath:
   - {fileID: 1835934700}
-  currentStage: 1
+  currentStage: 2
   maxStamina: 100
   currentStamina: 100
   attackSequenceDuration: 16
@@ -9304,8 +9241,13 @@ MonoBehaviour:
     type: 3}
   spearProjectile: {fileID: 1722685248713451997, guid: cb9ab98611bb20b40bc381b341d2322a,
     type: 3}
+  multiSpearCount: 3
+  multiSpearDelay: 0.5
   spellProjectile: {fileID: 8078483118373630782, guid: f071f68e5e49c65478f83f353b69e0d8,
     type: 3}
+  skyHammerCrosshairs: {fileID: 7573268146945412393, guid: 416c3dc340446ff40903537de2d09829,
+    type: 3}
+  skyHammerStalkDuration: 2.5
   stages:
   - enemySpawner: {fileID: 1011263377}
     minAttackTime: 3
@@ -9456,7 +9398,79 @@ MonoBehaviour:
     - {fileID: 1686398719}
     stageEntranceDeactivations:
     - {fileID: 953995856}
-    attacks: []
+    attacks:
+    - attackEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 6053307994255678835}
+            m_MethodName: AttackSpell
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      executionCooldown: 3
+      weight: 0
+    - attackEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 6053307994255678835}
+            m_MethodName: AttackSeekingSawDouble
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      executionCooldown: 3
+      weight: 0
+    - attackEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 6053307994255678835}
+            m_MethodName: AttackMultiSpear
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      executionCooldown: 3
+      weight: 0
+    - attackEvent:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 6053307994255678835}
+            m_MethodName: AttackSkyHammer
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      executionCooldown: 4
+      weight: 1
   - enemySpawner: {fileID: 0}
     minAttackTime: 3
     maxAttackTime: 4

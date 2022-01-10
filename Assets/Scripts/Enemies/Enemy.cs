@@ -235,7 +235,7 @@ public class Enemy : MonoBehaviour, IDamageable, IAttacker
             }
     }
 
-    protected void IndiscriminateAttack(float damageToDo, float radius, float attackForce, Transform t, bool doAttackEnemies = true)
+    public void IndiscriminateAttack(float damageToDo, float radius, float attackForce, Transform t, bool doAttackEnemies = true)
     {
         Collider[] hitColliders = Physics.OverlapSphere(t.position, radius);
         for (int i = 0; i < hitColliders.Length; i++)

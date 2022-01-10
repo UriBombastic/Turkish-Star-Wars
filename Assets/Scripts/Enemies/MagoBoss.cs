@@ -88,7 +88,12 @@ public class MagoBoss : GenericBoss
     public Transform rightHandTransform;
     public GameObject sawProjectile;
     public GameObject spearProjectile;
+    public int multiSpearCount = 3;
+    public float multiSpearDelay = 0.5f;
     public GameObject spellProjectile;
+    public GameObject skyHammerCrosshairs;
+    private GameObject spawnedCrosshairs;
+    public float skyHammerStalkDuration;
 
     [Header("Stages")]
     [SerializeField]
@@ -223,6 +228,7 @@ public class MagoBoss : GenericBoss
         .GetComponent<SawProjectile>().InstantiateProjectile(this);
     }
 
+
     public void AttackLightningSpear()
     {
         SpearProjectile projectile = Instantiate(spearProjectile, 
@@ -232,12 +238,40 @@ public class MagoBoss : GenericBoss
         projectile.InstantiateProjectile(this);
     }
 
+    public void AttackMultiSpear()
+    {
+        StartCoroutine(AttackMultiSpearReal());
+    }
+
+    private IEnumerator AttackMultiSpearReal()
+    {
+        for(int i = 0; i < multiSpearCount; i++)
+        {
+            AttackLightningSpear();
+            yield return new WaitForSeconds(multiSpearDelay);
+        }
+    }
+
     public void AttackSpell()
     {
         //TODO: some method of swearing?
         Instantiate(spellProjectile, explosionsCenter.position, explosionsCenter.rotation)
             .GetComponent<SpellProjectile>().InstantiateProjectile(this);
     }
+
+    public void AttackSkyHammer()
+    {
+        StartCoroutine(AttackSkyHammerReal());
+    }
+
+    private IEnumerator AttackSkyHammerReal()
+    {
+        Skyhammer hammer = Instantiate(skyHammerCrosshairs, targetTransform).GetComponent<Skyhammer>();
+        hammer.InstantiateProjectile(this);
+        yield return new WaitForSeconds(skyHammerStalkDuration);
+        hammer.Explode();
+    }
+
     /*************************** Damage / Dying ************************/
     public override void Damage(float damage, Vector3 knockback)
     {

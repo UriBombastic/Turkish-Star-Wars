@@ -8,7 +8,7 @@ public class Lava : MonoBehaviour
     public GameObject explosionEffect;
 
     public bool instantKill;
-
+    public bool doBreakShield;
     public float lavaDamage = 200f; // If not instant kill
     public float bounceForce = 2000f; // Launch victim upwards
 
@@ -26,6 +26,18 @@ public class Lava : MonoBehaviour
         }
         else
         {
+           if(doBreakShield)
+            {
+                HeroController hero = other.GetComponent<HeroController>();
+                if(hero)
+                {
+                    if(hero.state_ == HeroController.State.BLOCKING)
+                    {
+                        hero.ShieldPower = 0;
+                        hero.BreakShield();
+                    }
+                }
+            }
             victim.Damage(lavaDamage, new Vector3(0, bounceForce, 0));
         }
 
