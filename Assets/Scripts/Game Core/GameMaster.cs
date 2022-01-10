@@ -21,7 +21,7 @@ public class GameMaster : MonoBehaviour
     // Is there . . . a better way to do this? There has to be a better way to do this.
     private static string[] levels = { "01.DesertFight", "02.Captured", "03.Arena", "04.Cave",
         "05.TrainingGrounds","06.BarFight","07.Escape","08.Church","09.Betrayal","10.Breakout","11.Storyline",
-        "12.PenultimateBattle", "13.FinalBattle", "99.FillerEndcap"};
+        "12.PenultimateBattle", "13.FinalBattle", "14.Ending"};
     private static int LevelIndex = 0;
 
     //enums
@@ -227,6 +227,11 @@ public class GameMaster : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        if(LevelIndex == levels.Length)
+        {
+            EndGame();
+            return;
+        }
         LevelIndex++;
         LoadCurrentLevel();
     }
@@ -242,6 +247,12 @@ public class GameMaster : MonoBehaviour
     {
         playerCurrentHealth = Mathf.Min(playerMaxHealth, playerCurrentHealth + (playerMaxHealth * 0.1f));
         LoadCurrentLevel();
+    }
+
+    public void EndGame()
+    {
+        LevelIndex = 0;
+        SceneManager.LoadScene("00.MainMenu");
     }
 
     public static void UploadPlayer()
