@@ -19,7 +19,6 @@ public class SpellProjectile : Projectile
         if (rb.velocity.magnitude > velocityMax)
         {
             rb.velocity = rb.velocity.normalized * velocityMax;
-            Debug.Log("Velocity Capped");
         }
     }
 
