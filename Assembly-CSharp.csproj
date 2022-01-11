@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Game Core\Projectile.cs" />
     <Compile Include="Assets\Scripts\Game Core\RockProjectile.cs" />
     <Compile Include="Assets\Scripts\Game Core\SawProjectile.cs" />
+    <Compile Include="Assets\Scripts\Game Core\Skyhammer.cs" />
     <Compile Include="Assets\Scripts\Game Core\SpearProjectile.cs" />
     <Compile Include="Assets\Scripts\Game Core\UpgradePlayer.cs" />
     <Compile Include="Assets\Scripts\Game Core\VolumeControl.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\Scripts\Player\Item.cs" />
     <Compile Include="Assets\Scripts\Player\LookDirectionController.cs" />
     <Compile Include="Assets\Scripts\Repulsor.cs" />
+    <Compile Include="Assets\Scripts\SpellProjectile.cs" />
     <Compile Include="Assets\Scripts\TeleporterZone.cs" />
     <Compile Include="Assets\Third Party\Cattleya\Scripts\DemoScene.cs" />
     <Compile Include="Assets\Third Party\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
@@ -161,6 +163,7 @@
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Resources\Dialogue\EN\FinalExpositionComplete.txt" />
+    <None Include="Assets\Resources\Dialogue\EN\Ending.txt" />
     <None Include="Assets\Resources\Dialogue\EN\ChurchSceneIntro.txt" />
     <None Include="Assets\Third Party\_MasksPack2\__CubemapsShaders\ASE_Standart2Sided.shader" />
     <None Include="Assets\Resources\Dialogue\EN\MagoStage2.txt" />

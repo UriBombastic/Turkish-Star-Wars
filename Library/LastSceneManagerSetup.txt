@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/12.PenultimateBattle.unity
+- path: Assets/Scenes/14.Ending.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
