@@ -5994,6 +5994,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 2433673544585794160, guid: ad1cc35cdfdd07e4eb047147b59dbd78,
     type: 3}
   instantKill: 0
+  doBreakShield: 0
   lavaDamage: 1000
   bounceForce: 2000
 --- !u!1 &656764897
@@ -9319,10 +9320,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 869190739, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 188827716, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -9337,6 +9334,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 188827716, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 869190739, guid: a6e139e5ab5b1c643aec54ae11383cb9, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 523814914865168136, guid: a6e139e5ab5b1c643aec54ae11383cb9,
@@ -10990,11 +10991,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMaster
       objectReference: {fileID: 0}
-    - target: {fileID: 7900113319572327663, guid: 73166fca5bc078445beabb20ef0cbc22,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 497743115545971768, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11053,6 +11049,15 @@ PrefabInstance:
     - target: {fileID: 1396954001, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900113319572327663, guid: 73166fca5bc078445beabb20ef0cbc22,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
+      propertyPath: Points
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 497743115545971775, guid: 73166fca5bc078445beabb20ef0cbc22,
         type: 3}
@@ -11389,10 +11394,6 @@ PrefabInstance:
       propertyPath: allAudioSources.Array.data[62]
       value: 
       objectReference: {fileID: 1666835564}
-    - target: {fileID: 908915187, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
-      propertyPath: Points
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73166fca5bc078445beabb20ef0cbc22, type: 3}
 --- !u!1001 &1179161327

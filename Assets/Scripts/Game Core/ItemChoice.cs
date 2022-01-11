@@ -46,6 +46,8 @@ public class ItemChoice : MonoBehaviour
         fistSpeedLabel.text = "x" + goldenFists.AttackSpeedMult;
         fistRangeLabel.text = "x" + goldenFists.AttackRangeMult;
         fistMoveSpeedLabel.text = "x" + goldenFists.MoveSpeedMult;
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // To be accessed via buttons
