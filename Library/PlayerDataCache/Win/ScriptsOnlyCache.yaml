@@ -65,7 +65,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.PhysicsRaycaster
@@ -2022,7 +2021,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11566}
     - Class: 114
-      Script: {instanceID: 25900}
+      Script: {instanceID: 25914}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128

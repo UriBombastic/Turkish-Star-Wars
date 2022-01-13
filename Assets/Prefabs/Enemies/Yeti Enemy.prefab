@@ -535,7 +535,7 @@ MonoBehaviour:
   BasicAttackReach: 3
   BasicAttackForce: 600
   BasicAttackCooldown: 2.5
-  BasicAttackStartup: 1.2
+  BasicAttackStartup: 1.5
   DamageRecoverTime: 1
   ViewRange: 65
   AttackRange: 3
